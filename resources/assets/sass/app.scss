@@ -5,5 +5,17 @@
 // Variables
 @import "variables";
 
+@font-face {
+    font-family: 'Releway';
+    src: url('../font//Raleway.ttf');
+}
+
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+@import "./main.scss";
+
+button{
+    outline: none !important;
+    background-color: transparent;
+}
