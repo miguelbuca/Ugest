@@ -8,6 +8,6 @@ class CategoriaController extends Controller
 {
     //
     function add() {
-        return ["Result" => "My first API"];
+        return "Ok";
     }
 }
