@@ -1,0 +1,125 @@
+.input{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    max-height: 80px !important;
+
+    & input,
+    & select{
+        outline: none;
+        padding: .5rem 3rem;
+        border-radius: $default-radius;
+        border: solid 2px $system-color;
+    }
+
+    & i{
+        position: absolute;
+        top: 45%;
+        left: 1rem;
+        font-size: 1.2rem;
+        color: rgba($color: #000000, $alpha: .4);
+        transition: all .2s;
+    }
+    & input:focus ~ i,
+    & select:focus ~ i{
+        color: $system-color;
+    }
+
+    & select{
+        height: 37px !important;
+        margin-bottom: 2.2rem !important;
+    }
+}
+.inputFile{
+    display: flex;
+    flex-direction: row;
+
+    & input[type="file"]{
+        display: none !important;
+    }
+    &>div{
+        display: flex;
+
+        &:first-child{
+            width: 200px;
+            height: 200px;
+            margin-right: 2rem;
+        }
+
+        &:nth-child(2){
+            flex: 1 !important;
+            border: solid 2px #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+.btnSystem{
+    background-color: $system-color !important;
+    border-radius: $default-radius;
+    padding: .5rem 1rem;
+    color: #fff;
+    outline: none !important;
+    border: none;
+    font-size: 12pt;
+    transition: all .2s;
+    
+
+    &:hover{
+        box-shadow: 0 1rem .5rem rgba($color: #000000, $alpha: .03);
+        margin-top: -1rem;
+    }
+    &:active{
+        margin-top: 0;
+        box-shadow: 0 1rem .5rem rgba($color: #000000, $alpha: .08);
+    }
+
+    & i{
+        margin-left: 1rem;
+    }
+}
+.cancel{
+    background-color: #ccc !important;
+}
+.tab{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    &>div{
+        display: flex;
+
+        &:first-child{
+            background-color: $body-bg;
+            margin-bottom: 1.5rem;
+            
+            &>span{
+                padding: 1.5rem;
+                cursor: pointer;
+                border-top: solid 3px transparent;
+                user-select: none !important;
+                font-weight: bold;
+
+                &[active="true"]{
+                    border-top: solid 3px $system-color;
+                    color: $system-color;
+                }
+
+                & i{
+                    margin-right: 1rem;
+                }
+            }
+        }
+        &:last-child{
+            flex: 1;
+            background-color: $body-bg;
+            padding: 2rem;
+
+            &>div{
+                flex: 1;
+            }
+        }
+    }
+}

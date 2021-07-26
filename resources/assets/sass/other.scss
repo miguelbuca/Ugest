@@ -1,0 +1,18 @@
+.otherForms{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    &>div{
+        display: flex;
+
+        &:first-child{
+            flex: 1;
+        }
+        &:last-child{
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-end;
+        }
+    }
+}

@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="{{mix('css/app.css')}}">
-        <title>UGEST App</title>
+        <title>Ugest | Login</title>
     </head>
     <body>
         <div id="root"></div>

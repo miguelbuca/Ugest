@@ -24,6 +24,8 @@ $brand-success: #2ab27b;
 $brand-warning: #cbb956;
 $brand-danger: #bf293d;
 
+$orangered: rgb(255, 0, 98);
+
 $system-color: #D5A368;
 $system-color-transparent: #D5A36815;
 
@@ -47,3 +49,9 @@ $input-color-placeholder: lighten($text-color, 30%);
 
 // Panels
 $panel-default-heading-bg: #fff;
+
+$default-radius: 4px;
+
+$color-transparent: rgba(0,0,0,.2);
+
+$box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);

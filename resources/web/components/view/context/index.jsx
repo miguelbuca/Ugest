@@ -4,7 +4,11 @@ const UgestContext = createContext()
 
 export const UgestProvider = ({ children }) => {
 
-  const [ data, setData ] = useState({})
+  const [ data, setData ] = useState({
+    navigation: {
+        menu: 'Painel'
+    }
+  })
 
   return (
     <UgestContext.Provider value={{

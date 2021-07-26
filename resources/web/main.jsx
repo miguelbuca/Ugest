@@ -4,14 +4,14 @@ import Aside from './components/layout/aside'
 
 /** Views Import */
 
-import Home from './components/view/admin'
+import Main from './components/view/admin'
 
 
 export default function index() {
     return (
         <main>
             <Aside/>
-            <Home/>
+            <Main/>
         </main>
     )
 }
