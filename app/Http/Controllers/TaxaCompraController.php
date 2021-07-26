@@ -1,26 +1,26 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Categoria;
+use App\Models\Taxacompra;
 use Illuminate\Http\Request;
 
-class CategoriaController extends Controller
+class TaxaCompraController extends Controller
 {
     public function index()
     {
-        return Categoria::all();
+        return Taxacompra::all();
     }
 
     public function store(Request $req)
     {
         try {
-            $categoria = new Categoria;
+            $taxacompra = new Taxacompra;
 
-            $categoria->catg_designacao = $req->catg_designacao;
-            $categoria->catg_subcategoria_id = $req->catg_subcategoria_id;
-            $categoria->catg_estado_id = $req->	catg_estado_id;
+            $taxacompra->tcm_historicoStock_id = $req->tcm_historicoStock_id;
+            $taxacompra->tcm_taxa_id = $req->tcm_taxa_id;
+            $taxacompra->tcm_estado = $req->tcm_estado;
 
-            $result = $categoria->save();
+            $result = $taxacompra->save();
 
             if ($result) {
                 return ["result" => $result];
@@ -34,20 +34,20 @@ class CategoriaController extends Controller
 
     public function show($id)
     {
-        return $id ? Categoria::find($id) : Categoria::all();
+        return $id ? Taxacompra::find($id) : Taxacompra::all();
     }
 
     public function update(Request $req, $id)
     {
         try {
-            $categoria = Categoria::find($id);
+            $taxacompra = Taxacompra::find($id);
 
-            if ($categoria) {
-                $categoria->catg_designacao = $req->catg_designacao;
-                $categoria->catg_subcategoria_id = $req->catg_subcategoria_id;
-                $categoria->catg_estado_id = $req->	catg_estado_id;
+            if ($taxacompra) {
+                $taxacompra->tcm_historicoStock_id = $req->tcm_historicoStock_id;
+                $taxacompra->tcm_taxa_id = $req->tcm_taxa_id;
+                $taxacompra->tcm_estado = $req->tcm_estado;
 
-                $result = $categoria->save();
+                $result = $taxacompra->save();
 
                 if ($result) {
                     return ["result" => $result];
@@ -56,7 +56,7 @@ class CategoriaController extends Controller
                 return ["error" => "Some error ocurred"];
             }
 
-            return ["error" => "categoria does not exists"];
+            return ["error" => "taxacompra does not exists"];
         } catch(Exception $e) {
             return ["error" => $e];
         }
@@ -64,10 +64,10 @@ class CategoriaController extends Controller
 
     public function destroy($id)
     {
-        $categoria = Categoria::find($id);
+        $taxacompra = Taxacompra::find($id);
 
-        if ($categoria) {
-            $result = $categoria->delete();
+        if ($taxacompra) {
+            $result = $taxacompra->delete();
 
             if ($result) {
                 return ["deleted" => true];

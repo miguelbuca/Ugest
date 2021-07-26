@@ -1,26 +1,28 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Categoria;
+use App\Models\Taxa;
 use Illuminate\Http\Request;
 
-class CategoriaController extends Controller
+class TaxaController extends Controller
 {
     public function index()
     {
-        return Categoria::all();
+        return Taxa::all();
     }
 
     public function store(Request $req)
     {
         try {
-            $categoria = new Categoria;
+            $taxa = new Taxa;
 
-            $categoria->catg_designacao = $req->catg_designacao;
-            $categoria->catg_subcategoria_id = $req->catg_subcategoria_id;
-            $categoria->catg_estado_id = $req->	catg_estado_id;
+            $taxa->tax_tipo = $req->tax_tipo;
+            $taxa->tax_descricao = $req->tax_descricao;
+            $taxa->tax_preco = $req->tax_preco;
+            $taxa->tax_percentagem = $req->tax_percentagem;
+            $taxa->tax_estado = $req->tax_estado;
 
-            $result = $categoria->save();
+            $result = $taxa->save();
 
             if ($result) {
                 return ["result" => $result];
@@ -34,20 +36,22 @@ class CategoriaController extends Controller
 
     public function show($id)
     {
-        return $id ? Categoria::find($id) : Categoria::all();
+        return $id ? Taxa::find($id) : Taxa::all();
     }
 
     public function update(Request $req, $id)
     {
         try {
-            $categoria = Categoria::find($id);
+            $taxa = Taxa::find($id);
 
-            if ($categoria) {
-                $categoria->catg_designacao = $req->catg_designacao;
-                $categoria->catg_subcategoria_id = $req->catg_subcategoria_id;
-                $categoria->catg_estado_id = $req->	catg_estado_id;
+            if ($taxa) {
+                $taxa->tax_tipo = $req->tax_tipo;
+                $taxa->tax_descricao = $req->tax_descricao;
+                $taxa->tax_preco = $req->tax_preco;
+                $taxa->tax_percentagem = $req->tax_percentagem;
+                $taxa->tax_estado = $req->tax_estado;
 
-                $result = $categoria->save();
+                $result = $taxa->save();
 
                 if ($result) {
                     return ["result" => $result];
@@ -56,7 +60,7 @@ class CategoriaController extends Controller
                 return ["error" => "Some error ocurred"];
             }
 
-            return ["error" => "categoria does not exists"];
+            return ["error" => "taxa does not exists"];
         } catch(Exception $e) {
             return ["error" => $e];
         }
@@ -64,10 +68,10 @@ class CategoriaController extends Controller
 
     public function destroy($id)
     {
-        $categoria = Categoria::find($id);
+        $taxa = Taxa::find($id);
 
-        if ($categoria) {
-            $result = $categoria->delete();
+        if ($taxa) {
+            $result = $taxa->delete();
 
             if ($result) {
                 return ["deleted" => true];

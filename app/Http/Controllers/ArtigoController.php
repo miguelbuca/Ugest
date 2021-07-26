@@ -60,7 +60,7 @@ class ArtigoController extends Controller
                 return ["error" => "Some error ocurred"];
             }
 
-            return ["error" => "pessoa does not exists"];
+            return ["error" => "artigo does not exists"];
         } catch(Exception $e) {
             return ["error" => $e];
         }

@@ -64,7 +64,7 @@ class ContactoController extends Controller
                 return ["error" => "Some error ocurred"];
             }
 
-            return ["error" => "pessoa does not exists"];
+            return ["error" => "contacto does not exists"];
         } catch(Exception $e) {
             return ["error" => $e];
         }

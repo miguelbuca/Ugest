@@ -54,7 +54,7 @@ class TipoArtigoController extends Controller
                 return ["error" => "Some error ocurred"];
             }
 
-            return ["error" => "pessoa does not exists"];
+            return ["error" => "tipoartigo does not exists"];
         } catch(Exception $e) {
             return ["error" => $e];
         }

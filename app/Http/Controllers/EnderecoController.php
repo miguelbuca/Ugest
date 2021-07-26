@@ -67,7 +67,7 @@ class EnderecoController extends Controller
                 return ["error" => "Some error ocurred"];
             }
 
-            return ["error" => "pessoa does not exists"];
+            return ["error" => "endereco does not exists"];
         } catch(Exception $e) {
             return ["error" => $e];
         }

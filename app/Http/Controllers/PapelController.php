@@ -1,26 +1,25 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Categoria;
+use App\Models\Papei;
 use Illuminate\Http\Request;
 
-class CategoriaController extends Controller
+class PapelController extends Controller
 {
     public function index()
     {
-        return Categoria::all();
+        return Papei::all();
     }
 
     public function store(Request $req)
     {
         try {
-            $categoria = new Categoria;
+            $papel = new Papei;
 
-            $categoria->catg_designacao = $req->catg_designacao;
-            $categoria->catg_subcategoria_id = $req->catg_subcategoria_id;
-            $categoria->catg_estado_id = $req->	catg_estado_id;
+            $papel->pap_designacao = $req->pap_designacao;
+            $papel->pap_estado_id = $req->pap_estado_id;
 
-            $result = $categoria->save();
+            $result = $papel->save();
 
             if ($result) {
                 return ["result" => $result];
@@ -34,20 +33,19 @@ class CategoriaController extends Controller
 
     public function show($id)
     {
-        return $id ? Categoria::find($id) : Categoria::all();
+        return $id ? Papei::find($id) : Papei::all();
     }
 
     public function update(Request $req, $id)
     {
         try {
-            $categoria = Categoria::find($id);
+            $papel = Papei::find($id);
 
-            if ($categoria) {
-                $categoria->catg_designacao = $req->catg_designacao;
-                $categoria->catg_subcategoria_id = $req->catg_subcategoria_id;
-                $categoria->catg_estado_id = $req->	catg_estado_id;
+            if ($papel) {
+                $papel->pap_designacao = $req->pap_designacao;
+                $papel->pap_estado_id = $req->pap_estado_id;
 
-                $result = $categoria->save();
+                $result = $papel->save();
 
                 if ($result) {
                     return ["result" => $result];
@@ -56,7 +54,7 @@ class CategoriaController extends Controller
                 return ["error" => "Some error ocurred"];
             }
 
-            return ["error" => "categoria does not exists"];
+            return ["error" => "papel does not exists"];
         } catch(Exception $e) {
             return ["error" => $e];
         }
@@ -64,10 +62,10 @@ class CategoriaController extends Controller
 
     public function destroy($id)
     {
-        $categoria = Categoria::find($id);
+        $papel = Papei::find($id);
 
-        if ($categoria) {
-            $result = $categoria->delete();
+        if ($papel) {
+            $result = $papel->delete();
 
             if ($result) {
                 return ["deleted" => true];
