@@ -166,23 +166,25 @@ return [
         /*
          * Package Service Providers...
          */
-        Reliese\Coders\CodersServiceProvider::class,
-        Laravel\Tinker\TinkerServiceProvider::class,
+        // Reliese\Coders\CodersServiceProvider::class,
+        // Laravel\Tinker\TinkerServiceProvider::class,
 
         /*
          * Application Service Providers...
          */
+
+        
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Way\Generators\GeneratorsServiceProvider::class,
-        Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
-
+        // Way\Generators\GeneratorsServiceProvider::class,
+        // Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
+        
     ],
 
-    /*
+    /*  
     |--------------------------------------------------------------------------
     | Class Aliases
     |--------------------------------------------------------------------------
