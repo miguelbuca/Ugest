@@ -1,26 +1,25 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Categoria;
+use App\Models\Tipoartigo;
 use Illuminate\Http\Request;
 
-class CategoriaController extends Controller
+class TipoArtigoController extends Controller
 {
     public function index()
     {
-        return Categoria::all();
+        return Tipoartigo::all();
     }
 
     public function store(Request $req)
     {
         try {
-            $categoria = new Categoria;
+            $tipoartigo = new Tipoartigo;
 
-            $categoria->catg_designacao = $req->catg_designacao;
-            $categoria->catg_subcategoria_id = $req->catg_subcategoria_id;
-            $categoria->catg_estado_id = $req->	catg_estado_id;
+            $tipoartigo->tip_designacao = $req->tip_designacao;
+            $tipoartigo->tip_estado_id = $req->	tip_estado_id;
 
-            $result = $categoria->save();
+            $result = $tipoartigo->save();
 
             if ($result) {
                 return ["result" => $result];
@@ -34,20 +33,19 @@ class CategoriaController extends Controller
 
     public function show($id)
     {
-        return $id ? Categoria::find($id) : Categoria::all();
+        return $id ? Tipoartigo::find($id) : Tipoartigo::all();
     }
 
     public function update(Request $req, $id)
     {
         try {
-            $categoria = Categoria::find($id);
+            $tipoartigo = Tipoartigo::find($id);
 
-            if ($categoria) {
-                $categoria->catg_designacao = $req->catg_designacao;
-                $categoria->catg_subcategoria_id = $req->catg_subcategoria_id;
-                $categoria->catg_estado_id = $req->	catg_estado_id;
+            if ($tipoartigo) {
+                $tipoartigo->tip_designacao = $req->tip_designacao;
+                $tipoartigo->tip_estado_id = $req->	tip_estado_id;
 
-                $result = $categoria->save();
+                $result = $tipoartigo->save();
 
                 if ($result) {
                     return ["result" => $result];
@@ -64,10 +62,10 @@ class CategoriaController extends Controller
 
     public function destroy($id)
     {
-        $categoria = Categoria::find($id);
+        $tipoartigo = Tipoartigo::find($id);
 
-        if ($categoria) {
-            $result = $categoria->delete();
+        if ($tipoartigo) {
+            $result = $tipoartigo->delete();
 
             if ($result) {
                 return ["deleted" => true];

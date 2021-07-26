@@ -1,26 +1,28 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Categoria;
+use App\Models\Artigo;
 use Illuminate\Http\Request;
 
-class CategoriaController extends Controller
+class ArtigoController extends Controller
 {
     public function index()
     {
-        return Categoria::all();
+        return Artigo::all();
     }
 
     public function store(Request $req)
     {
         try {
-            $categoria = new Categoria;
+            $artigo = new Artigo;
 
-            $categoria->catg_designacao = $req->catg_designacao;
-            $categoria->catg_subcategoria_id = $req->catg_subcategoria_id;
-            $categoria->catg_estado_id = $req->	catg_estado_id;
+            $artigo->art_designacao = $req->art_designacao;
+            $artigo->art_tipoArtigo_id = $req->art_tipoArtigo_id;
+            $artigo->art_stock_minimo = $req->art_stock_minimo;
+            $artigo->art_stock_real = $req->art_stock_real;
+            $artigo->art_estado_id = $req->art_estado_id;
 
-            $result = $categoria->save();
+            $result = $artigo->save();
 
             if ($result) {
                 return ["result" => $result];
@@ -34,20 +36,22 @@ class CategoriaController extends Controller
 
     public function show($id)
     {
-        return $id ? Categoria::find($id) : Categoria::all();
+        return $id ? Artigo::find($id) : Artigo::all();
     }
 
     public function update(Request $req, $id)
     {
         try {
-            $categoria = Categoria::find($id);
+            $artigo = Artigo::find($id);
 
-            if ($categoria) {
-                $categoria->catg_designacao = $req->catg_designacao;
-                $categoria->catg_subcategoria_id = $req->catg_subcategoria_id;
-                $categoria->catg_estado_id = $req->	catg_estado_id;
+            if ($artigo) {
+                $artigo->art_designacao = $req->art_designacao;
+                $artigo->art_tipoArtigo_id = $req->art_tipoArtigo_id;
+                $artigo->art_stock_minimo = $req->art_stock_minimo;
+                $artigo->art_stock_real = $req->art_stock_real;
+                $artigo->art_estado_id = $req->art_estado_id;
 
-                $result = $categoria->save();
+                $result = $artigo->save();
 
                 if ($result) {
                     return ["result" => $result];
@@ -64,10 +68,10 @@ class CategoriaController extends Controller
 
     public function destroy($id)
     {
-        $categoria = Categoria::find($id);
+        $artigo = Artigo::find($id);
 
-        if ($categoria) {
-            $result = $categoria->delete();
+        if ($artigo) {
+            $result = $artigo->delete();
 
             if ($result) {
                 return ["deleted" => true];

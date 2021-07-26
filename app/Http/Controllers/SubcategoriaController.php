@@ -1,26 +1,25 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Categoria;
+use App\Models\Subcategoria;
 use Illuminate\Http\Request;
 
-class CategoriaController extends Controller
+class SubcategoriaController extends Controller
 {
     public function index()
     {
-        return Categoria::all();
+        return Subcategoria::all();
     }
 
     public function store(Request $req)
     {
         try {
-            $categoria = new Categoria;
+            $subcategoria = new Subcategoria;
 
-            $categoria->catg_designacao = $req->catg_designacao;
-            $categoria->catg_subcategoria_id = $req->catg_subcategoria_id;
-            $categoria->catg_estado_id = $req->	catg_estado_id;
+            $subcategoria->scat_designacao = $req->scat_designacao;
+            $subcategoria->scat_estado_id = $req->scat_estado_id;
 
-            $result = $categoria->save();
+            $result = $subcategoria->save();
 
             if ($result) {
                 return ["result" => $result];
@@ -34,20 +33,19 @@ class CategoriaController extends Controller
 
     public function show($id)
     {
-        return $id ? Categoria::find($id) : Categoria::all();
+        return $id ? Subcategoria::find($id) : Subcategoria::all();
     }
 
     public function update(Request $req, $id)
     {
         try {
-            $categoria = Categoria::find($id);
+            $subcategoria = Subcategoria::find($id);
 
-            if ($categoria) {
-                $categoria->catg_designacao = $req->catg_designacao;
-                $categoria->catg_subcategoria_id = $req->catg_subcategoria_id;
-                $categoria->catg_estado_id = $req->	catg_estado_id;
+            if ($subcategoria) {
+                $subcategoria->scat_designacao = $req->scat_designacao;
+                $subcategoria->scat_estado_id = $req->scat_estado_id;
 
-                $result = $categoria->save();
+                $result = $subcategoria->save();
 
                 if ($result) {
                     return ["result" => $result];
@@ -64,10 +62,10 @@ class CategoriaController extends Controller
 
     public function destroy($id)
     {
-        $categoria = Categoria::find($id);
+        $subcategoria = Subcategoria::find($id);
 
-        if ($categoria) {
-            $result = $categoria->delete();
+        if ($subcategoria) {
+            $result = $subcategoria->delete();
 
             if ($result) {
                 return ["deleted" => true];
