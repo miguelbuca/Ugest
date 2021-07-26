@@ -38,7 +38,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -166,6 +166,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Reliese\Coders\CodersServiceProvider::class,
         Laravel\Tinker\TinkerServiceProvider::class,
 
         /*
@@ -176,6 +177,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Way\Generators\GeneratorsServiceProvider::class,
+        Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
 
     ],
 
