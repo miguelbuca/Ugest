@@ -4,7 +4,8 @@ import Header from '../../layout/header'
 
 import Painel from './painel'
 import Other from './other'
-import Artigos from './artigos'
+import Artigo from './artigo'
+import Stock from './stock'
 
 import { useUgest } from '../context'
 
@@ -17,6 +18,7 @@ export default function index() {
     useEffect(() => {
         if(!data.navigation)return
         setRoute(data.navigation)
+        
     }, [data])
 
 
@@ -39,8 +41,9 @@ export default function index() {
                 {
                     route && <div>
                                 { route.menu === 'Painel' && <Painel {...route}/> }
-                                { route.menu === 'Outas tabelas' && <Other {...route}/> }
-                                { route.menu === 'Artigos' && <Artigos {...route}/> }
+                                { route.menu === 'Outras tabela' && <Other {...route}/> }
+                                { route.menu === 'Artigo' && <Artigo {...route}/> }
+                                { route.menu === 'stock' && <Stock {...route}/> }
                             </div>
                 }
             </main>

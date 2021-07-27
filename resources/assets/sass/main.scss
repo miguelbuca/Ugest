@@ -19,6 +19,7 @@
             display: flex;
             align-items: flex-end;
             justify-content: flex-end;
+            min-height: 80px !important;
         }
     }
 
@@ -190,7 +191,7 @@
 
                         ul{
                             margin: 1rem 0;
-                            font-size: 10pt !important;
+                            font-size: 11pt !important;
 
                             & a,
                                 & a:link{
@@ -202,7 +203,7 @@
 
                                 & a,
                                 & a:link{
-                                    color: $orangered;
+                                    color: $system-color-transparent-1;
                                 }
                             }
                         }
@@ -401,7 +402,9 @@
     }
 
     & .estadoForm{
-        display: flex;
-        flex-direction: row !important;
+        width: 100% !important;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1rem;
     }
 }

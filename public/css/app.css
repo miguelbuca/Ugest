@@ -8375,6 +8375,7 @@ button.close {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  min-height: 80px !important;
 }
 
 #root .navscale {
@@ -8617,7 +8618,7 @@ button.close {
 
 #root > main > aside > div:last-child ul ul {
   margin: 1rem 0;
-  font-size: 10pt !important;
+  font-size: 11pt !important;
 }
 
 #root > main > aside > div:last-child ul ul a,
@@ -8631,7 +8632,7 @@ button.close {
 
 #root > main > aside > div:last-child ul ul li[active="true"] a,
 #root > main > aside > div:last-child ul ul li[active="true"] a:link {
-  color: #ff0062;
+  color: #d5a26877;
 }
 
 #root > main > aside > div:last-child ul a,
@@ -8918,13 +8919,10 @@ button.close {
 }
 
 #root .estadoForm {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal !important;
-  -webkit-box-direction: normal !important;
-      -ms-flex-direction: row !important;
-          flex-direction: row !important;
+  width: 100% !important;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
 }
 
 .input {
@@ -9413,7 +9411,6 @@ button.close {
 
 .popup_content {
   position: relative;
-  width: 400px;
   height: auto;
   background-color: #fff;
   -webkit-box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.1);

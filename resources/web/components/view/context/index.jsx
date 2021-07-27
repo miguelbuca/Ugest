@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
 
+import Api from '../../../api'
+
 const UgestContext = createContext()
 
 export const UgestProvider = ({ children }) => {
@@ -7,8 +9,26 @@ export const UgestProvider = ({ children }) => {
   const [ data, setData ] = useState({
     navigation: {
         menu: 'Painel'
-    }
+    },
+    action:{
+      toSave: {},
+      toEdit: {}
+    },
+    multUso:{}
   })
+
+  useEffect(() => {
+    (async () => {
+          const res = await Api.get( `/estado`);
+          setData({
+            ...data,
+            multUso: {
+              estado: res.data
+            }
+          })
+      })()
+  }, [])
+
 
   return (
     <UgestContext.Provider value={{

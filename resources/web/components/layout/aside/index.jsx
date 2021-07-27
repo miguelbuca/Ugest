@@ -1,3 +1,4 @@
+import { nodeName } from 'jquery'
 import React, { useState, useEffect } from 'react'
 
 import Avatar from '../../../../assets/img/avatar.png'
@@ -18,21 +19,23 @@ export default function index() {
     const menu = [
         {
             name: 'Painel',
-            route: '#',
+            route: 'painel',
             icon: 'fa fa-chart-pie'
         },
         {
-            name: 'Artigos',
-            route: '#',
+            name: 'Artigo',
+            route: 'artigo',
             icon: 'fa fa-box',
             childrean: [
                 {
                     name: 'Novo',
-                    icon: 'fa fa-plus-circle'
+                    icon: 'fa fa-plus-circle',
+                    route: 'artigo',
                 },
                 {
-                    name: 'Produtos',
-                    icon: 'fa fa-tags'
+                    name: 'Produto',
+                    icon: 'fa fa-tags',
+                    route: 'produto'
                 }/*,
                 {
                     name: 'Serviços'
@@ -41,182 +44,220 @@ export default function index() {
         },
         {
             name: 'Stock',
-            route: '#',
+            route: 'stock',
             icon: 'fa fa-boxes',
             childrean: [
                 {
                     name: 'Novo',
-                    icon: 'fa fa-plus-circle'
+                    icon: 'fa fa-plus-circle',
+                    route: 'stock',
                 },
                 {
                     name: 'Listagem',
-                    icon: 'fas fa-calendar',
-                    icon: 'fa fa-list'
+                    icon: 'fa fa-list',
+                    route: 'stock'
                 },
                 {
-                    name: 'Entradas',
-                    icon: 'fas fa-calendar'
+                    name: 'Entrada',
+                    icon: 'fas fa-arrow-right',
+                    route: 'entrada'
                 },
                 {
-                    name: 'Saídas'
+                    name: 'Saída',
+                    icon: 'fas fa-arrow-left',
+                    route: 'saida'
                 }
             ]
         },
         {
-            name: 'Entidades',
-            route: '#',
-            icon: 'fa fa-users',
+            name: 'Entidade',
+            route: 'entidade',
+            icon: 'fa fa-user',
             childrean: [
                 {
                     name: 'Nova',
-                    icon: 'fa fa-plus-circle'
+                    icon: 'fa fa-plus-circle',
+                    route: 'entidade'
                 },
                 {
-                    name: 'Clientes',
-                    icon: 'fas fa-user-tag'
+                    name: 'Cliente',
+                    icon: 'fas fa-user-tag',
+                    route: 'cliente'
                 },
                 {
-                    name: 'Fornecedores',
-                    icon: 'fas fa-luggage-cart'
+                    name: 'Fornecedor',
+                    icon: 'fas fa-luggage-cart',
+                    route: 'fornecedor'
                 },
                 {
-                    name: 'Operadores',
-                    icon: 'fas fa-users-cog'
+                    name: 'Operador',
+                    icon: 'fas fa-users-cog',
+                    route: 'operador'
                 }
             ]
         },
         {
             name: 'Faturação',
-            route: '#',
+            route: 'faturacao',
             icon: 'fa fa-credit-card',
             childrean: [
                 {
-                    name: 'Faturas',
-                    icon: 'fas fa-newspaper'
+                    name: 'Fatura',
+                    icon: 'fas fa-newspaper',
+                    route: 'faturacao'
                 },
                 {
                     name: 'Nota de Crédito',
-                    icon: 'fas fa-newspaper'
+                    icon: 'fas fa-newspaper',
+                    route: 'notacredito'
                 },
                 {
                     name: 'Nota de Débito',
-                    icon: 'fas fa-newspaper'
+                    icon: 'fas fa-newspaper',
+                    route: 'notadebito'
                 },
                 {
-                    name: 'Receitas'
+                    name: 'Receita',
+                    route: 'receita'
                 },
                 {
-                    name: 'Venda dia'
+                    name: 'Venda dia',
+                    route: 'vendadia'
                 },
                 {
-                    name: 'V. Produtos'
+                    name: 'V. Produto',
+                    route: 'vendaproduto'
                 },
                 {
-                    name: 'Proformas'
+                    name: 'Proforma',
+                    route: 'proforma'
                 }
             ]
         },
         {
-            name: 'Recursos humanos',
-            route: '#',
+            name: 'Recursos humano',
+            route: 'recursoshumano',
             icon: 'fa fa-user-graduate'
         },
         {
             name: 'Tesouraria',
-            route: '#',
+            route: 'tesouraria',
             icon: 'fa fa-cash-register',
         },
         {
-            name: 'Taxas',
+            name: 'Taxa',
             icon: 'fas fa-chess-rook',
-            route: '#',
+            route: 'taxa',
             childrean: [
                 {
                     name: 'Nova',
-                    icon: 'fa fa-plus-circle'
+                    icon: 'fa fa-plus-circle',
+                    route: 'taxa'
                 },
                 {
-                    name: 'Impostos',
-                    icon: 'fas fa-newspaper'
+                    name: 'Imposto',
+                    icon: 'fas fa-newspaper',
+                    route: 'imposto'
                 },
                 {
-                    name: 'Encargos'
+                    name: 'Encargo',
+                    route: 'encargo'
                 },
                 {
-                    name: 'Despesas'
+                    name: 'Despesa',
+                    route: 'despesa'
                 },
                 {
-                    name: 'Descontos'
+                    name: 'Desconto',
+                    route: 'desconto'
                 }
             ]
         },
         {
-            name: 'Configurações',
-            route: '#',
+            name: 'Configuraçõe',
+            route: 'configuracaoes',
             icon: 'fas fa-cogs',
             childrean: [
                 {
                     name: 'Personalisar',
-                    icon: 'fas fa-palette'
+                    icon: 'fas fa-palette',
+                    route: 'personalisar'
                 },
                 {
                     name: 'Backup',
-                    icon: 'fas fa-database'
+                    icon: 'fas fa-database',
+                    route: 'backup'
                 },
                 {
                     name: 'Restore',
-                    icon: 'fas fa-clock'
+                    icon: 'fas fa-clock',
+                    route: 'restore'
                 }
             ]
         },
         {
-            name: 'Usuários',
-            route: '#',
+            name: 'Usuário',
+            route: 'usuario',
             icon: 'fas fa-user',
             childrean: [
                 {
                     name: 'Novo',
-                    icon: 'fa fa-plus-circle'
+                    icon: 'fa fa-plus-circle',
+                    route: 'usuario'
                 },
                 {
                     name: 'Listagem',
                     icon: 'fas fa-newspaper',
-                    icon: 'fa fa-list'
+                    icon: 'fa fa-list',
+                    route: 'usuario'
                 },
                 {
-                    name: 'Permições',
-                    icon: 'fas fa-user-shield'
+                    name: 'Permição',
+                    icon: 'fas fa-user-shield',
+                    route: 'permicoes'
                 }
             ]
         },
         {
-            name: 'Outas tabelas',
+            name: 'Outras tabela',
             icon: 'fas fa-calendar',
-            route: '#',
+            route: 'outrastabelas',
             childrean: [
                 {
-                    name: 'Categoria'
+                    name: 'Categoria',
+                    icon: 'fas fa-box',
+                    route: 'categoria'
                 },
                 {
-                    name: 'Subcategoria'
+                    name: 'Subcategoria',
+                    icon: 'fas fa-sitemap',
+                    route: 'subcategoria'
                 },
                 {
-                    name: 'Papel'
+                    name: 'Papel',
+                    icon: 'fas fa-shield-alt',
+                    route: 'papel'
                 },
                 {
-                    name: 'Estado'
+                    name: 'Estado',
+                    icon: 'fas fa-toggle-on',
+                    route: 'estado'
                 },
                 {
-                    name: 'Tipo de Artigo'
+                    name: 'Tipo de Artigo',
+                    icon: 'fas fa-tag',
+                    route: 'tipoartigo'
                 },
                 {
-                    name: 'Nível de Acesso'
+                    name: 'Nível de Acesso',
+                    icon: 'fas fa-fingerprint',
+                    route: 'nivelacesso'
                 }
             ]
         },
         {
             name: 'Sair',
-            route: '#',
+            route: 'sair',
             icon: 'fas fa-sign-out-alt'
         }
     ]
@@ -269,7 +310,8 @@ export default function index() {
                                         setData({
                                             ...data,
                                             navigation: {
-                                                menu: name
+                                                menu: name,
+                                                route: null
                                             }
                                         })
                                     else
@@ -278,6 +320,7 @@ export default function index() {
                                             navigation: {
                                                 ...data.navigation,
                                                 menu: name,
+                                                route,
                                                 submenu: data.navigation.submenu ? data.navigation.submenu : childrean[0].name
                                             }
                                         })
@@ -291,7 +334,7 @@ export default function index() {
                                         childrean && <ul style={{
                                             display: submenu[index] ? 'flex' : 'none',
                                             flexDirection: 'column'
-                                        }}> {childrean.map(({ name, icon },key)=>{
+                                        }}> {childrean.map(({ name, route , icon },key)=>{
                                             return <li title={name} onClick={(e)=>{
                                                 var SubData = {
                                                     ...submenu
@@ -307,7 +350,8 @@ export default function index() {
                                                     ...data,
                                                     navigation: {
                                                         ...data.navigation,
-                                                        submenu: name
+                                                        submenu: name,
+                                                        route
                                                     }
                                                 })
 

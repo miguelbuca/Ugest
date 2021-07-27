@@ -1,13 +1,11 @@
 import React from 'react'
 
-import Chart from '../../../layout/report'
-
 export default function index() {
     return (
         <div className="painelContainer">
             <div className="cardTimeContainer">
                 <div>
-                    <Chart 
+                    {/*<Chart 
                         options={{
                             chart: {
                               id: 'apexchart-example'
@@ -22,7 +20,7 @@ export default function index() {
                           }} 
                         type="bar" 
                         width={500} 
-                        height={300} />
+                        height={300} />*/}
                 </div>
                 <div>2</div>
                 <div>3</div>

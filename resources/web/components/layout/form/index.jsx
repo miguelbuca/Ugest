@@ -63,7 +63,7 @@ export function Select({
     return(
         <div className="input">
             { label && <span>{label}</span> }
-            <select>
+            <select {...props}>
                 <optgroup>{
                     data.map(({ label, value },index)=>{
                         return <option key={index} value={value} >{label}</option>

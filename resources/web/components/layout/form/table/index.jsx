@@ -12,7 +12,10 @@ export default function index({ data, options = {
         search : false,
         buttons : false,
         pagination: false,
-        content: <div></div>
+        modal: {
+            label: "",
+            content: <div></div>
+        }
     }
 },onHover}) {
     const [ dataTable, setDataTable ] = useState([])
@@ -47,9 +50,24 @@ export default function index({ data, options = {
 
     return (
         <div>
-            { options.header.content && <Modal onClose={()=>setToggle(!toggle)} display={toggle}>
-                { options.header.content }
-            </Modal> }
+            {options.header.modal && <div>{ options.header.modal.content && <Modal onClose={()=>setToggle(!toggle)} display={toggle}>
+                <div style={{
+                    display: 'flex',
+                    flexDirection: 'column'
+                }}>
+
+                    <div style={{
+                        padding: '0 2rem'
+                    }}>
+                        <h2>
+                            {options.header.modal.label.title}
+                        </h2>
+                    </div>
+                    <div>
+                    { options.header.modal.content }
+                    </div>
+                </div>
+            </Modal> }</div>}
             <div className="tableConatiner">
                 { options.header && <div>
                     <div>
@@ -66,6 +84,11 @@ export default function index({ data, options = {
                                 <i className="fa fa-trash"/>
                                 Eliminar
                             </button>
+                            { options.header.modal.label && <button onClick={()=>setToggle(!toggle)}>
+                                <i className={ options.header.modal.label.icon }/>
+                                { options.header.modal.label.title }
+                            </button> }
+                            
                             {/*<button onClick={()=>setToggle(!toggle)}>
                                 <i className="fa fa-plus"/>
                                 Novo
