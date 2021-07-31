@@ -6,6 +6,7 @@ import Painel from './painel'
 import Other from './other'
 import Artigo from './artigo'
 import Stock from './stock'
+import Entidade from './entidade'
 
 import { useUgest } from '../context'
 
@@ -43,6 +44,7 @@ export default function index() {
                                 { route.menu === 'Painel' && <Painel {...route}/> }
                                 { route.menu === 'Outras tabela' && <Other {...route}/> }
                                 { route.menu === 'Artigo' && <Artigo {...route}/> }
+                                { route.menu === 'Entidade' && <Entidade {...route}/> }
                                 { route.menu === 'stock' && <Stock {...route}/> }
                             </div>
                 }

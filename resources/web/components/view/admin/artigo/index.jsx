@@ -61,7 +61,12 @@ export default function index(props) {
     }, [ menu ])
 
     return (
-                submenu == 'Novo' ? <Form /> : (
+                submenu == 'Novo' ? <Form onUpdate={()=>{
+                      (async () => {
+                        const { data } = await Api.get( `/${menu.toLocaleLowerCase()}`);
+                        setArtigo(data)
+                    })()
+                }} route={menu} /> : (
                     <div style={{
                         padding: '2rem',
                         width: '100%',

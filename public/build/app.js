@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 17);
+/******/ 	return __webpack_require__(__webpack_require__.s = 19);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -73,7 +73,7 @@
 if (false) {
   module.exports = require('./cjs/react.production.min.js');
 } else {
-  module.exports = __webpack_require__(19);
+  module.exports = __webpack_require__(21);
 }
 
 
@@ -84,8 +84,8 @@ if (false) {
 "use strict";
 
 
-var bind = __webpack_require__(9);
-var isBuffer = __webpack_require__(50);
+var bind = __webpack_require__(11);
+var isBuffer = __webpack_require__(36);
 
 /*global toString:true*/
 
@@ -448,7 +448,9 @@ function Tab(_ref3) {
         data = _ref3$data === undefined ? [{
         name: '',
         content: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", null)
-    }] : _ref3$data;
+    }] : _ref3$data,
+        _ref3$isStep = _ref3.isStep,
+        isStep = _ref3$isStep === undefined ? false : _ref3$isStep;
 
     var _useState = Object(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])(0),
         _useState2 = _slicedToArray(_useState, 2),
@@ -460,20 +462,45 @@ function Tab(_ref3) {
         { className: "tab" },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "div",
-            null,
+            { style: {
+                    marginBottom: isStep ? '0' : '1.5rem'
+                }, className: "tabContainerWithStep" },
             data.map(function (_ref4, index) {
                 var name = _ref4.name,
                     icon = _ref4.icon;
 
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     "span",
-                    { onClick: function onClick() {
+                    { className: index < activeIndex && isStep ? "stepPass" : "", onClick: function onClick() {
                             return setActiveIndex(index);
                         }, active: index === activeIndex ? "true" : "false", key: index },
                     icon && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("i", { className: icon }),
                     name
                 );
             })
+        ),
+        isStep && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "div",
+            { className: "btnNextPrev" },
+            activeIndex > 0 && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                Button,
+                { style: {
+                        marginRight: '1rem'
+                    }, onClick: function onClick() {
+                        if (activeIndex > 0) setActiveIndex(activeIndex - 1);
+                    } },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("i", { className: "fa fa-chevron-left" }),
+                " Anterior"
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                Button,
+                { onClick: function onClick() {
+                        if (activeIndex < data.length - 1) setActiveIndex(activeIndex + 1);
+                    } },
+                activeIndex + 1 !== data.length ? "Próximo" : "Finalizar",
+                " ",
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("i", { className: activeIndex + 1 !== data.length ? "fa fa-chevron-right" : "fa fa-save" })
+            )
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "div",
@@ -548,11 +575,11 @@ function InputFile(_ref7) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UgestProvider; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return useUgest; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api__ = __webpack_require__(5);
 
 
 var _this = this;
@@ -638,16 +665,138 @@ var useUgest = function useUgest() {
 
 /***/ }),
 /* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(32);
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+
+
+var Api = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.create({
+    baseURL: window.location.origin + '/api'
+});
+
+/* harmony default export */ __webpack_exports__["a"] = (Api);
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+var utils = __webpack_require__(1);
+var normalizeHeaderName = __webpack_require__(39);
+
+var DEFAULT_CONTENT_TYPE = {
+  'Content-Type': 'application/x-www-form-urlencoded'
+};
+
+function setContentTypeIfUnset(headers, value) {
+  if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
+    headers['Content-Type'] = value;
+  }
+}
+
+function getDefaultAdapter() {
+  var adapter;
+  if (typeof XMLHttpRequest !== 'undefined') {
+    // For browsers use XHR adapter
+    adapter = __webpack_require__(12);
+  } else if (typeof process !== 'undefined') {
+    // For node use HTTP adapter
+    adapter = __webpack_require__(12);
+  }
+  return adapter;
+}
+
+var defaults = {
+  adapter: getDefaultAdapter(),
+
+  transformRequest: [function transformRequest(data, headers) {
+    normalizeHeaderName(headers, 'Content-Type');
+    if (utils.isFormData(data) ||
+      utils.isArrayBuffer(data) ||
+      utils.isBuffer(data) ||
+      utils.isStream(data) ||
+      utils.isFile(data) ||
+      utils.isBlob(data)
+    ) {
+      return data;
+    }
+    if (utils.isArrayBufferView(data)) {
+      return data.buffer;
+    }
+    if (utils.isURLSearchParams(data)) {
+      setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
+      return data.toString();
+    }
+    if (utils.isObject(data)) {
+      setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
+      return JSON.stringify(data);
+    }
+    return data;
+  }],
+
+  transformResponse: [function transformResponse(data) {
+    /*eslint no-param-reassign:0*/
+    if (typeof data === 'string') {
+      try {
+        data = JSON.parse(data);
+      } catch (e) { /* Ignore */ }
+    }
+    return data;
+  }],
+
+  timeout: 0,
+
+  xsrfCookieName: 'XSRF-TOKEN',
+  xsrfHeaderName: 'X-XSRF-TOKEN',
+
+  maxContentLength: -1,
+
+  validateStatus: function validateStatus(status) {
+    return status >= 200 && status < 300;
+  }
+};
+
+defaults.headers = {
+  common: {
+    'Accept': 'application/json, text/plain, */*'
+  }
+};
+
+utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
+  defaults.headers[method] = {};
+});
+
+utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
+  defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
+});
+
+module.exports = defaults;
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(38)))
+
+/***/ }),
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = index;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_money__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_condiction__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_money__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_condiction__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__index__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modal__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modal__ = __webpack_require__(60);
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 
@@ -870,107 +1019,7 @@ function index(_ref) {
 }
 
 /***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-var utils = __webpack_require__(1);
-var normalizeHeaderName = __webpack_require__(53);
-
-var DEFAULT_CONTENT_TYPE = {
-  'Content-Type': 'application/x-www-form-urlencoded'
-};
-
-function setContentTypeIfUnset(headers, value) {
-  if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
-    headers['Content-Type'] = value;
-  }
-}
-
-function getDefaultAdapter() {
-  var adapter;
-  if (typeof XMLHttpRequest !== 'undefined') {
-    // For browsers use XHR adapter
-    adapter = __webpack_require__(10);
-  } else if (typeof process !== 'undefined') {
-    // For node use HTTP adapter
-    adapter = __webpack_require__(10);
-  }
-  return adapter;
-}
-
-var defaults = {
-  adapter: getDefaultAdapter(),
-
-  transformRequest: [function transformRequest(data, headers) {
-    normalizeHeaderName(headers, 'Content-Type');
-    if (utils.isFormData(data) ||
-      utils.isArrayBuffer(data) ||
-      utils.isBuffer(data) ||
-      utils.isStream(data) ||
-      utils.isFile(data) ||
-      utils.isBlob(data)
-    ) {
-      return data;
-    }
-    if (utils.isArrayBufferView(data)) {
-      return data.buffer;
-    }
-    if (utils.isURLSearchParams(data)) {
-      setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
-      return data.toString();
-    }
-    if (utils.isObject(data)) {
-      setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
-      return JSON.stringify(data);
-    }
-    return data;
-  }],
-
-  transformResponse: [function transformResponse(data) {
-    /*eslint no-param-reassign:0*/
-    if (typeof data === 'string') {
-      try {
-        data = JSON.parse(data);
-      } catch (e) { /* Ignore */ }
-    }
-    return data;
-  }],
-
-  timeout: 0,
-
-  xsrfCookieName: 'XSRF-TOKEN',
-  xsrfHeaderName: 'X-XSRF-TOKEN',
-
-  maxContentLength: -1,
-
-  validateStatus: function validateStatus(status) {
-    return status >= 200 && status < 300;
-  }
-};
-
-defaults.headers = {
-  common: {
-    'Accept': 'application/json, text/plain, */*'
-  }
-};
-
-utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
-  defaults.headers[method] = {};
-});
-
-utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
-  defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
-});
-
-module.exports = defaults;
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(52)))
-
-/***/ }),
-/* 6 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1067,19 +1116,19 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 
 /***/ }),
-/* 7 */
+/* 9 */
 /***/ (function(module, exports) {
 
 module.exports = "/images/logo.jpeg?10e450f67849e947a0b4d20e1dd1512a";
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports) {
 
 module.exports = "/images/avatar.png?2f4e223c250c10174d9333e8b396bd51";
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1097,19 +1146,19 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 10 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(1);
-var settle = __webpack_require__(54);
-var buildURL = __webpack_require__(56);
-var parseHeaders = __webpack_require__(57);
-var isURLSameOrigin = __webpack_require__(58);
-var createError = __webpack_require__(11);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(59);
+var settle = __webpack_require__(40);
+var buildURL = __webpack_require__(42);
+var parseHeaders = __webpack_require__(43);
+var isURLSameOrigin = __webpack_require__(44);
+var createError = __webpack_require__(13);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(45);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -1206,7 +1255,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(60);
+      var cookies = __webpack_require__(46);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -1284,13 +1333,13 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 11 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var enhanceError = __webpack_require__(55);
+var enhanceError = __webpack_require__(41);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -1309,7 +1358,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 12 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1321,7 +1370,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 13 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1347,45 +1396,45 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 14 */
+/* 16 */
 /***/ (function(module, exports) {
 
 module.exports = "/fonts/fa-brands-400.eot?c1868c9545d2de1cf8488f1dadd8c9d0";
 
 /***/ }),
-/* 15 */
+/* 17 */
 /***/ (function(module, exports) {
 
 module.exports = "/fonts/fa-regular-400.eot?261d666b0147c6c5cda07265f98b8f8c";
 
 /***/ }),
-/* 16 */
+/* 18 */
 /***/ (function(module, exports) {
 
 module.exports = "/fonts/fa-solid-900.eot?a0369ea57eb6d3843d6474c035111f29";
 
 /***/ }),
-/* 17 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(18);
-module.exports = __webpack_require__(88);
+__webpack_require__(20);
+module.exports = __webpack_require__(89);
 
 
 /***/ }),
-/* 18 */
+/* 20 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_view_login__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__main__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_view_login__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__main__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_view_context__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__assets_font_fontawesome_css_all_css__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__assets_font_fontawesome_css_all_css__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__assets_font_fontawesome_css_all_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__assets_font_fontawesome_css_all_css__);
 
 
@@ -1409,7 +1458,7 @@ var App = function App() {
 __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(App, null), document.getElementById('root'));
 
 /***/ }),
-/* 19 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1428,7 +1477,7 @@ if (true) {
   (function() {
 'use strict';
 
-var _assign = __webpack_require__(6);
+var _assign = __webpack_require__(8);
 
 // TODO: this is special because it gets imported during build.
 var ReactVersion = '17.0.2';
@@ -3749,7 +3798,7 @@ exports.version = ReactVersion;
 
 
 /***/ }),
-/* 20 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3789,12 +3838,12 @@ if (false) {
   checkDCE();
   module.exports = require('./cjs/react-dom.production.min.js');
 } else {
-  module.exports = __webpack_require__(21);
+  module.exports = __webpack_require__(23);
 }
 
 
 /***/ }),
-/* 21 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3814,9 +3863,9 @@ if (true) {
 'use strict';
 
 var React = __webpack_require__(0);
-var _assign = __webpack_require__(6);
-var Scheduler = __webpack_require__(22);
-var tracing = __webpack_require__(24);
+var _assign = __webpack_require__(8);
+var Scheduler = __webpack_require__(24);
+var tracing = __webpack_require__(26);
 
 var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
 
@@ -30063,7 +30112,7 @@ exports.version = ReactVersion;
 
 
 /***/ }),
-/* 22 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30072,12 +30121,12 @@ exports.version = ReactVersion;
 if (false) {
   module.exports = require('./cjs/scheduler.production.min.js');
 } else {
-  module.exports = __webpack_require__(23);
+  module.exports = __webpack_require__(25);
 }
 
 
 /***/ }),
-/* 23 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30730,7 +30779,7 @@ exports.unstable_wrapCallback = unstable_wrapCallback;
 
 
 /***/ }),
-/* 24 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30739,12 +30788,12 @@ exports.unstable_wrapCallback = unstable_wrapCallback;
 if (false) {
   module.exports = require('./cjs/scheduler-tracing.production.min.js');
 } else {
-  module.exports = __webpack_require__(25);
+  module.exports = __webpack_require__(27);
 }
 
 
 /***/ }),
-/* 25 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31098,14 +31147,14 @@ exports.unstable_wrap = unstable_wrap;
 
 
 /***/ }),
-/* 26 */
+/* 28 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = index;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_img_logo_jpeg__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_img_logo_jpeg__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_img_logo_jpeg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__assets_img_logo_jpeg__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__layout_form__ = __webpack_require__(2);
 
@@ -31180,15 +31229,15 @@ function index() {
 }
 
 /***/ }),
-/* 27 */
+/* 29 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = index;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_layout_aside__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_view_admin__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_layout_aside__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_view_admin__ = __webpack_require__(54);
 
 
 
@@ -31207,16 +31256,16 @@ function index() {
 }
 
 /***/ }),
-/* 28 */
+/* 30 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = index;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assets_img_avatar_png__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assets_img_avatar_png__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assets_img_avatar_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__assets_img_avatar_png__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__view_context__ = __webpack_require__(3);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -31467,40 +31516,51 @@ function index() {
         ),
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
             'div',
-            { style: {
-                    opacity: navToggle ? 1 : 0
-                }, className: 'userSectionAside' },
+            null,
             __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                 'div',
-                null,
-                __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-                    'div',
-                    null,
-                    __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('img', { src: __WEBPACK_IMPORTED_MODULE_2__assets_img_avatar_png___default.a, alt: 'user-img' })
-                ),
+                { style: {
+                        opacity: navToggle ? 1 : 0
+                    }, className: 'userSectionAside' },
                 __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                     'div',
                     null,
                     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-                        'strong',
+                        'div',
                         null,
-                        'Miguel Buca'
+                        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('img', { src: __WEBPACK_IMPORTED_MODULE_2__assets_img_avatar_png___default.a, alt: 'user-img' })
                     ),
                     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                         'div',
                         null,
                         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-                            'span',
+                            'strong',
                             null,
-                            'N\xEDvel:'
+                            'Miguel Buca'
                         ),
                         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-                            'span',
+                            'div',
                             null,
-                            'Admin'
+                            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+                                'span',
+                                null,
+                                'N\xEDvel:'
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+                                'span',
+                                null,
+                                'Admin'
+                            )
                         )
                     )
                 )
+            ),
+            !navToggle && __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+                'div',
+                { style: {
+                        opacity: !navToggle ? 1 : 0
+                    }, className: 'menuTitle' },
+                'Menu'
             )
         ),
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
@@ -31517,7 +31577,7 @@ function index() {
 
                     return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                         'li',
-                        { onClick: function onClick(e) {
+                        { onClick: function onClick() {
                                 setMenuOn(index);
 
                                 if (childrean) {
@@ -31602,3941 +31662,7 @@ function index() {
 }
 
 /***/ }),
-/* 29 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = index;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layout_header__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__painel__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__other__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__artigo__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__stock__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__context__ = __webpack_require__(3);
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-
-
-
-
-
-
-
-
-
-
-
-function index() {
-    var _useUgest = Object(__WEBPACK_IMPORTED_MODULE_6__context__["b" /* useUgest */])(),
-        data = _useUgest.data,
-        setData = _useUgest.setData;
-
-    var _useState = Object(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])(),
-        _useState2 = _slicedToArray(_useState, 2),
-        route = _useState2[0],
-        setRoute = _useState2[1];
-
-    Object(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
-        if (!data.navigation) return;
-        setRoute(data.navigation);
-    }, [data]);
-
-    Object(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
-        console.log(route);
-    }, [route]);
-
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        null,
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_header__["a" /* default */], null),
-        route && route.menu !== 'Painel' && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            { className: 'navscale' },
-            route.submenu ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'span',
-                null,
-                route.menu,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-chevron-right' }),
-                route.submenu
-            ) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'span',
-                null,
-                route.menu
-            )
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'main',
-            { className: 'mainContent' },
-            route && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
-                null,
-                route.menu === 'Painel' && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__painel__["a" /* default */], route),
-                route.menu === 'Outras tabela' && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__other__["a" /* default */], route),
-                route.menu === 'Artigo' && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__artigo__["a" /* default */], route),
-                route.menu === 'stock' && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__stock__["a" /* default */], route)
-            )
-        )
-    );
-}
-
-/***/ }),
-/* 30 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = index;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_img_logo_jpeg__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_img_logo_jpeg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__assets_img_logo_jpeg__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assets_img_avatar_png__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assets_img_avatar_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__assets_img_avatar_png__);
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-
-
-
-
-
-
-function index() {
-    var _useState = Object(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])(true),
-        _useState2 = _slicedToArray(_useState, 2),
-        mode = _useState2[0],
-        setLang = _useState2[1];
-
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'header',
-        null,
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            null,
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
-                { className: 'logoBox' },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: __WEBPACK_IMPORTED_MODULE_1__assets_img_logo_jpeg___default.a, alt: 'ugest-logo' })
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
-                null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'button',
-                    { onClick: function onClick() {
-                            return setLang(!mode);
-                        }, className: 'btn-location' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'span',
-                        null,
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-sun' })
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'span',
-                        { className: 'mode-container' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'label',
-                            { style: {
-                                    fontWeight: mode ? 'bold' : 'normal'
-                                } },
-                            'Claro'
-                        ),
-                        ' | ',
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'label',
-                            { style: {
-                                    fontWeight: !mode ? 'bold' : 'normal'
-                                } },
-                            'Escuro'
-                        )
-                    )
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'button',
-                    { className: 'btn' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-bell' })
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'button',
-                    { className: 'btn' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-search' })
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'span',
-                    { className: 'headerAvatar' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: __WEBPACK_IMPORTED_MODULE_2__assets_img_avatar_png___default.a, alt: 'user-photo' })
-                )
-            )
-        )
-    );
-}
-
-/***/ }),
 /* 31 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = index;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-
-
-function index() {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        "div",
-        { className: "painelContainer" },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "div",
-            { className: "cardTimeContainer" },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", null),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                "div",
-                null,
-                "2"
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                "div",
-                null,
-                "3"
-            )
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "div",
-            { className: "cardTimeContainer" },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                "div",
-                null,
-                "1"
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                "div",
-                null,
-                "2"
-            )
-        )
-    );
-}
-
-/***/ }),
-/* 32 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = index;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__layout_form__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__layout_form_table__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__context__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__api__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__estado__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__subcategoria__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__papel__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__categoria__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__tipoartigo__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__nivelacesso__ = __webpack_require__(41);
-
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-
-
-
-
-
-
-
-/** Api */
-
-
-
-/*** Views */
-
-
-
-
-
-
-
-function index(props) {
-  var _this = this;
-
-  var _useUgest = Object(__WEBPACK_IMPORTED_MODULE_4__context__["b" /* useUgest */])(),
-      data = _useUgest.data;
-
-  var submenu = props.submenu,
-      route = props.route;
-
-  var _useState = Object(__WEBPACK_IMPORTED_MODULE_1_react__["useState"])([]),
-      _useState2 = _slicedToArray(_useState, 2),
-      tabContent = _useState2[0],
-      setTabContent = _useState2[1];
-
-  var _useState3 = Object(__WEBPACK_IMPORTED_MODULE_1_react__["useState"])(),
-      _useState4 = _slicedToArray(_useState3, 2),
-      lastHover = _useState4[0],
-      setLastHover = _useState4[1];
-
-  var _useState5 = Object(__WEBPACK_IMPORTED_MODULE_1_react__["useState"])([]),
-      _useState6 = _slicedToArray(_useState5, 2),
-      otherData = _useState6[0],
-      setOtherData = _useState6[1];
-
-  var _useState7 = Object(__WEBPACK_IMPORTED_MODULE_1_react__["useState"])(),
-      _useState8 = _slicedToArray(_useState7, 2),
-      res = _useState8[0],
-      setRes = _useState8[1];
-
-  var produtos = [{
-    nome: 'Marcelo Burlon',
-    categoria: 'Roupa',
-    subcategoria: 'T-shert',
-    'preço': 25306,
-    estado: 'activo',
-    quantidade: 8,
-    foto: 'mrcb.jpg'
-  }, {
-    nome: 'Balanciaga',
-    categoria: 'Calçados',
-    subcategoria: 'Botas',
-    'preço': 4505.02,
-    estado: 'activo',
-    quantidade: 16,
-    foto: 'botas.jpg'
-  }, {
-    nome: 'SmartWath',
-    categoria: 'Eletrônicos',
-    subcategoria: 'Relógio',
-    'preço': 8500.728,
-    estado: 'activo',
-    quantidade: 3,
-    foto: 'relogio.jpg'
-  }, {
-    nome: 'Test',
-    categoria: 'Eletrônicos',
-    subcategoria: 'Relógio',
-    'preço': 70000,
-    estado: 'inativo',
-    quantidade: 35,
-    foto: 'relogio.jpg'
-  }];
-
-  Object(__WEBPACK_IMPORTED_MODULE_1_react__["useEffect"])(function () {
-    setLastHover(produtos[0]);
-  }, []);
-
-  Object(__WEBPACK_IMPORTED_MODULE_1_react__["useEffect"])(_asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
-    var _ref2, data;
-
-    return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return __WEBPACK_IMPORTED_MODULE_5__api__["a" /* default */].get('/' + route.toLocaleLowerCase());
-
-          case 2:
-            _ref2 = _context.sent;
-            data = _ref2.data;
-
-            setOtherData(data);
-
-          case 5:
-          case 'end':
-            return _context.stop();
-        }
-      }
-    }, _callee, _this);
-  })), [res, route]);
-
-  Object(__WEBPACK_IMPORTED_MODULE_1_react__["useEffect"])(function () {
-
-    setTabContent([{
-      name: 'Formulário',
-      icon: 'fa fa-plus',
-      content: __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-        'section',
-        { className: 'otherForms' },
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-          'div',
-          null,
-          submenu === "Estado" && __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__estado__["a" /* default */], null),
-          submenu === "Subcategoria" && __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__subcategoria__["a" /* default */], null),
-          submenu === "Papel" && __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8__papel__["a" /* default */], null),
-          submenu === "Categoria" && __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__categoria__["a" /* default */], null),
-          submenu === "Tipo de Artigo" && __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_10__tipoartigo__["a" /* default */], null),
-          submenu === "Nível de Acesso" && __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11__nivelacesso__["a" /* default */], null)
-        ),
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-          'div',
-          null,
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_2__layout_form__["a" /* Button */],
-            { className: 'cancel', style: {
-                marginRight: '1rem'
-              } },
-            'Cancelar',
-            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('i', { className: 'fa fa-times' })
-          ),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_2__layout_form__["a" /* Button */],
-            { onClick: _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2() {
-                var res;
-                return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
-                  while (1) {
-                    switch (_context2.prev = _context2.next) {
-                      case 0:
-                        _context2.next = 2;
-                        return __WEBPACK_IMPORTED_MODULE_5__api__["a" /* default */].post('/' + route.toLocaleLowerCase(), _extends({}, data.action.toSave));
-
-                      case 2:
-                        res = _context2.sent;
-
-
-                        setRes(res);
-
-                        console.log('/' + route.toLocaleLowerCase(), _extends({}, data.action.toSave), res);
-
-                      case 5:
-                      case 'end':
-                        return _context2.stop();
-                    }
-                  }
-                }, _callee2, _this);
-              })) },
-            'Salvar',
-            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('i', { className: 'fa fa-save' })
-          )
-        )
-      )
-    }, {
-      name: 'Tabela',
-      icon: 'fa fa-calendar',
-      content: __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__layout_form_table__["a" /* default */], {
-        onHover: function onHover(e) {
-          return setLastHover(e);
-        },
-        options: {
-          onlyCollumn: [],
-          header: {
-            search: true,
-            buttons: true,
-            modal: {
-              content: __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-                'div',
-                { className: 'formContent' },
-                __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-                  'div',
-                  { className: 'fCr' },
-                  submenu === "Estado" && __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__estado__["a" /* default */], null),
-                  submenu === "Subcategoria" && __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__subcategoria__["a" /* default */], null),
-                  submenu === "Papel" && __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8__papel__["a" /* default */], null),
-                  submenu === "Categoria" && __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__categoria__["a" /* default */], null),
-                  submenu === "Tipo de Artigo" && __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_10__tipoartigo__["a" /* default */], null),
-                  submenu === "Nível de Acesso" && __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11__nivelacesso__["a" /* default */], null)
-                )
-              ),
-              label: {
-                icon: "fas fa-edit",
-                title: "Editar"
-              }
-            }
-          }
-        },
-        data: otherData })
-    }]);
-  }, [otherData, submenu, data]);
-
-  return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-    'div',
-    { className: 'otherContainer' },
-    __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__layout_form__["d" /* Tab */], {
-      data: tabContent
-    })
-  );
-}
-
-/***/ }),
-/* 33 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = Convert;
-function Convert(number) {
-    var code = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'AOA';
-
-    return Intl.NumberFormat('pt-PT', {
-        style: 'currency',
-        currency: code
-    }).format(number);
-}
-
-/***/ }),
-/* 34 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Min; });
-var Min = {
-    qtd: 10
-};
-
-/***/ }),
-/* 35 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-
-
-var Modal = function Modal(_ref) {
-  var children = _ref.children,
-      _ref$className = _ref.className,
-      className = _ref$className === undefined ? '' : _ref$className,
-      props = _objectWithoutProperties(_ref, ['children', 'className']);
-
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    'div',
-    {
-      className: 'popup',
-      style: props.display === true && false === !props.display ? { opacity: 1, visibility: 'visible' } : { opacity: 0, visibility: 'hidden' }
-    },
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'div',
-      {
-        onClick: function onClick() {
-          return props.onClose();
-        },
-        className: 'contentStyle'
-      },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        {
-          className: props.transparent ? className : "popup_content" + ' ' + className,
-          onClick: function onClick(e) {
-            e.stopPropagation();
-          },
-          style: props.display === true ? { opacity: 1, transform: 'scale(1)' } : { opacity: 0, transform: 'scale(.25)' }
-        },
-        children
-      )
-    )
-  );
-};
-/* harmony default export */ __webpack_exports__["a"] = (Modal);
-
-/***/ }),
-/* 36 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = index;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layout_form__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__context__ = __webpack_require__(3);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-
-
-
-
-
-
-function index() {
-    var _useUgest = Object(__WEBPACK_IMPORTED_MODULE_2__context__["b" /* useUgest */])(),
-        data = _useUgest.data,
-        setData = _useUgest.setData;
-
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        { className: 'estadoForm' },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["b" /* Input */], { onChange: function onChange(e) {
-                return setData(_extends({}, data, {
-                    action: _extends({}, data.action, {
-                        toSave: {
-                            est_designacao: e.target.value
-                        }
-                    })
-                }));
-            },
-            icon: 'fas fa-pen',
-            label: 'Designa\xE7\xE3o',
-            type: 'text',
-            placeholder: 'activo'
-        })
-    );
-}
-
-/***/ }),
-/* 37 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = index;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layout_form__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__context__ = __webpack_require__(3);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-
-
-
-
-
-
-function index() {
-    var _useUgest = Object(__WEBPACK_IMPORTED_MODULE_2__context__["b" /* useUgest */])(),
-        data = _useUgest.data,
-        setData = _useUgest.setData;
-
-    var _useState = Object(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])([]),
-        _useState2 = _slicedToArray(_useState, 2),
-        estado = _useState2[0],
-        setEstado = _useState2[1];
-
-    Object(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
-
-        setEstado(data.multUso.estado.map(function (_ref) {
-            var est_id = _ref.est_id,
-                est_designacao = _ref.est_designacao;
-
-            return { value: est_id, label: est_designacao };
-        }));
-    }, [data]);
-
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        { className: 'estadoForm' },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["b" /* Input */], {
-            icon: 'fas fa-pen',
-            label: 'Designa\xE7\xE3o',
-            type: 'text',
-            placeholder: 'nome',
-            onChange: function onChange(e) {
-                return setData(_extends({}, data, {
-                    action: _extends({}, data.action, {
-                        toSave: _extends({}, data.action.toSave, {
-                            scat_designacao: e.target.value
-                        })
-                    })
-                }));
-            }
-        }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["c" /* Select */], {
-            onChange: function onChange(e) {
-                return setData(_extends({}, data, {
-                    action: _extends({}, data.action, {
-                        toSave: _extends({}, data.action.toSave, {
-                            scat_estado_id: e.target.value
-                        })
-                    })
-                }));
-            },
-            label: 'Estado',
-            data: estado
-        })
-    );
-}
-
-/***/ }),
-/* 38 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = index;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layout_form__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__context__ = __webpack_require__(3);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-
-
-
-
-
-
-function index() {
-    var _useUgest = Object(__WEBPACK_IMPORTED_MODULE_2__context__["b" /* useUgest */])(),
-        data = _useUgest.data,
-        setData = _useUgest.setData;
-
-    var _useState = Object(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])([]),
-        _useState2 = _slicedToArray(_useState, 2),
-        estado = _useState2[0],
-        setEstado = _useState2[1];
-
-    Object(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
-
-        setEstado(data.multUso.estado.map(function (_ref) {
-            var est_id = _ref.est_id,
-                est_designacao = _ref.est_designacao;
-
-            return { value: est_id, label: est_designacao };
-        }));
-    }, [data]);
-
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        { className: 'estadoForm' },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["b" /* Input */], {
-            icon: 'fas fa-pen',
-            label: 'Designa\xE7\xE3o',
-            type: 'text',
-            placeholder: 'nome',
-            onChange: function onChange(e) {
-                return setData(_extends({}, data, {
-                    action: _extends({}, data.action, {
-                        toSave: _extends({}, data.action.toSave, {
-                            pap_designacao: e.target.value
-                        })
-                    })
-                }));
-            }
-        }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["c" /* Select */], {
-            onChange: function onChange(e) {
-                return setData(_extends({}, data, {
-                    action: _extends({}, data.action, {
-                        toSave: _extends({}, data.action.toSave, {
-                            pap_estado_id: e.target.value
-                        })
-                    })
-                }));
-            },
-            label: 'Estado',
-            data: estado
-        })
-    );
-}
-
-/***/ }),
-/* 39 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = index;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__layout_form__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__context__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__api__ = __webpack_require__(47);
-
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-
-
-
-
-
-
-
-
-function index() {
-    var _this = this;
-
-    var _useUgest = Object(__WEBPACK_IMPORTED_MODULE_3__context__["b" /* useUgest */])(),
-        data = _useUgest.data,
-        setData = _useUgest.setData;
-
-    var _useState = Object(__WEBPACK_IMPORTED_MODULE_1_react__["useState"])([]),
-        _useState2 = _slicedToArray(_useState, 2),
-        estado = _useState2[0],
-        setEstado = _useState2[1];
-
-    var _useState3 = Object(__WEBPACK_IMPORTED_MODULE_1_react__["useState"])([]),
-        _useState4 = _slicedToArray(_useState3, 2),
-        subCategoria = _useState4[0],
-        setSubCategoria = _useState4[1];
-
-    Object(__WEBPACK_IMPORTED_MODULE_1_react__["useEffect"])(function () {
-        setEstado(data.multUso.estado.map(function (_ref) {
-            var est_id = _ref.est_id,
-                est_designacao = _ref.est_designacao;
-
-            return { value: est_id, label: est_designacao };
-        }));
-    }, [data]);
-
-    Object(__WEBPACK_IMPORTED_MODULE_1_react__["useEffect"])(function () {
-        _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
-            var res;
-            return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
-                while (1) {
-                    switch (_context.prev = _context.next) {
-                        case 0:
-                            _context.next = 2;
-                            return __WEBPACK_IMPORTED_MODULE_4__api__["a" /* default */].get('/subcategoria');
-
-                        case 2:
-                            res = _context.sent;
-
-                            setSubCategoria(res.data.map(function (_ref3) {
-                                var scat_id = _ref3.scat_id,
-                                    scat_designacao = _ref3.scat_designacao;
-
-                                return { value: scat_id, label: scat_designacao };
-                            }));
-
-                            console.log(subCategoria);
-
-                        case 5:
-                        case 'end':
-                            return _context.stop();
-                    }
-                }
-            }, _callee, _this);
-        }))();
-    }, []);
-
-    return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-        'div',
-        { className: 'estadoForm' },
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__layout_form__["b" /* Input */], {
-            icon: 'fas fa-pen',
-            label: 'Designa\xE7\xE3o',
-            type: 'text',
-            placeholder: 'nome',
-            onChange: function onChange(e) {
-                return setData(_extends({}, data, {
-                    action: _extends({}, data.action, {
-                        toSave: _extends({}, data.action.toSave, {
-                            catg_designacao: e.target.value
-                        })
-                    })
-                }));
-            }
-        }),
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__layout_form__["c" /* Select */], {
-            onChange: function onChange(e) {
-                return setData(_extends({}, data, {
-                    action: _extends({}, data.action, {
-                        toSave: _extends({}, data.action.toSave, {
-                            catg_subcategoria_id: e.target.value
-                        })
-                    })
-                }));
-            },
-            label: 'Subcategoria',
-            data: subCategoria
-        }),
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__layout_form__["c" /* Select */], {
-            onChange: function onChange(e) {
-                return setData(_extends({}, data, {
-                    action: _extends({}, data.action, {
-                        toSave: _extends({}, data.action.toSave, {
-                            catg_estado_id: e.target.value
-                        })
-                    })
-                }));
-            },
-            label: 'Estado',
-            data: estado
-        })
-    );
-}
-
-/***/ }),
-/* 40 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = index;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layout_form__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__context__ = __webpack_require__(3);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-
-
-
-
-
-
-function index() {
-    var _useUgest = Object(__WEBPACK_IMPORTED_MODULE_2__context__["b" /* useUgest */])(),
-        data = _useUgest.data,
-        setData = _useUgest.setData;
-
-    var _useState = Object(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])([]),
-        _useState2 = _slicedToArray(_useState, 2),
-        estado = _useState2[0],
-        setEstado = _useState2[1];
-
-    Object(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
-
-        setEstado(data.multUso.estado.map(function (_ref) {
-            var est_id = _ref.est_id,
-                est_designacao = _ref.est_designacao;
-
-            return { value: est_id, label: est_designacao };
-        }));
-    }, [data]);
-
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        { className: 'estadoForm' },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["b" /* Input */], {
-            icon: 'fas fa-pen',
-            label: 'Designa\xE7\xE3o',
-            type: 'text',
-            placeholder: 'nome',
-            onChange: function onChange(e) {
-                return setData(_extends({}, data, {
-                    action: _extends({}, data.action, {
-                        toSave: _extends({}, data.action.toSave, {
-                            tip_designacao: e.target.value
-                        })
-                    })
-                }));
-            }
-        }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["c" /* Select */], {
-            onChange: function onChange(e) {
-                return setData(_extends({}, data, {
-                    action: _extends({}, data.action, {
-                        toSave: _extends({}, data.action.toSave, {
-                            tip_estado_id: e.target.value
-                        })
-                    })
-                }));
-            },
-            label: 'Estado',
-            data: estado
-        })
-    );
-}
-
-/***/ }),
-/* 41 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = index;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layout_form__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__context__ = __webpack_require__(3);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-
-
-
-
-
-
-function index() {
-    var _useUgest = Object(__WEBPACK_IMPORTED_MODULE_2__context__["b" /* useUgest */])(),
-        data = _useUgest.data,
-        setData = _useUgest.setData;
-
-    var _useState = Object(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])([]),
-        _useState2 = _slicedToArray(_useState, 2),
-        estado = _useState2[0],
-        setEstado = _useState2[1];
-
-    Object(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
-
-        setEstado(data.multUso.estado.map(function (_ref) {
-            var est_id = _ref.est_id,
-                est_designacao = _ref.est_designacao;
-
-            return { value: est_id, label: est_designacao };
-        }));
-    }, [data]);
-
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        { className: 'estadoForm' },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["b" /* Input */], {
-            icon: 'fas fa-pen',
-            label: 'Designa\xE7\xE3o',
-            type: 'text',
-            placeholder: 'nome',
-            onChange: function onChange(e) {
-                return setData(_extends({}, data, {
-                    action: _extends({}, data.action, {
-                        toSave: _extends({}, data.action.toSave, {
-                            niv_designacao: e.target.value
-                        })
-                    })
-                }));
-            }
-        }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["c" /* Select */], {
-            onChange: function onChange(e) {
-                return setData(_extends({}, data, {
-                    action: _extends({}, data.action, {
-                        toSave: _extends({}, data.action.toSave, {
-                            niv_estado_id: e.target.value
-                        })
-                    })
-                }));
-            },
-            label: 'Estado',
-            data: estado
-        })
-    );
-}
-
-/***/ }),
-/* 42 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = index;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__layout_form_table__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__artigosForm__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__api__ = __webpack_require__(47);
-
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-
-
-
-
-
-
-
-
-function index(props) {
-    var _this = this;
-
-    var menu = props.menu,
-        submenu = props.submenu;
-
-    var _useState = Object(__WEBPACK_IMPORTED_MODULE_1_react__["useState"])(),
-        _useState2 = _slicedToArray(_useState, 2),
-        lastHover = _useState2[0],
-        setLastHover = _useState2[1];
-
-    var _useState3 = Object(__WEBPACK_IMPORTED_MODULE_1_react__["useState"])([]),
-        _useState4 = _slicedToArray(_useState3, 2),
-        artigo = _useState4[0],
-        setArtigo = _useState4[1];
-
-    var produtos = [{
-        nome: 'Marcelo Burlon',
-        categoria: 'Roupa',
-        subcategoria: 'T-shert',
-        'preço': 25306,
-        estado: 'activo',
-        quantidade: 8,
-        foto: 'mrcb.jpg'
-    }, {
-        nome: 'Balanciaga',
-        categoria: 'Calçados',
-        subcategoria: 'Botas',
-        'preço': 4505.02,
-        estado: 'activo',
-        quantidade: 16,
-        foto: 'botas.jpg'
-    }, {
-        nome: 'SmartWath',
-        categoria: 'Eletrônicos',
-        subcategoria: 'Relógio',
-        'preço': 8500.728,
-        estado: 'activo',
-        quantidade: 3,
-        foto: 'relogio.jpg'
-    }, {
-        nome: 'Test',
-        categoria: 'Eletrônicos',
-        subcategoria: 'Relógio',
-        'preço': 70000,
-        estado: 'inativo',
-        quantidade: 35,
-        foto: 'relogio.jpg'
-    }];
-
-    Object(__WEBPACK_IMPORTED_MODULE_1_react__["useEffect"])(function () {
-        _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
-            var _ref2, data;
-
-            return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
-                while (1) {
-                    switch (_context.prev = _context.next) {
-                        case 0:
-                            _context.next = 2;
-                            return __WEBPACK_IMPORTED_MODULE_4__api__["a" /* default */].get('/' + menu.toLocaleLowerCase());
-
-                        case 2:
-                            _ref2 = _context.sent;
-                            data = _ref2.data;
-
-                            setArtigo(data);
-
-                        case 5:
-                        case 'end':
-                            return _context.stop();
-                    }
-                }
-            }, _callee, _this);
-        }))();
-    }, [menu]);
-
-    return submenu == 'Novo' ? __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__artigosForm__["a" /* default */], null) : __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-        'div',
-        { style: {
-                padding: '2rem',
-                width: '100%',
-                backgroundColor: 'white'
-            } },
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__layout_form_table__["a" /* default */], {
-            onHover: function onHover(e) {
-                return setLastHover(e);
-            },
-            options: {
-                onlyCollumn: [],
-                header: {
-                    search: true,
-                    buttons: true,
-                    modal: {
-                        content: __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__artigosForm__["a" /* default */], null),
-                        label: {
-                            icon: "fas fa-edit",
-                            title: "Editar"
-                        }
-                    }
-                }
-            },
-            data: artigo })
-    );
-}
-
-/***/ }),
-/* 43 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(44);
-
-
-/***/ }),
-/* 44 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * Copyright (c) 2014-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-// This method of obtaining a reference to the global object needs to be
-// kept identical to the way it is obtained in runtime.js
-var g = (function() { return this })() || Function("return this")();
-
-// Use `getOwnPropertyNames` because not all browsers support calling
-// `hasOwnProperty` on the global `self` object in a worker. See #183.
-var hadRuntime = g.regeneratorRuntime &&
-  Object.getOwnPropertyNames(g).indexOf("regeneratorRuntime") >= 0;
-
-// Save the old regeneratorRuntime in case it needs to be restored later.
-var oldRuntime = hadRuntime && g.regeneratorRuntime;
-
-// Force reevalutation of runtime.js.
-g.regeneratorRuntime = undefined;
-
-module.exports = __webpack_require__(45);
-
-if (hadRuntime) {
-  // Restore the original runtime.
-  g.regeneratorRuntime = oldRuntime;
-} else {
-  // Remove the global property added by runtime.js.
-  try {
-    delete g.regeneratorRuntime;
-  } catch(e) {
-    g.regeneratorRuntime = undefined;
-  }
-}
-
-
-/***/ }),
-/* 45 */
-/***/ (function(module, exports) {
-
-/**
- * Copyright (c) 2014-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-!(function(global) {
-  "use strict";
-
-  var Op = Object.prototype;
-  var hasOwn = Op.hasOwnProperty;
-  var undefined; // More compressible than void 0.
-  var $Symbol = typeof Symbol === "function" ? Symbol : {};
-  var iteratorSymbol = $Symbol.iterator || "@@iterator";
-  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
-  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
-
-  var inModule = typeof module === "object";
-  var runtime = global.regeneratorRuntime;
-  if (runtime) {
-    if (inModule) {
-      // If regeneratorRuntime is defined globally and we're in a module,
-      // make the exports object identical to regeneratorRuntime.
-      module.exports = runtime;
-    }
-    // Don't bother evaluating the rest of this file if the runtime was
-    // already defined globally.
-    return;
-  }
-
-  // Define the runtime globally (as expected by generated code) as either
-  // module.exports (if we're in a module) or a new, empty object.
-  runtime = global.regeneratorRuntime = inModule ? module.exports : {};
-
-  function wrap(innerFn, outerFn, self, tryLocsList) {
-    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
-    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
-    var generator = Object.create(protoGenerator.prototype);
-    var context = new Context(tryLocsList || []);
-
-    // The ._invoke method unifies the implementations of the .next,
-    // .throw, and .return methods.
-    generator._invoke = makeInvokeMethod(innerFn, self, context);
-
-    return generator;
-  }
-  runtime.wrap = wrap;
-
-  // Try/catch helper to minimize deoptimizations. Returns a completion
-  // record like context.tryEntries[i].completion. This interface could
-  // have been (and was previously) designed to take a closure to be
-  // invoked without arguments, but in all the cases we care about we
-  // already have an existing method we want to call, so there's no need
-  // to create a new function object. We can even get away with assuming
-  // the method takes exactly one argument, since that happens to be true
-  // in every case, so we don't have to touch the arguments object. The
-  // only additional allocation required is the completion record, which
-  // has a stable shape and so hopefully should be cheap to allocate.
-  function tryCatch(fn, obj, arg) {
-    try {
-      return { type: "normal", arg: fn.call(obj, arg) };
-    } catch (err) {
-      return { type: "throw", arg: err };
-    }
-  }
-
-  var GenStateSuspendedStart = "suspendedStart";
-  var GenStateSuspendedYield = "suspendedYield";
-  var GenStateExecuting = "executing";
-  var GenStateCompleted = "completed";
-
-  // Returning this object from the innerFn has the same effect as
-  // breaking out of the dispatch switch statement.
-  var ContinueSentinel = {};
-
-  // Dummy constructor functions that we use as the .constructor and
-  // .constructor.prototype properties for functions that return Generator
-  // objects. For full spec compliance, you may wish to configure your
-  // minifier not to mangle the names of these two functions.
-  function Generator() {}
-  function GeneratorFunction() {}
-  function GeneratorFunctionPrototype() {}
-
-  // This is a polyfill for %IteratorPrototype% for environments that
-  // don't natively support it.
-  var IteratorPrototype = {};
-  IteratorPrototype[iteratorSymbol] = function () {
-    return this;
-  };
-
-  var getProto = Object.getPrototypeOf;
-  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
-  if (NativeIteratorPrototype &&
-      NativeIteratorPrototype !== Op &&
-      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
-    // This environment has a native %IteratorPrototype%; use it instead
-    // of the polyfill.
-    IteratorPrototype = NativeIteratorPrototype;
-  }
-
-  var Gp = GeneratorFunctionPrototype.prototype =
-    Generator.prototype = Object.create(IteratorPrototype);
-  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
-  GeneratorFunctionPrototype.constructor = GeneratorFunction;
-  GeneratorFunctionPrototype[toStringTagSymbol] =
-    GeneratorFunction.displayName = "GeneratorFunction";
-
-  // Helper for defining the .next, .throw, and .return methods of the
-  // Iterator interface in terms of a single ._invoke method.
-  function defineIteratorMethods(prototype) {
-    ["next", "throw", "return"].forEach(function(method) {
-      prototype[method] = function(arg) {
-        return this._invoke(method, arg);
-      };
-    });
-  }
-
-  runtime.isGeneratorFunction = function(genFun) {
-    var ctor = typeof genFun === "function" && genFun.constructor;
-    return ctor
-      ? ctor === GeneratorFunction ||
-        // For the native GeneratorFunction constructor, the best we can
-        // do is to check its .name property.
-        (ctor.displayName || ctor.name) === "GeneratorFunction"
-      : false;
-  };
-
-  runtime.mark = function(genFun) {
-    if (Object.setPrototypeOf) {
-      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
-    } else {
-      genFun.__proto__ = GeneratorFunctionPrototype;
-      if (!(toStringTagSymbol in genFun)) {
-        genFun[toStringTagSymbol] = "GeneratorFunction";
-      }
-    }
-    genFun.prototype = Object.create(Gp);
-    return genFun;
-  };
-
-  // Within the body of any async function, `await x` is transformed to
-  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
-  // `hasOwn.call(value, "__await")` to determine if the yielded value is
-  // meant to be awaited.
-  runtime.awrap = function(arg) {
-    return { __await: arg };
-  };
-
-  function AsyncIterator(generator) {
-    function invoke(method, arg, resolve, reject) {
-      var record = tryCatch(generator[method], generator, arg);
-      if (record.type === "throw") {
-        reject(record.arg);
-      } else {
-        var result = record.arg;
-        var value = result.value;
-        if (value &&
-            typeof value === "object" &&
-            hasOwn.call(value, "__await")) {
-          return Promise.resolve(value.__await).then(function(value) {
-            invoke("next", value, resolve, reject);
-          }, function(err) {
-            invoke("throw", err, resolve, reject);
-          });
-        }
-
-        return Promise.resolve(value).then(function(unwrapped) {
-          // When a yielded Promise is resolved, its final value becomes
-          // the .value of the Promise<{value,done}> result for the
-          // current iteration. If the Promise is rejected, however, the
-          // result for this iteration will be rejected with the same
-          // reason. Note that rejections of yielded Promises are not
-          // thrown back into the generator function, as is the case
-          // when an awaited Promise is rejected. This difference in
-          // behavior between yield and await is important, because it
-          // allows the consumer to decide what to do with the yielded
-          // rejection (swallow it and continue, manually .throw it back
-          // into the generator, abandon iteration, whatever). With
-          // await, by contrast, there is no opportunity to examine the
-          // rejection reason outside the generator function, so the
-          // only option is to throw it from the await expression, and
-          // let the generator function handle the exception.
-          result.value = unwrapped;
-          resolve(result);
-        }, reject);
-      }
-    }
-
-    var previousPromise;
-
-    function enqueue(method, arg) {
-      function callInvokeWithMethodAndArg() {
-        return new Promise(function(resolve, reject) {
-          invoke(method, arg, resolve, reject);
-        });
-      }
-
-      return previousPromise =
-        // If enqueue has been called before, then we want to wait until
-        // all previous Promises have been resolved before calling invoke,
-        // so that results are always delivered in the correct order. If
-        // enqueue has not been called before, then it is important to
-        // call invoke immediately, without waiting on a callback to fire,
-        // so that the async generator function has the opportunity to do
-        // any necessary setup in a predictable way. This predictability
-        // is why the Promise constructor synchronously invokes its
-        // executor callback, and why async functions synchronously
-        // execute code before the first await. Since we implement simple
-        // async functions in terms of async generators, it is especially
-        // important to get this right, even though it requires care.
-        previousPromise ? previousPromise.then(
-          callInvokeWithMethodAndArg,
-          // Avoid propagating failures to Promises returned by later
-          // invocations of the iterator.
-          callInvokeWithMethodAndArg
-        ) : callInvokeWithMethodAndArg();
-    }
-
-    // Define the unified helper method that is used to implement .next,
-    // .throw, and .return (see defineIteratorMethods).
-    this._invoke = enqueue;
-  }
-
-  defineIteratorMethods(AsyncIterator.prototype);
-  AsyncIterator.prototype[asyncIteratorSymbol] = function () {
-    return this;
-  };
-  runtime.AsyncIterator = AsyncIterator;
-
-  // Note that simple async functions are implemented on top of
-  // AsyncIterator objects; they just return a Promise for the value of
-  // the final result produced by the iterator.
-  runtime.async = function(innerFn, outerFn, self, tryLocsList) {
-    var iter = new AsyncIterator(
-      wrap(innerFn, outerFn, self, tryLocsList)
-    );
-
-    return runtime.isGeneratorFunction(outerFn)
-      ? iter // If outerFn is a generator, return the full iterator.
-      : iter.next().then(function(result) {
-          return result.done ? result.value : iter.next();
-        });
-  };
-
-  function makeInvokeMethod(innerFn, self, context) {
-    var state = GenStateSuspendedStart;
-
-    return function invoke(method, arg) {
-      if (state === GenStateExecuting) {
-        throw new Error("Generator is already running");
-      }
-
-      if (state === GenStateCompleted) {
-        if (method === "throw") {
-          throw arg;
-        }
-
-        // Be forgiving, per 25.3.3.3.3 of the spec:
-        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
-        return doneResult();
-      }
-
-      context.method = method;
-      context.arg = arg;
-
-      while (true) {
-        var delegate = context.delegate;
-        if (delegate) {
-          var delegateResult = maybeInvokeDelegate(delegate, context);
-          if (delegateResult) {
-            if (delegateResult === ContinueSentinel) continue;
-            return delegateResult;
-          }
-        }
-
-        if (context.method === "next") {
-          // Setting context._sent for legacy support of Babel's
-          // function.sent implementation.
-          context.sent = context._sent = context.arg;
-
-        } else if (context.method === "throw") {
-          if (state === GenStateSuspendedStart) {
-            state = GenStateCompleted;
-            throw context.arg;
-          }
-
-          context.dispatchException(context.arg);
-
-        } else if (context.method === "return") {
-          context.abrupt("return", context.arg);
-        }
-
-        state = GenStateExecuting;
-
-        var record = tryCatch(innerFn, self, context);
-        if (record.type === "normal") {
-          // If an exception is thrown from innerFn, we leave state ===
-          // GenStateExecuting and loop back for another invocation.
-          state = context.done
-            ? GenStateCompleted
-            : GenStateSuspendedYield;
-
-          if (record.arg === ContinueSentinel) {
-            continue;
-          }
-
-          return {
-            value: record.arg,
-            done: context.done
-          };
-
-        } else if (record.type === "throw") {
-          state = GenStateCompleted;
-          // Dispatch the exception by looping back around to the
-          // context.dispatchException(context.arg) call above.
-          context.method = "throw";
-          context.arg = record.arg;
-        }
-      }
-    };
-  }
-
-  // Call delegate.iterator[context.method](context.arg) and handle the
-  // result, either by returning a { value, done } result from the
-  // delegate iterator, or by modifying context.method and context.arg,
-  // setting context.delegate to null, and returning the ContinueSentinel.
-  function maybeInvokeDelegate(delegate, context) {
-    var method = delegate.iterator[context.method];
-    if (method === undefined) {
-      // A .throw or .return when the delegate iterator has no .throw
-      // method always terminates the yield* loop.
-      context.delegate = null;
-
-      if (context.method === "throw") {
-        if (delegate.iterator.return) {
-          // If the delegate iterator has a return method, give it a
-          // chance to clean up.
-          context.method = "return";
-          context.arg = undefined;
-          maybeInvokeDelegate(delegate, context);
-
-          if (context.method === "throw") {
-            // If maybeInvokeDelegate(context) changed context.method from
-            // "return" to "throw", let that override the TypeError below.
-            return ContinueSentinel;
-          }
-        }
-
-        context.method = "throw";
-        context.arg = new TypeError(
-          "The iterator does not provide a 'throw' method");
-      }
-
-      return ContinueSentinel;
-    }
-
-    var record = tryCatch(method, delegate.iterator, context.arg);
-
-    if (record.type === "throw") {
-      context.method = "throw";
-      context.arg = record.arg;
-      context.delegate = null;
-      return ContinueSentinel;
-    }
-
-    var info = record.arg;
-
-    if (! info) {
-      context.method = "throw";
-      context.arg = new TypeError("iterator result is not an object");
-      context.delegate = null;
-      return ContinueSentinel;
-    }
-
-    if (info.done) {
-      // Assign the result of the finished delegate to the temporary
-      // variable specified by delegate.resultName (see delegateYield).
-      context[delegate.resultName] = info.value;
-
-      // Resume execution at the desired location (see delegateYield).
-      context.next = delegate.nextLoc;
-
-      // If context.method was "throw" but the delegate handled the
-      // exception, let the outer generator proceed normally. If
-      // context.method was "next", forget context.arg since it has been
-      // "consumed" by the delegate iterator. If context.method was
-      // "return", allow the original .return call to continue in the
-      // outer generator.
-      if (context.method !== "return") {
-        context.method = "next";
-        context.arg = undefined;
-      }
-
-    } else {
-      // Re-yield the result returned by the delegate method.
-      return info;
-    }
-
-    // The delegate iterator is finished, so forget it and continue with
-    // the outer generator.
-    context.delegate = null;
-    return ContinueSentinel;
-  }
-
-  // Define Generator.prototype.{next,throw,return} in terms of the
-  // unified ._invoke helper method.
-  defineIteratorMethods(Gp);
-
-  Gp[toStringTagSymbol] = "Generator";
-
-  // A Generator should always return itself as the iterator object when the
-  // @@iterator function is called on it. Some browsers' implementations of the
-  // iterator prototype chain incorrectly implement this, causing the Generator
-  // object to not be returned from this call. This ensures that doesn't happen.
-  // See https://github.com/facebook/regenerator/issues/274 for more details.
-  Gp[iteratorSymbol] = function() {
-    return this;
-  };
-
-  Gp.toString = function() {
-    return "[object Generator]";
-  };
-
-  function pushTryEntry(locs) {
-    var entry = { tryLoc: locs[0] };
-
-    if (1 in locs) {
-      entry.catchLoc = locs[1];
-    }
-
-    if (2 in locs) {
-      entry.finallyLoc = locs[2];
-      entry.afterLoc = locs[3];
-    }
-
-    this.tryEntries.push(entry);
-  }
-
-  function resetTryEntry(entry) {
-    var record = entry.completion || {};
-    record.type = "normal";
-    delete record.arg;
-    entry.completion = record;
-  }
-
-  function Context(tryLocsList) {
-    // The root entry object (effectively a try statement without a catch
-    // or a finally block) gives us a place to store values thrown from
-    // locations where there is no enclosing try statement.
-    this.tryEntries = [{ tryLoc: "root" }];
-    tryLocsList.forEach(pushTryEntry, this);
-    this.reset(true);
-  }
-
-  runtime.keys = function(object) {
-    var keys = [];
-    for (var key in object) {
-      keys.push(key);
-    }
-    keys.reverse();
-
-    // Rather than returning an object with a next method, we keep
-    // things simple and return the next function itself.
-    return function next() {
-      while (keys.length) {
-        var key = keys.pop();
-        if (key in object) {
-          next.value = key;
-          next.done = false;
-          return next;
-        }
-      }
-
-      // To avoid creating an additional object, we just hang the .value
-      // and .done properties off the next function object itself. This
-      // also ensures that the minifier will not anonymize the function.
-      next.done = true;
-      return next;
-    };
-  };
-
-  function values(iterable) {
-    if (iterable) {
-      var iteratorMethod = iterable[iteratorSymbol];
-      if (iteratorMethod) {
-        return iteratorMethod.call(iterable);
-      }
-
-      if (typeof iterable.next === "function") {
-        return iterable;
-      }
-
-      if (!isNaN(iterable.length)) {
-        var i = -1, next = function next() {
-          while (++i < iterable.length) {
-            if (hasOwn.call(iterable, i)) {
-              next.value = iterable[i];
-              next.done = false;
-              return next;
-            }
-          }
-
-          next.value = undefined;
-          next.done = true;
-
-          return next;
-        };
-
-        return next.next = next;
-      }
-    }
-
-    // Return an iterator with no values.
-    return { next: doneResult };
-  }
-  runtime.values = values;
-
-  function doneResult() {
-    return { value: undefined, done: true };
-  }
-
-  Context.prototype = {
-    constructor: Context,
-
-    reset: function(skipTempReset) {
-      this.prev = 0;
-      this.next = 0;
-      // Resetting context._sent for legacy support of Babel's
-      // function.sent implementation.
-      this.sent = this._sent = undefined;
-      this.done = false;
-      this.delegate = null;
-
-      this.method = "next";
-      this.arg = undefined;
-
-      this.tryEntries.forEach(resetTryEntry);
-
-      if (!skipTempReset) {
-        for (var name in this) {
-          // Not sure about the optimal order of these conditions:
-          if (name.charAt(0) === "t" &&
-              hasOwn.call(this, name) &&
-              !isNaN(+name.slice(1))) {
-            this[name] = undefined;
-          }
-        }
-      }
-    },
-
-    stop: function() {
-      this.done = true;
-
-      var rootEntry = this.tryEntries[0];
-      var rootRecord = rootEntry.completion;
-      if (rootRecord.type === "throw") {
-        throw rootRecord.arg;
-      }
-
-      return this.rval;
-    },
-
-    dispatchException: function(exception) {
-      if (this.done) {
-        throw exception;
-      }
-
-      var context = this;
-      function handle(loc, caught) {
-        record.type = "throw";
-        record.arg = exception;
-        context.next = loc;
-
-        if (caught) {
-          // If the dispatched exception was caught by a catch block,
-          // then let that catch block handle the exception normally.
-          context.method = "next";
-          context.arg = undefined;
-        }
-
-        return !! caught;
-      }
-
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        var record = entry.completion;
-
-        if (entry.tryLoc === "root") {
-          // Exception thrown outside of any try block that could handle
-          // it, so set the completion value of the entire function to
-          // throw the exception.
-          return handle("end");
-        }
-
-        if (entry.tryLoc <= this.prev) {
-          var hasCatch = hasOwn.call(entry, "catchLoc");
-          var hasFinally = hasOwn.call(entry, "finallyLoc");
-
-          if (hasCatch && hasFinally) {
-            if (this.prev < entry.catchLoc) {
-              return handle(entry.catchLoc, true);
-            } else if (this.prev < entry.finallyLoc) {
-              return handle(entry.finallyLoc);
-            }
-
-          } else if (hasCatch) {
-            if (this.prev < entry.catchLoc) {
-              return handle(entry.catchLoc, true);
-            }
-
-          } else if (hasFinally) {
-            if (this.prev < entry.finallyLoc) {
-              return handle(entry.finallyLoc);
-            }
-
-          } else {
-            throw new Error("try statement without catch or finally");
-          }
-        }
-      }
-    },
-
-    abrupt: function(type, arg) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.tryLoc <= this.prev &&
-            hasOwn.call(entry, "finallyLoc") &&
-            this.prev < entry.finallyLoc) {
-          var finallyEntry = entry;
-          break;
-        }
-      }
-
-      if (finallyEntry &&
-          (type === "break" ||
-           type === "continue") &&
-          finallyEntry.tryLoc <= arg &&
-          arg <= finallyEntry.finallyLoc) {
-        // Ignore the finally entry if control is not jumping to a
-        // location outside the try/catch block.
-        finallyEntry = null;
-      }
-
-      var record = finallyEntry ? finallyEntry.completion : {};
-      record.type = type;
-      record.arg = arg;
-
-      if (finallyEntry) {
-        this.method = "next";
-        this.next = finallyEntry.finallyLoc;
-        return ContinueSentinel;
-      }
-
-      return this.complete(record);
-    },
-
-    complete: function(record, afterLoc) {
-      if (record.type === "throw") {
-        throw record.arg;
-      }
-
-      if (record.type === "break" ||
-          record.type === "continue") {
-        this.next = record.arg;
-      } else if (record.type === "return") {
-        this.rval = this.arg = record.arg;
-        this.method = "return";
-        this.next = "end";
-      } else if (record.type === "normal" && afterLoc) {
-        this.next = afterLoc;
-      }
-
-      return ContinueSentinel;
-    },
-
-    finish: function(finallyLoc) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.finallyLoc === finallyLoc) {
-          this.complete(entry.completion, entry.afterLoc);
-          resetTryEntry(entry);
-          return ContinueSentinel;
-        }
-      }
-    },
-
-    "catch": function(tryLoc) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.tryLoc === tryLoc) {
-          var record = entry.completion;
-          if (record.type === "throw") {
-            var thrown = record.arg;
-            resetTryEntry(entry);
-          }
-          return thrown;
-        }
-      }
-
-      // The context.catch method must only be called with a location
-      // argument that corresponds to a known catch block.
-      throw new Error("illegal catch attempt");
-    },
-
-    delegateYield: function(iterable, resultName, nextLoc) {
-      this.delegate = {
-        iterator: values(iterable),
-        resultName: resultName,
-        nextLoc: nextLoc
-      };
-
-      if (this.method === "next") {
-        // Deliberately forget the last sent value so that we don't
-        // accidentally pass it on to the delegate.
-        this.arg = undefined;
-      }
-
-      return ContinueSentinel;
-    }
-  };
-})(
-  // In sloppy mode, unbound `this` refers to the global object, fallback to
-  // Function constructor if we're in global strict mode. That is sadly a form
-  // of indirect eval which violates Content Security Policy.
-  (function() { return this })() || Function("return this")()
-);
-
-
-/***/ }),
-/* 46 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layout_form__ = __webpack_require__(2);
-
-
-
-
-var Form = function Form() {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        { className: 'formContent' },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            { className: 'fCr' },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["b" /* Input */], {
-                icon: 'fas fa-pen',
-                label: 'Designa\xE7\xE3o',
-                type: 'text',
-                placeholder: 'Nome do artigo'
-            }),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["c" /* Select */], {
-                label: 'Estado',
-                data: [{
-                    label: 'Activo',
-                    value: 'abc'
-                }, {
-                    label: 'Inactivo',
-                    value: 'abc'
-                }]
-            }),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["c" /* Select */], {
-                label: 'Tipo de Artigo',
-                data: [{
-                    label: 'Activo',
-                    value: 'abc'
-                }, {
-                    label: 'Inactivo',
-                    value: 'abc'
-                }]
-            }),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["b" /* Input */], {
-                icon: 'fas fa-box',
-                label: 'Stock m\xEDnimo',
-                type: 'number',
-                placeholder: '0'
-            }),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["b" /* Input */], {
-                icon: 'fas fa-boxes',
-                label: 'Stock m\xE1ximo',
-                type: 'number',
-                placeholder: '10'
-            })
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            null,
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1__layout_form__["a" /* Button */],
-                { className: 'cancel', style: {
-                        marginRight: '1rem'
-                    } },
-                'Cancelar',
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-times' })
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1__layout_form__["a" /* Button */],
-                null,
-                'Salvar',
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-save' })
-            )
-        )
-    );
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (Form);
-
-/***/ }),
-/* 47 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-
-
-var Api = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.create({
-    baseURL: window.location.origin + '/api'
-});
-
-/* harmony default export */ __webpack_exports__["a"] = (Api);
-
-/***/ }),
-/* 48 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(49);
-
-/***/ }),
-/* 49 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(1);
-var bind = __webpack_require__(9);
-var Axios = __webpack_require__(51);
-var defaults = __webpack_require__(5);
-
-/**
- * Create an instance of Axios
- *
- * @param {Object} defaultConfig The default config for the instance
- * @return {Axios} A new instance of Axios
- */
-function createInstance(defaultConfig) {
-  var context = new Axios(defaultConfig);
-  var instance = bind(Axios.prototype.request, context);
-
-  // Copy axios.prototype to instance
-  utils.extend(instance, Axios.prototype, context);
-
-  // Copy context to instance
-  utils.extend(instance, context);
-
-  return instance;
-}
-
-// Create the default instance to be exported
-var axios = createInstance(defaults);
-
-// Expose Axios class to allow class inheritance
-axios.Axios = Axios;
-
-// Factory for creating new instances
-axios.create = function create(instanceConfig) {
-  return createInstance(utils.merge(defaults, instanceConfig));
-};
-
-// Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(13);
-axios.CancelToken = __webpack_require__(66);
-axios.isCancel = __webpack_require__(12);
-
-// Expose all/spread
-axios.all = function all(promises) {
-  return Promise.all(promises);
-};
-axios.spread = __webpack_require__(67);
-
-module.exports = axios;
-
-// Allow use of default import syntax in TypeScript
-module.exports.default = axios;
-
-
-/***/ }),
-/* 50 */
-/***/ (function(module, exports) {
-
-/*!
- * Determine if an object is a Buffer
- *
- * @author   Feross Aboukhadijeh <https://feross.org>
- * @license  MIT
- */
-
-// The _isBuffer check is for Safari 5-7 support, because it's missing
-// Object.prototype.constructor. Remove this eventually
-module.exports = function (obj) {
-  return obj != null && (isBuffer(obj) || isSlowBuffer(obj) || !!obj._isBuffer)
-}
-
-function isBuffer (obj) {
-  return !!obj.constructor && typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
-}
-
-// For Node v0.10 support. Remove this eventually.
-function isSlowBuffer (obj) {
-  return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
-}
-
-
-/***/ }),
-/* 51 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var defaults = __webpack_require__(5);
-var utils = __webpack_require__(1);
-var InterceptorManager = __webpack_require__(61);
-var dispatchRequest = __webpack_require__(62);
-var isAbsoluteURL = __webpack_require__(64);
-var combineURLs = __webpack_require__(65);
-
-/**
- * Create a new instance of Axios
- *
- * @param {Object} instanceConfig The default config for the instance
- */
-function Axios(instanceConfig) {
-  this.defaults = instanceConfig;
-  this.interceptors = {
-    request: new InterceptorManager(),
-    response: new InterceptorManager()
-  };
-}
-
-/**
- * Dispatch a request
- *
- * @param {Object} config The config specific for this request (merged with this.defaults)
- */
-Axios.prototype.request = function request(config) {
-  /*eslint no-param-reassign:0*/
-  // Allow for axios('example/url'[, config]) a la fetch API
-  if (typeof config === 'string') {
-    config = utils.merge({
-      url: arguments[0]
-    }, arguments[1]);
-  }
-
-  config = utils.merge(defaults, this.defaults, { method: 'get' }, config);
-  config.method = config.method.toLowerCase();
-
-  // Support baseURL config
-  if (config.baseURL && !isAbsoluteURL(config.url)) {
-    config.url = combineURLs(config.baseURL, config.url);
-  }
-
-  // Hook up interceptors middleware
-  var chain = [dispatchRequest, undefined];
-  var promise = Promise.resolve(config);
-
-  this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
-    chain.unshift(interceptor.fulfilled, interceptor.rejected);
-  });
-
-  this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
-    chain.push(interceptor.fulfilled, interceptor.rejected);
-  });
-
-  while (chain.length) {
-    promise = promise.then(chain.shift(), chain.shift());
-  }
-
-  return promise;
-};
-
-// Provide aliases for supported request methods
-utils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData(method) {
-  /*eslint func-names:0*/
-  Axios.prototype[method] = function(url, config) {
-    return this.request(utils.merge(config || {}, {
-      method: method,
-      url: url
-    }));
-  };
-});
-
-utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
-  /*eslint func-names:0*/
-  Axios.prototype[method] = function(url, data, config) {
-    return this.request(utils.merge(config || {}, {
-      method: method,
-      url: url,
-      data: data
-    }));
-  };
-});
-
-module.exports = Axios;
-
-
-/***/ }),
-/* 52 */
-/***/ (function(module, exports) {
-
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
-
-
-/***/ }),
-/* 53 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(1);
-
-module.exports = function normalizeHeaderName(headers, normalizedName) {
-  utils.forEach(headers, function processHeader(value, name) {
-    if (name !== normalizedName && name.toUpperCase() === normalizedName.toUpperCase()) {
-      headers[normalizedName] = value;
-      delete headers[name];
-    }
-  });
-};
-
-
-/***/ }),
-/* 54 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var createError = __webpack_require__(11);
-
-/**
- * Resolve or reject a Promise based on response status.
- *
- * @param {Function} resolve A function that resolves the promise.
- * @param {Function} reject A function that rejects the promise.
- * @param {object} response The response.
- */
-module.exports = function settle(resolve, reject, response) {
-  var validateStatus = response.config.validateStatus;
-  // Note: status is not exposed by XDomainRequest
-  if (!response.status || !validateStatus || validateStatus(response.status)) {
-    resolve(response);
-  } else {
-    reject(createError(
-      'Request failed with status code ' + response.status,
-      response.config,
-      null,
-      response.request,
-      response
-    ));
-  }
-};
-
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Update an Error with the specified config, error code, and response.
- *
- * @param {Error} error The error to update.
- * @param {Object} config The config.
- * @param {string} [code] The error code (for example, 'ECONNABORTED').
- * @param {Object} [request] The request.
- * @param {Object} [response] The response.
- * @returns {Error} The error.
- */
-module.exports = function enhanceError(error, config, code, request, response) {
-  error.config = config;
-  if (code) {
-    error.code = code;
-  }
-  error.request = request;
-  error.response = response;
-  return error;
-};
-
-
-/***/ }),
-/* 56 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(1);
-
-function encode(val) {
-  return encodeURIComponent(val).
-    replace(/%40/gi, '@').
-    replace(/%3A/gi, ':').
-    replace(/%24/g, '$').
-    replace(/%2C/gi, ',').
-    replace(/%20/g, '+').
-    replace(/%5B/gi, '[').
-    replace(/%5D/gi, ']');
-}
-
-/**
- * Build a URL by appending params to the end
- *
- * @param {string} url The base of the url (e.g., http://www.google.com)
- * @param {object} [params] The params to be appended
- * @returns {string} The formatted url
- */
-module.exports = function buildURL(url, params, paramsSerializer) {
-  /*eslint no-param-reassign:0*/
-  if (!params) {
-    return url;
-  }
-
-  var serializedParams;
-  if (paramsSerializer) {
-    serializedParams = paramsSerializer(params);
-  } else if (utils.isURLSearchParams(params)) {
-    serializedParams = params.toString();
-  } else {
-    var parts = [];
-
-    utils.forEach(params, function serialize(val, key) {
-      if (val === null || typeof val === 'undefined') {
-        return;
-      }
-
-      if (utils.isArray(val)) {
-        key = key + '[]';
-      }
-
-      if (!utils.isArray(val)) {
-        val = [val];
-      }
-
-      utils.forEach(val, function parseValue(v) {
-        if (utils.isDate(v)) {
-          v = v.toISOString();
-        } else if (utils.isObject(v)) {
-          v = JSON.stringify(v);
-        }
-        parts.push(encode(key) + '=' + encode(v));
-      });
-    });
-
-    serializedParams = parts.join('&');
-  }
-
-  if (serializedParams) {
-    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
-  }
-
-  return url;
-};
-
-
-/***/ }),
-/* 57 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(1);
-
-/**
- * Parse headers into an object
- *
- * ```
- * Date: Wed, 27 Aug 2014 08:58:49 GMT
- * Content-Type: application/json
- * Connection: keep-alive
- * Transfer-Encoding: chunked
- * ```
- *
- * @param {String} headers Headers needing to be parsed
- * @returns {Object} Headers parsed into an object
- */
-module.exports = function parseHeaders(headers) {
-  var parsed = {};
-  var key;
-  var val;
-  var i;
-
-  if (!headers) { return parsed; }
-
-  utils.forEach(headers.split('\n'), function parser(line) {
-    i = line.indexOf(':');
-    key = utils.trim(line.substr(0, i)).toLowerCase();
-    val = utils.trim(line.substr(i + 1));
-
-    if (key) {
-      parsed[key] = parsed[key] ? parsed[key] + ', ' + val : val;
-    }
-  });
-
-  return parsed;
-};
-
-
-/***/ }),
-/* 58 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(1);
-
-module.exports = (
-  utils.isStandardBrowserEnv() ?
-
-  // Standard browser envs have full support of the APIs needed to test
-  // whether the request URL is of the same origin as current location.
-  (function standardBrowserEnv() {
-    var msie = /(msie|trident)/i.test(navigator.userAgent);
-    var urlParsingNode = document.createElement('a');
-    var originURL;
-
-    /**
-    * Parse a URL to discover it's components
-    *
-    * @param {String} url The URL to be parsed
-    * @returns {Object}
-    */
-    function resolveURL(url) {
-      var href = url;
-
-      if (msie) {
-        // IE needs attribute set twice to normalize properties
-        urlParsingNode.setAttribute('href', href);
-        href = urlParsingNode.href;
-      }
-
-      urlParsingNode.setAttribute('href', href);
-
-      // urlParsingNode provides the UrlUtils interface - http://url.spec.whatwg.org/#urlutils
-      return {
-        href: urlParsingNode.href,
-        protocol: urlParsingNode.protocol ? urlParsingNode.protocol.replace(/:$/, '') : '',
-        host: urlParsingNode.host,
-        search: urlParsingNode.search ? urlParsingNode.search.replace(/^\?/, '') : '',
-        hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, '') : '',
-        hostname: urlParsingNode.hostname,
-        port: urlParsingNode.port,
-        pathname: (urlParsingNode.pathname.charAt(0) === '/') ?
-                  urlParsingNode.pathname :
-                  '/' + urlParsingNode.pathname
-      };
-    }
-
-    originURL = resolveURL(window.location.href);
-
-    /**
-    * Determine if a URL shares the same origin as the current location
-    *
-    * @param {String} requestURL The URL to test
-    * @returns {boolean} True if URL shares the same origin, otherwise false
-    */
-    return function isURLSameOrigin(requestURL) {
-      var parsed = (utils.isString(requestURL)) ? resolveURL(requestURL) : requestURL;
-      return (parsed.protocol === originURL.protocol &&
-            parsed.host === originURL.host);
-    };
-  })() :
-
-  // Non standard browser envs (web workers, react-native) lack needed support.
-  (function nonStandardBrowserEnv() {
-    return function isURLSameOrigin() {
-      return true;
-    };
-  })()
-);
-
-
-/***/ }),
-/* 59 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// btoa polyfill for IE<10 courtesy https://github.com/davidchambers/Base64.js
-
-var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-
-function E() {
-  this.message = 'String contains an invalid character';
-}
-E.prototype = new Error;
-E.prototype.code = 5;
-E.prototype.name = 'InvalidCharacterError';
-
-function btoa(input) {
-  var str = String(input);
-  var output = '';
-  for (
-    // initialize result and counter
-    var block, charCode, idx = 0, map = chars;
-    // if the next str index does not exist:
-    //   change the mapping table to "="
-    //   check if d has no fractional digits
-    str.charAt(idx | 0) || (map = '=', idx % 1);
-    // "8 - idx % 1 * 8" generates the sequence 2, 4, 6, 8
-    output += map.charAt(63 & block >> 8 - idx % 1 * 8)
-  ) {
-    charCode = str.charCodeAt(idx += 3 / 4);
-    if (charCode > 0xFF) {
-      throw new E();
-    }
-    block = block << 8 | charCode;
-  }
-  return output;
-}
-
-module.exports = btoa;
-
-
-/***/ }),
-/* 60 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(1);
-
-module.exports = (
-  utils.isStandardBrowserEnv() ?
-
-  // Standard browser envs support document.cookie
-  (function standardBrowserEnv() {
-    return {
-      write: function write(name, value, expires, path, domain, secure) {
-        var cookie = [];
-        cookie.push(name + '=' + encodeURIComponent(value));
-
-        if (utils.isNumber(expires)) {
-          cookie.push('expires=' + new Date(expires).toGMTString());
-        }
-
-        if (utils.isString(path)) {
-          cookie.push('path=' + path);
-        }
-
-        if (utils.isString(domain)) {
-          cookie.push('domain=' + domain);
-        }
-
-        if (secure === true) {
-          cookie.push('secure');
-        }
-
-        document.cookie = cookie.join('; ');
-      },
-
-      read: function read(name) {
-        var match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
-        return (match ? decodeURIComponent(match[3]) : null);
-      },
-
-      remove: function remove(name) {
-        this.write(name, '', Date.now() - 86400000);
-      }
-    };
-  })() :
-
-  // Non standard browser env (web workers, react-native) lack needed support.
-  (function nonStandardBrowserEnv() {
-    return {
-      write: function write() {},
-      read: function read() { return null; },
-      remove: function remove() {}
-    };
-  })()
-);
-
-
-/***/ }),
-/* 61 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(1);
-
-function InterceptorManager() {
-  this.handlers = [];
-}
-
-/**
- * Add a new interceptor to the stack
- *
- * @param {Function} fulfilled The function to handle `then` for a `Promise`
- * @param {Function} rejected The function to handle `reject` for a `Promise`
- *
- * @return {Number} An ID used to remove interceptor later
- */
-InterceptorManager.prototype.use = function use(fulfilled, rejected) {
-  this.handlers.push({
-    fulfilled: fulfilled,
-    rejected: rejected
-  });
-  return this.handlers.length - 1;
-};
-
-/**
- * Remove an interceptor from the stack
- *
- * @param {Number} id The ID that was returned by `use`
- */
-InterceptorManager.prototype.eject = function eject(id) {
-  if (this.handlers[id]) {
-    this.handlers[id] = null;
-  }
-};
-
-/**
- * Iterate over all the registered interceptors
- *
- * This method is particularly useful for skipping over any
- * interceptors that may have become `null` calling `eject`.
- *
- * @param {Function} fn The function to call for each interceptor
- */
-InterceptorManager.prototype.forEach = function forEach(fn) {
-  utils.forEach(this.handlers, function forEachHandler(h) {
-    if (h !== null) {
-      fn(h);
-    }
-  });
-};
-
-module.exports = InterceptorManager;
-
-
-/***/ }),
-/* 62 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(1);
-var transformData = __webpack_require__(63);
-var isCancel = __webpack_require__(12);
-var defaults = __webpack_require__(5);
-
-/**
- * Throws a `Cancel` if cancellation has been requested.
- */
-function throwIfCancellationRequested(config) {
-  if (config.cancelToken) {
-    config.cancelToken.throwIfRequested();
-  }
-}
-
-/**
- * Dispatch a request to the server using the configured adapter.
- *
- * @param {object} config The config that is to be used for the request
- * @returns {Promise} The Promise to be fulfilled
- */
-module.exports = function dispatchRequest(config) {
-  throwIfCancellationRequested(config);
-
-  // Ensure headers exist
-  config.headers = config.headers || {};
-
-  // Transform request data
-  config.data = transformData(
-    config.data,
-    config.headers,
-    config.transformRequest
-  );
-
-  // Flatten headers
-  config.headers = utils.merge(
-    config.headers.common || {},
-    config.headers[config.method] || {},
-    config.headers || {}
-  );
-
-  utils.forEach(
-    ['delete', 'get', 'head', 'post', 'put', 'patch', 'common'],
-    function cleanHeaderConfig(method) {
-      delete config.headers[method];
-    }
-  );
-
-  var adapter = config.adapter || defaults.adapter;
-
-  return adapter(config).then(function onAdapterResolution(response) {
-    throwIfCancellationRequested(config);
-
-    // Transform response data
-    response.data = transformData(
-      response.data,
-      response.headers,
-      config.transformResponse
-    );
-
-    return response;
-  }, function onAdapterRejection(reason) {
-    if (!isCancel(reason)) {
-      throwIfCancellationRequested(config);
-
-      // Transform response data
-      if (reason && reason.response) {
-        reason.response.data = transformData(
-          reason.response.data,
-          reason.response.headers,
-          config.transformResponse
-        );
-      }
-    }
-
-    return Promise.reject(reason);
-  });
-};
-
-
-/***/ }),
-/* 63 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(1);
-
-/**
- * Transform the data for a request or a response
- *
- * @param {Object|String} data The data to be transformed
- * @param {Array} headers The headers for the request or response
- * @param {Array|Function} fns A single function or Array of functions
- * @returns {*} The resulting transformed data
- */
-module.exports = function transformData(data, headers, fns) {
-  /*eslint no-param-reassign:0*/
-  utils.forEach(fns, function transform(fn) {
-    data = fn(data, headers);
-  });
-
-  return data;
-};
-
-
-/***/ }),
-/* 64 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Determines whether the specified URL is absolute
- *
- * @param {string} url The URL to test
- * @returns {boolean} True if the specified URL is absolute, otherwise false
- */
-module.exports = function isAbsoluteURL(url) {
-  // A URL is considered absolute if it begins with "<scheme>://" or "//" (protocol-relative URL).
-  // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
-  // by any combination of letters, digits, plus, period, or hyphen.
-  return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
-};
-
-
-/***/ }),
-/* 65 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Creates a new URL by combining the specified URLs
- *
- * @param {string} baseURL The base URL
- * @param {string} relativeURL The relative URL
- * @returns {string} The combined URL
- */
-module.exports = function combineURLs(baseURL, relativeURL) {
-  return relativeURL
-    ? baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '')
-    : baseURL;
-};
-
-
-/***/ }),
-/* 66 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var Cancel = __webpack_require__(13);
-
-/**
- * A `CancelToken` is an object that can be used to request cancellation of an operation.
- *
- * @class
- * @param {Function} executor The executor function.
- */
-function CancelToken(executor) {
-  if (typeof executor !== 'function') {
-    throw new TypeError('executor must be a function.');
-  }
-
-  var resolvePromise;
-  this.promise = new Promise(function promiseExecutor(resolve) {
-    resolvePromise = resolve;
-  });
-
-  var token = this;
-  executor(function cancel(message) {
-    if (token.reason) {
-      // Cancellation has already been requested
-      return;
-    }
-
-    token.reason = new Cancel(message);
-    resolvePromise(token.reason);
-  });
-}
-
-/**
- * Throws a `Cancel` if cancellation has been requested.
- */
-CancelToken.prototype.throwIfRequested = function throwIfRequested() {
-  if (this.reason) {
-    throw this.reason;
-  }
-};
-
-/**
- * Returns an object that contains a new `CancelToken` and a function that, when called,
- * cancels the `CancelToken`.
- */
-CancelToken.source = function source() {
-  var cancel;
-  var token = new CancelToken(function executor(c) {
-    cancel = c;
-  });
-  return {
-    token: token,
-    cancel: cancel
-  };
-};
-
-module.exports = CancelToken;
-
-
-/***/ }),
-/* 67 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Syntactic sugar for invoking a function and expanding an array for arguments.
- *
- * Common use case would be to use `Function.prototype.apply`.
- *
- *  ```js
- *  function f(x, y, z) {}
- *  var args = [1, 2, 3];
- *  f.apply(null, args);
- *  ```
- *
- * With `spread` this example can be re-written.
- *
- *  ```js
- *  spread(function(x, y, z) {})([1, 2, 3]);
- *  ```
- *
- * @param {Function} callback
- * @returns {Function}
- */
-module.exports = function spread(callback) {
-  return function wrap(arr) {
-    return callback.apply(null, arr);
-  };
-};
-
-
-/***/ }),
-/* 68 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = index;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layout_form_table__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stockForm__ = __webpack_require__(69);
-
-
-
-
-
-
-function index(props) {
-    var submenu = props.submenu;
-
-
-    var produtos = [{
-        nome: 'Marcelo Burlon',
-        categoria: 'Roupa',
-        subcategoria: 'T-shert',
-        'preço': 25306,
-        estado: 'activo',
-        quantidade: 8,
-        foto: 'mrcb.jpg'
-    }, {
-        nome: 'Balanciaga',
-        categoria: 'Calçados',
-        subcategoria: 'Botas',
-        'preço': 4505.02,
-        estado: 'activo',
-        quantidade: 16,
-        foto: 'botas.jpg'
-    }, {
-        nome: 'SmartWath',
-        categoria: 'Eletrônicos',
-        subcategoria: 'Relógio',
-        'preço': 8500.728,
-        estado: 'activo',
-        quantidade: 3,
-        foto: 'relogio.jpg'
-    }, {
-        nome: 'Test',
-        categoria: 'Eletrônicos',
-        subcategoria: 'Relógio',
-        'preço': 70000,
-        estado: 'inativo',
-        quantidade: 35,
-        foto: 'relogio.jpg'
-    }];
-
-    return submenu == 'Novo' ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__stockForm__["a" /* default */], null) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        { style: {
-                padding: '2rem',
-                width: '100%',
-                backgroundColor: 'white'
-            } },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form_table__["a" /* default */], {
-            onHover: function onHover(e) {
-                return setLastHover(e);
-            },
-            options: {
-                onlyCollumn: ['nome', 'categoria', 'subcategoria', 'preço', 'estado', 'quantidade'],
-                header: {
-                    search: true,
-                    buttons: true,
-                    modal: {
-                        content: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__stockForm__["a" /* default */], null),
-                        label: {
-                            icon: "fas fa-edit",
-                            title: "Editar"
-                        }
-                    }
-                }
-            },
-            data: produtos })
-    );
-}
-
-/***/ }),
-/* 69 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layout_form__ = __webpack_require__(2);
-
-
-
-
-var Form = function Form() {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        { className: 'formContent' },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            { className: 'fCr' },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["b" /* Input */], {
-                icon: 'fas fa-pen',
-                label: 'Designa\xE7\xE3o',
-                type: 'text',
-                placeholder: 'Nome do artigo'
-            }),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["c" /* Select */], {
-                label: 'Estado',
-                data: [{
-                    label: 'Activo',
-                    value: 'abc'
-                }, {
-                    label: 'Inactivo',
-                    value: 'abc'
-                }]
-            }),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["c" /* Select */], {
-                label: 'Tipo de Artigo',
-                data: [{
-                    label: 'Activo',
-                    value: 'abc'
-                }, {
-                    label: 'Inactivo',
-                    value: 'abc'
-                }]
-            }),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["b" /* Input */], {
-                icon: 'fas fa-box',
-                label: 'Stock m\xEDnimo',
-                type: 'number',
-                placeholder: '0'
-            }),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["b" /* Input */], {
-                icon: 'fas fa-boxes',
-                label: 'Stock m\xE1ximo',
-                type: 'number',
-                placeholder: '10'
-            })
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            null,
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1__layout_form__["a" /* Button */],
-                { className: 'cancel', style: {
-                        marginRight: '1rem'
-                    } },
-                'Cancelar',
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-times' })
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1__layout_form__["a" /* Button */],
-                null,
-                'Salvar',
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-save' })
-            )
-        )
-    );
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (Form);
-
-/***/ }),
-/* 70 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(71);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(86)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../../../node_modules/css-loader/index.js!./all.css", function() {
-			var newContent = require("!!../../../../../node_modules/css-loader/index.js!./all.css");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 71 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var escape = __webpack_require__(72);
-exports = module.exports = __webpack_require__(73)(false);
-// imports
-
-
-// module
-exports.push([module.i, "/*!\r\n * Font Awesome Free 5.13.0 by @fontawesome - https://fontawesome.com\r\n * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)\r\n */\r\n.fa,\r\n.fas,\r\n.far,\r\n.fal,\r\n.fad,\r\n.fab {\r\n  -moz-osx-font-smoothing: grayscale;\r\n  -webkit-font-smoothing: antialiased;\r\n  display: inline-block;\r\n  font-style: normal;\r\n  font-variant: normal;\r\n  text-rendering: auto;\r\n  line-height: 1; }\r\n\r\n.fa-lg {\r\n  font-size: 1.33333em;\r\n  line-height: 0.75em;\r\n  vertical-align: -.0667em; }\r\n\r\n.fa-xs {\r\n  font-size: .75em; }\r\n\r\n.fa-sm {\r\n  font-size: .875em; }\r\n\r\n.fa-1x {\r\n  font-size: 1em; }\r\n\r\n.fa-2x {\r\n  font-size: 2em; }\r\n\r\n.fa-3x {\r\n  font-size: 3em; }\r\n\r\n.fa-4x {\r\n  font-size: 4em; }\r\n\r\n.fa-5x {\r\n  font-size: 5em; }\r\n\r\n.fa-6x {\r\n  font-size: 6em; }\r\n\r\n.fa-7x {\r\n  font-size: 7em; }\r\n\r\n.fa-8x {\r\n  font-size: 8em; }\r\n\r\n.fa-9x {\r\n  font-size: 9em; }\r\n\r\n.fa-10x {\r\n  font-size: 10em; }\r\n\r\n.fa-fw {\r\n  text-align: center;\r\n  width: 1.25em; }\r\n\r\n.fa-ul {\r\n  list-style-type: none;\r\n  margin-left: 2.5em;\r\n  padding-left: 0; }\r\n  .fa-ul > li {\r\n    position: relative; }\r\n\r\n.fa-li {\r\n  left: -2em;\r\n  position: absolute;\r\n  text-align: center;\r\n  width: 2em;\r\n  line-height: inherit; }\r\n\r\n.fa-border {\r\n  border: solid 0.08em #eee;\r\n  border-radius: .1em;\r\n  padding: .2em .25em .15em; }\r\n\r\n.fa-pull-left {\r\n  float: left; }\r\n\r\n.fa-pull-right {\r\n  float: right; }\r\n\r\n.fa.fa-pull-left,\r\n.fas.fa-pull-left,\r\n.far.fa-pull-left,\r\n.fal.fa-pull-left,\r\n.fab.fa-pull-left {\r\n  margin-right: .3em; }\r\n\r\n.fa.fa-pull-right,\r\n.fas.fa-pull-right,\r\n.far.fa-pull-right,\r\n.fal.fa-pull-right,\r\n.fab.fa-pull-right {\r\n  margin-left: .3em; }\r\n\r\n.fa-spin {\r\n  -webkit-animation: fa-spin 2s infinite linear;\r\n          animation: fa-spin 2s infinite linear; }\r\n\r\n.fa-pulse {\r\n  -webkit-animation: fa-spin 1s infinite steps(8);\r\n          animation: fa-spin 1s infinite steps(8); }\r\n\r\n@-webkit-keyframes fa-spin {\r\n  0% {\r\n    -webkit-transform: rotate(0deg);\r\n            transform: rotate(0deg); }\r\n  100% {\r\n    -webkit-transform: rotate(360deg);\r\n            transform: rotate(360deg); } }\r\n\r\n@keyframes fa-spin {\r\n  0% {\r\n    -webkit-transform: rotate(0deg);\r\n            transform: rotate(0deg); }\r\n  100% {\r\n    -webkit-transform: rotate(360deg);\r\n            transform: rotate(360deg); } }\r\n\r\n.fa-rotate-90 {\r\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=1)\";\r\n  -webkit-transform: rotate(90deg);\r\n          transform: rotate(90deg); }\r\n\r\n.fa-rotate-180 {\r\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2)\";\r\n  -webkit-transform: rotate(180deg);\r\n          transform: rotate(180deg); }\r\n\r\n.fa-rotate-270 {\r\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=3)\";\r\n  -webkit-transform: rotate(270deg);\r\n          transform: rotate(270deg); }\r\n\r\n.fa-flip-horizontal {\r\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)\";\r\n  -webkit-transform: scale(-1, 1);\r\n          transform: scale(-1, 1); }\r\n\r\n.fa-flip-vertical {\r\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)\";\r\n  -webkit-transform: scale(1, -1);\r\n          transform: scale(1, -1); }\r\n\r\n.fa-flip-both, .fa-flip-horizontal.fa-flip-vertical {\r\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)\";\r\n  -webkit-transform: scale(-1, -1);\r\n          transform: scale(-1, -1); }\r\n\r\n:root .fa-rotate-90,\r\n:root .fa-rotate-180,\r\n:root .fa-rotate-270,\r\n:root .fa-flip-horizontal,\r\n:root .fa-flip-vertical,\r\n:root .fa-flip-both {\r\n  -webkit-filter: none;\r\n          filter: none; }\r\n\r\n.fa-stack {\r\n  display: inline-block;\r\n  height: 2em;\r\n  line-height: 2em;\r\n  position: relative;\r\n  vertical-align: middle;\r\n  width: 2.5em; }\r\n\r\n.fa-stack-1x,\r\n.fa-stack-2x {\r\n  left: 0;\r\n  position: absolute;\r\n  text-align: center;\r\n  width: 100%; }\r\n\r\n.fa-stack-1x {\r\n  line-height: inherit; }\r\n\r\n.fa-stack-2x {\r\n  font-size: 2em; }\r\n\r\n.fa-inverse {\r\n  color: #fff; }\r\n\r\n/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen\r\nreaders do not read off random characters that represent icons */\r\n.fa-500px:before {\r\n  content: \"\\F26E\"; }\r\n\r\n.fa-accessible-icon:before {\r\n  content: \"\\F368\"; }\r\n\r\n.fa-accusoft:before {\r\n  content: \"\\F369\"; }\r\n\r\n.fa-acquisitions-incorporated:before {\r\n  content: \"\\F6AF\"; }\r\n\r\n.fa-ad:before {\r\n  content: \"\\F641\"; }\r\n\r\n.fa-address-book:before {\r\n  content: \"\\F2B9\"; }\r\n\r\n.fa-address-card:before {\r\n  content: \"\\F2BB\"; }\r\n\r\n.fa-adjust:before {\r\n  content: \"\\F042\"; }\r\n\r\n.fa-adn:before {\r\n  content: \"\\F170\"; }\r\n\r\n.fa-adobe:before {\r\n  content: \"\\F778\"; }\r\n\r\n.fa-adversal:before {\r\n  content: \"\\F36A\"; }\r\n\r\n.fa-affiliatetheme:before {\r\n  content: \"\\F36B\"; }\r\n\r\n.fa-air-freshener:before {\r\n  content: \"\\F5D0\"; }\r\n\r\n.fa-airbnb:before {\r\n  content: \"\\F834\"; }\r\n\r\n.fa-algolia:before {\r\n  content: \"\\F36C\"; }\r\n\r\n.fa-align-center:before {\r\n  content: \"\\F037\"; }\r\n\r\n.fa-align-justify:before {\r\n  content: \"\\F039\"; }\r\n\r\n.fa-align-left:before {\r\n  content: \"\\F036\"; }\r\n\r\n.fa-align-right:before {\r\n  content: \"\\F038\"; }\r\n\r\n.fa-alipay:before {\r\n  content: \"\\F642\"; }\r\n\r\n.fa-allergies:before {\r\n  content: \"\\F461\"; }\r\n\r\n.fa-amazon:before {\r\n  content: \"\\F270\"; }\r\n\r\n.fa-amazon-pay:before {\r\n  content: \"\\F42C\"; }\r\n\r\n.fa-ambulance:before {\r\n  content: \"\\F0F9\"; }\r\n\r\n.fa-american-sign-language-interpreting:before {\r\n  content: \"\\F2A3\"; }\r\n\r\n.fa-amilia:before {\r\n  content: \"\\F36D\"; }\r\n\r\n.fa-anchor:before {\r\n  content: \"\\F13D\"; }\r\n\r\n.fa-android:before {\r\n  content: \"\\F17B\"; }\r\n\r\n.fa-angellist:before {\r\n  content: \"\\F209\"; }\r\n\r\n.fa-angle-double-down:before {\r\n  content: \"\\F103\"; }\r\n\r\n.fa-angle-double-left:before {\r\n  content: \"\\F100\"; }\r\n\r\n.fa-angle-double-right:before {\r\n  content: \"\\F101\"; }\r\n\r\n.fa-angle-double-up:before {\r\n  content: \"\\F102\"; }\r\n\r\n.fa-angle-down:before {\r\n  content: \"\\F107\"; }\r\n\r\n.fa-angle-left:before {\r\n  content: \"\\F104\"; }\r\n\r\n.fa-angle-right:before {\r\n  content: \"\\F105\"; }\r\n\r\n.fa-angle-up:before {\r\n  content: \"\\F106\"; }\r\n\r\n.fa-angry:before {\r\n  content: \"\\F556\"; }\r\n\r\n.fa-angrycreative:before {\r\n  content: \"\\F36E\"; }\r\n\r\n.fa-angular:before {\r\n  content: \"\\F420\"; }\r\n\r\n.fa-ankh:before {\r\n  content: \"\\F644\"; }\r\n\r\n.fa-app-store:before {\r\n  content: \"\\F36F\"; }\r\n\r\n.fa-app-store-ios:before {\r\n  content: \"\\F370\"; }\r\n\r\n.fa-apper:before {\r\n  content: \"\\F371\"; }\r\n\r\n.fa-apple:before {\r\n  content: \"\\F179\"; }\r\n\r\n.fa-apple-alt:before {\r\n  content: \"\\F5D1\"; }\r\n\r\n.fa-apple-pay:before {\r\n  content: \"\\F415\"; }\r\n\r\n.fa-archive:before {\r\n  content: \"\\F187\"; }\r\n\r\n.fa-archway:before {\r\n  content: \"\\F557\"; }\r\n\r\n.fa-arrow-alt-circle-down:before {\r\n  content: \"\\F358\"; }\r\n\r\n.fa-arrow-alt-circle-left:before {\r\n  content: \"\\F359\"; }\r\n\r\n.fa-arrow-alt-circle-right:before {\r\n  content: \"\\F35A\"; }\r\n\r\n.fa-arrow-alt-circle-up:before {\r\n  content: \"\\F35B\"; }\r\n\r\n.fa-arrow-circle-down:before {\r\n  content: \"\\F0AB\"; }\r\n\r\n.fa-arrow-circle-left:before {\r\n  content: \"\\F0A8\"; }\r\n\r\n.fa-arrow-circle-right:before {\r\n  content: \"\\F0A9\"; }\r\n\r\n.fa-arrow-circle-up:before {\r\n  content: \"\\F0AA\"; }\r\n\r\n.fa-arrow-down:before {\r\n  content: \"\\F063\"; }\r\n\r\n.fa-arrow-left:before {\r\n  content: \"\\F060\"; }\r\n\r\n.fa-arrow-right:before {\r\n  content: \"\\F061\"; }\r\n\r\n.fa-arrow-up:before {\r\n  content: \"\\F062\"; }\r\n\r\n.fa-arrows-alt:before {\r\n  content: \"\\F0B2\"; }\r\n\r\n.fa-arrows-alt-h:before {\r\n  content: \"\\F337\"; }\r\n\r\n.fa-arrows-alt-v:before {\r\n  content: \"\\F338\"; }\r\n\r\n.fa-artstation:before {\r\n  content: \"\\F77A\"; }\r\n\r\n.fa-assistive-listening-systems:before {\r\n  content: \"\\F2A2\"; }\r\n\r\n.fa-asterisk:before {\r\n  content: \"\\F069\"; }\r\n\r\n.fa-asymmetrik:before {\r\n  content: \"\\F372\"; }\r\n\r\n.fa-at:before {\r\n  content: \"\\F1FA\"; }\r\n\r\n.fa-atlas:before {\r\n  content: \"\\F558\"; }\r\n\r\n.fa-atlassian:before {\r\n  content: \"\\F77B\"; }\r\n\r\n.fa-atom:before {\r\n  content: \"\\F5D2\"; }\r\n\r\n.fa-audible:before {\r\n  content: \"\\F373\"; }\r\n\r\n.fa-audio-description:before {\r\n  content: \"\\F29E\"; }\r\n\r\n.fa-autoprefixer:before {\r\n  content: \"\\F41C\"; }\r\n\r\n.fa-avianex:before {\r\n  content: \"\\F374\"; }\r\n\r\n.fa-aviato:before {\r\n  content: \"\\F421\"; }\r\n\r\n.fa-award:before {\r\n  content: \"\\F559\"; }\r\n\r\n.fa-aws:before {\r\n  content: \"\\F375\"; }\r\n\r\n.fa-baby:before {\r\n  content: \"\\F77C\"; }\r\n\r\n.fa-baby-carriage:before {\r\n  content: \"\\F77D\"; }\r\n\r\n.fa-backspace:before {\r\n  content: \"\\F55A\"; }\r\n\r\n.fa-backward:before {\r\n  content: \"\\F04A\"; }\r\n\r\n.fa-bacon:before {\r\n  content: \"\\F7E5\"; }\r\n\r\n.fa-bahai:before {\r\n  content: \"\\F666\"; }\r\n\r\n.fa-balance-scale:before {\r\n  content: \"\\F24E\"; }\r\n\r\n.fa-balance-scale-left:before {\r\n  content: \"\\F515\"; }\r\n\r\n.fa-balance-scale-right:before {\r\n  content: \"\\F516\"; }\r\n\r\n.fa-ban:before {\r\n  content: \"\\F05E\"; }\r\n\r\n.fa-band-aid:before {\r\n  content: \"\\F462\"; }\r\n\r\n.fa-bandcamp:before {\r\n  content: \"\\F2D5\"; }\r\n\r\n.fa-barcode:before {\r\n  content: \"\\F02A\"; }\r\n\r\n.fa-bars:before {\r\n  content: \"\\F0C9\"; }\r\n\r\n.fa-baseball-ball:before {\r\n  content: \"\\F433\"; }\r\n\r\n.fa-basketball-ball:before {\r\n  content: \"\\F434\"; }\r\n\r\n.fa-bath:before {\r\n  content: \"\\F2CD\"; }\r\n\r\n.fa-battery-empty:before {\r\n  content: \"\\F244\"; }\r\n\r\n.fa-battery-full:before {\r\n  content: \"\\F240\"; }\r\n\r\n.fa-battery-half:before {\r\n  content: \"\\F242\"; }\r\n\r\n.fa-battery-quarter:before {\r\n  content: \"\\F243\"; }\r\n\r\n.fa-battery-three-quarters:before {\r\n  content: \"\\F241\"; }\r\n\r\n.fa-battle-net:before {\r\n  content: \"\\F835\"; }\r\n\r\n.fa-bed:before {\r\n  content: \"\\F236\"; }\r\n\r\n.fa-beer:before {\r\n  content: \"\\F0FC\"; }\r\n\r\n.fa-behance:before {\r\n  content: \"\\F1B4\"; }\r\n\r\n.fa-behance-square:before {\r\n  content: \"\\F1B5\"; }\r\n\r\n.fa-bell:before {\r\n  content: \"\\F0F3\"; }\r\n\r\n.fa-bell-slash:before {\r\n  content: \"\\F1F6\"; }\r\n\r\n.fa-bezier-curve:before {\r\n  content: \"\\F55B\"; }\r\n\r\n.fa-bible:before {\r\n  content: \"\\F647\"; }\r\n\r\n.fa-bicycle:before {\r\n  content: \"\\F206\"; }\r\n\r\n.fa-biking:before {\r\n  content: \"\\F84A\"; }\r\n\r\n.fa-bimobject:before {\r\n  content: \"\\F378\"; }\r\n\r\n.fa-binoculars:before {\r\n  content: \"\\F1E5\"; }\r\n\r\n.fa-biohazard:before {\r\n  content: \"\\F780\"; }\r\n\r\n.fa-birthday-cake:before {\r\n  content: \"\\F1FD\"; }\r\n\r\n.fa-bitbucket:before {\r\n  content: \"\\F171\"; }\r\n\r\n.fa-bitcoin:before {\r\n  content: \"\\F379\"; }\r\n\r\n.fa-bity:before {\r\n  content: \"\\F37A\"; }\r\n\r\n.fa-black-tie:before {\r\n  content: \"\\F27E\"; }\r\n\r\n.fa-blackberry:before {\r\n  content: \"\\F37B\"; }\r\n\r\n.fa-blender:before {\r\n  content: \"\\F517\"; }\r\n\r\n.fa-blender-phone:before {\r\n  content: \"\\F6B6\"; }\r\n\r\n.fa-blind:before {\r\n  content: \"\\F29D\"; }\r\n\r\n.fa-blog:before {\r\n  content: \"\\F781\"; }\r\n\r\n.fa-blogger:before {\r\n  content: \"\\F37C\"; }\r\n\r\n.fa-blogger-b:before {\r\n  content: \"\\F37D\"; }\r\n\r\n.fa-bluetooth:before {\r\n  content: \"\\F293\"; }\r\n\r\n.fa-bluetooth-b:before {\r\n  content: \"\\F294\"; }\r\n\r\n.fa-bold:before {\r\n  content: \"\\F032\"; }\r\n\r\n.fa-bolt:before {\r\n  content: \"\\F0E7\"; }\r\n\r\n.fa-bomb:before {\r\n  content: \"\\F1E2\"; }\r\n\r\n.fa-bone:before {\r\n  content: \"\\F5D7\"; }\r\n\r\n.fa-bong:before {\r\n  content: \"\\F55C\"; }\r\n\r\n.fa-book:before {\r\n  content: \"\\F02D\"; }\r\n\r\n.fa-book-dead:before {\r\n  content: \"\\F6B7\"; }\r\n\r\n.fa-book-medical:before {\r\n  content: \"\\F7E6\"; }\r\n\r\n.fa-book-open:before {\r\n  content: \"\\F518\"; }\r\n\r\n.fa-book-reader:before {\r\n  content: \"\\F5DA\"; }\r\n\r\n.fa-bookmark:before {\r\n  content: \"\\F02E\"; }\r\n\r\n.fa-bootstrap:before {\r\n  content: \"\\F836\"; }\r\n\r\n.fa-border-all:before {\r\n  content: \"\\F84C\"; }\r\n\r\n.fa-border-none:before {\r\n  content: \"\\F850\"; }\r\n\r\n.fa-border-style:before {\r\n  content: \"\\F853\"; }\r\n\r\n.fa-bowling-ball:before {\r\n  content: \"\\F436\"; }\r\n\r\n.fa-box:before {\r\n  content: \"\\F466\"; }\r\n\r\n.fa-box-open:before {\r\n  content: \"\\F49E\"; }\r\n\r\n.fa-box-tissue:before {\r\n  content: \"\\F95B\"; }\r\n\r\n.fa-boxes:before {\r\n  content: \"\\F468\"; }\r\n\r\n.fa-braille:before {\r\n  content: \"\\F2A1\"; }\r\n\r\n.fa-brain:before {\r\n  content: \"\\F5DC\"; }\r\n\r\n.fa-bread-slice:before {\r\n  content: \"\\F7EC\"; }\r\n\r\n.fa-briefcase:before {\r\n  content: \"\\F0B1\"; }\r\n\r\n.fa-briefcase-medical:before {\r\n  content: \"\\F469\"; }\r\n\r\n.fa-broadcast-tower:before {\r\n  content: \"\\F519\"; }\r\n\r\n.fa-broom:before {\r\n  content: \"\\F51A\"; }\r\n\r\n.fa-brush:before {\r\n  content: \"\\F55D\"; }\r\n\r\n.fa-btc:before {\r\n  content: \"\\F15A\"; }\r\n\r\n.fa-buffer:before {\r\n  content: \"\\F837\"; }\r\n\r\n.fa-bug:before {\r\n  content: \"\\F188\"; }\r\n\r\n.fa-building:before {\r\n  content: \"\\F1AD\"; }\r\n\r\n.fa-bullhorn:before {\r\n  content: \"\\F0A1\"; }\r\n\r\n.fa-bullseye:before {\r\n  content: \"\\F140\"; }\r\n\r\n.fa-burn:before {\r\n  content: \"\\F46A\"; }\r\n\r\n.fa-buromobelexperte:before {\r\n  content: \"\\F37F\"; }\r\n\r\n.fa-bus:before {\r\n  content: \"\\F207\"; }\r\n\r\n.fa-bus-alt:before {\r\n  content: \"\\F55E\"; }\r\n\r\n.fa-business-time:before {\r\n  content: \"\\F64A\"; }\r\n\r\n.fa-buy-n-large:before {\r\n  content: \"\\F8A6\"; }\r\n\r\n.fa-buysellads:before {\r\n  content: \"\\F20D\"; }\r\n\r\n.fa-calculator:before {\r\n  content: \"\\F1EC\"; }\r\n\r\n.fa-calendar:before {\r\n  content: \"\\F133\"; }\r\n\r\n.fa-calendar-alt:before {\r\n  content: \"\\F073\"; }\r\n\r\n.fa-calendar-check:before {\r\n  content: \"\\F274\"; }\r\n\r\n.fa-calendar-day:before {\r\n  content: \"\\F783\"; }\r\n\r\n.fa-calendar-minus:before {\r\n  content: \"\\F272\"; }\r\n\r\n.fa-calendar-plus:before {\r\n  content: \"\\F271\"; }\r\n\r\n.fa-calendar-times:before {\r\n  content: \"\\F273\"; }\r\n\r\n.fa-calendar-week:before {\r\n  content: \"\\F784\"; }\r\n\r\n.fa-camera:before {\r\n  content: \"\\F030\"; }\r\n\r\n.fa-camera-retro:before {\r\n  content: \"\\F083\"; }\r\n\r\n.fa-campground:before {\r\n  content: \"\\F6BB\"; }\r\n\r\n.fa-canadian-maple-leaf:before {\r\n  content: \"\\F785\"; }\r\n\r\n.fa-candy-cane:before {\r\n  content: \"\\F786\"; }\r\n\r\n.fa-cannabis:before {\r\n  content: \"\\F55F\"; }\r\n\r\n.fa-capsules:before {\r\n  content: \"\\F46B\"; }\r\n\r\n.fa-car:before {\r\n  content: \"\\F1B9\"; }\r\n\r\n.fa-car-alt:before {\r\n  content: \"\\F5DE\"; }\r\n\r\n.fa-car-battery:before {\r\n  content: \"\\F5DF\"; }\r\n\r\n.fa-car-crash:before {\r\n  content: \"\\F5E1\"; }\r\n\r\n.fa-car-side:before {\r\n  content: \"\\F5E4\"; }\r\n\r\n.fa-caravan:before {\r\n  content: \"\\F8FF\"; }\r\n\r\n.fa-caret-down:before {\r\n  content: \"\\F0D7\"; }\r\n\r\n.fa-caret-left:before {\r\n  content: \"\\F0D9\"; }\r\n\r\n.fa-caret-right:before {\r\n  content: \"\\F0DA\"; }\r\n\r\n.fa-caret-square-down:before {\r\n  content: \"\\F150\"; }\r\n\r\n.fa-caret-square-left:before {\r\n  content: \"\\F191\"; }\r\n\r\n.fa-caret-square-right:before {\r\n  content: \"\\F152\"; }\r\n\r\n.fa-caret-square-up:before {\r\n  content: \"\\F151\"; }\r\n\r\n.fa-caret-up:before {\r\n  content: \"\\F0D8\"; }\r\n\r\n.fa-carrot:before {\r\n  content: \"\\F787\"; }\r\n\r\n.fa-cart-arrow-down:before {\r\n  content: \"\\F218\"; }\r\n\r\n.fa-cart-plus:before {\r\n  content: \"\\F217\"; }\r\n\r\n.fa-cash-register:before {\r\n  content: \"\\F788\"; }\r\n\r\n.fa-cat:before {\r\n  content: \"\\F6BE\"; }\r\n\r\n.fa-cc-amazon-pay:before {\r\n  content: \"\\F42D\"; }\r\n\r\n.fa-cc-amex:before {\r\n  content: \"\\F1F3\"; }\r\n\r\n.fa-cc-apple-pay:before {\r\n  content: \"\\F416\"; }\r\n\r\n.fa-cc-diners-club:before {\r\n  content: \"\\F24C\"; }\r\n\r\n.fa-cc-discover:before {\r\n  content: \"\\F1F2\"; }\r\n\r\n.fa-cc-jcb:before {\r\n  content: \"\\F24B\"; }\r\n\r\n.fa-cc-mastercard:before {\r\n  content: \"\\F1F1\"; }\r\n\r\n.fa-cc-paypal:before {\r\n  content: \"\\F1F4\"; }\r\n\r\n.fa-cc-stripe:before {\r\n  content: \"\\F1F5\"; }\r\n\r\n.fa-cc-visa:before {\r\n  content: \"\\F1F0\"; }\r\n\r\n.fa-centercode:before {\r\n  content: \"\\F380\"; }\r\n\r\n.fa-centos:before {\r\n  content: \"\\F789\"; }\r\n\r\n.fa-certificate:before {\r\n  content: \"\\F0A3\"; }\r\n\r\n.fa-chair:before {\r\n  content: \"\\F6C0\"; }\r\n\r\n.fa-chalkboard:before {\r\n  content: \"\\F51B\"; }\r\n\r\n.fa-chalkboard-teacher:before {\r\n  content: \"\\F51C\"; }\r\n\r\n.fa-charging-station:before {\r\n  content: \"\\F5E7\"; }\r\n\r\n.fa-chart-area:before {\r\n  content: \"\\F1FE\"; }\r\n\r\n.fa-chart-bar:before {\r\n  content: \"\\F080\"; }\r\n\r\n.fa-chart-line:before {\r\n  content: \"\\F201\"; }\r\n\r\n.fa-chart-pie:before {\r\n  content: \"\\F200\"; }\r\n\r\n.fa-check:before {\r\n  content: \"\\F00C\"; }\r\n\r\n.fa-check-circle:before {\r\n  content: \"\\F058\"; }\r\n\r\n.fa-check-double:before {\r\n  content: \"\\F560\"; }\r\n\r\n.fa-check-square:before {\r\n  content: \"\\F14A\"; }\r\n\r\n.fa-cheese:before {\r\n  content: \"\\F7EF\"; }\r\n\r\n.fa-chess:before {\r\n  content: \"\\F439\"; }\r\n\r\n.fa-chess-bishop:before {\r\n  content: \"\\F43A\"; }\r\n\r\n.fa-chess-board:before {\r\n  content: \"\\F43C\"; }\r\n\r\n.fa-chess-king:before {\r\n  content: \"\\F43F\"; }\r\n\r\n.fa-chess-knight:before {\r\n  content: \"\\F441\"; }\r\n\r\n.fa-chess-pawn:before {\r\n  content: \"\\F443\"; }\r\n\r\n.fa-chess-queen:before {\r\n  content: \"\\F445\"; }\r\n\r\n.fa-chess-rook:before {\r\n  content: \"\\F447\"; }\r\n\r\n.fa-chevron-circle-down:before {\r\n  content: \"\\F13A\"; }\r\n\r\n.fa-chevron-circle-left:before {\r\n  content: \"\\F137\"; }\r\n\r\n.fa-chevron-circle-right:before {\r\n  content: \"\\F138\"; }\r\n\r\n.fa-chevron-circle-up:before {\r\n  content: \"\\F139\"; }\r\n\r\n.fa-chevron-down:before {\r\n  content: \"\\F078\"; }\r\n\r\n.fa-chevron-left:before {\r\n  content: \"\\F053\"; }\r\n\r\n.fa-chevron-right:before {\r\n  content: \"\\F054\"; }\r\n\r\n.fa-chevron-up:before {\r\n  content: \"\\F077\"; }\r\n\r\n.fa-child:before {\r\n  content: \"\\F1AE\"; }\r\n\r\n.fa-chrome:before {\r\n  content: \"\\F268\"; }\r\n\r\n.fa-chromecast:before {\r\n  content: \"\\F838\"; }\r\n\r\n.fa-church:before {\r\n  content: \"\\F51D\"; }\r\n\r\n.fa-circle:before {\r\n  content: \"\\F111\"; }\r\n\r\n.fa-circle-notch:before {\r\n  content: \"\\F1CE\"; }\r\n\r\n.fa-city:before {\r\n  content: \"\\F64F\"; }\r\n\r\n.fa-clinic-medical:before {\r\n  content: \"\\F7F2\"; }\r\n\r\n.fa-clipboard:before {\r\n  content: \"\\F328\"; }\r\n\r\n.fa-clipboard-check:before {\r\n  content: \"\\F46C\"; }\r\n\r\n.fa-clipboard-list:before {\r\n  content: \"\\F46D\"; }\r\n\r\n.fa-clock:before {\r\n  content: \"\\F017\"; }\r\n\r\n.fa-clone:before {\r\n  content: \"\\F24D\"; }\r\n\r\n.fa-closed-captioning:before {\r\n  content: \"\\F20A\"; }\r\n\r\n.fa-cloud:before {\r\n  content: \"\\F0C2\"; }\r\n\r\n.fa-cloud-download-alt:before {\r\n  content: \"\\F381\"; }\r\n\r\n.fa-cloud-meatball:before {\r\n  content: \"\\F73B\"; }\r\n\r\n.fa-cloud-moon:before {\r\n  content: \"\\F6C3\"; }\r\n\r\n.fa-cloud-moon-rain:before {\r\n  content: \"\\F73C\"; }\r\n\r\n.fa-cloud-rain:before {\r\n  content: \"\\F73D\"; }\r\n\r\n.fa-cloud-showers-heavy:before {\r\n  content: \"\\F740\"; }\r\n\r\n.fa-cloud-sun:before {\r\n  content: \"\\F6C4\"; }\r\n\r\n.fa-cloud-sun-rain:before {\r\n  content: \"\\F743\"; }\r\n\r\n.fa-cloud-upload-alt:before {\r\n  content: \"\\F382\"; }\r\n\r\n.fa-cloudscale:before {\r\n  content: \"\\F383\"; }\r\n\r\n.fa-cloudsmith:before {\r\n  content: \"\\F384\"; }\r\n\r\n.fa-cloudversify:before {\r\n  content: \"\\F385\"; }\r\n\r\n.fa-cocktail:before {\r\n  content: \"\\F561\"; }\r\n\r\n.fa-code:before {\r\n  content: \"\\F121\"; }\r\n\r\n.fa-code-branch:before {\r\n  content: \"\\F126\"; }\r\n\r\n.fa-codepen:before {\r\n  content: \"\\F1CB\"; }\r\n\r\n.fa-codiepie:before {\r\n  content: \"\\F284\"; }\r\n\r\n.fa-coffee:before {\r\n  content: \"\\F0F4\"; }\r\n\r\n.fa-cog:before {\r\n  content: \"\\F013\"; }\r\n\r\n.fa-cogs:before {\r\n  content: \"\\F085\"; }\r\n\r\n.fa-coins:before {\r\n  content: \"\\F51E\"; }\r\n\r\n.fa-columns:before {\r\n  content: \"\\F0DB\"; }\r\n\r\n.fa-comment:before {\r\n  content: \"\\F075\"; }\r\n\r\n.fa-comment-alt:before {\r\n  content: \"\\F27A\"; }\r\n\r\n.fa-comment-dollar:before {\r\n  content: \"\\F651\"; }\r\n\r\n.fa-comment-dots:before {\r\n  content: \"\\F4AD\"; }\r\n\r\n.fa-comment-medical:before {\r\n  content: \"\\F7F5\"; }\r\n\r\n.fa-comment-slash:before {\r\n  content: \"\\F4B3\"; }\r\n\r\n.fa-comments:before {\r\n  content: \"\\F086\"; }\r\n\r\n.fa-comments-dollar:before {\r\n  content: \"\\F653\"; }\r\n\r\n.fa-compact-disc:before {\r\n  content: \"\\F51F\"; }\r\n\r\n.fa-compass:before {\r\n  content: \"\\F14E\"; }\r\n\r\n.fa-compress:before {\r\n  content: \"\\F066\"; }\r\n\r\n.fa-compress-alt:before {\r\n  content: \"\\F422\"; }\r\n\r\n.fa-compress-arrows-alt:before {\r\n  content: \"\\F78C\"; }\r\n\r\n.fa-concierge-bell:before {\r\n  content: \"\\F562\"; }\r\n\r\n.fa-confluence:before {\r\n  content: \"\\F78D\"; }\r\n\r\n.fa-connectdevelop:before {\r\n  content: \"\\F20E\"; }\r\n\r\n.fa-contao:before {\r\n  content: \"\\F26D\"; }\r\n\r\n.fa-cookie:before {\r\n  content: \"\\F563\"; }\r\n\r\n.fa-cookie-bite:before {\r\n  content: \"\\F564\"; }\r\n\r\n.fa-copy:before {\r\n  content: \"\\F0C5\"; }\r\n\r\n.fa-copyright:before {\r\n  content: \"\\F1F9\"; }\r\n\r\n.fa-cotton-bureau:before {\r\n  content: \"\\F89E\"; }\r\n\r\n.fa-couch:before {\r\n  content: \"\\F4B8\"; }\r\n\r\n.fa-cpanel:before {\r\n  content: \"\\F388\"; }\r\n\r\n.fa-creative-commons:before {\r\n  content: \"\\F25E\"; }\r\n\r\n.fa-creative-commons-by:before {\r\n  content: \"\\F4E7\"; }\r\n\r\n.fa-creative-commons-nc:before {\r\n  content: \"\\F4E8\"; }\r\n\r\n.fa-creative-commons-nc-eu:before {\r\n  content: \"\\F4E9\"; }\r\n\r\n.fa-creative-commons-nc-jp:before {\r\n  content: \"\\F4EA\"; }\r\n\r\n.fa-creative-commons-nd:before {\r\n  content: \"\\F4EB\"; }\r\n\r\n.fa-creative-commons-pd:before {\r\n  content: \"\\F4EC\"; }\r\n\r\n.fa-creative-commons-pd-alt:before {\r\n  content: \"\\F4ED\"; }\r\n\r\n.fa-creative-commons-remix:before {\r\n  content: \"\\F4EE\"; }\r\n\r\n.fa-creative-commons-sa:before {\r\n  content: \"\\F4EF\"; }\r\n\r\n.fa-creative-commons-sampling:before {\r\n  content: \"\\F4F0\"; }\r\n\r\n.fa-creative-commons-sampling-plus:before {\r\n  content: \"\\F4F1\"; }\r\n\r\n.fa-creative-commons-share:before {\r\n  content: \"\\F4F2\"; }\r\n\r\n.fa-creative-commons-zero:before {\r\n  content: \"\\F4F3\"; }\r\n\r\n.fa-credit-card:before {\r\n  content: \"\\F09D\"; }\r\n\r\n.fa-critical-role:before {\r\n  content: \"\\F6C9\"; }\r\n\r\n.fa-crop:before {\r\n  content: \"\\F125\"; }\r\n\r\n.fa-crop-alt:before {\r\n  content: \"\\F565\"; }\r\n\r\n.fa-cross:before {\r\n  content: \"\\F654\"; }\r\n\r\n.fa-crosshairs:before {\r\n  content: \"\\F05B\"; }\r\n\r\n.fa-crow:before {\r\n  content: \"\\F520\"; }\r\n\r\n.fa-crown:before {\r\n  content: \"\\F521\"; }\r\n\r\n.fa-crutch:before {\r\n  content: \"\\F7F7\"; }\r\n\r\n.fa-css3:before {\r\n  content: \"\\F13C\"; }\r\n\r\n.fa-css3-alt:before {\r\n  content: \"\\F38B\"; }\r\n\r\n.fa-cube:before {\r\n  content: \"\\F1B2\"; }\r\n\r\n.fa-cubes:before {\r\n  content: \"\\F1B3\"; }\r\n\r\n.fa-cut:before {\r\n  content: \"\\F0C4\"; }\r\n\r\n.fa-cuttlefish:before {\r\n  content: \"\\F38C\"; }\r\n\r\n.fa-d-and-d:before {\r\n  content: \"\\F38D\"; }\r\n\r\n.fa-d-and-d-beyond:before {\r\n  content: \"\\F6CA\"; }\r\n\r\n.fa-dailymotion:before {\r\n  content: \"\\F952\"; }\r\n\r\n.fa-dashcube:before {\r\n  content: \"\\F210\"; }\r\n\r\n.fa-database:before {\r\n  content: \"\\F1C0\"; }\r\n\r\n.fa-deaf:before {\r\n  content: \"\\F2A4\"; }\r\n\r\n.fa-delicious:before {\r\n  content: \"\\F1A5\"; }\r\n\r\n.fa-democrat:before {\r\n  content: \"\\F747\"; }\r\n\r\n.fa-deploydog:before {\r\n  content: \"\\F38E\"; }\r\n\r\n.fa-deskpro:before {\r\n  content: \"\\F38F\"; }\r\n\r\n.fa-desktop:before {\r\n  content: \"\\F108\"; }\r\n\r\n.fa-dev:before {\r\n  content: \"\\F6CC\"; }\r\n\r\n.fa-deviantart:before {\r\n  content: \"\\F1BD\"; }\r\n\r\n.fa-dharmachakra:before {\r\n  content: \"\\F655\"; }\r\n\r\n.fa-dhl:before {\r\n  content: \"\\F790\"; }\r\n\r\n.fa-diagnoses:before {\r\n  content: \"\\F470\"; }\r\n\r\n.fa-diaspora:before {\r\n  content: \"\\F791\"; }\r\n\r\n.fa-dice:before {\r\n  content: \"\\F522\"; }\r\n\r\n.fa-dice-d20:before {\r\n  content: \"\\F6CF\"; }\r\n\r\n.fa-dice-d6:before {\r\n  content: \"\\F6D1\"; }\r\n\r\n.fa-dice-five:before {\r\n  content: \"\\F523\"; }\r\n\r\n.fa-dice-four:before {\r\n  content: \"\\F524\"; }\r\n\r\n.fa-dice-one:before {\r\n  content: \"\\F525\"; }\r\n\r\n.fa-dice-six:before {\r\n  content: \"\\F526\"; }\r\n\r\n.fa-dice-three:before {\r\n  content: \"\\F527\"; }\r\n\r\n.fa-dice-two:before {\r\n  content: \"\\F528\"; }\r\n\r\n.fa-digg:before {\r\n  content: \"\\F1A6\"; }\r\n\r\n.fa-digital-ocean:before {\r\n  content: \"\\F391\"; }\r\n\r\n.fa-digital-tachograph:before {\r\n  content: \"\\F566\"; }\r\n\r\n.fa-directions:before {\r\n  content: \"\\F5EB\"; }\r\n\r\n.fa-discord:before {\r\n  content: \"\\F392\"; }\r\n\r\n.fa-discourse:before {\r\n  content: \"\\F393\"; }\r\n\r\n.fa-disease:before {\r\n  content: \"\\F7FA\"; }\r\n\r\n.fa-divide:before {\r\n  content: \"\\F529\"; }\r\n\r\n.fa-dizzy:before {\r\n  content: \"\\F567\"; }\r\n\r\n.fa-dna:before {\r\n  content: \"\\F471\"; }\r\n\r\n.fa-dochub:before {\r\n  content: \"\\F394\"; }\r\n\r\n.fa-docker:before {\r\n  content: \"\\F395\"; }\r\n\r\n.fa-dog:before {\r\n  content: \"\\F6D3\"; }\r\n\r\n.fa-dollar-sign:before {\r\n  content: \"\\F155\"; }\r\n\r\n.fa-dolly:before {\r\n  content: \"\\F472\"; }\r\n\r\n.fa-dolly-flatbed:before {\r\n  content: \"\\F474\"; }\r\n\r\n.fa-donate:before {\r\n  content: \"\\F4B9\"; }\r\n\r\n.fa-door-closed:before {\r\n  content: \"\\F52A\"; }\r\n\r\n.fa-door-open:before {\r\n  content: \"\\F52B\"; }\r\n\r\n.fa-dot-circle:before {\r\n  content: \"\\F192\"; }\r\n\r\n.fa-dove:before {\r\n  content: \"\\F4BA\"; }\r\n\r\n.fa-download:before {\r\n  content: \"\\F019\"; }\r\n\r\n.fa-draft2digital:before {\r\n  content: \"\\F396\"; }\r\n\r\n.fa-drafting-compass:before {\r\n  content: \"\\F568\"; }\r\n\r\n.fa-dragon:before {\r\n  content: \"\\F6D5\"; }\r\n\r\n.fa-draw-polygon:before {\r\n  content: \"\\F5EE\"; }\r\n\r\n.fa-dribbble:before {\r\n  content: \"\\F17D\"; }\r\n\r\n.fa-dribbble-square:before {\r\n  content: \"\\F397\"; }\r\n\r\n.fa-dropbox:before {\r\n  content: \"\\F16B\"; }\r\n\r\n.fa-drum:before {\r\n  content: \"\\F569\"; }\r\n\r\n.fa-drum-steelpan:before {\r\n  content: \"\\F56A\"; }\r\n\r\n.fa-drumstick-bite:before {\r\n  content: \"\\F6D7\"; }\r\n\r\n.fa-drupal:before {\r\n  content: \"\\F1A9\"; }\r\n\r\n.fa-dumbbell:before {\r\n  content: \"\\F44B\"; }\r\n\r\n.fa-dumpster:before {\r\n  content: \"\\F793\"; }\r\n\r\n.fa-dumpster-fire:before {\r\n  content: \"\\F794\"; }\r\n\r\n.fa-dungeon:before {\r\n  content: \"\\F6D9\"; }\r\n\r\n.fa-dyalog:before {\r\n  content: \"\\F399\"; }\r\n\r\n.fa-earlybirds:before {\r\n  content: \"\\F39A\"; }\r\n\r\n.fa-ebay:before {\r\n  content: \"\\F4F4\"; }\r\n\r\n.fa-edge:before {\r\n  content: \"\\F282\"; }\r\n\r\n.fa-edit:before {\r\n  content: \"\\F044\"; }\r\n\r\n.fa-egg:before {\r\n  content: \"\\F7FB\"; }\r\n\r\n.fa-eject:before {\r\n  content: \"\\F052\"; }\r\n\r\n.fa-elementor:before {\r\n  content: \"\\F430\"; }\r\n\r\n.fa-ellipsis-h:before {\r\n  content: \"\\F141\"; }\r\n\r\n.fa-ellipsis-v:before {\r\n  content: \"\\F142\"; }\r\n\r\n.fa-ello:before {\r\n  content: \"\\F5F1\"; }\r\n\r\n.fa-ember:before {\r\n  content: \"\\F423\"; }\r\n\r\n.fa-empire:before {\r\n  content: \"\\F1D1\"; }\r\n\r\n.fa-envelope:before {\r\n  content: \"\\F0E0\"; }\r\n\r\n.fa-envelope-open:before {\r\n  content: \"\\F2B6\"; }\r\n\r\n.fa-envelope-open-text:before {\r\n  content: \"\\F658\"; }\r\n\r\n.fa-envelope-square:before {\r\n  content: \"\\F199\"; }\r\n\r\n.fa-envira:before {\r\n  content: \"\\F299\"; }\r\n\r\n.fa-equals:before {\r\n  content: \"\\F52C\"; }\r\n\r\n.fa-eraser:before {\r\n  content: \"\\F12D\"; }\r\n\r\n.fa-erlang:before {\r\n  content: \"\\F39D\"; }\r\n\r\n.fa-ethereum:before {\r\n  content: \"\\F42E\"; }\r\n\r\n.fa-ethernet:before {\r\n  content: \"\\F796\"; }\r\n\r\n.fa-etsy:before {\r\n  content: \"\\F2D7\"; }\r\n\r\n.fa-euro-sign:before {\r\n  content: \"\\F153\"; }\r\n\r\n.fa-evernote:before {\r\n  content: \"\\F839\"; }\r\n\r\n.fa-exchange-alt:before {\r\n  content: \"\\F362\"; }\r\n\r\n.fa-exclamation:before {\r\n  content: \"\\F12A\"; }\r\n\r\n.fa-exclamation-circle:before {\r\n  content: \"\\F06A\"; }\r\n\r\n.fa-exclamation-triangle:before {\r\n  content: \"\\F071\"; }\r\n\r\n.fa-expand:before {\r\n  content: \"\\F065\"; }\r\n\r\n.fa-expand-alt:before {\r\n  content: \"\\F424\"; }\r\n\r\n.fa-expand-arrows-alt:before {\r\n  content: \"\\F31E\"; }\r\n\r\n.fa-expeditedssl:before {\r\n  content: \"\\F23E\"; }\r\n\r\n.fa-external-link-alt:before {\r\n  content: \"\\F35D\"; }\r\n\r\n.fa-external-link-square-alt:before {\r\n  content: \"\\F360\"; }\r\n\r\n.fa-eye:before {\r\n  content: \"\\F06E\"; }\r\n\r\n.fa-eye-dropper:before {\r\n  content: \"\\F1FB\"; }\r\n\r\n.fa-eye-slash:before {\r\n  content: \"\\F070\"; }\r\n\r\n.fa-facebook:before {\r\n  content: \"\\F09A\"; }\r\n\r\n.fa-facebook-f:before {\r\n  content: \"\\F39E\"; }\r\n\r\n.fa-facebook-messenger:before {\r\n  content: \"\\F39F\"; }\r\n\r\n.fa-facebook-square:before {\r\n  content: \"\\F082\"; }\r\n\r\n.fa-fan:before {\r\n  content: \"\\F863\"; }\r\n\r\n.fa-fantasy-flight-games:before {\r\n  content: \"\\F6DC\"; }\r\n\r\n.fa-fast-backward:before {\r\n  content: \"\\F049\"; }\r\n\r\n.fa-fast-forward:before {\r\n  content: \"\\F050\"; }\r\n\r\n.fa-faucet:before {\r\n  content: \"\\F905\"; }\r\n\r\n.fa-fax:before {\r\n  content: \"\\F1AC\"; }\r\n\r\n.fa-feather:before {\r\n  content: \"\\F52D\"; }\r\n\r\n.fa-feather-alt:before {\r\n  content: \"\\F56B\"; }\r\n\r\n.fa-fedex:before {\r\n  content: \"\\F797\"; }\r\n\r\n.fa-fedora:before {\r\n  content: \"\\F798\"; }\r\n\r\n.fa-female:before {\r\n  content: \"\\F182\"; }\r\n\r\n.fa-fighter-jet:before {\r\n  content: \"\\F0FB\"; }\r\n\r\n.fa-figma:before {\r\n  content: \"\\F799\"; }\r\n\r\n.fa-file:before {\r\n  content: \"\\F15B\"; }\r\n\r\n.fa-file-alt:before {\r\n  content: \"\\F15C\"; }\r\n\r\n.fa-file-archive:before {\r\n  content: \"\\F1C6\"; }\r\n\r\n.fa-file-audio:before {\r\n  content: \"\\F1C7\"; }\r\n\r\n.fa-file-code:before {\r\n  content: \"\\F1C9\"; }\r\n\r\n.fa-file-contract:before {\r\n  content: \"\\F56C\"; }\r\n\r\n.fa-file-csv:before {\r\n  content: \"\\F6DD\"; }\r\n\r\n.fa-file-download:before {\r\n  content: \"\\F56D\"; }\r\n\r\n.fa-file-excel:before {\r\n  content: \"\\F1C3\"; }\r\n\r\n.fa-file-export:before {\r\n  content: \"\\F56E\"; }\r\n\r\n.fa-file-image:before {\r\n  content: \"\\F1C5\"; }\r\n\r\n.fa-file-import:before {\r\n  content: \"\\F56F\"; }\r\n\r\n.fa-file-invoice:before {\r\n  content: \"\\F570\"; }\r\n\r\n.fa-file-invoice-dollar:before {\r\n  content: \"\\F571\"; }\r\n\r\n.fa-file-medical:before {\r\n  content: \"\\F477\"; }\r\n\r\n.fa-file-medical-alt:before {\r\n  content: \"\\F478\"; }\r\n\r\n.fa-file-pdf:before {\r\n  content: \"\\F1C1\"; }\r\n\r\n.fa-file-powerpoint:before {\r\n  content: \"\\F1C4\"; }\r\n\r\n.fa-file-prescription:before {\r\n  content: \"\\F572\"; }\r\n\r\n.fa-file-signature:before {\r\n  content: \"\\F573\"; }\r\n\r\n.fa-file-upload:before {\r\n  content: \"\\F574\"; }\r\n\r\n.fa-file-video:before {\r\n  content: \"\\F1C8\"; }\r\n\r\n.fa-file-word:before {\r\n  content: \"\\F1C2\"; }\r\n\r\n.fa-fill:before {\r\n  content: \"\\F575\"; }\r\n\r\n.fa-fill-drip:before {\r\n  content: \"\\F576\"; }\r\n\r\n.fa-film:before {\r\n  content: \"\\F008\"; }\r\n\r\n.fa-filter:before {\r\n  content: \"\\F0B0\"; }\r\n\r\n.fa-fingerprint:before {\r\n  content: \"\\F577\"; }\r\n\r\n.fa-fire:before {\r\n  content: \"\\F06D\"; }\r\n\r\n.fa-fire-alt:before {\r\n  content: \"\\F7E4\"; }\r\n\r\n.fa-fire-extinguisher:before {\r\n  content: \"\\F134\"; }\r\n\r\n.fa-firefox:before {\r\n  content: \"\\F269\"; }\r\n\r\n.fa-firefox-browser:before {\r\n  content: \"\\F907\"; }\r\n\r\n.fa-first-aid:before {\r\n  content: \"\\F479\"; }\r\n\r\n.fa-first-order:before {\r\n  content: \"\\F2B0\"; }\r\n\r\n.fa-first-order-alt:before {\r\n  content: \"\\F50A\"; }\r\n\r\n.fa-firstdraft:before {\r\n  content: \"\\F3A1\"; }\r\n\r\n.fa-fish:before {\r\n  content: \"\\F578\"; }\r\n\r\n.fa-fist-raised:before {\r\n  content: \"\\F6DE\"; }\r\n\r\n.fa-flag:before {\r\n  content: \"\\F024\"; }\r\n\r\n.fa-flag-checkered:before {\r\n  content: \"\\F11E\"; }\r\n\r\n.fa-flag-usa:before {\r\n  content: \"\\F74D\"; }\r\n\r\n.fa-flask:before {\r\n  content: \"\\F0C3\"; }\r\n\r\n.fa-flickr:before {\r\n  content: \"\\F16E\"; }\r\n\r\n.fa-flipboard:before {\r\n  content: \"\\F44D\"; }\r\n\r\n.fa-flushed:before {\r\n  content: \"\\F579\"; }\r\n\r\n.fa-fly:before {\r\n  content: \"\\F417\"; }\r\n\r\n.fa-folder:before {\r\n  content: \"\\F07B\"; }\r\n\r\n.fa-folder-minus:before {\r\n  content: \"\\F65D\"; }\r\n\r\n.fa-folder-open:before {\r\n  content: \"\\F07C\"; }\r\n\r\n.fa-folder-plus:before {\r\n  content: \"\\F65E\"; }\r\n\r\n.fa-font:before {\r\n  content: \"\\F031\"; }\r\n\r\n.fa-font-awesome:before {\r\n  content: \"\\F2B4\"; }\r\n\r\n.fa-font-awesome-alt:before {\r\n  content: \"\\F35C\"; }\r\n\r\n.fa-font-awesome-flag:before {\r\n  content: \"\\F425\"; }\r\n\r\n.fa-font-awesome-logo-full:before {\r\n  content: \"\\F4E6\"; }\r\n\r\n.fa-fonticons:before {\r\n  content: \"\\F280\"; }\r\n\r\n.fa-fonticons-fi:before {\r\n  content: \"\\F3A2\"; }\r\n\r\n.fa-football-ball:before {\r\n  content: \"\\F44E\"; }\r\n\r\n.fa-fort-awesome:before {\r\n  content: \"\\F286\"; }\r\n\r\n.fa-fort-awesome-alt:before {\r\n  content: \"\\F3A3\"; }\r\n\r\n.fa-forumbee:before {\r\n  content: \"\\F211\"; }\r\n\r\n.fa-forward:before {\r\n  content: \"\\F04E\"; }\r\n\r\n.fa-foursquare:before {\r\n  content: \"\\F180\"; }\r\n\r\n.fa-free-code-camp:before {\r\n  content: \"\\F2C5\"; }\r\n\r\n.fa-freebsd:before {\r\n  content: \"\\F3A4\"; }\r\n\r\n.fa-frog:before {\r\n  content: \"\\F52E\"; }\r\n\r\n.fa-frown:before {\r\n  content: \"\\F119\"; }\r\n\r\n.fa-frown-open:before {\r\n  content: \"\\F57A\"; }\r\n\r\n.fa-fulcrum:before {\r\n  content: \"\\F50B\"; }\r\n\r\n.fa-funnel-dollar:before {\r\n  content: \"\\F662\"; }\r\n\r\n.fa-futbol:before {\r\n  content: \"\\F1E3\"; }\r\n\r\n.fa-galactic-republic:before {\r\n  content: \"\\F50C\"; }\r\n\r\n.fa-galactic-senate:before {\r\n  content: \"\\F50D\"; }\r\n\r\n.fa-gamepad:before {\r\n  content: \"\\F11B\"; }\r\n\r\n.fa-gas-pump:before {\r\n  content: \"\\F52F\"; }\r\n\r\n.fa-gavel:before {\r\n  content: \"\\F0E3\"; }\r\n\r\n.fa-gem:before {\r\n  content: \"\\F3A5\"; }\r\n\r\n.fa-genderless:before {\r\n  content: \"\\F22D\"; }\r\n\r\n.fa-get-pocket:before {\r\n  content: \"\\F265\"; }\r\n\r\n.fa-gg:before {\r\n  content: \"\\F260\"; }\r\n\r\n.fa-gg-circle:before {\r\n  content: \"\\F261\"; }\r\n\r\n.fa-ghost:before {\r\n  content: \"\\F6E2\"; }\r\n\r\n.fa-gift:before {\r\n  content: \"\\F06B\"; }\r\n\r\n.fa-gifts:before {\r\n  content: \"\\F79C\"; }\r\n\r\n.fa-git:before {\r\n  content: \"\\F1D3\"; }\r\n\r\n.fa-git-alt:before {\r\n  content: \"\\F841\"; }\r\n\r\n.fa-git-square:before {\r\n  content: \"\\F1D2\"; }\r\n\r\n.fa-github:before {\r\n  content: \"\\F09B\"; }\r\n\r\n.fa-github-alt:before {\r\n  content: \"\\F113\"; }\r\n\r\n.fa-github-square:before {\r\n  content: \"\\F092\"; }\r\n\r\n.fa-gitkraken:before {\r\n  content: \"\\F3A6\"; }\r\n\r\n.fa-gitlab:before {\r\n  content: \"\\F296\"; }\r\n\r\n.fa-gitter:before {\r\n  content: \"\\F426\"; }\r\n\r\n.fa-glass-cheers:before {\r\n  content: \"\\F79F\"; }\r\n\r\n.fa-glass-martini:before {\r\n  content: \"\\F000\"; }\r\n\r\n.fa-glass-martini-alt:before {\r\n  content: \"\\F57B\"; }\r\n\r\n.fa-glass-whiskey:before {\r\n  content: \"\\F7A0\"; }\r\n\r\n.fa-glasses:before {\r\n  content: \"\\F530\"; }\r\n\r\n.fa-glide:before {\r\n  content: \"\\F2A5\"; }\r\n\r\n.fa-glide-g:before {\r\n  content: \"\\F2A6\"; }\r\n\r\n.fa-globe:before {\r\n  content: \"\\F0AC\"; }\r\n\r\n.fa-globe-africa:before {\r\n  content: \"\\F57C\"; }\r\n\r\n.fa-globe-americas:before {\r\n  content: \"\\F57D\"; }\r\n\r\n.fa-globe-asia:before {\r\n  content: \"\\F57E\"; }\r\n\r\n.fa-globe-europe:before {\r\n  content: \"\\F7A2\"; }\r\n\r\n.fa-gofore:before {\r\n  content: \"\\F3A7\"; }\r\n\r\n.fa-golf-ball:before {\r\n  content: \"\\F450\"; }\r\n\r\n.fa-goodreads:before {\r\n  content: \"\\F3A8\"; }\r\n\r\n.fa-goodreads-g:before {\r\n  content: \"\\F3A9\"; }\r\n\r\n.fa-google:before {\r\n  content: \"\\F1A0\"; }\r\n\r\n.fa-google-drive:before {\r\n  content: \"\\F3AA\"; }\r\n\r\n.fa-google-play:before {\r\n  content: \"\\F3AB\"; }\r\n\r\n.fa-google-plus:before {\r\n  content: \"\\F2B3\"; }\r\n\r\n.fa-google-plus-g:before {\r\n  content: \"\\F0D5\"; }\r\n\r\n.fa-google-plus-square:before {\r\n  content: \"\\F0D4\"; }\r\n\r\n.fa-google-wallet:before {\r\n  content: \"\\F1EE\"; }\r\n\r\n.fa-gopuram:before {\r\n  content: \"\\F664\"; }\r\n\r\n.fa-graduation-cap:before {\r\n  content: \"\\F19D\"; }\r\n\r\n.fa-gratipay:before {\r\n  content: \"\\F184\"; }\r\n\r\n.fa-grav:before {\r\n  content: \"\\F2D6\"; }\r\n\r\n.fa-greater-than:before {\r\n  content: \"\\F531\"; }\r\n\r\n.fa-greater-than-equal:before {\r\n  content: \"\\F532\"; }\r\n\r\n.fa-grimace:before {\r\n  content: \"\\F57F\"; }\r\n\r\n.fa-grin:before {\r\n  content: \"\\F580\"; }\r\n\r\n.fa-grin-alt:before {\r\n  content: \"\\F581\"; }\r\n\r\n.fa-grin-beam:before {\r\n  content: \"\\F582\"; }\r\n\r\n.fa-grin-beam-sweat:before {\r\n  content: \"\\F583\"; }\r\n\r\n.fa-grin-hearts:before {\r\n  content: \"\\F584\"; }\r\n\r\n.fa-grin-squint:before {\r\n  content: \"\\F585\"; }\r\n\r\n.fa-grin-squint-tears:before {\r\n  content: \"\\F586\"; }\r\n\r\n.fa-grin-stars:before {\r\n  content: \"\\F587\"; }\r\n\r\n.fa-grin-tears:before {\r\n  content: \"\\F588\"; }\r\n\r\n.fa-grin-tongue:before {\r\n  content: \"\\F589\"; }\r\n\r\n.fa-grin-tongue-squint:before {\r\n  content: \"\\F58A\"; }\r\n\r\n.fa-grin-tongue-wink:before {\r\n  content: \"\\F58B\"; }\r\n\r\n.fa-grin-wink:before {\r\n  content: \"\\F58C\"; }\r\n\r\n.fa-grip-horizontal:before {\r\n  content: \"\\F58D\"; }\r\n\r\n.fa-grip-lines:before {\r\n  content: \"\\F7A4\"; }\r\n\r\n.fa-grip-lines-vertical:before {\r\n  content: \"\\F7A5\"; }\r\n\r\n.fa-grip-vertical:before {\r\n  content: \"\\F58E\"; }\r\n\r\n.fa-gripfire:before {\r\n  content: \"\\F3AC\"; }\r\n\r\n.fa-grunt:before {\r\n  content: \"\\F3AD\"; }\r\n\r\n.fa-guitar:before {\r\n  content: \"\\F7A6\"; }\r\n\r\n.fa-gulp:before {\r\n  content: \"\\F3AE\"; }\r\n\r\n.fa-h-square:before {\r\n  content: \"\\F0FD\"; }\r\n\r\n.fa-hacker-news:before {\r\n  content: \"\\F1D4\"; }\r\n\r\n.fa-hacker-news-square:before {\r\n  content: \"\\F3AF\"; }\r\n\r\n.fa-hackerrank:before {\r\n  content: \"\\F5F7\"; }\r\n\r\n.fa-hamburger:before {\r\n  content: \"\\F805\"; }\r\n\r\n.fa-hammer:before {\r\n  content: \"\\F6E3\"; }\r\n\r\n.fa-hamsa:before {\r\n  content: \"\\F665\"; }\r\n\r\n.fa-hand-holding:before {\r\n  content: \"\\F4BD\"; }\r\n\r\n.fa-hand-holding-heart:before {\r\n  content: \"\\F4BE\"; }\r\n\r\n.fa-hand-holding-medical:before {\r\n  content: \"\\F95C\"; }\r\n\r\n.fa-hand-holding-usd:before {\r\n  content: \"\\F4C0\"; }\r\n\r\n.fa-hand-holding-water:before {\r\n  content: \"\\F4C1\"; }\r\n\r\n.fa-hand-lizard:before {\r\n  content: \"\\F258\"; }\r\n\r\n.fa-hand-middle-finger:before {\r\n  content: \"\\F806\"; }\r\n\r\n.fa-hand-paper:before {\r\n  content: \"\\F256\"; }\r\n\r\n.fa-hand-peace:before {\r\n  content: \"\\F25B\"; }\r\n\r\n.fa-hand-point-down:before {\r\n  content: \"\\F0A7\"; }\r\n\r\n.fa-hand-point-left:before {\r\n  content: \"\\F0A5\"; }\r\n\r\n.fa-hand-point-right:before {\r\n  content: \"\\F0A4\"; }\r\n\r\n.fa-hand-point-up:before {\r\n  content: \"\\F0A6\"; }\r\n\r\n.fa-hand-pointer:before {\r\n  content: \"\\F25A\"; }\r\n\r\n.fa-hand-rock:before {\r\n  content: \"\\F255\"; }\r\n\r\n.fa-hand-scissors:before {\r\n  content: \"\\F257\"; }\r\n\r\n.fa-hand-sparkles:before {\r\n  content: \"\\F95D\"; }\r\n\r\n.fa-hand-spock:before {\r\n  content: \"\\F259\"; }\r\n\r\n.fa-hands:before {\r\n  content: \"\\F4C2\"; }\r\n\r\n.fa-hands-helping:before {\r\n  content: \"\\F4C4\"; }\r\n\r\n.fa-hands-wash:before {\r\n  content: \"\\F95E\"; }\r\n\r\n.fa-handshake:before {\r\n  content: \"\\F2B5\"; }\r\n\r\n.fa-handshake-alt-slash:before {\r\n  content: \"\\F95F\"; }\r\n\r\n.fa-handshake-slash:before {\r\n  content: \"\\F960\"; }\r\n\r\n.fa-hanukiah:before {\r\n  content: \"\\F6E6\"; }\r\n\r\n.fa-hard-hat:before {\r\n  content: \"\\F807\"; }\r\n\r\n.fa-hashtag:before {\r\n  content: \"\\F292\"; }\r\n\r\n.fa-hat-cowboy:before {\r\n  content: \"\\F8C0\"; }\r\n\r\n.fa-hat-cowboy-side:before {\r\n  content: \"\\F8C1\"; }\r\n\r\n.fa-hat-wizard:before {\r\n  content: \"\\F6E8\"; }\r\n\r\n.fa-hdd:before {\r\n  content: \"\\F0A0\"; }\r\n\r\n.fa-head-side-cough:before {\r\n  content: \"\\F961\"; }\r\n\r\n.fa-head-side-cough-slash:before {\r\n  content: \"\\F962\"; }\r\n\r\n.fa-head-side-mask:before {\r\n  content: \"\\F963\"; }\r\n\r\n.fa-head-side-virus:before {\r\n  content: \"\\F964\"; }\r\n\r\n.fa-heading:before {\r\n  content: \"\\F1DC\"; }\r\n\r\n.fa-headphones:before {\r\n  content: \"\\F025\"; }\r\n\r\n.fa-headphones-alt:before {\r\n  content: \"\\F58F\"; }\r\n\r\n.fa-headset:before {\r\n  content: \"\\F590\"; }\r\n\r\n.fa-heart:before {\r\n  content: \"\\F004\"; }\r\n\r\n.fa-heart-broken:before {\r\n  content: \"\\F7A9\"; }\r\n\r\n.fa-heartbeat:before {\r\n  content: \"\\F21E\"; }\r\n\r\n.fa-helicopter:before {\r\n  content: \"\\F533\"; }\r\n\r\n.fa-highlighter:before {\r\n  content: \"\\F591\"; }\r\n\r\n.fa-hiking:before {\r\n  content: \"\\F6EC\"; }\r\n\r\n.fa-hippo:before {\r\n  content: \"\\F6ED\"; }\r\n\r\n.fa-hips:before {\r\n  content: \"\\F452\"; }\r\n\r\n.fa-hire-a-helper:before {\r\n  content: \"\\F3B0\"; }\r\n\r\n.fa-history:before {\r\n  content: \"\\F1DA\"; }\r\n\r\n.fa-hockey-puck:before {\r\n  content: \"\\F453\"; }\r\n\r\n.fa-holly-berry:before {\r\n  content: \"\\F7AA\"; }\r\n\r\n.fa-home:before {\r\n  content: \"\\F015\"; }\r\n\r\n.fa-hooli:before {\r\n  content: \"\\F427\"; }\r\n\r\n.fa-hornbill:before {\r\n  content: \"\\F592\"; }\r\n\r\n.fa-horse:before {\r\n  content: \"\\F6F0\"; }\r\n\r\n.fa-horse-head:before {\r\n  content: \"\\F7AB\"; }\r\n\r\n.fa-hospital:before {\r\n  content: \"\\F0F8\"; }\r\n\r\n.fa-hospital-alt:before {\r\n  content: \"\\F47D\"; }\r\n\r\n.fa-hospital-symbol:before {\r\n  content: \"\\F47E\"; }\r\n\r\n.fa-hospital-user:before {\r\n  content: \"\\F80D\"; }\r\n\r\n.fa-hot-tub:before {\r\n  content: \"\\F593\"; }\r\n\r\n.fa-hotdog:before {\r\n  content: \"\\F80F\"; }\r\n\r\n.fa-hotel:before {\r\n  content: \"\\F594\"; }\r\n\r\n.fa-hotjar:before {\r\n  content: \"\\F3B1\"; }\r\n\r\n.fa-hourglass:before {\r\n  content: \"\\F254\"; }\r\n\r\n.fa-hourglass-end:before {\r\n  content: \"\\F253\"; }\r\n\r\n.fa-hourglass-half:before {\r\n  content: \"\\F252\"; }\r\n\r\n.fa-hourglass-start:before {\r\n  content: \"\\F251\"; }\r\n\r\n.fa-house-damage:before {\r\n  content: \"\\F6F1\"; }\r\n\r\n.fa-house-user:before {\r\n  content: \"\\F965\"; }\r\n\r\n.fa-houzz:before {\r\n  content: \"\\F27C\"; }\r\n\r\n.fa-hryvnia:before {\r\n  content: \"\\F6F2\"; }\r\n\r\n.fa-html5:before {\r\n  content: \"\\F13B\"; }\r\n\r\n.fa-hubspot:before {\r\n  content: \"\\F3B2\"; }\r\n\r\n.fa-i-cursor:before {\r\n  content: \"\\F246\"; }\r\n\r\n.fa-ice-cream:before {\r\n  content: \"\\F810\"; }\r\n\r\n.fa-icicles:before {\r\n  content: \"\\F7AD\"; }\r\n\r\n.fa-icons:before {\r\n  content: \"\\F86D\"; }\r\n\r\n.fa-id-badge:before {\r\n  content: \"\\F2C1\"; }\r\n\r\n.fa-id-card:before {\r\n  content: \"\\F2C2\"; }\r\n\r\n.fa-id-card-alt:before {\r\n  content: \"\\F47F\"; }\r\n\r\n.fa-ideal:before {\r\n  content: \"\\F913\"; }\r\n\r\n.fa-igloo:before {\r\n  content: \"\\F7AE\"; }\r\n\r\n.fa-image:before {\r\n  content: \"\\F03E\"; }\r\n\r\n.fa-images:before {\r\n  content: \"\\F302\"; }\r\n\r\n.fa-imdb:before {\r\n  content: \"\\F2D8\"; }\r\n\r\n.fa-inbox:before {\r\n  content: \"\\F01C\"; }\r\n\r\n.fa-indent:before {\r\n  content: \"\\F03C\"; }\r\n\r\n.fa-industry:before {\r\n  content: \"\\F275\"; }\r\n\r\n.fa-infinity:before {\r\n  content: \"\\F534\"; }\r\n\r\n.fa-info:before {\r\n  content: \"\\F129\"; }\r\n\r\n.fa-info-circle:before {\r\n  content: \"\\F05A\"; }\r\n\r\n.fa-instagram:before {\r\n  content: \"\\F16D\"; }\r\n\r\n.fa-instagram-square:before {\r\n  content: \"\\F955\"; }\r\n\r\n.fa-intercom:before {\r\n  content: \"\\F7AF\"; }\r\n\r\n.fa-internet-explorer:before {\r\n  content: \"\\F26B\"; }\r\n\r\n.fa-invision:before {\r\n  content: \"\\F7B0\"; }\r\n\r\n.fa-ioxhost:before {\r\n  content: \"\\F208\"; }\r\n\r\n.fa-italic:before {\r\n  content: \"\\F033\"; }\r\n\r\n.fa-itch-io:before {\r\n  content: \"\\F83A\"; }\r\n\r\n.fa-itunes:before {\r\n  content: \"\\F3B4\"; }\r\n\r\n.fa-itunes-note:before {\r\n  content: \"\\F3B5\"; }\r\n\r\n.fa-java:before {\r\n  content: \"\\F4E4\"; }\r\n\r\n.fa-jedi:before {\r\n  content: \"\\F669\"; }\r\n\r\n.fa-jedi-order:before {\r\n  content: \"\\F50E\"; }\r\n\r\n.fa-jenkins:before {\r\n  content: \"\\F3B6\"; }\r\n\r\n.fa-jira:before {\r\n  content: \"\\F7B1\"; }\r\n\r\n.fa-joget:before {\r\n  content: \"\\F3B7\"; }\r\n\r\n.fa-joint:before {\r\n  content: \"\\F595\"; }\r\n\r\n.fa-joomla:before {\r\n  content: \"\\F1AA\"; }\r\n\r\n.fa-journal-whills:before {\r\n  content: \"\\F66A\"; }\r\n\r\n.fa-js:before {\r\n  content: \"\\F3B8\"; }\r\n\r\n.fa-js-square:before {\r\n  content: \"\\F3B9\"; }\r\n\r\n.fa-jsfiddle:before {\r\n  content: \"\\F1CC\"; }\r\n\r\n.fa-kaaba:before {\r\n  content: \"\\F66B\"; }\r\n\r\n.fa-kaggle:before {\r\n  content: \"\\F5FA\"; }\r\n\r\n.fa-key:before {\r\n  content: \"\\F084\"; }\r\n\r\n.fa-keybase:before {\r\n  content: \"\\F4F5\"; }\r\n\r\n.fa-keyboard:before {\r\n  content: \"\\F11C\"; }\r\n\r\n.fa-keycdn:before {\r\n  content: \"\\F3BA\"; }\r\n\r\n.fa-khanda:before {\r\n  content: \"\\F66D\"; }\r\n\r\n.fa-kickstarter:before {\r\n  content: \"\\F3BB\"; }\r\n\r\n.fa-kickstarter-k:before {\r\n  content: \"\\F3BC\"; }\r\n\r\n.fa-kiss:before {\r\n  content: \"\\F596\"; }\r\n\r\n.fa-kiss-beam:before {\r\n  content: \"\\F597\"; }\r\n\r\n.fa-kiss-wink-heart:before {\r\n  content: \"\\F598\"; }\r\n\r\n.fa-kiwi-bird:before {\r\n  content: \"\\F535\"; }\r\n\r\n.fa-korvue:before {\r\n  content: \"\\F42F\"; }\r\n\r\n.fa-landmark:before {\r\n  content: \"\\F66F\"; }\r\n\r\n.fa-language:before {\r\n  content: \"\\F1AB\"; }\r\n\r\n.fa-laptop:before {\r\n  content: \"\\F109\"; }\r\n\r\n.fa-laptop-code:before {\r\n  content: \"\\F5FC\"; }\r\n\r\n.fa-laptop-house:before {\r\n  content: \"\\F966\"; }\r\n\r\n.fa-laptop-medical:before {\r\n  content: \"\\F812\"; }\r\n\r\n.fa-laravel:before {\r\n  content: \"\\F3BD\"; }\r\n\r\n.fa-lastfm:before {\r\n  content: \"\\F202\"; }\r\n\r\n.fa-lastfm-square:before {\r\n  content: \"\\F203\"; }\r\n\r\n.fa-laugh:before {\r\n  content: \"\\F599\"; }\r\n\r\n.fa-laugh-beam:before {\r\n  content: \"\\F59A\"; }\r\n\r\n.fa-laugh-squint:before {\r\n  content: \"\\F59B\"; }\r\n\r\n.fa-laugh-wink:before {\r\n  content: \"\\F59C\"; }\r\n\r\n.fa-layer-group:before {\r\n  content: \"\\F5FD\"; }\r\n\r\n.fa-leaf:before {\r\n  content: \"\\F06C\"; }\r\n\r\n.fa-leanpub:before {\r\n  content: \"\\F212\"; }\r\n\r\n.fa-lemon:before {\r\n  content: \"\\F094\"; }\r\n\r\n.fa-less:before {\r\n  content: \"\\F41D\"; }\r\n\r\n.fa-less-than:before {\r\n  content: \"\\F536\"; }\r\n\r\n.fa-less-than-equal:before {\r\n  content: \"\\F537\"; }\r\n\r\n.fa-level-down-alt:before {\r\n  content: \"\\F3BE\"; }\r\n\r\n.fa-level-up-alt:before {\r\n  content: \"\\F3BF\"; }\r\n\r\n.fa-life-ring:before {\r\n  content: \"\\F1CD\"; }\r\n\r\n.fa-lightbulb:before {\r\n  content: \"\\F0EB\"; }\r\n\r\n.fa-line:before {\r\n  content: \"\\F3C0\"; }\r\n\r\n.fa-link:before {\r\n  content: \"\\F0C1\"; }\r\n\r\n.fa-linkedin:before {\r\n  content: \"\\F08C\"; }\r\n\r\n.fa-linkedin-in:before {\r\n  content: \"\\F0E1\"; }\r\n\r\n.fa-linode:before {\r\n  content: \"\\F2B8\"; }\r\n\r\n.fa-linux:before {\r\n  content: \"\\F17C\"; }\r\n\r\n.fa-lira-sign:before {\r\n  content: \"\\F195\"; }\r\n\r\n.fa-list:before {\r\n  content: \"\\F03A\"; }\r\n\r\n.fa-list-alt:before {\r\n  content: \"\\F022\"; }\r\n\r\n.fa-list-ol:before {\r\n  content: \"\\F0CB\"; }\r\n\r\n.fa-list-ul:before {\r\n  content: \"\\F0CA\"; }\r\n\r\n.fa-location-arrow:before {\r\n  content: \"\\F124\"; }\r\n\r\n.fa-lock:before {\r\n  content: \"\\F023\"; }\r\n\r\n.fa-lock-open:before {\r\n  content: \"\\F3C1\"; }\r\n\r\n.fa-long-arrow-alt-down:before {\r\n  content: \"\\F309\"; }\r\n\r\n.fa-long-arrow-alt-left:before {\r\n  content: \"\\F30A\"; }\r\n\r\n.fa-long-arrow-alt-right:before {\r\n  content: \"\\F30B\"; }\r\n\r\n.fa-long-arrow-alt-up:before {\r\n  content: \"\\F30C\"; }\r\n\r\n.fa-low-vision:before {\r\n  content: \"\\F2A8\"; }\r\n\r\n.fa-luggage-cart:before {\r\n  content: \"\\F59D\"; }\r\n\r\n.fa-lungs:before {\r\n  content: \"\\F604\"; }\r\n\r\n.fa-lungs-virus:before {\r\n  content: \"\\F967\"; }\r\n\r\n.fa-lyft:before {\r\n  content: \"\\F3C3\"; }\r\n\r\n.fa-magento:before {\r\n  content: \"\\F3C4\"; }\r\n\r\n.fa-magic:before {\r\n  content: \"\\F0D0\"; }\r\n\r\n.fa-magnet:before {\r\n  content: \"\\F076\"; }\r\n\r\n.fa-mail-bulk:before {\r\n  content: \"\\F674\"; }\r\n\r\n.fa-mailchimp:before {\r\n  content: \"\\F59E\"; }\r\n\r\n.fa-male:before {\r\n  content: \"\\F183\"; }\r\n\r\n.fa-mandalorian:before {\r\n  content: \"\\F50F\"; }\r\n\r\n.fa-map:before {\r\n  content: \"\\F279\"; }\r\n\r\n.fa-map-marked:before {\r\n  content: \"\\F59F\"; }\r\n\r\n.fa-map-marked-alt:before {\r\n  content: \"\\F5A0\"; }\r\n\r\n.fa-map-marker:before {\r\n  content: \"\\F041\"; }\r\n\r\n.fa-map-marker-alt:before {\r\n  content: \"\\F3C5\"; }\r\n\r\n.fa-map-pin:before {\r\n  content: \"\\F276\"; }\r\n\r\n.fa-map-signs:before {\r\n  content: \"\\F277\"; }\r\n\r\n.fa-markdown:before {\r\n  content: \"\\F60F\"; }\r\n\r\n.fa-marker:before {\r\n  content: \"\\F5A1\"; }\r\n\r\n.fa-mars:before {\r\n  content: \"\\F222\"; }\r\n\r\n.fa-mars-double:before {\r\n  content: \"\\F227\"; }\r\n\r\n.fa-mars-stroke:before {\r\n  content: \"\\F229\"; }\r\n\r\n.fa-mars-stroke-h:before {\r\n  content: \"\\F22B\"; }\r\n\r\n.fa-mars-stroke-v:before {\r\n  content: \"\\F22A\"; }\r\n\r\n.fa-mask:before {\r\n  content: \"\\F6FA\"; }\r\n\r\n.fa-mastodon:before {\r\n  content: \"\\F4F6\"; }\r\n\r\n.fa-maxcdn:before {\r\n  content: \"\\F136\"; }\r\n\r\n.fa-mdb:before {\r\n  content: \"\\F8CA\"; }\r\n\r\n.fa-medal:before {\r\n  content: \"\\F5A2\"; }\r\n\r\n.fa-medapps:before {\r\n  content: \"\\F3C6\"; }\r\n\r\n.fa-medium:before {\r\n  content: \"\\F23A\"; }\r\n\r\n.fa-medium-m:before {\r\n  content: \"\\F3C7\"; }\r\n\r\n.fa-medkit:before {\r\n  content: \"\\F0FA\"; }\r\n\r\n.fa-medrt:before {\r\n  content: \"\\F3C8\"; }\r\n\r\n.fa-meetup:before {\r\n  content: \"\\F2E0\"; }\r\n\r\n.fa-megaport:before {\r\n  content: \"\\F5A3\"; }\r\n\r\n.fa-meh:before {\r\n  content: \"\\F11A\"; }\r\n\r\n.fa-meh-blank:before {\r\n  content: \"\\F5A4\"; }\r\n\r\n.fa-meh-rolling-eyes:before {\r\n  content: \"\\F5A5\"; }\r\n\r\n.fa-memory:before {\r\n  content: \"\\F538\"; }\r\n\r\n.fa-mendeley:before {\r\n  content: \"\\F7B3\"; }\r\n\r\n.fa-menorah:before {\r\n  content: \"\\F676\"; }\r\n\r\n.fa-mercury:before {\r\n  content: \"\\F223\"; }\r\n\r\n.fa-meteor:before {\r\n  content: \"\\F753\"; }\r\n\r\n.fa-microblog:before {\r\n  content: \"\\F91A\"; }\r\n\r\n.fa-microchip:before {\r\n  content: \"\\F2DB\"; }\r\n\r\n.fa-microphone:before {\r\n  content: \"\\F130\"; }\r\n\r\n.fa-microphone-alt:before {\r\n  content: \"\\F3C9\"; }\r\n\r\n.fa-microphone-alt-slash:before {\r\n  content: \"\\F539\"; }\r\n\r\n.fa-microphone-slash:before {\r\n  content: \"\\F131\"; }\r\n\r\n.fa-microscope:before {\r\n  content: \"\\F610\"; }\r\n\r\n.fa-microsoft:before {\r\n  content: \"\\F3CA\"; }\r\n\r\n.fa-minus:before {\r\n  content: \"\\F068\"; }\r\n\r\n.fa-minus-circle:before {\r\n  content: \"\\F056\"; }\r\n\r\n.fa-minus-square:before {\r\n  content: \"\\F146\"; }\r\n\r\n.fa-mitten:before {\r\n  content: \"\\F7B5\"; }\r\n\r\n.fa-mix:before {\r\n  content: \"\\F3CB\"; }\r\n\r\n.fa-mixcloud:before {\r\n  content: \"\\F289\"; }\r\n\r\n.fa-mixer:before {\r\n  content: \"\\F956\"; }\r\n\r\n.fa-mizuni:before {\r\n  content: \"\\F3CC\"; }\r\n\r\n.fa-mobile:before {\r\n  content: \"\\F10B\"; }\r\n\r\n.fa-mobile-alt:before {\r\n  content: \"\\F3CD\"; }\r\n\r\n.fa-modx:before {\r\n  content: \"\\F285\"; }\r\n\r\n.fa-monero:before {\r\n  content: \"\\F3D0\"; }\r\n\r\n.fa-money-bill:before {\r\n  content: \"\\F0D6\"; }\r\n\r\n.fa-money-bill-alt:before {\r\n  content: \"\\F3D1\"; }\r\n\r\n.fa-money-bill-wave:before {\r\n  content: \"\\F53A\"; }\r\n\r\n.fa-money-bill-wave-alt:before {\r\n  content: \"\\F53B\"; }\r\n\r\n.fa-money-check:before {\r\n  content: \"\\F53C\"; }\r\n\r\n.fa-money-check-alt:before {\r\n  content: \"\\F53D\"; }\r\n\r\n.fa-monument:before {\r\n  content: \"\\F5A6\"; }\r\n\r\n.fa-moon:before {\r\n  content: \"\\F186\"; }\r\n\r\n.fa-mortar-pestle:before {\r\n  content: \"\\F5A7\"; }\r\n\r\n.fa-mosque:before {\r\n  content: \"\\F678\"; }\r\n\r\n.fa-motorcycle:before {\r\n  content: \"\\F21C\"; }\r\n\r\n.fa-mountain:before {\r\n  content: \"\\F6FC\"; }\r\n\r\n.fa-mouse:before {\r\n  content: \"\\F8CC\"; }\r\n\r\n.fa-mouse-pointer:before {\r\n  content: \"\\F245\"; }\r\n\r\n.fa-mug-hot:before {\r\n  content: \"\\F7B6\"; }\r\n\r\n.fa-music:before {\r\n  content: \"\\F001\"; }\r\n\r\n.fa-napster:before {\r\n  content: \"\\F3D2\"; }\r\n\r\n.fa-neos:before {\r\n  content: \"\\F612\"; }\r\n\r\n.fa-network-wired:before {\r\n  content: \"\\F6FF\"; }\r\n\r\n.fa-neuter:before {\r\n  content: \"\\F22C\"; }\r\n\r\n.fa-newspaper:before {\r\n  content: \"\\F1EA\"; }\r\n\r\n.fa-nimblr:before {\r\n  content: \"\\F5A8\"; }\r\n\r\n.fa-node:before {\r\n  content: \"\\F419\"; }\r\n\r\n.fa-node-js:before {\r\n  content: \"\\F3D3\"; }\r\n\r\n.fa-not-equal:before {\r\n  content: \"\\F53E\"; }\r\n\r\n.fa-notes-medical:before {\r\n  content: \"\\F481\"; }\r\n\r\n.fa-npm:before {\r\n  content: \"\\F3D4\"; }\r\n\r\n.fa-ns8:before {\r\n  content: \"\\F3D5\"; }\r\n\r\n.fa-nutritionix:before {\r\n  content: \"\\F3D6\"; }\r\n\r\n.fa-object-group:before {\r\n  content: \"\\F247\"; }\r\n\r\n.fa-object-ungroup:before {\r\n  content: \"\\F248\"; }\r\n\r\n.fa-odnoklassniki:before {\r\n  content: \"\\F263\"; }\r\n\r\n.fa-odnoklassniki-square:before {\r\n  content: \"\\F264\"; }\r\n\r\n.fa-oil-can:before {\r\n  content: \"\\F613\"; }\r\n\r\n.fa-old-republic:before {\r\n  content: \"\\F510\"; }\r\n\r\n.fa-om:before {\r\n  content: \"\\F679\"; }\r\n\r\n.fa-opencart:before {\r\n  content: \"\\F23D\"; }\r\n\r\n.fa-openid:before {\r\n  content: \"\\F19B\"; }\r\n\r\n.fa-opera:before {\r\n  content: \"\\F26A\"; }\r\n\r\n.fa-optin-monster:before {\r\n  content: \"\\F23C\"; }\r\n\r\n.fa-orcid:before {\r\n  content: \"\\F8D2\"; }\r\n\r\n.fa-osi:before {\r\n  content: \"\\F41A\"; }\r\n\r\n.fa-otter:before {\r\n  content: \"\\F700\"; }\r\n\r\n.fa-outdent:before {\r\n  content: \"\\F03B\"; }\r\n\r\n.fa-page4:before {\r\n  content: \"\\F3D7\"; }\r\n\r\n.fa-pagelines:before {\r\n  content: \"\\F18C\"; }\r\n\r\n.fa-pager:before {\r\n  content: \"\\F815\"; }\r\n\r\n.fa-paint-brush:before {\r\n  content: \"\\F1FC\"; }\r\n\r\n.fa-paint-roller:before {\r\n  content: \"\\F5AA\"; }\r\n\r\n.fa-palette:before {\r\n  content: \"\\F53F\"; }\r\n\r\n.fa-palfed:before {\r\n  content: \"\\F3D8\"; }\r\n\r\n.fa-pallet:before {\r\n  content: \"\\F482\"; }\r\n\r\n.fa-paper-plane:before {\r\n  content: \"\\F1D8\"; }\r\n\r\n.fa-paperclip:before {\r\n  content: \"\\F0C6\"; }\r\n\r\n.fa-parachute-box:before {\r\n  content: \"\\F4CD\"; }\r\n\r\n.fa-paragraph:before {\r\n  content: \"\\F1DD\"; }\r\n\r\n.fa-parking:before {\r\n  content: \"\\F540\"; }\r\n\r\n.fa-passport:before {\r\n  content: \"\\F5AB\"; }\r\n\r\n.fa-pastafarianism:before {\r\n  content: \"\\F67B\"; }\r\n\r\n.fa-paste:before {\r\n  content: \"\\F0EA\"; }\r\n\r\n.fa-patreon:before {\r\n  content: \"\\F3D9\"; }\r\n\r\n.fa-pause:before {\r\n  content: \"\\F04C\"; }\r\n\r\n.fa-pause-circle:before {\r\n  content: \"\\F28B\"; }\r\n\r\n.fa-paw:before {\r\n  content: \"\\F1B0\"; }\r\n\r\n.fa-paypal:before {\r\n  content: \"\\F1ED\"; }\r\n\r\n.fa-peace:before {\r\n  content: \"\\F67C\"; }\r\n\r\n.fa-pen:before {\r\n  content: \"\\F304\"; }\r\n\r\n.fa-pen-alt:before {\r\n  content: \"\\F305\"; }\r\n\r\n.fa-pen-fancy:before {\r\n  content: \"\\F5AC\"; }\r\n\r\n.fa-pen-nib:before {\r\n  content: \"\\F5AD\"; }\r\n\r\n.fa-pen-square:before {\r\n  content: \"\\F14B\"; }\r\n\r\n.fa-pencil-alt:before {\r\n  content: \"\\F303\"; }\r\n\r\n.fa-pencil-ruler:before {\r\n  content: \"\\F5AE\"; }\r\n\r\n.fa-penny-arcade:before {\r\n  content: \"\\F704\"; }\r\n\r\n.fa-people-arrows:before {\r\n  content: \"\\F968\"; }\r\n\r\n.fa-people-carry:before {\r\n  content: \"\\F4CE\"; }\r\n\r\n.fa-pepper-hot:before {\r\n  content: \"\\F816\"; }\r\n\r\n.fa-percent:before {\r\n  content: \"\\F295\"; }\r\n\r\n.fa-percentage:before {\r\n  content: \"\\F541\"; }\r\n\r\n.fa-periscope:before {\r\n  content: \"\\F3DA\"; }\r\n\r\n.fa-person-booth:before {\r\n  content: \"\\F756\"; }\r\n\r\n.fa-phabricator:before {\r\n  content: \"\\F3DB\"; }\r\n\r\n.fa-phoenix-framework:before {\r\n  content: \"\\F3DC\"; }\r\n\r\n.fa-phoenix-squadron:before {\r\n  content: \"\\F511\"; }\r\n\r\n.fa-phone:before {\r\n  content: \"\\F095\"; }\r\n\r\n.fa-phone-alt:before {\r\n  content: \"\\F879\"; }\r\n\r\n.fa-phone-slash:before {\r\n  content: \"\\F3DD\"; }\r\n\r\n.fa-phone-square:before {\r\n  content: \"\\F098\"; }\r\n\r\n.fa-phone-square-alt:before {\r\n  content: \"\\F87B\"; }\r\n\r\n.fa-phone-volume:before {\r\n  content: \"\\F2A0\"; }\r\n\r\n.fa-photo-video:before {\r\n  content: \"\\F87C\"; }\r\n\r\n.fa-php:before {\r\n  content: \"\\F457\"; }\r\n\r\n.fa-pied-piper:before {\r\n  content: \"\\F2AE\"; }\r\n\r\n.fa-pied-piper-alt:before {\r\n  content: \"\\F1A8\"; }\r\n\r\n.fa-pied-piper-hat:before {\r\n  content: \"\\F4E5\"; }\r\n\r\n.fa-pied-piper-pp:before {\r\n  content: \"\\F1A7\"; }\r\n\r\n.fa-pied-piper-square:before {\r\n  content: \"\\F91E\"; }\r\n\r\n.fa-piggy-bank:before {\r\n  content: \"\\F4D3\"; }\r\n\r\n.fa-pills:before {\r\n  content: \"\\F484\"; }\r\n\r\n.fa-pinterest:before {\r\n  content: \"\\F0D2\"; }\r\n\r\n.fa-pinterest-p:before {\r\n  content: \"\\F231\"; }\r\n\r\n.fa-pinterest-square:before {\r\n  content: \"\\F0D3\"; }\r\n\r\n.fa-pizza-slice:before {\r\n  content: \"\\F818\"; }\r\n\r\n.fa-place-of-worship:before {\r\n  content: \"\\F67F\"; }\r\n\r\n.fa-plane:before {\r\n  content: \"\\F072\"; }\r\n\r\n.fa-plane-arrival:before {\r\n  content: \"\\F5AF\"; }\r\n\r\n.fa-plane-departure:before {\r\n  content: \"\\F5B0\"; }\r\n\r\n.fa-plane-slash:before {\r\n  content: \"\\F969\"; }\r\n\r\n.fa-play:before {\r\n  content: \"\\F04B\"; }\r\n\r\n.fa-play-circle:before {\r\n  content: \"\\F144\"; }\r\n\r\n.fa-playstation:before {\r\n  content: \"\\F3DF\"; }\r\n\r\n.fa-plug:before {\r\n  content: \"\\F1E6\"; }\r\n\r\n.fa-plus:before {\r\n  content: \"\\F067\"; }\r\n\r\n.fa-plus-circle:before {\r\n  content: \"\\F055\"; }\r\n\r\n.fa-plus-square:before {\r\n  content: \"\\F0FE\"; }\r\n\r\n.fa-podcast:before {\r\n  content: \"\\F2CE\"; }\r\n\r\n.fa-poll:before {\r\n  content: \"\\F681\"; }\r\n\r\n.fa-poll-h:before {\r\n  content: \"\\F682\"; }\r\n\r\n.fa-poo:before {\r\n  content: \"\\F2FE\"; }\r\n\r\n.fa-poo-storm:before {\r\n  content: \"\\F75A\"; }\r\n\r\n.fa-poop:before {\r\n  content: \"\\F619\"; }\r\n\r\n.fa-portrait:before {\r\n  content: \"\\F3E0\"; }\r\n\r\n.fa-pound-sign:before {\r\n  content: \"\\F154\"; }\r\n\r\n.fa-power-off:before {\r\n  content: \"\\F011\"; }\r\n\r\n.fa-pray:before {\r\n  content: \"\\F683\"; }\r\n\r\n.fa-praying-hands:before {\r\n  content: \"\\F684\"; }\r\n\r\n.fa-prescription:before {\r\n  content: \"\\F5B1\"; }\r\n\r\n.fa-prescription-bottle:before {\r\n  content: \"\\F485\"; }\r\n\r\n.fa-prescription-bottle-alt:before {\r\n  content: \"\\F486\"; }\r\n\r\n.fa-print:before {\r\n  content: \"\\F02F\"; }\r\n\r\n.fa-procedures:before {\r\n  content: \"\\F487\"; }\r\n\r\n.fa-product-hunt:before {\r\n  content: \"\\F288\"; }\r\n\r\n.fa-project-diagram:before {\r\n  content: \"\\F542\"; }\r\n\r\n.fa-pump-medical:before {\r\n  content: \"\\F96A\"; }\r\n\r\n.fa-pump-soap:before {\r\n  content: \"\\F96B\"; }\r\n\r\n.fa-pushed:before {\r\n  content: \"\\F3E1\"; }\r\n\r\n.fa-puzzle-piece:before {\r\n  content: \"\\F12E\"; }\r\n\r\n.fa-python:before {\r\n  content: \"\\F3E2\"; }\r\n\r\n.fa-qq:before {\r\n  content: \"\\F1D6\"; }\r\n\r\n.fa-qrcode:before {\r\n  content: \"\\F029\"; }\r\n\r\n.fa-question:before {\r\n  content: \"\\F128\"; }\r\n\r\n.fa-question-circle:before {\r\n  content: \"\\F059\"; }\r\n\r\n.fa-quidditch:before {\r\n  content: \"\\F458\"; }\r\n\r\n.fa-quinscape:before {\r\n  content: \"\\F459\"; }\r\n\r\n.fa-quora:before {\r\n  content: \"\\F2C4\"; }\r\n\r\n.fa-quote-left:before {\r\n  content: \"\\F10D\"; }\r\n\r\n.fa-quote-right:before {\r\n  content: \"\\F10E\"; }\r\n\r\n.fa-quran:before {\r\n  content: \"\\F687\"; }\r\n\r\n.fa-r-project:before {\r\n  content: \"\\F4F7\"; }\r\n\r\n.fa-radiation:before {\r\n  content: \"\\F7B9\"; }\r\n\r\n.fa-radiation-alt:before {\r\n  content: \"\\F7BA\"; }\r\n\r\n.fa-rainbow:before {\r\n  content: \"\\F75B\"; }\r\n\r\n.fa-random:before {\r\n  content: \"\\F074\"; }\r\n\r\n.fa-raspberry-pi:before {\r\n  content: \"\\F7BB\"; }\r\n\r\n.fa-ravelry:before {\r\n  content: \"\\F2D9\"; }\r\n\r\n.fa-react:before {\r\n  content: \"\\F41B\"; }\r\n\r\n.fa-reacteurope:before {\r\n  content: \"\\F75D\"; }\r\n\r\n.fa-readme:before {\r\n  content: \"\\F4D5\"; }\r\n\r\n.fa-rebel:before {\r\n  content: \"\\F1D0\"; }\r\n\r\n.fa-receipt:before {\r\n  content: \"\\F543\"; }\r\n\r\n.fa-record-vinyl:before {\r\n  content: \"\\F8D9\"; }\r\n\r\n.fa-recycle:before {\r\n  content: \"\\F1B8\"; }\r\n\r\n.fa-red-river:before {\r\n  content: \"\\F3E3\"; }\r\n\r\n.fa-reddit:before {\r\n  content: \"\\F1A1\"; }\r\n\r\n.fa-reddit-alien:before {\r\n  content: \"\\F281\"; }\r\n\r\n.fa-reddit-square:before {\r\n  content: \"\\F1A2\"; }\r\n\r\n.fa-redhat:before {\r\n  content: \"\\F7BC\"; }\r\n\r\n.fa-redo:before {\r\n  content: \"\\F01E\"; }\r\n\r\n.fa-redo-alt:before {\r\n  content: \"\\F2F9\"; }\r\n\r\n.fa-registered:before {\r\n  content: \"\\F25D\"; }\r\n\r\n.fa-remove-format:before {\r\n  content: \"\\F87D\"; }\r\n\r\n.fa-renren:before {\r\n  content: \"\\F18B\"; }\r\n\r\n.fa-reply:before {\r\n  content: \"\\F3E5\"; }\r\n\r\n.fa-reply-all:before {\r\n  content: \"\\F122\"; }\r\n\r\n.fa-replyd:before {\r\n  content: \"\\F3E6\"; }\r\n\r\n.fa-republican:before {\r\n  content: \"\\F75E\"; }\r\n\r\n.fa-researchgate:before {\r\n  content: \"\\F4F8\"; }\r\n\r\n.fa-resolving:before {\r\n  content: \"\\F3E7\"; }\r\n\r\n.fa-restroom:before {\r\n  content: \"\\F7BD\"; }\r\n\r\n.fa-retweet:before {\r\n  content: \"\\F079\"; }\r\n\r\n.fa-rev:before {\r\n  content: \"\\F5B2\"; }\r\n\r\n.fa-ribbon:before {\r\n  content: \"\\F4D6\"; }\r\n\r\n.fa-ring:before {\r\n  content: \"\\F70B\"; }\r\n\r\n.fa-road:before {\r\n  content: \"\\F018\"; }\r\n\r\n.fa-robot:before {\r\n  content: \"\\F544\"; }\r\n\r\n.fa-rocket:before {\r\n  content: \"\\F135\"; }\r\n\r\n.fa-rocketchat:before {\r\n  content: \"\\F3E8\"; }\r\n\r\n.fa-rockrms:before {\r\n  content: \"\\F3E9\"; }\r\n\r\n.fa-route:before {\r\n  content: \"\\F4D7\"; }\r\n\r\n.fa-rss:before {\r\n  content: \"\\F09E\"; }\r\n\r\n.fa-rss-square:before {\r\n  content: \"\\F143\"; }\r\n\r\n.fa-ruble-sign:before {\r\n  content: \"\\F158\"; }\r\n\r\n.fa-ruler:before {\r\n  content: \"\\F545\"; }\r\n\r\n.fa-ruler-combined:before {\r\n  content: \"\\F546\"; }\r\n\r\n.fa-ruler-horizontal:before {\r\n  content: \"\\F547\"; }\r\n\r\n.fa-ruler-vertical:before {\r\n  content: \"\\F548\"; }\r\n\r\n.fa-running:before {\r\n  content: \"\\F70C\"; }\r\n\r\n.fa-rupee-sign:before {\r\n  content: \"\\F156\"; }\r\n\r\n.fa-sad-cry:before {\r\n  content: \"\\F5B3\"; }\r\n\r\n.fa-sad-tear:before {\r\n  content: \"\\F5B4\"; }\r\n\r\n.fa-safari:before {\r\n  content: \"\\F267\"; }\r\n\r\n.fa-salesforce:before {\r\n  content: \"\\F83B\"; }\r\n\r\n.fa-sass:before {\r\n  content: \"\\F41E\"; }\r\n\r\n.fa-satellite:before {\r\n  content: \"\\F7BF\"; }\r\n\r\n.fa-satellite-dish:before {\r\n  content: \"\\F7C0\"; }\r\n\r\n.fa-save:before {\r\n  content: \"\\F0C7\"; }\r\n\r\n.fa-schlix:before {\r\n  content: \"\\F3EA\"; }\r\n\r\n.fa-school:before {\r\n  content: \"\\F549\"; }\r\n\r\n.fa-screwdriver:before {\r\n  content: \"\\F54A\"; }\r\n\r\n.fa-scribd:before {\r\n  content: \"\\F28A\"; }\r\n\r\n.fa-scroll:before {\r\n  content: \"\\F70E\"; }\r\n\r\n.fa-sd-card:before {\r\n  content: \"\\F7C2\"; }\r\n\r\n.fa-search:before {\r\n  content: \"\\F002\"; }\r\n\r\n.fa-search-dollar:before {\r\n  content: \"\\F688\"; }\r\n\r\n.fa-search-location:before {\r\n  content: \"\\F689\"; }\r\n\r\n.fa-search-minus:before {\r\n  content: \"\\F010\"; }\r\n\r\n.fa-search-plus:before {\r\n  content: \"\\F00E\"; }\r\n\r\n.fa-searchengin:before {\r\n  content: \"\\F3EB\"; }\r\n\r\n.fa-seedling:before {\r\n  content: \"\\F4D8\"; }\r\n\r\n.fa-sellcast:before {\r\n  content: \"\\F2DA\"; }\r\n\r\n.fa-sellsy:before {\r\n  content: \"\\F213\"; }\r\n\r\n.fa-server:before {\r\n  content: \"\\F233\"; }\r\n\r\n.fa-servicestack:before {\r\n  content: \"\\F3EC\"; }\r\n\r\n.fa-shapes:before {\r\n  content: \"\\F61F\"; }\r\n\r\n.fa-share:before {\r\n  content: \"\\F064\"; }\r\n\r\n.fa-share-alt:before {\r\n  content: \"\\F1E0\"; }\r\n\r\n.fa-share-alt-square:before {\r\n  content: \"\\F1E1\"; }\r\n\r\n.fa-share-square:before {\r\n  content: \"\\F14D\"; }\r\n\r\n.fa-shekel-sign:before {\r\n  content: \"\\F20B\"; }\r\n\r\n.fa-shield-alt:before {\r\n  content: \"\\F3ED\"; }\r\n\r\n.fa-shield-virus:before {\r\n  content: \"\\F96C\"; }\r\n\r\n.fa-ship:before {\r\n  content: \"\\F21A\"; }\r\n\r\n.fa-shipping-fast:before {\r\n  content: \"\\F48B\"; }\r\n\r\n.fa-shirtsinbulk:before {\r\n  content: \"\\F214\"; }\r\n\r\n.fa-shoe-prints:before {\r\n  content: \"\\F54B\"; }\r\n\r\n.fa-shopify:before {\r\n  content: \"\\F957\"; }\r\n\r\n.fa-shopping-bag:before {\r\n  content: \"\\F290\"; }\r\n\r\n.fa-shopping-basket:before {\r\n  content: \"\\F291\"; }\r\n\r\n.fa-shopping-cart:before {\r\n  content: \"\\F07A\"; }\r\n\r\n.fa-shopware:before {\r\n  content: \"\\F5B5\"; }\r\n\r\n.fa-shower:before {\r\n  content: \"\\F2CC\"; }\r\n\r\n.fa-shuttle-van:before {\r\n  content: \"\\F5B6\"; }\r\n\r\n.fa-sign:before {\r\n  content: \"\\F4D9\"; }\r\n\r\n.fa-sign-in-alt:before {\r\n  content: \"\\F2F6\"; }\r\n\r\n.fa-sign-language:before {\r\n  content: \"\\F2A7\"; }\r\n\r\n.fa-sign-out-alt:before {\r\n  content: \"\\F2F5\"; }\r\n\r\n.fa-signal:before {\r\n  content: \"\\F012\"; }\r\n\r\n.fa-signature:before {\r\n  content: \"\\F5B7\"; }\r\n\r\n.fa-sim-card:before {\r\n  content: \"\\F7C4\"; }\r\n\r\n.fa-simplybuilt:before {\r\n  content: \"\\F215\"; }\r\n\r\n.fa-sistrix:before {\r\n  content: \"\\F3EE\"; }\r\n\r\n.fa-sitemap:before {\r\n  content: \"\\F0E8\"; }\r\n\r\n.fa-sith:before {\r\n  content: \"\\F512\"; }\r\n\r\n.fa-skating:before {\r\n  content: \"\\F7C5\"; }\r\n\r\n.fa-sketch:before {\r\n  content: \"\\F7C6\"; }\r\n\r\n.fa-skiing:before {\r\n  content: \"\\F7C9\"; }\r\n\r\n.fa-skiing-nordic:before {\r\n  content: \"\\F7CA\"; }\r\n\r\n.fa-skull:before {\r\n  content: \"\\F54C\"; }\r\n\r\n.fa-skull-crossbones:before {\r\n  content: \"\\F714\"; }\r\n\r\n.fa-skyatlas:before {\r\n  content: \"\\F216\"; }\r\n\r\n.fa-skype:before {\r\n  content: \"\\F17E\"; }\r\n\r\n.fa-slack:before {\r\n  content: \"\\F198\"; }\r\n\r\n.fa-slack-hash:before {\r\n  content: \"\\F3EF\"; }\r\n\r\n.fa-slash:before {\r\n  content: \"\\F715\"; }\r\n\r\n.fa-sleigh:before {\r\n  content: \"\\F7CC\"; }\r\n\r\n.fa-sliders-h:before {\r\n  content: \"\\F1DE\"; }\r\n\r\n.fa-slideshare:before {\r\n  content: \"\\F1E7\"; }\r\n\r\n.fa-smile:before {\r\n  content: \"\\F118\"; }\r\n\r\n.fa-smile-beam:before {\r\n  content: \"\\F5B8\"; }\r\n\r\n.fa-smile-wink:before {\r\n  content: \"\\F4DA\"; }\r\n\r\n.fa-smog:before {\r\n  content: \"\\F75F\"; }\r\n\r\n.fa-smoking:before {\r\n  content: \"\\F48D\"; }\r\n\r\n.fa-smoking-ban:before {\r\n  content: \"\\F54D\"; }\r\n\r\n.fa-sms:before {\r\n  content: \"\\F7CD\"; }\r\n\r\n.fa-snapchat:before {\r\n  content: \"\\F2AB\"; }\r\n\r\n.fa-snapchat-ghost:before {\r\n  content: \"\\F2AC\"; }\r\n\r\n.fa-snapchat-square:before {\r\n  content: \"\\F2AD\"; }\r\n\r\n.fa-snowboarding:before {\r\n  content: \"\\F7CE\"; }\r\n\r\n.fa-snowflake:before {\r\n  content: \"\\F2DC\"; }\r\n\r\n.fa-snowman:before {\r\n  content: \"\\F7D0\"; }\r\n\r\n.fa-snowplow:before {\r\n  content: \"\\F7D2\"; }\r\n\r\n.fa-soap:before {\r\n  content: \"\\F96E\"; }\r\n\r\n.fa-socks:before {\r\n  content: \"\\F696\"; }\r\n\r\n.fa-solar-panel:before {\r\n  content: \"\\F5BA\"; }\r\n\r\n.fa-sort:before {\r\n  content: \"\\F0DC\"; }\r\n\r\n.fa-sort-alpha-down:before {\r\n  content: \"\\F15D\"; }\r\n\r\n.fa-sort-alpha-down-alt:before {\r\n  content: \"\\F881\"; }\r\n\r\n.fa-sort-alpha-up:before {\r\n  content: \"\\F15E\"; }\r\n\r\n.fa-sort-alpha-up-alt:before {\r\n  content: \"\\F882\"; }\r\n\r\n.fa-sort-amount-down:before {\r\n  content: \"\\F160\"; }\r\n\r\n.fa-sort-amount-down-alt:before {\r\n  content: \"\\F884\"; }\r\n\r\n.fa-sort-amount-up:before {\r\n  content: \"\\F161\"; }\r\n\r\n.fa-sort-amount-up-alt:before {\r\n  content: \"\\F885\"; }\r\n\r\n.fa-sort-down:before {\r\n  content: \"\\F0DD\"; }\r\n\r\n.fa-sort-numeric-down:before {\r\n  content: \"\\F162\"; }\r\n\r\n.fa-sort-numeric-down-alt:before {\r\n  content: \"\\F886\"; }\r\n\r\n.fa-sort-numeric-up:before {\r\n  content: \"\\F163\"; }\r\n\r\n.fa-sort-numeric-up-alt:before {\r\n  content: \"\\F887\"; }\r\n\r\n.fa-sort-up:before {\r\n  content: \"\\F0DE\"; }\r\n\r\n.fa-soundcloud:before {\r\n  content: \"\\F1BE\"; }\r\n\r\n.fa-sourcetree:before {\r\n  content: \"\\F7D3\"; }\r\n\r\n.fa-spa:before {\r\n  content: \"\\F5BB\"; }\r\n\r\n.fa-space-shuttle:before {\r\n  content: \"\\F197\"; }\r\n\r\n.fa-speakap:before {\r\n  content: \"\\F3F3\"; }\r\n\r\n.fa-speaker-deck:before {\r\n  content: \"\\F83C\"; }\r\n\r\n.fa-spell-check:before {\r\n  content: \"\\F891\"; }\r\n\r\n.fa-spider:before {\r\n  content: \"\\F717\"; }\r\n\r\n.fa-spinner:before {\r\n  content: \"\\F110\"; }\r\n\r\n.fa-splotch:before {\r\n  content: \"\\F5BC\"; }\r\n\r\n.fa-spotify:before {\r\n  content: \"\\F1BC\"; }\r\n\r\n.fa-spray-can:before {\r\n  content: \"\\F5BD\"; }\r\n\r\n.fa-square:before {\r\n  content: \"\\F0C8\"; }\r\n\r\n.fa-square-full:before {\r\n  content: \"\\F45C\"; }\r\n\r\n.fa-square-root-alt:before {\r\n  content: \"\\F698\"; }\r\n\r\n.fa-squarespace:before {\r\n  content: \"\\F5BE\"; }\r\n\r\n.fa-stack-exchange:before {\r\n  content: \"\\F18D\"; }\r\n\r\n.fa-stack-overflow:before {\r\n  content: \"\\F16C\"; }\r\n\r\n.fa-stackpath:before {\r\n  content: \"\\F842\"; }\r\n\r\n.fa-stamp:before {\r\n  content: \"\\F5BF\"; }\r\n\r\n.fa-star:before {\r\n  content: \"\\F005\"; }\r\n\r\n.fa-star-and-crescent:before {\r\n  content: \"\\F699\"; }\r\n\r\n.fa-star-half:before {\r\n  content: \"\\F089\"; }\r\n\r\n.fa-star-half-alt:before {\r\n  content: \"\\F5C0\"; }\r\n\r\n.fa-star-of-david:before {\r\n  content: \"\\F69A\"; }\r\n\r\n.fa-star-of-life:before {\r\n  content: \"\\F621\"; }\r\n\r\n.fa-staylinked:before {\r\n  content: \"\\F3F5\"; }\r\n\r\n.fa-steam:before {\r\n  content: \"\\F1B6\"; }\r\n\r\n.fa-steam-square:before {\r\n  content: \"\\F1B7\"; }\r\n\r\n.fa-steam-symbol:before {\r\n  content: \"\\F3F6\"; }\r\n\r\n.fa-step-backward:before {\r\n  content: \"\\F048\"; }\r\n\r\n.fa-step-forward:before {\r\n  content: \"\\F051\"; }\r\n\r\n.fa-stethoscope:before {\r\n  content: \"\\F0F1\"; }\r\n\r\n.fa-sticker-mule:before {\r\n  content: \"\\F3F7\"; }\r\n\r\n.fa-sticky-note:before {\r\n  content: \"\\F249\"; }\r\n\r\n.fa-stop:before {\r\n  content: \"\\F04D\"; }\r\n\r\n.fa-stop-circle:before {\r\n  content: \"\\F28D\"; }\r\n\r\n.fa-stopwatch:before {\r\n  content: \"\\F2F2\"; }\r\n\r\n.fa-stopwatch-20:before {\r\n  content: \"\\F96F\"; }\r\n\r\n.fa-store:before {\r\n  content: \"\\F54E\"; }\r\n\r\n.fa-store-alt:before {\r\n  content: \"\\F54F\"; }\r\n\r\n.fa-store-alt-slash:before {\r\n  content: \"\\F970\"; }\r\n\r\n.fa-store-slash:before {\r\n  content: \"\\F971\"; }\r\n\r\n.fa-strava:before {\r\n  content: \"\\F428\"; }\r\n\r\n.fa-stream:before {\r\n  content: \"\\F550\"; }\r\n\r\n.fa-street-view:before {\r\n  content: \"\\F21D\"; }\r\n\r\n.fa-strikethrough:before {\r\n  content: \"\\F0CC\"; }\r\n\r\n.fa-stripe:before {\r\n  content: \"\\F429\"; }\r\n\r\n.fa-stripe-s:before {\r\n  content: \"\\F42A\"; }\r\n\r\n.fa-stroopwafel:before {\r\n  content: \"\\F551\"; }\r\n\r\n.fa-studiovinari:before {\r\n  content: \"\\F3F8\"; }\r\n\r\n.fa-stumbleupon:before {\r\n  content: \"\\F1A4\"; }\r\n\r\n.fa-stumbleupon-circle:before {\r\n  content: \"\\F1A3\"; }\r\n\r\n.fa-subscript:before {\r\n  content: \"\\F12C\"; }\r\n\r\n.fa-subway:before {\r\n  content: \"\\F239\"; }\r\n\r\n.fa-suitcase:before {\r\n  content: \"\\F0F2\"; }\r\n\r\n.fa-suitcase-rolling:before {\r\n  content: \"\\F5C1\"; }\r\n\r\n.fa-sun:before {\r\n  content: \"\\F185\"; }\r\n\r\n.fa-superpowers:before {\r\n  content: \"\\F2DD\"; }\r\n\r\n.fa-superscript:before {\r\n  content: \"\\F12B\"; }\r\n\r\n.fa-supple:before {\r\n  content: \"\\F3F9\"; }\r\n\r\n.fa-surprise:before {\r\n  content: \"\\F5C2\"; }\r\n\r\n.fa-suse:before {\r\n  content: \"\\F7D6\"; }\r\n\r\n.fa-swatchbook:before {\r\n  content: \"\\F5C3\"; }\r\n\r\n.fa-swift:before {\r\n  content: \"\\F8E1\"; }\r\n\r\n.fa-swimmer:before {\r\n  content: \"\\F5C4\"; }\r\n\r\n.fa-swimming-pool:before {\r\n  content: \"\\F5C5\"; }\r\n\r\n.fa-symfony:before {\r\n  content: \"\\F83D\"; }\r\n\r\n.fa-synagogue:before {\r\n  content: \"\\F69B\"; }\r\n\r\n.fa-sync:before {\r\n  content: \"\\F021\"; }\r\n\r\n.fa-sync-alt:before {\r\n  content: \"\\F2F1\"; }\r\n\r\n.fa-syringe:before {\r\n  content: \"\\F48E\"; }\r\n\r\n.fa-table:before {\r\n  content: \"\\F0CE\"; }\r\n\r\n.fa-table-tennis:before {\r\n  content: \"\\F45D\"; }\r\n\r\n.fa-tablet:before {\r\n  content: \"\\F10A\"; }\r\n\r\n.fa-tablet-alt:before {\r\n  content: \"\\F3FA\"; }\r\n\r\n.fa-tablets:before {\r\n  content: \"\\F490\"; }\r\n\r\n.fa-tachometer-alt:before {\r\n  content: \"\\F3FD\"; }\r\n\r\n.fa-tag:before {\r\n  content: \"\\F02B\"; }\r\n\r\n.fa-tags:before {\r\n  content: \"\\F02C\"; }\r\n\r\n.fa-tape:before {\r\n  content: \"\\F4DB\"; }\r\n\r\n.fa-tasks:before {\r\n  content: \"\\F0AE\"; }\r\n\r\n.fa-taxi:before {\r\n  content: \"\\F1BA\"; }\r\n\r\n.fa-teamspeak:before {\r\n  content: \"\\F4F9\"; }\r\n\r\n.fa-teeth:before {\r\n  content: \"\\F62E\"; }\r\n\r\n.fa-teeth-open:before {\r\n  content: \"\\F62F\"; }\r\n\r\n.fa-telegram:before {\r\n  content: \"\\F2C6\"; }\r\n\r\n.fa-telegram-plane:before {\r\n  content: \"\\F3FE\"; }\r\n\r\n.fa-temperature-high:before {\r\n  content: \"\\F769\"; }\r\n\r\n.fa-temperature-low:before {\r\n  content: \"\\F76B\"; }\r\n\r\n.fa-tencent-weibo:before {\r\n  content: \"\\F1D5\"; }\r\n\r\n.fa-tenge:before {\r\n  content: \"\\F7D7\"; }\r\n\r\n.fa-terminal:before {\r\n  content: \"\\F120\"; }\r\n\r\n.fa-text-height:before {\r\n  content: \"\\F034\"; }\r\n\r\n.fa-text-width:before {\r\n  content: \"\\F035\"; }\r\n\r\n.fa-th:before {\r\n  content: \"\\F00A\"; }\r\n\r\n.fa-th-large:before {\r\n  content: \"\\F009\"; }\r\n\r\n.fa-th-list:before {\r\n  content: \"\\F00B\"; }\r\n\r\n.fa-the-red-yeti:before {\r\n  content: \"\\F69D\"; }\r\n\r\n.fa-theater-masks:before {\r\n  content: \"\\F630\"; }\r\n\r\n.fa-themeco:before {\r\n  content: \"\\F5C6\"; }\r\n\r\n.fa-themeisle:before {\r\n  content: \"\\F2B2\"; }\r\n\r\n.fa-thermometer:before {\r\n  content: \"\\F491\"; }\r\n\r\n.fa-thermometer-empty:before {\r\n  content: \"\\F2CB\"; }\r\n\r\n.fa-thermometer-full:before {\r\n  content: \"\\F2C7\"; }\r\n\r\n.fa-thermometer-half:before {\r\n  content: \"\\F2C9\"; }\r\n\r\n.fa-thermometer-quarter:before {\r\n  content: \"\\F2CA\"; }\r\n\r\n.fa-thermometer-three-quarters:before {\r\n  content: \"\\F2C8\"; }\r\n\r\n.fa-think-peaks:before {\r\n  content: \"\\F731\"; }\r\n\r\n.fa-thumbs-down:before {\r\n  content: \"\\F165\"; }\r\n\r\n.fa-thumbs-up:before {\r\n  content: \"\\F164\"; }\r\n\r\n.fa-thumbtack:before {\r\n  content: \"\\F08D\"; }\r\n\r\n.fa-ticket-alt:before {\r\n  content: \"\\F3FF\"; }\r\n\r\n.fa-times:before {\r\n  content: \"\\F00D\"; }\r\n\r\n.fa-times-circle:before {\r\n  content: \"\\F057\"; }\r\n\r\n.fa-tint:before {\r\n  content: \"\\F043\"; }\r\n\r\n.fa-tint-slash:before {\r\n  content: \"\\F5C7\"; }\r\n\r\n.fa-tired:before {\r\n  content: \"\\F5C8\"; }\r\n\r\n.fa-toggle-off:before {\r\n  content: \"\\F204\"; }\r\n\r\n.fa-toggle-on:before {\r\n  content: \"\\F205\"; }\r\n\r\n.fa-toilet:before {\r\n  content: \"\\F7D8\"; }\r\n\r\n.fa-toilet-paper:before {\r\n  content: \"\\F71E\"; }\r\n\r\n.fa-toilet-paper-slash:before {\r\n  content: \"\\F972\"; }\r\n\r\n.fa-toolbox:before {\r\n  content: \"\\F552\"; }\r\n\r\n.fa-tools:before {\r\n  content: \"\\F7D9\"; }\r\n\r\n.fa-tooth:before {\r\n  content: \"\\F5C9\"; }\r\n\r\n.fa-torah:before {\r\n  content: \"\\F6A0\"; }\r\n\r\n.fa-torii-gate:before {\r\n  content: \"\\F6A1\"; }\r\n\r\n.fa-tractor:before {\r\n  content: \"\\F722\"; }\r\n\r\n.fa-trade-federation:before {\r\n  content: \"\\F513\"; }\r\n\r\n.fa-trademark:before {\r\n  content: \"\\F25C\"; }\r\n\r\n.fa-traffic-light:before {\r\n  content: \"\\F637\"; }\r\n\r\n.fa-trailer:before {\r\n  content: \"\\F941\"; }\r\n\r\n.fa-train:before {\r\n  content: \"\\F238\"; }\r\n\r\n.fa-tram:before {\r\n  content: \"\\F7DA\"; }\r\n\r\n.fa-transgender:before {\r\n  content: \"\\F224\"; }\r\n\r\n.fa-transgender-alt:before {\r\n  content: \"\\F225\"; }\r\n\r\n.fa-trash:before {\r\n  content: \"\\F1F8\"; }\r\n\r\n.fa-trash-alt:before {\r\n  content: \"\\F2ED\"; }\r\n\r\n.fa-trash-restore:before {\r\n  content: \"\\F829\"; }\r\n\r\n.fa-trash-restore-alt:before {\r\n  content: \"\\F82A\"; }\r\n\r\n.fa-tree:before {\r\n  content: \"\\F1BB\"; }\r\n\r\n.fa-trello:before {\r\n  content: \"\\F181\"; }\r\n\r\n.fa-tripadvisor:before {\r\n  content: \"\\F262\"; }\r\n\r\n.fa-trophy:before {\r\n  content: \"\\F091\"; }\r\n\r\n.fa-truck:before {\r\n  content: \"\\F0D1\"; }\r\n\r\n.fa-truck-loading:before {\r\n  content: \"\\F4DE\"; }\r\n\r\n.fa-truck-monster:before {\r\n  content: \"\\F63B\"; }\r\n\r\n.fa-truck-moving:before {\r\n  content: \"\\F4DF\"; }\r\n\r\n.fa-truck-pickup:before {\r\n  content: \"\\F63C\"; }\r\n\r\n.fa-tshirt:before {\r\n  content: \"\\F553\"; }\r\n\r\n.fa-tty:before {\r\n  content: \"\\F1E4\"; }\r\n\r\n.fa-tumblr:before {\r\n  content: \"\\F173\"; }\r\n\r\n.fa-tumblr-square:before {\r\n  content: \"\\F174\"; }\r\n\r\n.fa-tv:before {\r\n  content: \"\\F26C\"; }\r\n\r\n.fa-twitch:before {\r\n  content: \"\\F1E8\"; }\r\n\r\n.fa-twitter:before {\r\n  content: \"\\F099\"; }\r\n\r\n.fa-twitter-square:before {\r\n  content: \"\\F081\"; }\r\n\r\n.fa-typo3:before {\r\n  content: \"\\F42B\"; }\r\n\r\n.fa-uber:before {\r\n  content: \"\\F402\"; }\r\n\r\n.fa-ubuntu:before {\r\n  content: \"\\F7DF\"; }\r\n\r\n.fa-uikit:before {\r\n  content: \"\\F403\"; }\r\n\r\n.fa-umbraco:before {\r\n  content: \"\\F8E8\"; }\r\n\r\n.fa-umbrella:before {\r\n  content: \"\\F0E9\"; }\r\n\r\n.fa-umbrella-beach:before {\r\n  content: \"\\F5CA\"; }\r\n\r\n.fa-underline:before {\r\n  content: \"\\F0CD\"; }\r\n\r\n.fa-undo:before {\r\n  content: \"\\F0E2\"; }\r\n\r\n.fa-undo-alt:before {\r\n  content: \"\\F2EA\"; }\r\n\r\n.fa-uniregistry:before {\r\n  content: \"\\F404\"; }\r\n\r\n.fa-unity:before {\r\n  content: \"\\F949\"; }\r\n\r\n.fa-universal-access:before {\r\n  content: \"\\F29A\"; }\r\n\r\n.fa-university:before {\r\n  content: \"\\F19C\"; }\r\n\r\n.fa-unlink:before {\r\n  content: \"\\F127\"; }\r\n\r\n.fa-unlock:before {\r\n  content: \"\\F09C\"; }\r\n\r\n.fa-unlock-alt:before {\r\n  content: \"\\F13E\"; }\r\n\r\n.fa-untappd:before {\r\n  content: \"\\F405\"; }\r\n\r\n.fa-upload:before {\r\n  content: \"\\F093\"; }\r\n\r\n.fa-ups:before {\r\n  content: \"\\F7E0\"; }\r\n\r\n.fa-usb:before {\r\n  content: \"\\F287\"; }\r\n\r\n.fa-user:before {\r\n  content: \"\\F007\"; }\r\n\r\n.fa-user-alt:before {\r\n  content: \"\\F406\"; }\r\n\r\n.fa-user-alt-slash:before {\r\n  content: \"\\F4FA\"; }\r\n\r\n.fa-user-astronaut:before {\r\n  content: \"\\F4FB\"; }\r\n\r\n.fa-user-check:before {\r\n  content: \"\\F4FC\"; }\r\n\r\n.fa-user-circle:before {\r\n  content: \"\\F2BD\"; }\r\n\r\n.fa-user-clock:before {\r\n  content: \"\\F4FD\"; }\r\n\r\n.fa-user-cog:before {\r\n  content: \"\\F4FE\"; }\r\n\r\n.fa-user-edit:before {\r\n  content: \"\\F4FF\"; }\r\n\r\n.fa-user-friends:before {\r\n  content: \"\\F500\"; }\r\n\r\n.fa-user-graduate:before {\r\n  content: \"\\F501\"; }\r\n\r\n.fa-user-injured:before {\r\n  content: \"\\F728\"; }\r\n\r\n.fa-user-lock:before {\r\n  content: \"\\F502\"; }\r\n\r\n.fa-user-md:before {\r\n  content: \"\\F0F0\"; }\r\n\r\n.fa-user-minus:before {\r\n  content: \"\\F503\"; }\r\n\r\n.fa-user-ninja:before {\r\n  content: \"\\F504\"; }\r\n\r\n.fa-user-nurse:before {\r\n  content: \"\\F82F\"; }\r\n\r\n.fa-user-plus:before {\r\n  content: \"\\F234\"; }\r\n\r\n.fa-user-secret:before {\r\n  content: \"\\F21B\"; }\r\n\r\n.fa-user-shield:before {\r\n  content: \"\\F505\"; }\r\n\r\n.fa-user-slash:before {\r\n  content: \"\\F506\"; }\r\n\r\n.fa-user-tag:before {\r\n  content: \"\\F507\"; }\r\n\r\n.fa-user-tie:before {\r\n  content: \"\\F508\"; }\r\n\r\n.fa-user-times:before {\r\n  content: \"\\F235\"; }\r\n\r\n.fa-users:before {\r\n  content: \"\\F0C0\"; }\r\n\r\n.fa-users-cog:before {\r\n  content: \"\\F509\"; }\r\n\r\n.fa-usps:before {\r\n  content: \"\\F7E1\"; }\r\n\r\n.fa-ussunnah:before {\r\n  content: \"\\F407\"; }\r\n\r\n.fa-utensil-spoon:before {\r\n  content: \"\\F2E5\"; }\r\n\r\n.fa-utensils:before {\r\n  content: \"\\F2E7\"; }\r\n\r\n.fa-vaadin:before {\r\n  content: \"\\F408\"; }\r\n\r\n.fa-vector-square:before {\r\n  content: \"\\F5CB\"; }\r\n\r\n.fa-venus:before {\r\n  content: \"\\F221\"; }\r\n\r\n.fa-venus-double:before {\r\n  content: \"\\F226\"; }\r\n\r\n.fa-venus-mars:before {\r\n  content: \"\\F228\"; }\r\n\r\n.fa-viacoin:before {\r\n  content: \"\\F237\"; }\r\n\r\n.fa-viadeo:before {\r\n  content: \"\\F2A9\"; }\r\n\r\n.fa-viadeo-square:before {\r\n  content: \"\\F2AA\"; }\r\n\r\n.fa-vial:before {\r\n  content: \"\\F492\"; }\r\n\r\n.fa-vials:before {\r\n  content: \"\\F493\"; }\r\n\r\n.fa-viber:before {\r\n  content: \"\\F409\"; }\r\n\r\n.fa-video:before {\r\n  content: \"\\F03D\"; }\r\n\r\n.fa-video-slash:before {\r\n  content: \"\\F4E2\"; }\r\n\r\n.fa-vihara:before {\r\n  content: \"\\F6A7\"; }\r\n\r\n.fa-vimeo:before {\r\n  content: \"\\F40A\"; }\r\n\r\n.fa-vimeo-square:before {\r\n  content: \"\\F194\"; }\r\n\r\n.fa-vimeo-v:before {\r\n  content: \"\\F27D\"; }\r\n\r\n.fa-vine:before {\r\n  content: \"\\F1CA\"; }\r\n\r\n.fa-virus:before {\r\n  content: \"\\F974\"; }\r\n\r\n.fa-virus-slash:before {\r\n  content: \"\\F975\"; }\r\n\r\n.fa-viruses:before {\r\n  content: \"\\F976\"; }\r\n\r\n.fa-vk:before {\r\n  content: \"\\F189\"; }\r\n\r\n.fa-vnv:before {\r\n  content: \"\\F40B\"; }\r\n\r\n.fa-voicemail:before {\r\n  content: \"\\F897\"; }\r\n\r\n.fa-volleyball-ball:before {\r\n  content: \"\\F45F\"; }\r\n\r\n.fa-volume-down:before {\r\n  content: \"\\F027\"; }\r\n\r\n.fa-volume-mute:before {\r\n  content: \"\\F6A9\"; }\r\n\r\n.fa-volume-off:before {\r\n  content: \"\\F026\"; }\r\n\r\n.fa-volume-up:before {\r\n  content: \"\\F028\"; }\r\n\r\n.fa-vote-yea:before {\r\n  content: \"\\F772\"; }\r\n\r\n.fa-vr-cardboard:before {\r\n  content: \"\\F729\"; }\r\n\r\n.fa-vuejs:before {\r\n  content: \"\\F41F\"; }\r\n\r\n.fa-walking:before {\r\n  content: \"\\F554\"; }\r\n\r\n.fa-wallet:before {\r\n  content: \"\\F555\"; }\r\n\r\n.fa-warehouse:before {\r\n  content: \"\\F494\"; }\r\n\r\n.fa-water:before {\r\n  content: \"\\F773\"; }\r\n\r\n.fa-wave-square:before {\r\n  content: \"\\F83E\"; }\r\n\r\n.fa-waze:before {\r\n  content: \"\\F83F\"; }\r\n\r\n.fa-weebly:before {\r\n  content: \"\\F5CC\"; }\r\n\r\n.fa-weibo:before {\r\n  content: \"\\F18A\"; }\r\n\r\n.fa-weight:before {\r\n  content: \"\\F496\"; }\r\n\r\n.fa-weight-hanging:before {\r\n  content: \"\\F5CD\"; }\r\n\r\n.fa-weixin:before {\r\n  content: \"\\F1D7\"; }\r\n\r\n.fa-whatsapp:before {\r\n  content: \"\\F232\"; }\r\n\r\n.fa-whatsapp-square:before {\r\n  content: \"\\F40C\"; }\r\n\r\n.fa-wheelchair:before {\r\n  content: \"\\F193\"; }\r\n\r\n.fa-whmcs:before {\r\n  content: \"\\F40D\"; }\r\n\r\n.fa-wifi:before {\r\n  content: \"\\F1EB\"; }\r\n\r\n.fa-wikipedia-w:before {\r\n  content: \"\\F266\"; }\r\n\r\n.fa-wind:before {\r\n  content: \"\\F72E\"; }\r\n\r\n.fa-window-close:before {\r\n  content: \"\\F410\"; }\r\n\r\n.fa-window-maximize:before {\r\n  content: \"\\F2D0\"; }\r\n\r\n.fa-window-minimize:before {\r\n  content: \"\\F2D1\"; }\r\n\r\n.fa-window-restore:before {\r\n  content: \"\\F2D2\"; }\r\n\r\n.fa-windows:before {\r\n  content: \"\\F17A\"; }\r\n\r\n.fa-wine-bottle:before {\r\n  content: \"\\F72F\"; }\r\n\r\n.fa-wine-glass:before {\r\n  content: \"\\F4E3\"; }\r\n\r\n.fa-wine-glass-alt:before {\r\n  content: \"\\F5CE\"; }\r\n\r\n.fa-wix:before {\r\n  content: \"\\F5CF\"; }\r\n\r\n.fa-wizards-of-the-coast:before {\r\n  content: \"\\F730\"; }\r\n\r\n.fa-wolf-pack-battalion:before {\r\n  content: \"\\F514\"; }\r\n\r\n.fa-won-sign:before {\r\n  content: \"\\F159\"; }\r\n\r\n.fa-wordpress:before {\r\n  content: \"\\F19A\"; }\r\n\r\n.fa-wordpress-simple:before {\r\n  content: \"\\F411\"; }\r\n\r\n.fa-wpbeginner:before {\r\n  content: \"\\F297\"; }\r\n\r\n.fa-wpexplorer:before {\r\n  content: \"\\F2DE\"; }\r\n\r\n.fa-wpforms:before {\r\n  content: \"\\F298\"; }\r\n\r\n.fa-wpressr:before {\r\n  content: \"\\F3E4\"; }\r\n\r\n.fa-wrench:before {\r\n  content: \"\\F0AD\"; }\r\n\r\n.fa-x-ray:before {\r\n  content: \"\\F497\"; }\r\n\r\n.fa-xbox:before {\r\n  content: \"\\F412\"; }\r\n\r\n.fa-xing:before {\r\n  content: \"\\F168\"; }\r\n\r\n.fa-xing-square:before {\r\n  content: \"\\F169\"; }\r\n\r\n.fa-y-combinator:before {\r\n  content: \"\\F23B\"; }\r\n\r\n.fa-yahoo:before {\r\n  content: \"\\F19E\"; }\r\n\r\n.fa-yammer:before {\r\n  content: \"\\F840\"; }\r\n\r\n.fa-yandex:before {\r\n  content: \"\\F413\"; }\r\n\r\n.fa-yandex-international:before {\r\n  content: \"\\F414\"; }\r\n\r\n.fa-yarn:before {\r\n  content: \"\\F7E3\"; }\r\n\r\n.fa-yelp:before {\r\n  content: \"\\F1E9\"; }\r\n\r\n.fa-yen-sign:before {\r\n  content: \"\\F157\"; }\r\n\r\n.fa-yin-yang:before {\r\n  content: \"\\F6AD\"; }\r\n\r\n.fa-yoast:before {\r\n  content: \"\\F2B1\"; }\r\n\r\n.fa-youtube:before {\r\n  content: \"\\F167\"; }\r\n\r\n.fa-youtube-square:before {\r\n  content: \"\\F431\"; }\r\n\r\n.fa-zhihu:before {\r\n  content: \"\\F63F\"; }\r\n\r\n.sr-only {\r\n  border: 0;\r\n  clip: rect(0, 0, 0, 0);\r\n  height: 1px;\r\n  margin: -1px;\r\n  overflow: hidden;\r\n  padding: 0;\r\n  position: absolute;\r\n  width: 1px; }\r\n\r\n.sr-only-focusable:active, .sr-only-focusable:focus {\r\n  clip: auto;\r\n  height: auto;\r\n  margin: 0;\r\n  overflow: visible;\r\n  position: static;\r\n  width: auto; }\r\n@font-face {\r\n  font-family: 'Font Awesome 5 Brands';\r\n  font-style: normal;\r\n  font-weight: 400;\r\n  font-display: block;\r\n  src: url(" + escape(__webpack_require__(14)) + ");\r\n  src: url(" + escape(__webpack_require__(14)) + "?#iefix) format(\"embedded-opentype\"), url(" + escape(__webpack_require__(74)) + ") format(\"woff2\"), url(" + escape(__webpack_require__(75)) + ") format(\"woff\"), url(" + escape(__webpack_require__(76)) + ") format(\"truetype\"), url(" + escape(__webpack_require__(77)) + "#fontawesome) format(\"svg\"); }\r\n\r\n.fab {\r\n  font-family: 'Font Awesome 5 Brands';\r\n  font-weight: 400; }\r\n@font-face {\r\n  font-family: 'Font Awesome 5 Free';\r\n  font-style: normal;\r\n  font-weight: 400;\r\n  font-display: block;\r\n  src: url(" + escape(__webpack_require__(15)) + ");\r\n  src: url(" + escape(__webpack_require__(15)) + "?#iefix) format(\"embedded-opentype\"), url(" + escape(__webpack_require__(78)) + ") format(\"woff2\"), url(" + escape(__webpack_require__(79)) + ") format(\"woff\"), url(" + escape(__webpack_require__(80)) + ") format(\"truetype\"), url(" + escape(__webpack_require__(81)) + "#fontawesome) format(\"svg\"); }\r\n\r\n.far {\r\n  font-family: 'Font Awesome 5 Free';\r\n  font-weight: 400; }\r\n@font-face {\r\n  font-family: 'Font Awesome 5 Free';\r\n  font-style: normal;\r\n  font-weight: 900;\r\n  font-display: block;\r\n  src: url(" + escape(__webpack_require__(16)) + ");\r\n  src: url(" + escape(__webpack_require__(16)) + "?#iefix) format(\"embedded-opentype\"), url(" + escape(__webpack_require__(82)) + ") format(\"woff2\"), url(" + escape(__webpack_require__(83)) + ") format(\"woff\"), url(" + escape(__webpack_require__(84)) + ") format(\"truetype\"), url(" + escape(__webpack_require__(85)) + "#fontawesome) format(\"svg\"); }\r\n\r\n.fa,\r\n.fas {\r\n  font-family: 'Font Awesome 5 Free';\r\n  font-weight: 900; }\r\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 72 */
-/***/ (function(module, exports) {
-
-module.exports = function escape(url) {
-    if (typeof url !== 'string') {
-        return url
-    }
-    // If url is already wrapped in quotes, remove them
-    if (/^['"].*['"]$/.test(url)) {
-        url = url.slice(1, -1);
-    }
-    // Should url be wrapped?
-    // See https://drafts.csswg.org/css-values-3/#urls
-    if (/["'() \t\n]/.test(url)) {
-        return '"' + url.replace(/"/g, '\\"').replace(/\n/g, '\\n') + '"'
-    }
-
-    return url
-}
-
-
-/***/ }),
-/* 73 */
-/***/ (function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
-}
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
-}
-
-
-/***/ }),
-/* 74 */
-/***/ (function(module, exports) {
-
-module.exports = "/fonts/fa-brands-400.woff2?a06da7f0950f9dd366fc9db9d56d618a";
-
-/***/ }),
-/* 75 */
-/***/ (function(module, exports) {
-
-module.exports = "/fonts/fa-brands-400.woff?ec3cfddedb8bebd2d7a3fdf511f7c1cc";
-
-/***/ }),
-/* 76 */
-/***/ (function(module, exports) {
-
-module.exports = "/fonts/fa-brands-400.ttf?13685372945d816a2b474fc082fd9aaa";
-
-/***/ }),
-/* 77 */
-/***/ (function(module, exports) {
-
-module.exports = "/fonts/fa-brands-400.svg?3debcaf1a98e4445d213fd0089d42f6b";
-
-/***/ }),
-/* 78 */
-/***/ (function(module, exports) {
-
-module.exports = "/fonts/fa-regular-400.woff2?c20b5b7362d8d7bb7eddf94344ace33e";
-
-/***/ }),
-/* 79 */
-/***/ (function(module, exports) {
-
-module.exports = "/fonts/fa-regular-400.woff?f89ea91ecd1ca2db7e09baa2c4b156d1";
-
-/***/ }),
-/* 80 */
-/***/ (function(module, exports) {
-
-module.exports = "/fonts/fa-regular-400.ttf?db78b9359171f24936b16d84f63af378";
-
-/***/ }),
-/* 81 */
-/***/ (function(module, exports) {
-
-module.exports = "/fonts/fa-regular-400.svg?89f9806b964f92ad282fd60947eba588";
-
-/***/ }),
-/* 82 */
-/***/ (function(module, exports) {
-
-module.exports = "/fonts/fa-solid-900.woff2?b15db15f746f29ffa02638cb455b8ec0";
-
-/***/ }),
-/* 83 */
-/***/ (function(module, exports) {
-
-module.exports = "/fonts/fa-solid-900.woff?bea989e82b07e9687c26fc58a4805021";
-
-/***/ }),
-/* 84 */
-/***/ (function(module, exports) {
-
-module.exports = "/fonts/fa-solid-900.ttf?1ab236ed440ee51810c56bd16628aef0";
-
-/***/ }),
-/* 85 */
-/***/ (function(module, exports) {
-
-module.exports = "/fonts/fa-solid-900.svg?ad912fd102f4052d3273dd838e0c671d";
-
-/***/ }),
-/* 86 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-
-var stylesInDom = {};
-
-var	memoize = function (fn) {
-	var memo;
-
-	return function () {
-		if (typeof memo === "undefined") memo = fn.apply(this, arguments);
-		return memo;
-	};
-};
-
-var isOldIE = memoize(function () {
-	// Test for IE <= 9 as proposed by Browserhacks
-	// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
-	// Tests for existence of standard globals is to allow style-loader
-	// to operate correctly into non-standard environments
-	// @see https://github.com/webpack-contrib/style-loader/issues/177
-	return window && document && document.all && !window.atob;
-});
-
-var getElement = (function (fn) {
-	var memo = {};
-
-	return function(selector) {
-		if (typeof memo[selector] === "undefined") {
-			memo[selector] = fn.call(this, selector);
-		}
-
-		return memo[selector]
-	};
-})(function (target) {
-	return document.querySelector(target)
-});
-
-var singleton = null;
-var	singletonCounter = 0;
-var	stylesInsertedAtTop = [];
-
-var	fixUrls = __webpack_require__(87);
-
-module.exports = function(list, options) {
-	if (typeof DEBUG !== "undefined" && DEBUG) {
-		if (typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
-	}
-
-	options = options || {};
-
-	options.attrs = typeof options.attrs === "object" ? options.attrs : {};
-
-	// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-	// tags it will allow on a page
-	if (!options.singleton) options.singleton = isOldIE();
-
-	// By default, add <style> tags to the <head> element
-	if (!options.insertInto) options.insertInto = "head";
-
-	// By default, add <style> tags to the bottom of the target
-	if (!options.insertAt) options.insertAt = "bottom";
-
-	var styles = listToStyles(list, options);
-
-	addStylesToDom(styles, options);
-
-	return function update (newList) {
-		var mayRemove = [];
-
-		for (var i = 0; i < styles.length; i++) {
-			var item = styles[i];
-			var domStyle = stylesInDom[item.id];
-
-			domStyle.refs--;
-			mayRemove.push(domStyle);
-		}
-
-		if(newList) {
-			var newStyles = listToStyles(newList, options);
-			addStylesToDom(newStyles, options);
-		}
-
-		for (var i = 0; i < mayRemove.length; i++) {
-			var domStyle = mayRemove[i];
-
-			if(domStyle.refs === 0) {
-				for (var j = 0; j < domStyle.parts.length; j++) domStyle.parts[j]();
-
-				delete stylesInDom[domStyle.id];
-			}
-		}
-	};
-};
-
-function addStylesToDom (styles, options) {
-	for (var i = 0; i < styles.length; i++) {
-		var item = styles[i];
-		var domStyle = stylesInDom[item.id];
-
-		if(domStyle) {
-			domStyle.refs++;
-
-			for(var j = 0; j < domStyle.parts.length; j++) {
-				domStyle.parts[j](item.parts[j]);
-			}
-
-			for(; j < item.parts.length; j++) {
-				domStyle.parts.push(addStyle(item.parts[j], options));
-			}
-		} else {
-			var parts = [];
-
-			for(var j = 0; j < item.parts.length; j++) {
-				parts.push(addStyle(item.parts[j], options));
-			}
-
-			stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
-		}
-	}
-}
-
-function listToStyles (list, options) {
-	var styles = [];
-	var newStyles = {};
-
-	for (var i = 0; i < list.length; i++) {
-		var item = list[i];
-		var id = options.base ? item[0] + options.base : item[0];
-		var css = item[1];
-		var media = item[2];
-		var sourceMap = item[3];
-		var part = {css: css, media: media, sourceMap: sourceMap};
-
-		if(!newStyles[id]) styles.push(newStyles[id] = {id: id, parts: [part]});
-		else newStyles[id].parts.push(part);
-	}
-
-	return styles;
-}
-
-function insertStyleElement (options, style) {
-	var target = getElement(options.insertInto)
-
-	if (!target) {
-		throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
-	}
-
-	var lastStyleElementInsertedAtTop = stylesInsertedAtTop[stylesInsertedAtTop.length - 1];
-
-	if (options.insertAt === "top") {
-		if (!lastStyleElementInsertedAtTop) {
-			target.insertBefore(style, target.firstChild);
-		} else if (lastStyleElementInsertedAtTop.nextSibling) {
-			target.insertBefore(style, lastStyleElementInsertedAtTop.nextSibling);
-		} else {
-			target.appendChild(style);
-		}
-		stylesInsertedAtTop.push(style);
-	} else if (options.insertAt === "bottom") {
-		target.appendChild(style);
-	} else {
-		throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
-	}
-}
-
-function removeStyleElement (style) {
-	if (style.parentNode === null) return false;
-	style.parentNode.removeChild(style);
-
-	var idx = stylesInsertedAtTop.indexOf(style);
-	if(idx >= 0) {
-		stylesInsertedAtTop.splice(idx, 1);
-	}
-}
-
-function createStyleElement (options) {
-	var style = document.createElement("style");
-
-	options.attrs.type = "text/css";
-
-	addAttrs(style, options.attrs);
-	insertStyleElement(options, style);
-
-	return style;
-}
-
-function createLinkElement (options) {
-	var link = document.createElement("link");
-
-	options.attrs.type = "text/css";
-	options.attrs.rel = "stylesheet";
-
-	addAttrs(link, options.attrs);
-	insertStyleElement(options, link);
-
-	return link;
-}
-
-function addAttrs (el, attrs) {
-	Object.keys(attrs).forEach(function (key) {
-		el.setAttribute(key, attrs[key]);
-	});
-}
-
-function addStyle (obj, options) {
-	var style, update, remove, result;
-
-	// If a transform function was defined, run it on the css
-	if (options.transform && obj.css) {
-	    result = options.transform(obj.css);
-
-	    if (result) {
-	    	// If transform returns a value, use that instead of the original css.
-	    	// This allows running runtime transformations on the css.
-	    	obj.css = result;
-	    } else {
-	    	// If the transform function returns a falsy value, don't add this css.
-	    	// This allows conditional loading of css
-	    	return function() {
-	    		// noop
-	    	};
-	    }
-	}
-
-	if (options.singleton) {
-		var styleIndex = singletonCounter++;
-
-		style = singleton || (singleton = createStyleElement(options));
-
-		update = applyToSingletonTag.bind(null, style, styleIndex, false);
-		remove = applyToSingletonTag.bind(null, style, styleIndex, true);
-
-	} else if (
-		obj.sourceMap &&
-		typeof URL === "function" &&
-		typeof URL.createObjectURL === "function" &&
-		typeof URL.revokeObjectURL === "function" &&
-		typeof Blob === "function" &&
-		typeof btoa === "function"
-	) {
-		style = createLinkElement(options);
-		update = updateLink.bind(null, style, options);
-		remove = function () {
-			removeStyleElement(style);
-
-			if(style.href) URL.revokeObjectURL(style.href);
-		};
-	} else {
-		style = createStyleElement(options);
-		update = applyToTag.bind(null, style);
-		remove = function () {
-			removeStyleElement(style);
-		};
-	}
-
-	update(obj);
-
-	return function updateStyle (newObj) {
-		if (newObj) {
-			if (
-				newObj.css === obj.css &&
-				newObj.media === obj.media &&
-				newObj.sourceMap === obj.sourceMap
-			) {
-				return;
-			}
-
-			update(obj = newObj);
-		} else {
-			remove();
-		}
-	};
-}
-
-var replaceText = (function () {
-	var textStore = [];
-
-	return function (index, replacement) {
-		textStore[index] = replacement;
-
-		return textStore.filter(Boolean).join('\n');
-	};
-})();
-
-function applyToSingletonTag (style, index, remove, obj) {
-	var css = remove ? "" : obj.css;
-
-	if (style.styleSheet) {
-		style.styleSheet.cssText = replaceText(index, css);
-	} else {
-		var cssNode = document.createTextNode(css);
-		var childNodes = style.childNodes;
-
-		if (childNodes[index]) style.removeChild(childNodes[index]);
-
-		if (childNodes.length) {
-			style.insertBefore(cssNode, childNodes[index]);
-		} else {
-			style.appendChild(cssNode);
-		}
-	}
-}
-
-function applyToTag (style, obj) {
-	var css = obj.css;
-	var media = obj.media;
-
-	if(media) {
-		style.setAttribute("media", media)
-	}
-
-	if(style.styleSheet) {
-		style.styleSheet.cssText = css;
-	} else {
-		while(style.firstChild) {
-			style.removeChild(style.firstChild);
-		}
-
-		style.appendChild(document.createTextNode(css));
-	}
-}
-
-function updateLink (link, options, obj) {
-	var css = obj.css;
-	var sourceMap = obj.sourceMap;
-
-	/*
-		If convertToAbsoluteUrls isn't defined, but sourcemaps are enabled
-		and there is no publicPath defined then lets turn convertToAbsoluteUrls
-		on by default.  Otherwise default to the convertToAbsoluteUrls option
-		directly
-	*/
-	var autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;
-
-	if (options.convertToAbsoluteUrls || autoFixUrls) {
-		css = fixUrls(css);
-	}
-
-	if (sourceMap) {
-		// http://stackoverflow.com/a/26603875
-		css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
-	}
-
-	var blob = new Blob([css], { type: "text/css" });
-
-	var oldSrc = link.href;
-
-	link.href = URL.createObjectURL(blob);
-
-	if(oldSrc) URL.revokeObjectURL(oldSrc);
-}
-
-
-/***/ }),
-/* 87 */
-/***/ (function(module, exports) {
-
-
-/**
- * When source maps are enabled, `style-loader` uses a link element with a data-uri to
- * embed the css on the page. This breaks all relative urls because now they are relative to a
- * bundle instead of the current page.
- *
- * One solution is to only use full urls, but that may be impossible.
- *
- * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
- *
- * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
- *
- */
-
-module.exports = function (css) {
-  // get current location
-  var location = typeof window !== "undefined" && window.location;
-
-  if (!location) {
-    throw new Error("fixUrls requires window.location");
-  }
-
-	// blank or null?
-	if (!css || typeof css !== "string") {
-	  return css;
-  }
-
-  var baseUrl = location.protocol + "//" + location.host;
-  var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, "/");
-
-	// convert each url(...)
-	/*
-	This regular expression is just a way to recursively match brackets within
-	a string.
-
-	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
-	   (  = Start a capturing group
-	     (?:  = Start a non-capturing group
-	         [^)(]  = Match anything that isn't a parentheses
-	         |  = OR
-	         \(  = Match a start parentheses
-	             (?:  = Start another non-capturing groups
-	                 [^)(]+  = Match anything that isn't a parentheses
-	                 |  = OR
-	                 \(  = Match a start parentheses
-	                     [^)(]*  = Match anything that isn't a parentheses
-	                 \)  = Match a end parentheses
-	             )  = End Group
-              *\) = Match anything and then a close parens
-          )  = Close non-capturing group
-          *  = Match anything
-       )  = Close capturing group
-	 \)  = Match a close parens
-
-	 /gi  = Get all matches, not the first.  Be case insensitive.
-	 */
-	var fixedCss = css.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function(fullMatch, origUrl) {
-		// strip quotes (if they exist)
-		var unquotedOrigUrl = origUrl
-			.trim()
-			.replace(/^"(.*)"$/, function(o, $1){ return $1; })
-			.replace(/^'(.*)'$/, function(o, $1){ return $1; });
-
-		// already a full url? no change
-		if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/)/i.test(unquotedOrigUrl)) {
-		  return fullMatch;
-		}
-
-		// convert the url to a full url
-		var newUrl;
-
-		if (unquotedOrigUrl.indexOf("//") === 0) {
-		  	//TODO: should we add protocol?
-			newUrl = unquotedOrigUrl;
-		} else if (unquotedOrigUrl.indexOf("/") === 0) {
-			// path should be relative to the base url
-			newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
-		} else {
-			// path should be relative to current directory
-			newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ""); // Strip leading './'
-		}
-
-		// send back the fixed url(...)
-		return "url(" + JSON.stringify(newUrl) + ")";
-	});
-
-	// send back the fixed css
-	return fixedCss;
-};
-
-
-/***/ }),
-/* 88 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 89 */,
-/* 90 */,
-/* 91 */,
-/* 92 */,
-/* 93 */,
-/* 94 */,
-/* 95 */,
-/* 96 */,
-/* 97 */,
-/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -46422,6 +42548,4127 @@ if ( typeof noGlobal === "undefined" ) {
 return jQuery;
 } );
 
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+// This method of obtaining a reference to the global object needs to be
+// kept identical to the way it is obtained in runtime.js
+var g = (function() { return this })() || Function("return this")();
+
+// Use `getOwnPropertyNames` because not all browsers support calling
+// `hasOwnProperty` on the global `self` object in a worker. See #183.
+var hadRuntime = g.regeneratorRuntime &&
+  Object.getOwnPropertyNames(g).indexOf("regeneratorRuntime") >= 0;
+
+// Save the old regeneratorRuntime in case it needs to be restored later.
+var oldRuntime = hadRuntime && g.regeneratorRuntime;
+
+// Force reevalutation of runtime.js.
+g.regeneratorRuntime = undefined;
+
+module.exports = __webpack_require__(33);
+
+if (hadRuntime) {
+  // Restore the original runtime.
+  g.regeneratorRuntime = oldRuntime;
+} else {
+  // Remove the global property added by runtime.js.
+  try {
+    delete g.regeneratorRuntime;
+  } catch(e) {
+    g.regeneratorRuntime = undefined;
+  }
+}
+
+
+/***/ }),
+/* 33 */
+/***/ (function(module, exports) {
+
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+!(function(global) {
+  "use strict";
+
+  var Op = Object.prototype;
+  var hasOwn = Op.hasOwnProperty;
+  var undefined; // More compressible than void 0.
+  var $Symbol = typeof Symbol === "function" ? Symbol : {};
+  var iteratorSymbol = $Symbol.iterator || "@@iterator";
+  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
+  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+  var inModule = typeof module === "object";
+  var runtime = global.regeneratorRuntime;
+  if (runtime) {
+    if (inModule) {
+      // If regeneratorRuntime is defined globally and we're in a module,
+      // make the exports object identical to regeneratorRuntime.
+      module.exports = runtime;
+    }
+    // Don't bother evaluating the rest of this file if the runtime was
+    // already defined globally.
+    return;
+  }
+
+  // Define the runtime globally (as expected by generated code) as either
+  // module.exports (if we're in a module) or a new, empty object.
+  runtime = global.regeneratorRuntime = inModule ? module.exports : {};
+
+  function wrap(innerFn, outerFn, self, tryLocsList) {
+    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
+    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+    var generator = Object.create(protoGenerator.prototype);
+    var context = new Context(tryLocsList || []);
+
+    // The ._invoke method unifies the implementations of the .next,
+    // .throw, and .return methods.
+    generator._invoke = makeInvokeMethod(innerFn, self, context);
+
+    return generator;
+  }
+  runtime.wrap = wrap;
+
+  // Try/catch helper to minimize deoptimizations. Returns a completion
+  // record like context.tryEntries[i].completion. This interface could
+  // have been (and was previously) designed to take a closure to be
+  // invoked without arguments, but in all the cases we care about we
+  // already have an existing method we want to call, so there's no need
+  // to create a new function object. We can even get away with assuming
+  // the method takes exactly one argument, since that happens to be true
+  // in every case, so we don't have to touch the arguments object. The
+  // only additional allocation required is the completion record, which
+  // has a stable shape and so hopefully should be cheap to allocate.
+  function tryCatch(fn, obj, arg) {
+    try {
+      return { type: "normal", arg: fn.call(obj, arg) };
+    } catch (err) {
+      return { type: "throw", arg: err };
+    }
+  }
+
+  var GenStateSuspendedStart = "suspendedStart";
+  var GenStateSuspendedYield = "suspendedYield";
+  var GenStateExecuting = "executing";
+  var GenStateCompleted = "completed";
+
+  // Returning this object from the innerFn has the same effect as
+  // breaking out of the dispatch switch statement.
+  var ContinueSentinel = {};
+
+  // Dummy constructor functions that we use as the .constructor and
+  // .constructor.prototype properties for functions that return Generator
+  // objects. For full spec compliance, you may wish to configure your
+  // minifier not to mangle the names of these two functions.
+  function Generator() {}
+  function GeneratorFunction() {}
+  function GeneratorFunctionPrototype() {}
+
+  // This is a polyfill for %IteratorPrototype% for environments that
+  // don't natively support it.
+  var IteratorPrototype = {};
+  IteratorPrototype[iteratorSymbol] = function () {
+    return this;
+  };
+
+  var getProto = Object.getPrototypeOf;
+  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+  if (NativeIteratorPrototype &&
+      NativeIteratorPrototype !== Op &&
+      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+    // This environment has a native %IteratorPrototype%; use it instead
+    // of the polyfill.
+    IteratorPrototype = NativeIteratorPrototype;
+  }
+
+  var Gp = GeneratorFunctionPrototype.prototype =
+    Generator.prototype = Object.create(IteratorPrototype);
+  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
+  GeneratorFunctionPrototype.constructor = GeneratorFunction;
+  GeneratorFunctionPrototype[toStringTagSymbol] =
+    GeneratorFunction.displayName = "GeneratorFunction";
+
+  // Helper for defining the .next, .throw, and .return methods of the
+  // Iterator interface in terms of a single ._invoke method.
+  function defineIteratorMethods(prototype) {
+    ["next", "throw", "return"].forEach(function(method) {
+      prototype[method] = function(arg) {
+        return this._invoke(method, arg);
+      };
+    });
+  }
+
+  runtime.isGeneratorFunction = function(genFun) {
+    var ctor = typeof genFun === "function" && genFun.constructor;
+    return ctor
+      ? ctor === GeneratorFunction ||
+        // For the native GeneratorFunction constructor, the best we can
+        // do is to check its .name property.
+        (ctor.displayName || ctor.name) === "GeneratorFunction"
+      : false;
+  };
+
+  runtime.mark = function(genFun) {
+    if (Object.setPrototypeOf) {
+      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+    } else {
+      genFun.__proto__ = GeneratorFunctionPrototype;
+      if (!(toStringTagSymbol in genFun)) {
+        genFun[toStringTagSymbol] = "GeneratorFunction";
+      }
+    }
+    genFun.prototype = Object.create(Gp);
+    return genFun;
+  };
+
+  // Within the body of any async function, `await x` is transformed to
+  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
+  // `hasOwn.call(value, "__await")` to determine if the yielded value is
+  // meant to be awaited.
+  runtime.awrap = function(arg) {
+    return { __await: arg };
+  };
+
+  function AsyncIterator(generator) {
+    function invoke(method, arg, resolve, reject) {
+      var record = tryCatch(generator[method], generator, arg);
+      if (record.type === "throw") {
+        reject(record.arg);
+      } else {
+        var result = record.arg;
+        var value = result.value;
+        if (value &&
+            typeof value === "object" &&
+            hasOwn.call(value, "__await")) {
+          return Promise.resolve(value.__await).then(function(value) {
+            invoke("next", value, resolve, reject);
+          }, function(err) {
+            invoke("throw", err, resolve, reject);
+          });
+        }
+
+        return Promise.resolve(value).then(function(unwrapped) {
+          // When a yielded Promise is resolved, its final value becomes
+          // the .value of the Promise<{value,done}> result for the
+          // current iteration. If the Promise is rejected, however, the
+          // result for this iteration will be rejected with the same
+          // reason. Note that rejections of yielded Promises are not
+          // thrown back into the generator function, as is the case
+          // when an awaited Promise is rejected. This difference in
+          // behavior between yield and await is important, because it
+          // allows the consumer to decide what to do with the yielded
+          // rejection (swallow it and continue, manually .throw it back
+          // into the generator, abandon iteration, whatever). With
+          // await, by contrast, there is no opportunity to examine the
+          // rejection reason outside the generator function, so the
+          // only option is to throw it from the await expression, and
+          // let the generator function handle the exception.
+          result.value = unwrapped;
+          resolve(result);
+        }, reject);
+      }
+    }
+
+    var previousPromise;
+
+    function enqueue(method, arg) {
+      function callInvokeWithMethodAndArg() {
+        return new Promise(function(resolve, reject) {
+          invoke(method, arg, resolve, reject);
+        });
+      }
+
+      return previousPromise =
+        // If enqueue has been called before, then we want to wait until
+        // all previous Promises have been resolved before calling invoke,
+        // so that results are always delivered in the correct order. If
+        // enqueue has not been called before, then it is important to
+        // call invoke immediately, without waiting on a callback to fire,
+        // so that the async generator function has the opportunity to do
+        // any necessary setup in a predictable way. This predictability
+        // is why the Promise constructor synchronously invokes its
+        // executor callback, and why async functions synchronously
+        // execute code before the first await. Since we implement simple
+        // async functions in terms of async generators, it is especially
+        // important to get this right, even though it requires care.
+        previousPromise ? previousPromise.then(
+          callInvokeWithMethodAndArg,
+          // Avoid propagating failures to Promises returned by later
+          // invocations of the iterator.
+          callInvokeWithMethodAndArg
+        ) : callInvokeWithMethodAndArg();
+    }
+
+    // Define the unified helper method that is used to implement .next,
+    // .throw, and .return (see defineIteratorMethods).
+    this._invoke = enqueue;
+  }
+
+  defineIteratorMethods(AsyncIterator.prototype);
+  AsyncIterator.prototype[asyncIteratorSymbol] = function () {
+    return this;
+  };
+  runtime.AsyncIterator = AsyncIterator;
+
+  // Note that simple async functions are implemented on top of
+  // AsyncIterator objects; they just return a Promise for the value of
+  // the final result produced by the iterator.
+  runtime.async = function(innerFn, outerFn, self, tryLocsList) {
+    var iter = new AsyncIterator(
+      wrap(innerFn, outerFn, self, tryLocsList)
+    );
+
+    return runtime.isGeneratorFunction(outerFn)
+      ? iter // If outerFn is a generator, return the full iterator.
+      : iter.next().then(function(result) {
+          return result.done ? result.value : iter.next();
+        });
+  };
+
+  function makeInvokeMethod(innerFn, self, context) {
+    var state = GenStateSuspendedStart;
+
+    return function invoke(method, arg) {
+      if (state === GenStateExecuting) {
+        throw new Error("Generator is already running");
+      }
+
+      if (state === GenStateCompleted) {
+        if (method === "throw") {
+          throw arg;
+        }
+
+        // Be forgiving, per 25.3.3.3.3 of the spec:
+        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
+        return doneResult();
+      }
+
+      context.method = method;
+      context.arg = arg;
+
+      while (true) {
+        var delegate = context.delegate;
+        if (delegate) {
+          var delegateResult = maybeInvokeDelegate(delegate, context);
+          if (delegateResult) {
+            if (delegateResult === ContinueSentinel) continue;
+            return delegateResult;
+          }
+        }
+
+        if (context.method === "next") {
+          // Setting context._sent for legacy support of Babel's
+          // function.sent implementation.
+          context.sent = context._sent = context.arg;
+
+        } else if (context.method === "throw") {
+          if (state === GenStateSuspendedStart) {
+            state = GenStateCompleted;
+            throw context.arg;
+          }
+
+          context.dispatchException(context.arg);
+
+        } else if (context.method === "return") {
+          context.abrupt("return", context.arg);
+        }
+
+        state = GenStateExecuting;
+
+        var record = tryCatch(innerFn, self, context);
+        if (record.type === "normal") {
+          // If an exception is thrown from innerFn, we leave state ===
+          // GenStateExecuting and loop back for another invocation.
+          state = context.done
+            ? GenStateCompleted
+            : GenStateSuspendedYield;
+
+          if (record.arg === ContinueSentinel) {
+            continue;
+          }
+
+          return {
+            value: record.arg,
+            done: context.done
+          };
+
+        } else if (record.type === "throw") {
+          state = GenStateCompleted;
+          // Dispatch the exception by looping back around to the
+          // context.dispatchException(context.arg) call above.
+          context.method = "throw";
+          context.arg = record.arg;
+        }
+      }
+    };
+  }
+
+  // Call delegate.iterator[context.method](context.arg) and handle the
+  // result, either by returning a { value, done } result from the
+  // delegate iterator, or by modifying context.method and context.arg,
+  // setting context.delegate to null, and returning the ContinueSentinel.
+  function maybeInvokeDelegate(delegate, context) {
+    var method = delegate.iterator[context.method];
+    if (method === undefined) {
+      // A .throw or .return when the delegate iterator has no .throw
+      // method always terminates the yield* loop.
+      context.delegate = null;
+
+      if (context.method === "throw") {
+        if (delegate.iterator.return) {
+          // If the delegate iterator has a return method, give it a
+          // chance to clean up.
+          context.method = "return";
+          context.arg = undefined;
+          maybeInvokeDelegate(delegate, context);
+
+          if (context.method === "throw") {
+            // If maybeInvokeDelegate(context) changed context.method from
+            // "return" to "throw", let that override the TypeError below.
+            return ContinueSentinel;
+          }
+        }
+
+        context.method = "throw";
+        context.arg = new TypeError(
+          "The iterator does not provide a 'throw' method");
+      }
+
+      return ContinueSentinel;
+    }
+
+    var record = tryCatch(method, delegate.iterator, context.arg);
+
+    if (record.type === "throw") {
+      context.method = "throw";
+      context.arg = record.arg;
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    var info = record.arg;
+
+    if (! info) {
+      context.method = "throw";
+      context.arg = new TypeError("iterator result is not an object");
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    if (info.done) {
+      // Assign the result of the finished delegate to the temporary
+      // variable specified by delegate.resultName (see delegateYield).
+      context[delegate.resultName] = info.value;
+
+      // Resume execution at the desired location (see delegateYield).
+      context.next = delegate.nextLoc;
+
+      // If context.method was "throw" but the delegate handled the
+      // exception, let the outer generator proceed normally. If
+      // context.method was "next", forget context.arg since it has been
+      // "consumed" by the delegate iterator. If context.method was
+      // "return", allow the original .return call to continue in the
+      // outer generator.
+      if (context.method !== "return") {
+        context.method = "next";
+        context.arg = undefined;
+      }
+
+    } else {
+      // Re-yield the result returned by the delegate method.
+      return info;
+    }
+
+    // The delegate iterator is finished, so forget it and continue with
+    // the outer generator.
+    context.delegate = null;
+    return ContinueSentinel;
+  }
+
+  // Define Generator.prototype.{next,throw,return} in terms of the
+  // unified ._invoke helper method.
+  defineIteratorMethods(Gp);
+
+  Gp[toStringTagSymbol] = "Generator";
+
+  // A Generator should always return itself as the iterator object when the
+  // @@iterator function is called on it. Some browsers' implementations of the
+  // iterator prototype chain incorrectly implement this, causing the Generator
+  // object to not be returned from this call. This ensures that doesn't happen.
+  // See https://github.com/facebook/regenerator/issues/274 for more details.
+  Gp[iteratorSymbol] = function() {
+    return this;
+  };
+
+  Gp.toString = function() {
+    return "[object Generator]";
+  };
+
+  function pushTryEntry(locs) {
+    var entry = { tryLoc: locs[0] };
+
+    if (1 in locs) {
+      entry.catchLoc = locs[1];
+    }
+
+    if (2 in locs) {
+      entry.finallyLoc = locs[2];
+      entry.afterLoc = locs[3];
+    }
+
+    this.tryEntries.push(entry);
+  }
+
+  function resetTryEntry(entry) {
+    var record = entry.completion || {};
+    record.type = "normal";
+    delete record.arg;
+    entry.completion = record;
+  }
+
+  function Context(tryLocsList) {
+    // The root entry object (effectively a try statement without a catch
+    // or a finally block) gives us a place to store values thrown from
+    // locations where there is no enclosing try statement.
+    this.tryEntries = [{ tryLoc: "root" }];
+    tryLocsList.forEach(pushTryEntry, this);
+    this.reset(true);
+  }
+
+  runtime.keys = function(object) {
+    var keys = [];
+    for (var key in object) {
+      keys.push(key);
+    }
+    keys.reverse();
+
+    // Rather than returning an object with a next method, we keep
+    // things simple and return the next function itself.
+    return function next() {
+      while (keys.length) {
+        var key = keys.pop();
+        if (key in object) {
+          next.value = key;
+          next.done = false;
+          return next;
+        }
+      }
+
+      // To avoid creating an additional object, we just hang the .value
+      // and .done properties off the next function object itself. This
+      // also ensures that the minifier will not anonymize the function.
+      next.done = true;
+      return next;
+    };
+  };
+
+  function values(iterable) {
+    if (iterable) {
+      var iteratorMethod = iterable[iteratorSymbol];
+      if (iteratorMethod) {
+        return iteratorMethod.call(iterable);
+      }
+
+      if (typeof iterable.next === "function") {
+        return iterable;
+      }
+
+      if (!isNaN(iterable.length)) {
+        var i = -1, next = function next() {
+          while (++i < iterable.length) {
+            if (hasOwn.call(iterable, i)) {
+              next.value = iterable[i];
+              next.done = false;
+              return next;
+            }
+          }
+
+          next.value = undefined;
+          next.done = true;
+
+          return next;
+        };
+
+        return next.next = next;
+      }
+    }
+
+    // Return an iterator with no values.
+    return { next: doneResult };
+  }
+  runtime.values = values;
+
+  function doneResult() {
+    return { value: undefined, done: true };
+  }
+
+  Context.prototype = {
+    constructor: Context,
+
+    reset: function(skipTempReset) {
+      this.prev = 0;
+      this.next = 0;
+      // Resetting context._sent for legacy support of Babel's
+      // function.sent implementation.
+      this.sent = this._sent = undefined;
+      this.done = false;
+      this.delegate = null;
+
+      this.method = "next";
+      this.arg = undefined;
+
+      this.tryEntries.forEach(resetTryEntry);
+
+      if (!skipTempReset) {
+        for (var name in this) {
+          // Not sure about the optimal order of these conditions:
+          if (name.charAt(0) === "t" &&
+              hasOwn.call(this, name) &&
+              !isNaN(+name.slice(1))) {
+            this[name] = undefined;
+          }
+        }
+      }
+    },
+
+    stop: function() {
+      this.done = true;
+
+      var rootEntry = this.tryEntries[0];
+      var rootRecord = rootEntry.completion;
+      if (rootRecord.type === "throw") {
+        throw rootRecord.arg;
+      }
+
+      return this.rval;
+    },
+
+    dispatchException: function(exception) {
+      if (this.done) {
+        throw exception;
+      }
+
+      var context = this;
+      function handle(loc, caught) {
+        record.type = "throw";
+        record.arg = exception;
+        context.next = loc;
+
+        if (caught) {
+          // If the dispatched exception was caught by a catch block,
+          // then let that catch block handle the exception normally.
+          context.method = "next";
+          context.arg = undefined;
+        }
+
+        return !! caught;
+      }
+
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        var record = entry.completion;
+
+        if (entry.tryLoc === "root") {
+          // Exception thrown outside of any try block that could handle
+          // it, so set the completion value of the entire function to
+          // throw the exception.
+          return handle("end");
+        }
+
+        if (entry.tryLoc <= this.prev) {
+          var hasCatch = hasOwn.call(entry, "catchLoc");
+          var hasFinally = hasOwn.call(entry, "finallyLoc");
+
+          if (hasCatch && hasFinally) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            } else if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else if (hasCatch) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            }
+
+          } else if (hasFinally) {
+            if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else {
+            throw new Error("try statement without catch or finally");
+          }
+        }
+      }
+    },
+
+    abrupt: function(type, arg) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc <= this.prev &&
+            hasOwn.call(entry, "finallyLoc") &&
+            this.prev < entry.finallyLoc) {
+          var finallyEntry = entry;
+          break;
+        }
+      }
+
+      if (finallyEntry &&
+          (type === "break" ||
+           type === "continue") &&
+          finallyEntry.tryLoc <= arg &&
+          arg <= finallyEntry.finallyLoc) {
+        // Ignore the finally entry if control is not jumping to a
+        // location outside the try/catch block.
+        finallyEntry = null;
+      }
+
+      var record = finallyEntry ? finallyEntry.completion : {};
+      record.type = type;
+      record.arg = arg;
+
+      if (finallyEntry) {
+        this.method = "next";
+        this.next = finallyEntry.finallyLoc;
+        return ContinueSentinel;
+      }
+
+      return this.complete(record);
+    },
+
+    complete: function(record, afterLoc) {
+      if (record.type === "throw") {
+        throw record.arg;
+      }
+
+      if (record.type === "break" ||
+          record.type === "continue") {
+        this.next = record.arg;
+      } else if (record.type === "return") {
+        this.rval = this.arg = record.arg;
+        this.method = "return";
+        this.next = "end";
+      } else if (record.type === "normal" && afterLoc) {
+        this.next = afterLoc;
+      }
+
+      return ContinueSentinel;
+    },
+
+    finish: function(finallyLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.finallyLoc === finallyLoc) {
+          this.complete(entry.completion, entry.afterLoc);
+          resetTryEntry(entry);
+          return ContinueSentinel;
+        }
+      }
+    },
+
+    "catch": function(tryLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc === tryLoc) {
+          var record = entry.completion;
+          if (record.type === "throw") {
+            var thrown = record.arg;
+            resetTryEntry(entry);
+          }
+          return thrown;
+        }
+      }
+
+      // The context.catch method must only be called with a location
+      // argument that corresponds to a known catch block.
+      throw new Error("illegal catch attempt");
+    },
+
+    delegateYield: function(iterable, resultName, nextLoc) {
+      this.delegate = {
+        iterator: values(iterable),
+        resultName: resultName,
+        nextLoc: nextLoc
+      };
+
+      if (this.method === "next") {
+        // Deliberately forget the last sent value so that we don't
+        // accidentally pass it on to the delegate.
+        this.arg = undefined;
+      }
+
+      return ContinueSentinel;
+    }
+  };
+})(
+  // In sloppy mode, unbound `this` refers to the global object, fallback to
+  // Function constructor if we're in global strict mode. That is sadly a form
+  // of indirect eval which violates Content Security Policy.
+  (function() { return this })() || Function("return this")()
+);
+
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(35);
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(1);
+var bind = __webpack_require__(11);
+var Axios = __webpack_require__(37);
+var defaults = __webpack_require__(6);
+
+/**
+ * Create an instance of Axios
+ *
+ * @param {Object} defaultConfig The default config for the instance
+ * @return {Axios} A new instance of Axios
+ */
+function createInstance(defaultConfig) {
+  var context = new Axios(defaultConfig);
+  var instance = bind(Axios.prototype.request, context);
+
+  // Copy axios.prototype to instance
+  utils.extend(instance, Axios.prototype, context);
+
+  // Copy context to instance
+  utils.extend(instance, context);
+
+  return instance;
+}
+
+// Create the default instance to be exported
+var axios = createInstance(defaults);
+
+// Expose Axios class to allow class inheritance
+axios.Axios = Axios;
+
+// Factory for creating new instances
+axios.create = function create(instanceConfig) {
+  return createInstance(utils.merge(defaults, instanceConfig));
+};
+
+// Expose Cancel & CancelToken
+axios.Cancel = __webpack_require__(15);
+axios.CancelToken = __webpack_require__(52);
+axios.isCancel = __webpack_require__(14);
+
+// Expose all/spread
+axios.all = function all(promises) {
+  return Promise.all(promises);
+};
+axios.spread = __webpack_require__(53);
+
+module.exports = axios;
+
+// Allow use of default import syntax in TypeScript
+module.exports.default = axios;
+
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports) {
+
+/*!
+ * Determine if an object is a Buffer
+ *
+ * @author   Feross Aboukhadijeh <https://feross.org>
+ * @license  MIT
+ */
+
+// The _isBuffer check is for Safari 5-7 support, because it's missing
+// Object.prototype.constructor. Remove this eventually
+module.exports = function (obj) {
+  return obj != null && (isBuffer(obj) || isSlowBuffer(obj) || !!obj._isBuffer)
+}
+
+function isBuffer (obj) {
+  return !!obj.constructor && typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
+}
+
+// For Node v0.10 support. Remove this eventually.
+function isSlowBuffer (obj) {
+  return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
+}
+
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var defaults = __webpack_require__(6);
+var utils = __webpack_require__(1);
+var InterceptorManager = __webpack_require__(47);
+var dispatchRequest = __webpack_require__(48);
+var isAbsoluteURL = __webpack_require__(50);
+var combineURLs = __webpack_require__(51);
+
+/**
+ * Create a new instance of Axios
+ *
+ * @param {Object} instanceConfig The default config for the instance
+ */
+function Axios(instanceConfig) {
+  this.defaults = instanceConfig;
+  this.interceptors = {
+    request: new InterceptorManager(),
+    response: new InterceptorManager()
+  };
+}
+
+/**
+ * Dispatch a request
+ *
+ * @param {Object} config The config specific for this request (merged with this.defaults)
+ */
+Axios.prototype.request = function request(config) {
+  /*eslint no-param-reassign:0*/
+  // Allow for axios('example/url'[, config]) a la fetch API
+  if (typeof config === 'string') {
+    config = utils.merge({
+      url: arguments[0]
+    }, arguments[1]);
+  }
+
+  config = utils.merge(defaults, this.defaults, { method: 'get' }, config);
+  config.method = config.method.toLowerCase();
+
+  // Support baseURL config
+  if (config.baseURL && !isAbsoluteURL(config.url)) {
+    config.url = combineURLs(config.baseURL, config.url);
+  }
+
+  // Hook up interceptors middleware
+  var chain = [dispatchRequest, undefined];
+  var promise = Promise.resolve(config);
+
+  this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
+    chain.unshift(interceptor.fulfilled, interceptor.rejected);
+  });
+
+  this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
+    chain.push(interceptor.fulfilled, interceptor.rejected);
+  });
+
+  while (chain.length) {
+    promise = promise.then(chain.shift(), chain.shift());
+  }
+
+  return promise;
+};
+
+// Provide aliases for supported request methods
+utils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData(method) {
+  /*eslint func-names:0*/
+  Axios.prototype[method] = function(url, config) {
+    return this.request(utils.merge(config || {}, {
+      method: method,
+      url: url
+    }));
+  };
+});
+
+utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
+  /*eslint func-names:0*/
+  Axios.prototype[method] = function(url, data, config) {
+    return this.request(utils.merge(config || {}, {
+      method: method,
+      url: url,
+      data: data
+    }));
+  };
+});
+
+module.exports = Axios;
+
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports) {
+
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(1);
+
+module.exports = function normalizeHeaderName(headers, normalizedName) {
+  utils.forEach(headers, function processHeader(value, name) {
+    if (name !== normalizedName && name.toUpperCase() === normalizedName.toUpperCase()) {
+      headers[normalizedName] = value;
+      delete headers[name];
+    }
+  });
+};
+
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var createError = __webpack_require__(13);
+
+/**
+ * Resolve or reject a Promise based on response status.
+ *
+ * @param {Function} resolve A function that resolves the promise.
+ * @param {Function} reject A function that rejects the promise.
+ * @param {object} response The response.
+ */
+module.exports = function settle(resolve, reject, response) {
+  var validateStatus = response.config.validateStatus;
+  // Note: status is not exposed by XDomainRequest
+  if (!response.status || !validateStatus || validateStatus(response.status)) {
+    resolve(response);
+  } else {
+    reject(createError(
+      'Request failed with status code ' + response.status,
+      response.config,
+      null,
+      response.request,
+      response
+    ));
+  }
+};
+
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Update an Error with the specified config, error code, and response.
+ *
+ * @param {Error} error The error to update.
+ * @param {Object} config The config.
+ * @param {string} [code] The error code (for example, 'ECONNABORTED').
+ * @param {Object} [request] The request.
+ * @param {Object} [response] The response.
+ * @returns {Error} The error.
+ */
+module.exports = function enhanceError(error, config, code, request, response) {
+  error.config = config;
+  if (code) {
+    error.code = code;
+  }
+  error.request = request;
+  error.response = response;
+  return error;
+};
+
+
+/***/ }),
+/* 42 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(1);
+
+function encode(val) {
+  return encodeURIComponent(val).
+    replace(/%40/gi, '@').
+    replace(/%3A/gi, ':').
+    replace(/%24/g, '$').
+    replace(/%2C/gi, ',').
+    replace(/%20/g, '+').
+    replace(/%5B/gi, '[').
+    replace(/%5D/gi, ']');
+}
+
+/**
+ * Build a URL by appending params to the end
+ *
+ * @param {string} url The base of the url (e.g., http://www.google.com)
+ * @param {object} [params] The params to be appended
+ * @returns {string} The formatted url
+ */
+module.exports = function buildURL(url, params, paramsSerializer) {
+  /*eslint no-param-reassign:0*/
+  if (!params) {
+    return url;
+  }
+
+  var serializedParams;
+  if (paramsSerializer) {
+    serializedParams = paramsSerializer(params);
+  } else if (utils.isURLSearchParams(params)) {
+    serializedParams = params.toString();
+  } else {
+    var parts = [];
+
+    utils.forEach(params, function serialize(val, key) {
+      if (val === null || typeof val === 'undefined') {
+        return;
+      }
+
+      if (utils.isArray(val)) {
+        key = key + '[]';
+      }
+
+      if (!utils.isArray(val)) {
+        val = [val];
+      }
+
+      utils.forEach(val, function parseValue(v) {
+        if (utils.isDate(v)) {
+          v = v.toISOString();
+        } else if (utils.isObject(v)) {
+          v = JSON.stringify(v);
+        }
+        parts.push(encode(key) + '=' + encode(v));
+      });
+    });
+
+    serializedParams = parts.join('&');
+  }
+
+  if (serializedParams) {
+    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
+  }
+
+  return url;
+};
+
+
+/***/ }),
+/* 43 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(1);
+
+/**
+ * Parse headers into an object
+ *
+ * ```
+ * Date: Wed, 27 Aug 2014 08:58:49 GMT
+ * Content-Type: application/json
+ * Connection: keep-alive
+ * Transfer-Encoding: chunked
+ * ```
+ *
+ * @param {String} headers Headers needing to be parsed
+ * @returns {Object} Headers parsed into an object
+ */
+module.exports = function parseHeaders(headers) {
+  var parsed = {};
+  var key;
+  var val;
+  var i;
+
+  if (!headers) { return parsed; }
+
+  utils.forEach(headers.split('\n'), function parser(line) {
+    i = line.indexOf(':');
+    key = utils.trim(line.substr(0, i)).toLowerCase();
+    val = utils.trim(line.substr(i + 1));
+
+    if (key) {
+      parsed[key] = parsed[key] ? parsed[key] + ', ' + val : val;
+    }
+  });
+
+  return parsed;
+};
+
+
+/***/ }),
+/* 44 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(1);
+
+module.exports = (
+  utils.isStandardBrowserEnv() ?
+
+  // Standard browser envs have full support of the APIs needed to test
+  // whether the request URL is of the same origin as current location.
+  (function standardBrowserEnv() {
+    var msie = /(msie|trident)/i.test(navigator.userAgent);
+    var urlParsingNode = document.createElement('a');
+    var originURL;
+
+    /**
+    * Parse a URL to discover it's components
+    *
+    * @param {String} url The URL to be parsed
+    * @returns {Object}
+    */
+    function resolveURL(url) {
+      var href = url;
+
+      if (msie) {
+        // IE needs attribute set twice to normalize properties
+        urlParsingNode.setAttribute('href', href);
+        href = urlParsingNode.href;
+      }
+
+      urlParsingNode.setAttribute('href', href);
+
+      // urlParsingNode provides the UrlUtils interface - http://url.spec.whatwg.org/#urlutils
+      return {
+        href: urlParsingNode.href,
+        protocol: urlParsingNode.protocol ? urlParsingNode.protocol.replace(/:$/, '') : '',
+        host: urlParsingNode.host,
+        search: urlParsingNode.search ? urlParsingNode.search.replace(/^\?/, '') : '',
+        hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, '') : '',
+        hostname: urlParsingNode.hostname,
+        port: urlParsingNode.port,
+        pathname: (urlParsingNode.pathname.charAt(0) === '/') ?
+                  urlParsingNode.pathname :
+                  '/' + urlParsingNode.pathname
+      };
+    }
+
+    originURL = resolveURL(window.location.href);
+
+    /**
+    * Determine if a URL shares the same origin as the current location
+    *
+    * @param {String} requestURL The URL to test
+    * @returns {boolean} True if URL shares the same origin, otherwise false
+    */
+    return function isURLSameOrigin(requestURL) {
+      var parsed = (utils.isString(requestURL)) ? resolveURL(requestURL) : requestURL;
+      return (parsed.protocol === originURL.protocol &&
+            parsed.host === originURL.host);
+    };
+  })() :
+
+  // Non standard browser envs (web workers, react-native) lack needed support.
+  (function nonStandardBrowserEnv() {
+    return function isURLSameOrigin() {
+      return true;
+    };
+  })()
+);
+
+
+/***/ }),
+/* 45 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// btoa polyfill for IE<10 courtesy https://github.com/davidchambers/Base64.js
+
+var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+
+function E() {
+  this.message = 'String contains an invalid character';
+}
+E.prototype = new Error;
+E.prototype.code = 5;
+E.prototype.name = 'InvalidCharacterError';
+
+function btoa(input) {
+  var str = String(input);
+  var output = '';
+  for (
+    // initialize result and counter
+    var block, charCode, idx = 0, map = chars;
+    // if the next str index does not exist:
+    //   change the mapping table to "="
+    //   check if d has no fractional digits
+    str.charAt(idx | 0) || (map = '=', idx % 1);
+    // "8 - idx % 1 * 8" generates the sequence 2, 4, 6, 8
+    output += map.charAt(63 & block >> 8 - idx % 1 * 8)
+  ) {
+    charCode = str.charCodeAt(idx += 3 / 4);
+    if (charCode > 0xFF) {
+      throw new E();
+    }
+    block = block << 8 | charCode;
+  }
+  return output;
+}
+
+module.exports = btoa;
+
+
+/***/ }),
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(1);
+
+module.exports = (
+  utils.isStandardBrowserEnv() ?
+
+  // Standard browser envs support document.cookie
+  (function standardBrowserEnv() {
+    return {
+      write: function write(name, value, expires, path, domain, secure) {
+        var cookie = [];
+        cookie.push(name + '=' + encodeURIComponent(value));
+
+        if (utils.isNumber(expires)) {
+          cookie.push('expires=' + new Date(expires).toGMTString());
+        }
+
+        if (utils.isString(path)) {
+          cookie.push('path=' + path);
+        }
+
+        if (utils.isString(domain)) {
+          cookie.push('domain=' + domain);
+        }
+
+        if (secure === true) {
+          cookie.push('secure');
+        }
+
+        document.cookie = cookie.join('; ');
+      },
+
+      read: function read(name) {
+        var match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
+        return (match ? decodeURIComponent(match[3]) : null);
+      },
+
+      remove: function remove(name) {
+        this.write(name, '', Date.now() - 86400000);
+      }
+    };
+  })() :
+
+  // Non standard browser env (web workers, react-native) lack needed support.
+  (function nonStandardBrowserEnv() {
+    return {
+      write: function write() {},
+      read: function read() { return null; },
+      remove: function remove() {}
+    };
+  })()
+);
+
+
+/***/ }),
+/* 47 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(1);
+
+function InterceptorManager() {
+  this.handlers = [];
+}
+
+/**
+ * Add a new interceptor to the stack
+ *
+ * @param {Function} fulfilled The function to handle `then` for a `Promise`
+ * @param {Function} rejected The function to handle `reject` for a `Promise`
+ *
+ * @return {Number} An ID used to remove interceptor later
+ */
+InterceptorManager.prototype.use = function use(fulfilled, rejected) {
+  this.handlers.push({
+    fulfilled: fulfilled,
+    rejected: rejected
+  });
+  return this.handlers.length - 1;
+};
+
+/**
+ * Remove an interceptor from the stack
+ *
+ * @param {Number} id The ID that was returned by `use`
+ */
+InterceptorManager.prototype.eject = function eject(id) {
+  if (this.handlers[id]) {
+    this.handlers[id] = null;
+  }
+};
+
+/**
+ * Iterate over all the registered interceptors
+ *
+ * This method is particularly useful for skipping over any
+ * interceptors that may have become `null` calling `eject`.
+ *
+ * @param {Function} fn The function to call for each interceptor
+ */
+InterceptorManager.prototype.forEach = function forEach(fn) {
+  utils.forEach(this.handlers, function forEachHandler(h) {
+    if (h !== null) {
+      fn(h);
+    }
+  });
+};
+
+module.exports = InterceptorManager;
+
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(1);
+var transformData = __webpack_require__(49);
+var isCancel = __webpack_require__(14);
+var defaults = __webpack_require__(6);
+
+/**
+ * Throws a `Cancel` if cancellation has been requested.
+ */
+function throwIfCancellationRequested(config) {
+  if (config.cancelToken) {
+    config.cancelToken.throwIfRequested();
+  }
+}
+
+/**
+ * Dispatch a request to the server using the configured adapter.
+ *
+ * @param {object} config The config that is to be used for the request
+ * @returns {Promise} The Promise to be fulfilled
+ */
+module.exports = function dispatchRequest(config) {
+  throwIfCancellationRequested(config);
+
+  // Ensure headers exist
+  config.headers = config.headers || {};
+
+  // Transform request data
+  config.data = transformData(
+    config.data,
+    config.headers,
+    config.transformRequest
+  );
+
+  // Flatten headers
+  config.headers = utils.merge(
+    config.headers.common || {},
+    config.headers[config.method] || {},
+    config.headers || {}
+  );
+
+  utils.forEach(
+    ['delete', 'get', 'head', 'post', 'put', 'patch', 'common'],
+    function cleanHeaderConfig(method) {
+      delete config.headers[method];
+    }
+  );
+
+  var adapter = config.adapter || defaults.adapter;
+
+  return adapter(config).then(function onAdapterResolution(response) {
+    throwIfCancellationRequested(config);
+
+    // Transform response data
+    response.data = transformData(
+      response.data,
+      response.headers,
+      config.transformResponse
+    );
+
+    return response;
+  }, function onAdapterRejection(reason) {
+    if (!isCancel(reason)) {
+      throwIfCancellationRequested(config);
+
+      // Transform response data
+      if (reason && reason.response) {
+        reason.response.data = transformData(
+          reason.response.data,
+          reason.response.headers,
+          config.transformResponse
+        );
+      }
+    }
+
+    return Promise.reject(reason);
+  });
+};
+
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(1);
+
+/**
+ * Transform the data for a request or a response
+ *
+ * @param {Object|String} data The data to be transformed
+ * @param {Array} headers The headers for the request or response
+ * @param {Array|Function} fns A single function or Array of functions
+ * @returns {*} The resulting transformed data
+ */
+module.exports = function transformData(data, headers, fns) {
+  /*eslint no-param-reassign:0*/
+  utils.forEach(fns, function transform(fn) {
+    data = fn(data, headers);
+  });
+
+  return data;
+};
+
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Determines whether the specified URL is absolute
+ *
+ * @param {string} url The URL to test
+ * @returns {boolean} True if the specified URL is absolute, otherwise false
+ */
+module.exports = function isAbsoluteURL(url) {
+  // A URL is considered absolute if it begins with "<scheme>://" or "//" (protocol-relative URL).
+  // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
+  // by any combination of letters, digits, plus, period, or hyphen.
+  return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
+};
+
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Creates a new URL by combining the specified URLs
+ *
+ * @param {string} baseURL The base URL
+ * @param {string} relativeURL The relative URL
+ * @returns {string} The combined URL
+ */
+module.exports = function combineURLs(baseURL, relativeURL) {
+  return relativeURL
+    ? baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '')
+    : baseURL;
+};
+
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var Cancel = __webpack_require__(15);
+
+/**
+ * A `CancelToken` is an object that can be used to request cancellation of an operation.
+ *
+ * @class
+ * @param {Function} executor The executor function.
+ */
+function CancelToken(executor) {
+  if (typeof executor !== 'function') {
+    throw new TypeError('executor must be a function.');
+  }
+
+  var resolvePromise;
+  this.promise = new Promise(function promiseExecutor(resolve) {
+    resolvePromise = resolve;
+  });
+
+  var token = this;
+  executor(function cancel(message) {
+    if (token.reason) {
+      // Cancellation has already been requested
+      return;
+    }
+
+    token.reason = new Cancel(message);
+    resolvePromise(token.reason);
+  });
+}
+
+/**
+ * Throws a `Cancel` if cancellation has been requested.
+ */
+CancelToken.prototype.throwIfRequested = function throwIfRequested() {
+  if (this.reason) {
+    throw this.reason;
+  }
+};
+
+/**
+ * Returns an object that contains a new `CancelToken` and a function that, when called,
+ * cancels the `CancelToken`.
+ */
+CancelToken.source = function source() {
+  var cancel;
+  var token = new CancelToken(function executor(c) {
+    cancel = c;
+  });
+  return {
+    token: token,
+    cancel: cancel
+  };
+};
+
+module.exports = CancelToken;
+
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Syntactic sugar for invoking a function and expanding an array for arguments.
+ *
+ * Common use case would be to use `Function.prototype.apply`.
+ *
+ *  ```js
+ *  function f(x, y, z) {}
+ *  var args = [1, 2, 3];
+ *  f.apply(null, args);
+ *  ```
+ *
+ * With `spread` this example can be re-written.
+ *
+ *  ```js
+ *  spread(function(x, y, z) {})([1, 2, 3]);
+ *  ```
+ *
+ * @param {Function} callback
+ * @returns {Function}
+ */
+module.exports = function spread(callback) {
+  return function wrap(arr) {
+    return callback.apply(null, arr);
+  };
+};
+
+
+/***/ }),
+/* 54 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = index;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layout_header__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__painel__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__other__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__artigo__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__stock__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__entidade__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__context__ = __webpack_require__(3);
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+
+
+
+
+
+
+
+
+
+
+
+
+function index() {
+    var _useUgest = Object(__WEBPACK_IMPORTED_MODULE_7__context__["b" /* useUgest */])(),
+        data = _useUgest.data,
+        setData = _useUgest.setData;
+
+    var _useState = Object(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])(),
+        _useState2 = _slicedToArray(_useState, 2),
+        route = _useState2[0],
+        setRoute = _useState2[1];
+
+    Object(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
+        if (!data.navigation) return;
+        setRoute(data.navigation);
+    }, [data]);
+
+    Object(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
+        console.log(route);
+    }, [route]);
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_header__["a" /* default */], null),
+        route && route.menu !== 'Painel' && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'navscale' },
+            route.submenu ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'span',
+                null,
+                route.menu,
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-chevron-right' }),
+                route.submenu
+            ) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'span',
+                null,
+                route.menu
+            )
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'main',
+            { className: 'mainContent' },
+            route && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                null,
+                route.menu === 'Painel' && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__painel__["a" /* default */], route),
+                route.menu === 'Outras tabela' && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__other__["a" /* default */], route),
+                route.menu === 'Artigo' && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__artigo__["a" /* default */], route),
+                route.menu === 'Entidade' && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__entidade__["a" /* default */], route),
+                route.menu === 'stock' && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__stock__["a" /* default */], route)
+            )
+        )
+    );
+}
+
+/***/ }),
+/* 55 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = index;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_img_logo_jpeg__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_img_logo_jpeg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__assets_img_logo_jpeg__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assets_img_avatar_png__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assets_img_avatar_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__assets_img_avatar_png__);
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+
+
+
+
+
+
+function index() {
+    var _useState = Object(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])(true),
+        _useState2 = _slicedToArray(_useState, 2),
+        mode = _useState2[0],
+        setLang = _useState2[1];
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'header',
+        null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            null,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'logoBox' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: __WEBPACK_IMPORTED_MODULE_1__assets_img_logo_jpeg___default.a, alt: 'ugest-logo' })
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                null,
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'button',
+                    { onClick: function onClick() {
+                            return setLang(!mode);
+                        }, className: 'btn-location' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'span',
+                        null,
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-sun' })
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'span',
+                        { className: 'mode-container' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'label',
+                            { style: {
+                                    fontWeight: mode ? 'bold' : 'normal'
+                                } },
+                            'Claro'
+                        ),
+                        ' | ',
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'label',
+                            { style: {
+                                    fontWeight: !mode ? 'bold' : 'normal'
+                                } },
+                            'Escuro'
+                        )
+                    )
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'button',
+                    { className: 'btn' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-bell' })
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'button',
+                    { className: 'btn' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-search' })
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'span',
+                    { className: 'headerAvatar' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: __WEBPACK_IMPORTED_MODULE_2__assets_img_avatar_png___default.a, alt: 'user-photo' })
+                )
+            )
+        )
+    );
+}
+
+/***/ }),
+/* 56 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = index;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+
+
+function index() {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "div",
+        { className: "painelContainer" },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "div",
+            { className: "cardTimeContainer" },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", null),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "div",
+                null,
+                "2"
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "div",
+                null,
+                "3"
+            )
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "div",
+            { className: "cardTimeContainer" },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "div",
+                null,
+                "1"
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "div",
+                null,
+                "2"
+            )
+        )
+    );
+}
+
+/***/ }),
+/* 57 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = index;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__layout_form__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__layout_form_table__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__context__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__api__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__estado__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__subcategoria__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__papel__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__categoria__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__tipoartigo__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__nivelacesso__ = __webpack_require__(66);
+
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+
+
+
+
+
+
+
+/** Api */
+
+
+
+/*** Views */
+
+
+
+
+
+
+
+function index(props) {
+  var _this = this;
+
+  var _useUgest = Object(__WEBPACK_IMPORTED_MODULE_4__context__["b" /* useUgest */])(),
+      data = _useUgest.data,
+      setData = _useUgest.setData;
+
+  var submenu = props.submenu,
+      route = props.route;
+
+  var _useState = Object(__WEBPACK_IMPORTED_MODULE_1_react__["useState"])([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      tabContent = _useState2[0],
+      setTabContent = _useState2[1];
+
+  var _useState3 = Object(__WEBPACK_IMPORTED_MODULE_1_react__["useState"])(),
+      _useState4 = _slicedToArray(_useState3, 2),
+      lastHover = _useState4[0],
+      setLastHover = _useState4[1];
+
+  var _useState5 = Object(__WEBPACK_IMPORTED_MODULE_1_react__["useState"])([]),
+      _useState6 = _slicedToArray(_useState5, 2),
+      otherData = _useState6[0],
+      setOtherData = _useState6[1];
+
+  var _useState7 = Object(__WEBPACK_IMPORTED_MODULE_1_react__["useState"])(),
+      _useState8 = _slicedToArray(_useState7, 2),
+      res = _useState8[0],
+      setRes = _useState8[1];
+
+  var produtos = [{
+    nome: 'Marcelo Burlon',
+    categoria: 'Roupa',
+    subcategoria: 'T-shert',
+    'preço': 25306,
+    estado: 'activo',
+    quantidade: 8,
+    foto: 'mrcb.jpg'
+  }, {
+    nome: 'Balanciaga',
+    categoria: 'Calçados',
+    subcategoria: 'Botas',
+    'preço': 4505.02,
+    estado: 'activo',
+    quantidade: 16,
+    foto: 'botas.jpg'
+  }, {
+    nome: 'SmartWath',
+    categoria: 'Eletrônicos',
+    subcategoria: 'Relógio',
+    'preço': 8500.728,
+    estado: 'activo',
+    quantidade: 3,
+    foto: 'relogio.jpg'
+  }, {
+    nome: 'Test',
+    categoria: 'Eletrônicos',
+    subcategoria: 'Relógio',
+    'preço': 70000,
+    estado: 'inativo',
+    quantidade: 35,
+    foto: 'relogio.jpg'
+  }];
+
+  Object(__WEBPACK_IMPORTED_MODULE_1_react__["useEffect"])(function () {
+    setLastHover(produtos[0]);
+  }, []);
+
+  Object(__WEBPACK_IMPORTED_MODULE_1_react__["useEffect"])(function () {
+    setData(_extends({}, data, {
+      action: {}
+    }));
+  }, [submenu]);
+
+  Object(__WEBPACK_IMPORTED_MODULE_1_react__["useEffect"])(_asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
+    var _ref2, data;
+
+    return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return __WEBPACK_IMPORTED_MODULE_5__api__["a" /* default */].get('/' + route.toLocaleLowerCase());
+
+          case 2:
+            _ref2 = _context.sent;
+            data = _ref2.data;
+
+            setOtherData(data);
+
+          case 5:
+          case 'end':
+            return _context.stop();
+        }
+      }
+    }, _callee, _this);
+  })), [res, route]);
+
+  Object(__WEBPACK_IMPORTED_MODULE_1_react__["useEffect"])(function () {
+
+    setTabContent([{
+      name: 'Formulário',
+      icon: 'fa fa-plus',
+      content: __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+        'section',
+        { className: 'otherForms' },
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+          'div',
+          null,
+          submenu === "Estado" && __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__estado__["a" /* default */], null),
+          submenu === "Subcategoria" && __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__subcategoria__["a" /* default */], null),
+          submenu === "Papel" && __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8__papel__["a" /* default */], null),
+          submenu === "Categoria" && __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__categoria__["a" /* default */], null),
+          submenu === "Tipo de Artigo" && __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_10__tipoartigo__["a" /* default */], null),
+          submenu === "Nível de Acesso" && __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11__nivelacesso__["a" /* default */], null)
+        ),
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+          'div',
+          null,
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+            __WEBPACK_IMPORTED_MODULE_2__layout_form__["a" /* Button */],
+            { className: 'cancel', style: {
+                marginRight: '1rem'
+              } },
+            'Cancelar',
+            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('i', { className: 'fa fa-times' })
+          ),
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+            __WEBPACK_IMPORTED_MODULE_2__layout_form__["a" /* Button */],
+            { onClick: _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2() {
+                var res;
+                return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+                  while (1) {
+                    switch (_context2.prev = _context2.next) {
+                      case 0:
+                        _context2.next = 2;
+                        return __WEBPACK_IMPORTED_MODULE_5__api__["a" /* default */].post('/' + route.toLocaleLowerCase(), _extends({}, data.action.toSave));
+
+                      case 2:
+                        res = _context2.sent;
+
+
+                        setRes(res);
+
+                        props.onUpdate(res);
+
+                        console.log('/' + route.toLocaleLowerCase(), _extends({}, data.action.toSave), res, props);
+
+                      case 6:
+                      case 'end':
+                        return _context2.stop();
+                    }
+                  }
+                }, _callee2, _this);
+              })) },
+            'Salvar',
+            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('i', { className: 'fa fa-save' })
+          )
+        )
+      )
+    }, {
+      name: 'Tabela',
+      icon: 'fa fa-calendar',
+      content: __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__layout_form_table__["a" /* default */], {
+        onHover: function onHover(e) {
+          return setLastHover(e);
+        },
+        options: {
+          onlyCollumn: [],
+          header: {
+            search: true,
+            buttons: true,
+            modal: {
+              content: __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+                'div',
+                { className: 'formContent' },
+                __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+                  'div',
+                  { className: 'fCr' },
+                  submenu === "Estado" && __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__estado__["a" /* default */], null),
+                  submenu === "Subcategoria" && __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__subcategoria__["a" /* default */], null),
+                  submenu === "Papel" && __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8__papel__["a" /* default */], null),
+                  submenu === "Categoria" && __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__categoria__["a" /* default */], null),
+                  submenu === "Tipo de Artigo" && __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_10__tipoartigo__["a" /* default */], null),
+                  submenu === "Nível de Acesso" && __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11__nivelacesso__["a" /* default */], null)
+                )
+              ),
+              label: {
+                icon: "fas fa-edit",
+                title: "Editar"
+              }
+            }
+          }
+        },
+        data: otherData })
+    }]);
+  }, [otherData, submenu, data]);
+
+  return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+    'div',
+    { className: 'otherContainer' },
+    __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__layout_form__["d" /* Tab */], {
+      data: tabContent
+    })
+  );
+}
+
+/***/ }),
+/* 58 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = Convert;
+function Convert(number) {
+    var code = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'AOA';
+
+    return Intl.NumberFormat('pt-PT', {
+        style: 'currency',
+        currency: code
+    }).format(number);
+}
+
+/***/ }),
+/* 59 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Min; });
+var Min = {
+    qtd: 10
+};
+
+/***/ }),
+/* 60 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+
+
+var Modal = function Modal(_ref) {
+  var children = _ref.children,
+      _ref$className = _ref.className,
+      className = _ref$className === undefined ? '' : _ref$className,
+      props = _objectWithoutProperties(_ref, ['children', 'className']);
+
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    'div',
+    {
+      className: 'popup',
+      style: props.display === true && false === !props.display ? { opacity: 1, visibility: 'visible' } : { opacity: 0, visibility: 'hidden' }
+    },
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      {
+        onClick: function onClick() {
+          return props.onClose();
+        },
+        className: 'contentStyle'
+      },
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        {
+          className: props.transparent ? className : "popup_content" + ' ' + className,
+          onClick: function onClick(e) {
+            e.stopPropagation();
+          },
+          style: props.display === true ? { opacity: 1, transform: 'scale(1)' } : { opacity: 0, transform: 'scale(.25)' }
+        },
+        children
+      )
+    )
+  );
+};
+/* harmony default export */ __webpack_exports__["a"] = (Modal);
+
+/***/ }),
+/* 61 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = index;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layout_form__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__context__ = __webpack_require__(3);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+
+
+
+
+
+
+function index() {
+    var _useUgest = Object(__WEBPACK_IMPORTED_MODULE_2__context__["b" /* useUgest */])(),
+        data = _useUgest.data,
+        setData = _useUgest.setData;
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'estadoForm' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["b" /* Input */], { onChange: function onChange(e) {
+                return setData(_extends({}, data, {
+                    action: _extends({}, data.action, {
+                        toSave: {
+                            est_designacao: e.target.value
+                        }
+                    })
+                }));
+            },
+            icon: 'fas fa-pen',
+            label: 'Designa\xE7\xE3o',
+            type: 'text',
+            placeholder: 'activo'
+        })
+    );
+}
+
+/***/ }),
+/* 62 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = index;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layout_form__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__context__ = __webpack_require__(3);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+
+
+
+
+
+
+function index() {
+    var _useUgest = Object(__WEBPACK_IMPORTED_MODULE_2__context__["b" /* useUgest */])(),
+        data = _useUgest.data,
+        setData = _useUgest.setData;
+
+    var _useState = Object(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])([]),
+        _useState2 = _slicedToArray(_useState, 2),
+        estado = _useState2[0],
+        setEstado = _useState2[1];
+
+    Object(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
+
+        setEstado(data.multUso.estado.map(function (_ref) {
+            var est_id = _ref.est_id,
+                est_designacao = _ref.est_designacao;
+
+            return { value: est_id, label: est_designacao };
+        }));
+    }, [data]);
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'estadoForm' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["b" /* Input */], {
+            icon: 'fas fa-pen',
+            label: 'Designa\xE7\xE3o',
+            type: 'text',
+            placeholder: 'nome',
+            onChange: function onChange(e) {
+                return setData(_extends({}, data, {
+                    action: _extends({}, data.action, {
+                        toSave: _extends({}, data.action.toSave, {
+                            scat_designacao: e.target.value
+                        })
+                    })
+                }));
+            }
+        }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["c" /* Select */], {
+            onChange: function onChange(e) {
+                return setData(_extends({}, data, {
+                    action: _extends({}, data.action, {
+                        toSave: _extends({}, data.action.toSave, {
+                            scat_estado_id: e.target.value
+                        })
+                    })
+                }));
+            },
+            label: 'Estado',
+            data: estado
+        })
+    );
+}
+
+/***/ }),
+/* 63 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = index;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layout_form__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__context__ = __webpack_require__(3);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+
+
+
+
+
+
+function index() {
+    var _useUgest = Object(__WEBPACK_IMPORTED_MODULE_2__context__["b" /* useUgest */])(),
+        data = _useUgest.data,
+        setData = _useUgest.setData;
+
+    var _useState = Object(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])([]),
+        _useState2 = _slicedToArray(_useState, 2),
+        estado = _useState2[0],
+        setEstado = _useState2[1];
+
+    Object(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
+
+        setEstado(data.multUso.estado.map(function (_ref) {
+            var est_id = _ref.est_id,
+                est_designacao = _ref.est_designacao;
+
+            return { value: est_id, label: est_designacao };
+        }));
+    }, [data]);
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'estadoForm' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["b" /* Input */], {
+            icon: 'fas fa-pen',
+            label: 'Designa\xE7\xE3o',
+            type: 'text',
+            placeholder: 'nome',
+            onChange: function onChange(e) {
+                return setData(_extends({}, data, {
+                    action: _extends({}, data.action, {
+                        toSave: _extends({}, data.action.toSave, {
+                            pap_designacao: e.target.value
+                        })
+                    })
+                }));
+            }
+        }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["c" /* Select */], {
+            onChange: function onChange(e) {
+                return setData(_extends({}, data, {
+                    action: _extends({}, data.action, {
+                        toSave: _extends({}, data.action.toSave, {
+                            pap_estado_id: e.target.value
+                        })
+                    })
+                }));
+            },
+            label: 'Estado',
+            data: estado
+        })
+    );
+}
+
+/***/ }),
+/* 64 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = index;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__layout_form__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__context__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__api__ = __webpack_require__(5);
+
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+
+
+
+
+
+
+
+
+function index() {
+    var _this = this;
+
+    var _useUgest = Object(__WEBPACK_IMPORTED_MODULE_3__context__["b" /* useUgest */])(),
+        data = _useUgest.data,
+        setData = _useUgest.setData;
+
+    var _useState = Object(__WEBPACK_IMPORTED_MODULE_1_react__["useState"])([]),
+        _useState2 = _slicedToArray(_useState, 2),
+        estado = _useState2[0],
+        setEstado = _useState2[1];
+
+    var _useState3 = Object(__WEBPACK_IMPORTED_MODULE_1_react__["useState"])([]),
+        _useState4 = _slicedToArray(_useState3, 2),
+        subCategoria = _useState4[0],
+        setSubCategoria = _useState4[1];
+
+    Object(__WEBPACK_IMPORTED_MODULE_1_react__["useEffect"])(function () {
+        setEstado(data.multUso.estado.map(function (_ref) {
+            var est_id = _ref.est_id,
+                est_designacao = _ref.est_designacao;
+
+            return { value: est_id, label: est_designacao };
+        }));
+    }, [data]);
+
+    Object(__WEBPACK_IMPORTED_MODULE_1_react__["useEffect"])(function () {
+        _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
+            var res;
+            return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+                while (1) {
+                    switch (_context.prev = _context.next) {
+                        case 0:
+                            _context.next = 2;
+                            return __WEBPACK_IMPORTED_MODULE_4__api__["a" /* default */].get('/subcategoria');
+
+                        case 2:
+                            res = _context.sent;
+
+                            setSubCategoria(res.data.map(function (_ref3) {
+                                var scat_id = _ref3.scat_id,
+                                    scat_designacao = _ref3.scat_designacao;
+
+                                return { value: scat_id, label: scat_designacao };
+                            }));
+
+                            console.log(subCategoria);
+
+                        case 5:
+                        case 'end':
+                            return _context.stop();
+                    }
+                }
+            }, _callee, _this);
+        }))();
+    }, []);
+
+    return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+        'div',
+        { className: 'estadoForm' },
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__layout_form__["b" /* Input */], {
+            icon: 'fas fa-pen',
+            label: 'Designa\xE7\xE3o',
+            type: 'text',
+            placeholder: 'nome',
+            onChange: function onChange(e) {
+                return setData(_extends({}, data, {
+                    action: _extends({}, data.action, {
+                        toSave: _extends({}, data.action.toSave, {
+                            catg_designacao: e.target.value
+                        })
+                    })
+                }));
+            }
+        }),
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__layout_form__["c" /* Select */], {
+            onChange: function onChange(e) {
+                return setData(_extends({}, data, {
+                    action: _extends({}, data.action, {
+                        toSave: _extends({}, data.action.toSave, {
+                            catg_subcategoria_id: e.target.value
+                        })
+                    })
+                }));
+            },
+            label: 'Subcategoria',
+            data: subCategoria
+        }),
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__layout_form__["c" /* Select */], {
+            onChange: function onChange(e) {
+                return setData(_extends({}, data, {
+                    action: _extends({}, data.action, {
+                        toSave: _extends({}, data.action.toSave, {
+                            catg_estado_id: e.target.value
+                        })
+                    })
+                }));
+            },
+            label: 'Estado',
+            data: estado
+        })
+    );
+}
+
+/***/ }),
+/* 65 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = index;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layout_form__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__context__ = __webpack_require__(3);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+
+
+
+
+
+
+function index() {
+    var _useUgest = Object(__WEBPACK_IMPORTED_MODULE_2__context__["b" /* useUgest */])(),
+        data = _useUgest.data,
+        setData = _useUgest.setData;
+
+    var _useState = Object(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])([]),
+        _useState2 = _slicedToArray(_useState, 2),
+        estado = _useState2[0],
+        setEstado = _useState2[1];
+
+    Object(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
+
+        setEstado(data.multUso.estado.map(function (_ref) {
+            var est_id = _ref.est_id,
+                est_designacao = _ref.est_designacao;
+
+            return { value: est_id, label: est_designacao };
+        }));
+    }, [data]);
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'estadoForm' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["b" /* Input */], {
+            icon: 'fas fa-pen',
+            label: 'Designa\xE7\xE3o',
+            type: 'text',
+            placeholder: 'nome',
+            onChange: function onChange(e) {
+                return setData(_extends({}, data, {
+                    action: _extends({}, data.action, {
+                        toSave: _extends({}, data.action.toSave, {
+                            tip_designacao: e.target.value
+                        })
+                    })
+                }));
+            }
+        }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["c" /* Select */], {
+            onChange: function onChange(e) {
+                return setData(_extends({}, data, {
+                    action: _extends({}, data.action, {
+                        toSave: _extends({}, data.action.toSave, {
+                            tip_estado_id: e.target.value
+                        })
+                    })
+                }));
+            },
+            label: 'Estado',
+            data: estado
+        })
+    );
+}
+
+/***/ }),
+/* 66 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = index;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layout_form__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__context__ = __webpack_require__(3);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+
+
+
+
+
+
+function index() {
+    var _useUgest = Object(__WEBPACK_IMPORTED_MODULE_2__context__["b" /* useUgest */])(),
+        data = _useUgest.data,
+        setData = _useUgest.setData;
+
+    var _useState = Object(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])([]),
+        _useState2 = _slicedToArray(_useState, 2),
+        estado = _useState2[0],
+        setEstado = _useState2[1];
+
+    Object(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
+
+        setEstado(data.multUso.estado.map(function (_ref) {
+            var est_id = _ref.est_id,
+                est_designacao = _ref.est_designacao;
+
+            return { value: est_id, label: est_designacao };
+        }));
+    }, [data]);
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'estadoForm' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["b" /* Input */], {
+            icon: 'fas fa-pen',
+            label: 'Designa\xE7\xE3o',
+            type: 'text',
+            placeholder: 'nome',
+            onChange: function onChange(e) {
+                return setData(_extends({}, data, {
+                    action: _extends({}, data.action, {
+                        toSave: _extends({}, data.action.toSave, {
+                            niv_designacao: e.target.value
+                        })
+                    })
+                }));
+            }
+        }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["c" /* Select */], {
+            onChange: function onChange(e) {
+                return setData(_extends({}, data, {
+                    action: _extends({}, data.action, {
+                        toSave: _extends({}, data.action.toSave, {
+                            niv_estado_id: e.target.value
+                        })
+                    })
+                }));
+            },
+            label: 'Estado',
+            data: estado
+        })
+    );
+}
+
+/***/ }),
+/* 67 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = index;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__layout_form_table__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__artigosForm__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__api__ = __webpack_require__(5);
+
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+
+
+
+
+
+
+
+
+function index(props) {
+    var _this = this;
+
+    var menu = props.menu,
+        submenu = props.submenu;
+
+    var _useState = Object(__WEBPACK_IMPORTED_MODULE_1_react__["useState"])(),
+        _useState2 = _slicedToArray(_useState, 2),
+        lastHover = _useState2[0],
+        setLastHover = _useState2[1];
+
+    var _useState3 = Object(__WEBPACK_IMPORTED_MODULE_1_react__["useState"])([]),
+        _useState4 = _slicedToArray(_useState3, 2),
+        artigo = _useState4[0],
+        setArtigo = _useState4[1];
+
+    var produtos = [{
+        nome: 'Marcelo Burlon',
+        categoria: 'Roupa',
+        subcategoria: 'T-shert',
+        'preço': 25306,
+        estado: 'activo',
+        quantidade: 8,
+        foto: 'mrcb.jpg'
+    }, {
+        nome: 'Balanciaga',
+        categoria: 'Calçados',
+        subcategoria: 'Botas',
+        'preço': 4505.02,
+        estado: 'activo',
+        quantidade: 16,
+        foto: 'botas.jpg'
+    }, {
+        nome: 'SmartWath',
+        categoria: 'Eletrônicos',
+        subcategoria: 'Relógio',
+        'preço': 8500.728,
+        estado: 'activo',
+        quantidade: 3,
+        foto: 'relogio.jpg'
+    }, {
+        nome: 'Test',
+        categoria: 'Eletrônicos',
+        subcategoria: 'Relógio',
+        'preço': 70000,
+        estado: 'inativo',
+        quantidade: 35,
+        foto: 'relogio.jpg'
+    }];
+
+    Object(__WEBPACK_IMPORTED_MODULE_1_react__["useEffect"])(function () {
+        _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
+            var _ref2, data;
+
+            return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+                while (1) {
+                    switch (_context.prev = _context.next) {
+                        case 0:
+                            _context.next = 2;
+                            return __WEBPACK_IMPORTED_MODULE_4__api__["a" /* default */].get('/' + menu.toLocaleLowerCase());
+
+                        case 2:
+                            _ref2 = _context.sent;
+                            data = _ref2.data;
+
+                            setArtigo(data);
+
+                        case 5:
+                        case 'end':
+                            return _context.stop();
+                    }
+                }
+            }, _callee, _this);
+        }))();
+    }, [menu]);
+
+    return submenu == 'Novo' ? __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__artigosForm__["a" /* default */], { onUpdate: function onUpdate() {
+            _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2() {
+                var _ref4, data;
+
+                return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+                    while (1) {
+                        switch (_context2.prev = _context2.next) {
+                            case 0:
+                                _context2.next = 2;
+                                return __WEBPACK_IMPORTED_MODULE_4__api__["a" /* default */].get('/' + menu.toLocaleLowerCase());
+
+                            case 2:
+                                _ref4 = _context2.sent;
+                                data = _ref4.data;
+
+                                setArtigo(data);
+
+                            case 5:
+                            case 'end':
+                                return _context2.stop();
+                        }
+                    }
+                }, _callee2, _this);
+            }))();
+        }, route: menu }) : __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+        'div',
+        { style: {
+                padding: '2rem',
+                width: '100%',
+                backgroundColor: 'white'
+            } },
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__layout_form_table__["a" /* default */], {
+            onHover: function onHover(e) {
+                return setLastHover(e);
+            },
+            options: {
+                onlyCollumn: [],
+                header: {
+                    search: true,
+                    buttons: true,
+                    modal: {
+                        content: __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__artigosForm__["a" /* default */], null),
+                        label: {
+                            icon: "fas fa-edit",
+                            title: "Editar"
+                        }
+                    }
+                }
+            },
+            data: artigo })
+    );
+}
+
+/***/ }),
+/* 68 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__layout_form__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__context__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__api__ = __webpack_require__(5);
+
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _this = this;
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+
+
+
+
+
+
+
+
+var Form = function Form(_ref) {
+    var route = _ref.route,
+        props = _objectWithoutProperties(_ref, ['route']);
+
+    var _useUgest = Object(__WEBPACK_IMPORTED_MODULE_3__context__["b" /* useUgest */])(),
+        data = _useUgest.data,
+        setData = _useUgest.setData;
+
+    var _useState = Object(__WEBPACK_IMPORTED_MODULE_1_react__["useState"])([]),
+        _useState2 = _slicedToArray(_useState, 2),
+        estado = _useState2[0],
+        setEstado = _useState2[1];
+
+    var _useState3 = Object(__WEBPACK_IMPORTED_MODULE_1_react__["useState"])(),
+        _useState4 = _slicedToArray(_useState3, 2),
+        tipoArtigo = _useState4[0],
+        setTipoArtigo = _useState4[1];
+
+    Object(__WEBPACK_IMPORTED_MODULE_1_react__["useEffect"])(function () {
+        setEstado(data.multUso.estado.map(function (_ref2) {
+            var est_id = _ref2.est_id,
+                est_designacao = _ref2.est_designacao;
+
+            return { value: est_id, label: est_designacao };
+        }));
+
+        console.log(data);
+    }, [data]);
+
+    Object(__WEBPACK_IMPORTED_MODULE_1_react__["useEffect"])(_asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
+        var res;
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+            while (1) {
+                switch (_context.prev = _context.next) {
+                    case 0:
+                        _context.next = 2;
+                        return __WEBPACK_IMPORTED_MODULE_4__api__["a" /* default */].get('/tipoartigo');
+
+                    case 2:
+                        res = _context.sent;
+
+                        setTipoArtigo(res.data.map(function (_ref4) {
+                            var tip_id = _ref4.tip_id,
+                                tip_designacao = _ref4.tip_designacao;
+
+                            return { value: tip_id, label: tip_designacao };
+                        }));
+
+                    case 4:
+                    case 'end':
+                        return _context.stop();
+                }
+            }
+        }, _callee, _this);
+    })), []);
+
+    Object(__WEBPACK_IMPORTED_MODULE_1_react__["useEffect"])(function () {
+        setData(_extends({}, data, {
+            action: {}
+        }));
+    }, [route]);
+
+    return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+        'div',
+        { className: 'formContent' },
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+            'div',
+            { className: 'fCr' },
+            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__layout_form__["b" /* Input */], {
+                icon: 'fas fa-pen',
+                label: 'Designa\xE7\xE3o',
+                type: 'text',
+                placeholder: 'Nome do artigo',
+                onChange: function onChange(e) {
+                    return setData(_extends({}, data, {
+                        action: _extends({}, data.action, {
+                            toSave: _extends({}, data.action.toSave, {
+                                art_designacao: e.target.value
+                            })
+                        })
+                    }));
+                }
+            }),
+            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__layout_form__["c" /* Select */], {
+                label: 'Estado',
+                data: estado,
+                onChange: function onChange(e) {
+                    return setData(_extends({}, data, {
+                        action: _extends({}, data.action, {
+                            toSave: _extends({}, data.action.toSave, {
+                                art_estado_id: e.target.value
+                            })
+                        })
+                    }));
+                }
+            }),
+            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__layout_form__["c" /* Select */], {
+                label: 'Tipo de Artigo',
+                data: tipoArtigo,
+                onChange: function onChange(e) {
+                    return setData(_extends({}, data, {
+                        action: _extends({}, data.action, {
+                            toSave: _extends({}, data.action.toSave, {
+                                art_tipoArtigo_id: e.target.value
+                            })
+                        })
+                    }));
+                }
+            }),
+            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__layout_form__["b" /* Input */], {
+                icon: 'fas fa-box',
+                label: 'Stock m\xEDnimo',
+                type: 'number',
+                placeholder: '0',
+                onChange: function onChange(e) {
+                    return setData(_extends({}, data, {
+                        action: _extends({}, data.action, {
+                            toSave: _extends({}, data.action.toSave, {
+                                art_stock_minimo: e.target.value
+                            })
+                        })
+                    }));
+                }
+            }),
+            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__layout_form__["b" /* Input */], {
+                icon: 'fas fa-boxes',
+                label: 'Stock real',
+                type: 'number',
+                placeholder: '10',
+                onChange: function onChange(e) {
+                    return setData(_extends({}, data, {
+                        action: _extends({}, data.action, {
+                            toSave: _extends({}, data.action.toSave, {
+                                art_stock_real: e.target.value
+                            })
+                        })
+                    }));
+                }
+            })
+        ),
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+            'div',
+            null,
+            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_2__layout_form__["a" /* Button */],
+                { className: 'cancel', style: {
+                        marginRight: '1rem'
+                    } },
+                'Cancelar',
+                __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('i', { className: 'fa fa-times' })
+            ),
+            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_2__layout_form__["a" /* Button */],
+                { onClick: _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2() {
+                        var res;
+                        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+                            while (1) {
+                                switch (_context2.prev = _context2.next) {
+                                    case 0:
+                                        _context2.next = 2;
+                                        return __WEBPACK_IMPORTED_MODULE_4__api__["a" /* default */].post('/' + route.toLocaleLowerCase(), _extends({}, data.action.toSave));
+
+                                    case 2:
+                                        res = _context2.sent;
+
+
+                                        //setRes(res)
+
+                                        console.log('/' + route.toLocaleLowerCase(), _extends({}, data.action.toSave), res);
+
+                                    case 4:
+                                    case 'end':
+                                        return _context2.stop();
+                                }
+                            }
+                        }, _callee2, _this);
+                    })) },
+                'Salvar',
+                __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('i', { className: 'fa fa-save' })
+            )
+        )
+    );
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (Form);
+
+/***/ }),
+/* 69 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = index;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layout_form_table__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stockForm__ = __webpack_require__(70);
+
+
+
+
+
+
+function index(props) {
+    var submenu = props.submenu;
+
+
+    var produtos = [{
+        nome: 'Marcelo Burlon',
+        categoria: 'Roupa',
+        subcategoria: 'T-shert',
+        'preço': 25306,
+        estado: 'activo',
+        quantidade: 8,
+        foto: 'mrcb.jpg'
+    }, {
+        nome: 'Balanciaga',
+        categoria: 'Calçados',
+        subcategoria: 'Botas',
+        'preço': 4505.02,
+        estado: 'activo',
+        quantidade: 16,
+        foto: 'botas.jpg'
+    }, {
+        nome: 'SmartWath',
+        categoria: 'Eletrônicos',
+        subcategoria: 'Relógio',
+        'preço': 8500.728,
+        estado: 'activo',
+        quantidade: 3,
+        foto: 'relogio.jpg'
+    }, {
+        nome: 'Test',
+        categoria: 'Eletrônicos',
+        subcategoria: 'Relógio',
+        'preço': 70000,
+        estado: 'inativo',
+        quantidade: 35,
+        foto: 'relogio.jpg'
+    }];
+
+    return submenu == 'Novo' ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__stockForm__["a" /* default */], null) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { style: {
+                padding: '2rem',
+                width: '100%',
+                backgroundColor: 'white'
+            } },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form_table__["a" /* default */], {
+            onHover: function onHover(e) {
+                return setLastHover(e);
+            },
+            options: {
+                onlyCollumn: ['nome', 'categoria', 'subcategoria', 'preço', 'estado', 'quantidade'],
+                header: {
+                    search: true,
+                    buttons: true,
+                    modal: {
+                        content: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__stockForm__["a" /* default */], null),
+                        label: {
+                            icon: "fas fa-edit",
+                            title: "Editar"
+                        }
+                    }
+                }
+            },
+            data: produtos })
+    );
+}
+
+/***/ }),
+/* 70 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layout_form__ = __webpack_require__(2);
+
+
+
+
+var Form = function Form() {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'formContent' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'fCr' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["b" /* Input */], {
+                icon: 'fas fa-pen',
+                label: 'Designa\xE7\xE3o',
+                type: 'text',
+                placeholder: 'Nome do artigo'
+            }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["c" /* Select */], {
+                label: 'Estado',
+                data: [{
+                    label: 'Activo',
+                    value: 'abc'
+                }, {
+                    label: 'Inactivo',
+                    value: 'abc'
+                }]
+            }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["c" /* Select */], {
+                label: 'Tipo de Artigo',
+                data: [{
+                    label: 'Activo',
+                    value: 'abc'
+                }, {
+                    label: 'Inactivo',
+                    value: 'abc'
+                }]
+            }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["b" /* Input */], {
+                icon: 'fas fa-box',
+                label: 'Stock m\xEDnimo',
+                type: 'number',
+                placeholder: '0'
+            }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["b" /* Input */], {
+                icon: 'fas fa-boxes',
+                label: 'Stock m\xE1ximo',
+                type: 'number',
+                placeholder: '10'
+            })
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            null,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_1__layout_form__["a" /* Button */],
+                { className: 'cancel', style: {
+                        marginRight: '1rem'
+                    } },
+                'Cancelar',
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-times' })
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_1__layout_form__["a" /* Button */],
+                null,
+                'Salvar',
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-save' })
+            )
+        )
+    );
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (Form);
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(72);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(87)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../../node_modules/css-loader/index.js!./all.css", function() {
+			var newContent = require("!!../../../../../node_modules/css-loader/index.js!./all.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 72 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var escape = __webpack_require__(73);
+exports = module.exports = __webpack_require__(74)(false);
+// imports
+
+
+// module
+exports.push([module.i, "/*!\r\n * Font Awesome Free 5.13.0 by @fontawesome - https://fontawesome.com\r\n * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)\r\n */\r\n.fa,\r\n.fas,\r\n.far,\r\n.fal,\r\n.fad,\r\n.fab {\r\n  -moz-osx-font-smoothing: grayscale;\r\n  -webkit-font-smoothing: antialiased;\r\n  display: inline-block;\r\n  font-style: normal;\r\n  font-variant: normal;\r\n  text-rendering: auto;\r\n  line-height: 1; }\r\n\r\n.fa-lg {\r\n  font-size: 1.33333em;\r\n  line-height: 0.75em;\r\n  vertical-align: -.0667em; }\r\n\r\n.fa-xs {\r\n  font-size: .75em; }\r\n\r\n.fa-sm {\r\n  font-size: .875em; }\r\n\r\n.fa-1x {\r\n  font-size: 1em; }\r\n\r\n.fa-2x {\r\n  font-size: 2em; }\r\n\r\n.fa-3x {\r\n  font-size: 3em; }\r\n\r\n.fa-4x {\r\n  font-size: 4em; }\r\n\r\n.fa-5x {\r\n  font-size: 5em; }\r\n\r\n.fa-6x {\r\n  font-size: 6em; }\r\n\r\n.fa-7x {\r\n  font-size: 7em; }\r\n\r\n.fa-8x {\r\n  font-size: 8em; }\r\n\r\n.fa-9x {\r\n  font-size: 9em; }\r\n\r\n.fa-10x {\r\n  font-size: 10em; }\r\n\r\n.fa-fw {\r\n  text-align: center;\r\n  width: 1.25em; }\r\n\r\n.fa-ul {\r\n  list-style-type: none;\r\n  margin-left: 2.5em;\r\n  padding-left: 0; }\r\n  .fa-ul > li {\r\n    position: relative; }\r\n\r\n.fa-li {\r\n  left: -2em;\r\n  position: absolute;\r\n  text-align: center;\r\n  width: 2em;\r\n  line-height: inherit; }\r\n\r\n.fa-border {\r\n  border: solid 0.08em #eee;\r\n  border-radius: .1em;\r\n  padding: .2em .25em .15em; }\r\n\r\n.fa-pull-left {\r\n  float: left; }\r\n\r\n.fa-pull-right {\r\n  float: right; }\r\n\r\n.fa.fa-pull-left,\r\n.fas.fa-pull-left,\r\n.far.fa-pull-left,\r\n.fal.fa-pull-left,\r\n.fab.fa-pull-left {\r\n  margin-right: .3em; }\r\n\r\n.fa.fa-pull-right,\r\n.fas.fa-pull-right,\r\n.far.fa-pull-right,\r\n.fal.fa-pull-right,\r\n.fab.fa-pull-right {\r\n  margin-left: .3em; }\r\n\r\n.fa-spin {\r\n  -webkit-animation: fa-spin 2s infinite linear;\r\n          animation: fa-spin 2s infinite linear; }\r\n\r\n.fa-pulse {\r\n  -webkit-animation: fa-spin 1s infinite steps(8);\r\n          animation: fa-spin 1s infinite steps(8); }\r\n\r\n@-webkit-keyframes fa-spin {\r\n  0% {\r\n    -webkit-transform: rotate(0deg);\r\n            transform: rotate(0deg); }\r\n  100% {\r\n    -webkit-transform: rotate(360deg);\r\n            transform: rotate(360deg); } }\r\n\r\n@keyframes fa-spin {\r\n  0% {\r\n    -webkit-transform: rotate(0deg);\r\n            transform: rotate(0deg); }\r\n  100% {\r\n    -webkit-transform: rotate(360deg);\r\n            transform: rotate(360deg); } }\r\n\r\n.fa-rotate-90 {\r\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=1)\";\r\n  -webkit-transform: rotate(90deg);\r\n          transform: rotate(90deg); }\r\n\r\n.fa-rotate-180 {\r\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2)\";\r\n  -webkit-transform: rotate(180deg);\r\n          transform: rotate(180deg); }\r\n\r\n.fa-rotate-270 {\r\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=3)\";\r\n  -webkit-transform: rotate(270deg);\r\n          transform: rotate(270deg); }\r\n\r\n.fa-flip-horizontal {\r\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)\";\r\n  -webkit-transform: scale(-1, 1);\r\n          transform: scale(-1, 1); }\r\n\r\n.fa-flip-vertical {\r\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)\";\r\n  -webkit-transform: scale(1, -1);\r\n          transform: scale(1, -1); }\r\n\r\n.fa-flip-both, .fa-flip-horizontal.fa-flip-vertical {\r\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)\";\r\n  -webkit-transform: scale(-1, -1);\r\n          transform: scale(-1, -1); }\r\n\r\n:root .fa-rotate-90,\r\n:root .fa-rotate-180,\r\n:root .fa-rotate-270,\r\n:root .fa-flip-horizontal,\r\n:root .fa-flip-vertical,\r\n:root .fa-flip-both {\r\n  -webkit-filter: none;\r\n          filter: none; }\r\n\r\n.fa-stack {\r\n  display: inline-block;\r\n  height: 2em;\r\n  line-height: 2em;\r\n  position: relative;\r\n  vertical-align: middle;\r\n  width: 2.5em; }\r\n\r\n.fa-stack-1x,\r\n.fa-stack-2x {\r\n  left: 0;\r\n  position: absolute;\r\n  text-align: center;\r\n  width: 100%; }\r\n\r\n.fa-stack-1x {\r\n  line-height: inherit; }\r\n\r\n.fa-stack-2x {\r\n  font-size: 2em; }\r\n\r\n.fa-inverse {\r\n  color: #fff; }\r\n\r\n/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen\r\nreaders do not read off random characters that represent icons */\r\n.fa-500px:before {\r\n  content: \"\\F26E\"; }\r\n\r\n.fa-accessible-icon:before {\r\n  content: \"\\F368\"; }\r\n\r\n.fa-accusoft:before {\r\n  content: \"\\F369\"; }\r\n\r\n.fa-acquisitions-incorporated:before {\r\n  content: \"\\F6AF\"; }\r\n\r\n.fa-ad:before {\r\n  content: \"\\F641\"; }\r\n\r\n.fa-address-book:before {\r\n  content: \"\\F2B9\"; }\r\n\r\n.fa-address-card:before {\r\n  content: \"\\F2BB\"; }\r\n\r\n.fa-adjust:before {\r\n  content: \"\\F042\"; }\r\n\r\n.fa-adn:before {\r\n  content: \"\\F170\"; }\r\n\r\n.fa-adobe:before {\r\n  content: \"\\F778\"; }\r\n\r\n.fa-adversal:before {\r\n  content: \"\\F36A\"; }\r\n\r\n.fa-affiliatetheme:before {\r\n  content: \"\\F36B\"; }\r\n\r\n.fa-air-freshener:before {\r\n  content: \"\\F5D0\"; }\r\n\r\n.fa-airbnb:before {\r\n  content: \"\\F834\"; }\r\n\r\n.fa-algolia:before {\r\n  content: \"\\F36C\"; }\r\n\r\n.fa-align-center:before {\r\n  content: \"\\F037\"; }\r\n\r\n.fa-align-justify:before {\r\n  content: \"\\F039\"; }\r\n\r\n.fa-align-left:before {\r\n  content: \"\\F036\"; }\r\n\r\n.fa-align-right:before {\r\n  content: \"\\F038\"; }\r\n\r\n.fa-alipay:before {\r\n  content: \"\\F642\"; }\r\n\r\n.fa-allergies:before {\r\n  content: \"\\F461\"; }\r\n\r\n.fa-amazon:before {\r\n  content: \"\\F270\"; }\r\n\r\n.fa-amazon-pay:before {\r\n  content: \"\\F42C\"; }\r\n\r\n.fa-ambulance:before {\r\n  content: \"\\F0F9\"; }\r\n\r\n.fa-american-sign-language-interpreting:before {\r\n  content: \"\\F2A3\"; }\r\n\r\n.fa-amilia:before {\r\n  content: \"\\F36D\"; }\r\n\r\n.fa-anchor:before {\r\n  content: \"\\F13D\"; }\r\n\r\n.fa-android:before {\r\n  content: \"\\F17B\"; }\r\n\r\n.fa-angellist:before {\r\n  content: \"\\F209\"; }\r\n\r\n.fa-angle-double-down:before {\r\n  content: \"\\F103\"; }\r\n\r\n.fa-angle-double-left:before {\r\n  content: \"\\F100\"; }\r\n\r\n.fa-angle-double-right:before {\r\n  content: \"\\F101\"; }\r\n\r\n.fa-angle-double-up:before {\r\n  content: \"\\F102\"; }\r\n\r\n.fa-angle-down:before {\r\n  content: \"\\F107\"; }\r\n\r\n.fa-angle-left:before {\r\n  content: \"\\F104\"; }\r\n\r\n.fa-angle-right:before {\r\n  content: \"\\F105\"; }\r\n\r\n.fa-angle-up:before {\r\n  content: \"\\F106\"; }\r\n\r\n.fa-angry:before {\r\n  content: \"\\F556\"; }\r\n\r\n.fa-angrycreative:before {\r\n  content: \"\\F36E\"; }\r\n\r\n.fa-angular:before {\r\n  content: \"\\F420\"; }\r\n\r\n.fa-ankh:before {\r\n  content: \"\\F644\"; }\r\n\r\n.fa-app-store:before {\r\n  content: \"\\F36F\"; }\r\n\r\n.fa-app-store-ios:before {\r\n  content: \"\\F370\"; }\r\n\r\n.fa-apper:before {\r\n  content: \"\\F371\"; }\r\n\r\n.fa-apple:before {\r\n  content: \"\\F179\"; }\r\n\r\n.fa-apple-alt:before {\r\n  content: \"\\F5D1\"; }\r\n\r\n.fa-apple-pay:before {\r\n  content: \"\\F415\"; }\r\n\r\n.fa-archive:before {\r\n  content: \"\\F187\"; }\r\n\r\n.fa-archway:before {\r\n  content: \"\\F557\"; }\r\n\r\n.fa-arrow-alt-circle-down:before {\r\n  content: \"\\F358\"; }\r\n\r\n.fa-arrow-alt-circle-left:before {\r\n  content: \"\\F359\"; }\r\n\r\n.fa-arrow-alt-circle-right:before {\r\n  content: \"\\F35A\"; }\r\n\r\n.fa-arrow-alt-circle-up:before {\r\n  content: \"\\F35B\"; }\r\n\r\n.fa-arrow-circle-down:before {\r\n  content: \"\\F0AB\"; }\r\n\r\n.fa-arrow-circle-left:before {\r\n  content: \"\\F0A8\"; }\r\n\r\n.fa-arrow-circle-right:before {\r\n  content: \"\\F0A9\"; }\r\n\r\n.fa-arrow-circle-up:before {\r\n  content: \"\\F0AA\"; }\r\n\r\n.fa-arrow-down:before {\r\n  content: \"\\F063\"; }\r\n\r\n.fa-arrow-left:before {\r\n  content: \"\\F060\"; }\r\n\r\n.fa-arrow-right:before {\r\n  content: \"\\F061\"; }\r\n\r\n.fa-arrow-up:before {\r\n  content: \"\\F062\"; }\r\n\r\n.fa-arrows-alt:before {\r\n  content: \"\\F0B2\"; }\r\n\r\n.fa-arrows-alt-h:before {\r\n  content: \"\\F337\"; }\r\n\r\n.fa-arrows-alt-v:before {\r\n  content: \"\\F338\"; }\r\n\r\n.fa-artstation:before {\r\n  content: \"\\F77A\"; }\r\n\r\n.fa-assistive-listening-systems:before {\r\n  content: \"\\F2A2\"; }\r\n\r\n.fa-asterisk:before {\r\n  content: \"\\F069\"; }\r\n\r\n.fa-asymmetrik:before {\r\n  content: \"\\F372\"; }\r\n\r\n.fa-at:before {\r\n  content: \"\\F1FA\"; }\r\n\r\n.fa-atlas:before {\r\n  content: \"\\F558\"; }\r\n\r\n.fa-atlassian:before {\r\n  content: \"\\F77B\"; }\r\n\r\n.fa-atom:before {\r\n  content: \"\\F5D2\"; }\r\n\r\n.fa-audible:before {\r\n  content: \"\\F373\"; }\r\n\r\n.fa-audio-description:before {\r\n  content: \"\\F29E\"; }\r\n\r\n.fa-autoprefixer:before {\r\n  content: \"\\F41C\"; }\r\n\r\n.fa-avianex:before {\r\n  content: \"\\F374\"; }\r\n\r\n.fa-aviato:before {\r\n  content: \"\\F421\"; }\r\n\r\n.fa-award:before {\r\n  content: \"\\F559\"; }\r\n\r\n.fa-aws:before {\r\n  content: \"\\F375\"; }\r\n\r\n.fa-baby:before {\r\n  content: \"\\F77C\"; }\r\n\r\n.fa-baby-carriage:before {\r\n  content: \"\\F77D\"; }\r\n\r\n.fa-backspace:before {\r\n  content: \"\\F55A\"; }\r\n\r\n.fa-backward:before {\r\n  content: \"\\F04A\"; }\r\n\r\n.fa-bacon:before {\r\n  content: \"\\F7E5\"; }\r\n\r\n.fa-bahai:before {\r\n  content: \"\\F666\"; }\r\n\r\n.fa-balance-scale:before {\r\n  content: \"\\F24E\"; }\r\n\r\n.fa-balance-scale-left:before {\r\n  content: \"\\F515\"; }\r\n\r\n.fa-balance-scale-right:before {\r\n  content: \"\\F516\"; }\r\n\r\n.fa-ban:before {\r\n  content: \"\\F05E\"; }\r\n\r\n.fa-band-aid:before {\r\n  content: \"\\F462\"; }\r\n\r\n.fa-bandcamp:before {\r\n  content: \"\\F2D5\"; }\r\n\r\n.fa-barcode:before {\r\n  content: \"\\F02A\"; }\r\n\r\n.fa-bars:before {\r\n  content: \"\\F0C9\"; }\r\n\r\n.fa-baseball-ball:before {\r\n  content: \"\\F433\"; }\r\n\r\n.fa-basketball-ball:before {\r\n  content: \"\\F434\"; }\r\n\r\n.fa-bath:before {\r\n  content: \"\\F2CD\"; }\r\n\r\n.fa-battery-empty:before {\r\n  content: \"\\F244\"; }\r\n\r\n.fa-battery-full:before {\r\n  content: \"\\F240\"; }\r\n\r\n.fa-battery-half:before {\r\n  content: \"\\F242\"; }\r\n\r\n.fa-battery-quarter:before {\r\n  content: \"\\F243\"; }\r\n\r\n.fa-battery-three-quarters:before {\r\n  content: \"\\F241\"; }\r\n\r\n.fa-battle-net:before {\r\n  content: \"\\F835\"; }\r\n\r\n.fa-bed:before {\r\n  content: \"\\F236\"; }\r\n\r\n.fa-beer:before {\r\n  content: \"\\F0FC\"; }\r\n\r\n.fa-behance:before {\r\n  content: \"\\F1B4\"; }\r\n\r\n.fa-behance-square:before {\r\n  content: \"\\F1B5\"; }\r\n\r\n.fa-bell:before {\r\n  content: \"\\F0F3\"; }\r\n\r\n.fa-bell-slash:before {\r\n  content: \"\\F1F6\"; }\r\n\r\n.fa-bezier-curve:before {\r\n  content: \"\\F55B\"; }\r\n\r\n.fa-bible:before {\r\n  content: \"\\F647\"; }\r\n\r\n.fa-bicycle:before {\r\n  content: \"\\F206\"; }\r\n\r\n.fa-biking:before {\r\n  content: \"\\F84A\"; }\r\n\r\n.fa-bimobject:before {\r\n  content: \"\\F378\"; }\r\n\r\n.fa-binoculars:before {\r\n  content: \"\\F1E5\"; }\r\n\r\n.fa-biohazard:before {\r\n  content: \"\\F780\"; }\r\n\r\n.fa-birthday-cake:before {\r\n  content: \"\\F1FD\"; }\r\n\r\n.fa-bitbucket:before {\r\n  content: \"\\F171\"; }\r\n\r\n.fa-bitcoin:before {\r\n  content: \"\\F379\"; }\r\n\r\n.fa-bity:before {\r\n  content: \"\\F37A\"; }\r\n\r\n.fa-black-tie:before {\r\n  content: \"\\F27E\"; }\r\n\r\n.fa-blackberry:before {\r\n  content: \"\\F37B\"; }\r\n\r\n.fa-blender:before {\r\n  content: \"\\F517\"; }\r\n\r\n.fa-blender-phone:before {\r\n  content: \"\\F6B6\"; }\r\n\r\n.fa-blind:before {\r\n  content: \"\\F29D\"; }\r\n\r\n.fa-blog:before {\r\n  content: \"\\F781\"; }\r\n\r\n.fa-blogger:before {\r\n  content: \"\\F37C\"; }\r\n\r\n.fa-blogger-b:before {\r\n  content: \"\\F37D\"; }\r\n\r\n.fa-bluetooth:before {\r\n  content: \"\\F293\"; }\r\n\r\n.fa-bluetooth-b:before {\r\n  content: \"\\F294\"; }\r\n\r\n.fa-bold:before {\r\n  content: \"\\F032\"; }\r\n\r\n.fa-bolt:before {\r\n  content: \"\\F0E7\"; }\r\n\r\n.fa-bomb:before {\r\n  content: \"\\F1E2\"; }\r\n\r\n.fa-bone:before {\r\n  content: \"\\F5D7\"; }\r\n\r\n.fa-bong:before {\r\n  content: \"\\F55C\"; }\r\n\r\n.fa-book:before {\r\n  content: \"\\F02D\"; }\r\n\r\n.fa-book-dead:before {\r\n  content: \"\\F6B7\"; }\r\n\r\n.fa-book-medical:before {\r\n  content: \"\\F7E6\"; }\r\n\r\n.fa-book-open:before {\r\n  content: \"\\F518\"; }\r\n\r\n.fa-book-reader:before {\r\n  content: \"\\F5DA\"; }\r\n\r\n.fa-bookmark:before {\r\n  content: \"\\F02E\"; }\r\n\r\n.fa-bootstrap:before {\r\n  content: \"\\F836\"; }\r\n\r\n.fa-border-all:before {\r\n  content: \"\\F84C\"; }\r\n\r\n.fa-border-none:before {\r\n  content: \"\\F850\"; }\r\n\r\n.fa-border-style:before {\r\n  content: \"\\F853\"; }\r\n\r\n.fa-bowling-ball:before {\r\n  content: \"\\F436\"; }\r\n\r\n.fa-box:before {\r\n  content: \"\\F466\"; }\r\n\r\n.fa-box-open:before {\r\n  content: \"\\F49E\"; }\r\n\r\n.fa-box-tissue:before {\r\n  content: \"\\F95B\"; }\r\n\r\n.fa-boxes:before {\r\n  content: \"\\F468\"; }\r\n\r\n.fa-braille:before {\r\n  content: \"\\F2A1\"; }\r\n\r\n.fa-brain:before {\r\n  content: \"\\F5DC\"; }\r\n\r\n.fa-bread-slice:before {\r\n  content: \"\\F7EC\"; }\r\n\r\n.fa-briefcase:before {\r\n  content: \"\\F0B1\"; }\r\n\r\n.fa-briefcase-medical:before {\r\n  content: \"\\F469\"; }\r\n\r\n.fa-broadcast-tower:before {\r\n  content: \"\\F519\"; }\r\n\r\n.fa-broom:before {\r\n  content: \"\\F51A\"; }\r\n\r\n.fa-brush:before {\r\n  content: \"\\F55D\"; }\r\n\r\n.fa-btc:before {\r\n  content: \"\\F15A\"; }\r\n\r\n.fa-buffer:before {\r\n  content: \"\\F837\"; }\r\n\r\n.fa-bug:before {\r\n  content: \"\\F188\"; }\r\n\r\n.fa-building:before {\r\n  content: \"\\F1AD\"; }\r\n\r\n.fa-bullhorn:before {\r\n  content: \"\\F0A1\"; }\r\n\r\n.fa-bullseye:before {\r\n  content: \"\\F140\"; }\r\n\r\n.fa-burn:before {\r\n  content: \"\\F46A\"; }\r\n\r\n.fa-buromobelexperte:before {\r\n  content: \"\\F37F\"; }\r\n\r\n.fa-bus:before {\r\n  content: \"\\F207\"; }\r\n\r\n.fa-bus-alt:before {\r\n  content: \"\\F55E\"; }\r\n\r\n.fa-business-time:before {\r\n  content: \"\\F64A\"; }\r\n\r\n.fa-buy-n-large:before {\r\n  content: \"\\F8A6\"; }\r\n\r\n.fa-buysellads:before {\r\n  content: \"\\F20D\"; }\r\n\r\n.fa-calculator:before {\r\n  content: \"\\F1EC\"; }\r\n\r\n.fa-calendar:before {\r\n  content: \"\\F133\"; }\r\n\r\n.fa-calendar-alt:before {\r\n  content: \"\\F073\"; }\r\n\r\n.fa-calendar-check:before {\r\n  content: \"\\F274\"; }\r\n\r\n.fa-calendar-day:before {\r\n  content: \"\\F783\"; }\r\n\r\n.fa-calendar-minus:before {\r\n  content: \"\\F272\"; }\r\n\r\n.fa-calendar-plus:before {\r\n  content: \"\\F271\"; }\r\n\r\n.fa-calendar-times:before {\r\n  content: \"\\F273\"; }\r\n\r\n.fa-calendar-week:before {\r\n  content: \"\\F784\"; }\r\n\r\n.fa-camera:before {\r\n  content: \"\\F030\"; }\r\n\r\n.fa-camera-retro:before {\r\n  content: \"\\F083\"; }\r\n\r\n.fa-campground:before {\r\n  content: \"\\F6BB\"; }\r\n\r\n.fa-canadian-maple-leaf:before {\r\n  content: \"\\F785\"; }\r\n\r\n.fa-candy-cane:before {\r\n  content: \"\\F786\"; }\r\n\r\n.fa-cannabis:before {\r\n  content: \"\\F55F\"; }\r\n\r\n.fa-capsules:before {\r\n  content: \"\\F46B\"; }\r\n\r\n.fa-car:before {\r\n  content: \"\\F1B9\"; }\r\n\r\n.fa-car-alt:before {\r\n  content: \"\\F5DE\"; }\r\n\r\n.fa-car-battery:before {\r\n  content: \"\\F5DF\"; }\r\n\r\n.fa-car-crash:before {\r\n  content: \"\\F5E1\"; }\r\n\r\n.fa-car-side:before {\r\n  content: \"\\F5E4\"; }\r\n\r\n.fa-caravan:before {\r\n  content: \"\\F8FF\"; }\r\n\r\n.fa-caret-down:before {\r\n  content: \"\\F0D7\"; }\r\n\r\n.fa-caret-left:before {\r\n  content: \"\\F0D9\"; }\r\n\r\n.fa-caret-right:before {\r\n  content: \"\\F0DA\"; }\r\n\r\n.fa-caret-square-down:before {\r\n  content: \"\\F150\"; }\r\n\r\n.fa-caret-square-left:before {\r\n  content: \"\\F191\"; }\r\n\r\n.fa-caret-square-right:before {\r\n  content: \"\\F152\"; }\r\n\r\n.fa-caret-square-up:before {\r\n  content: \"\\F151\"; }\r\n\r\n.fa-caret-up:before {\r\n  content: \"\\F0D8\"; }\r\n\r\n.fa-carrot:before {\r\n  content: \"\\F787\"; }\r\n\r\n.fa-cart-arrow-down:before {\r\n  content: \"\\F218\"; }\r\n\r\n.fa-cart-plus:before {\r\n  content: \"\\F217\"; }\r\n\r\n.fa-cash-register:before {\r\n  content: \"\\F788\"; }\r\n\r\n.fa-cat:before {\r\n  content: \"\\F6BE\"; }\r\n\r\n.fa-cc-amazon-pay:before {\r\n  content: \"\\F42D\"; }\r\n\r\n.fa-cc-amex:before {\r\n  content: \"\\F1F3\"; }\r\n\r\n.fa-cc-apple-pay:before {\r\n  content: \"\\F416\"; }\r\n\r\n.fa-cc-diners-club:before {\r\n  content: \"\\F24C\"; }\r\n\r\n.fa-cc-discover:before {\r\n  content: \"\\F1F2\"; }\r\n\r\n.fa-cc-jcb:before {\r\n  content: \"\\F24B\"; }\r\n\r\n.fa-cc-mastercard:before {\r\n  content: \"\\F1F1\"; }\r\n\r\n.fa-cc-paypal:before {\r\n  content: \"\\F1F4\"; }\r\n\r\n.fa-cc-stripe:before {\r\n  content: \"\\F1F5\"; }\r\n\r\n.fa-cc-visa:before {\r\n  content: \"\\F1F0\"; }\r\n\r\n.fa-centercode:before {\r\n  content: \"\\F380\"; }\r\n\r\n.fa-centos:before {\r\n  content: \"\\F789\"; }\r\n\r\n.fa-certificate:before {\r\n  content: \"\\F0A3\"; }\r\n\r\n.fa-chair:before {\r\n  content: \"\\F6C0\"; }\r\n\r\n.fa-chalkboard:before {\r\n  content: \"\\F51B\"; }\r\n\r\n.fa-chalkboard-teacher:before {\r\n  content: \"\\F51C\"; }\r\n\r\n.fa-charging-station:before {\r\n  content: \"\\F5E7\"; }\r\n\r\n.fa-chart-area:before {\r\n  content: \"\\F1FE\"; }\r\n\r\n.fa-chart-bar:before {\r\n  content: \"\\F080\"; }\r\n\r\n.fa-chart-line:before {\r\n  content: \"\\F201\"; }\r\n\r\n.fa-chart-pie:before {\r\n  content: \"\\F200\"; }\r\n\r\n.fa-check:before {\r\n  content: \"\\F00C\"; }\r\n\r\n.fa-check-circle:before {\r\n  content: \"\\F058\"; }\r\n\r\n.fa-check-double:before {\r\n  content: \"\\F560\"; }\r\n\r\n.fa-check-square:before {\r\n  content: \"\\F14A\"; }\r\n\r\n.fa-cheese:before {\r\n  content: \"\\F7EF\"; }\r\n\r\n.fa-chess:before {\r\n  content: \"\\F439\"; }\r\n\r\n.fa-chess-bishop:before {\r\n  content: \"\\F43A\"; }\r\n\r\n.fa-chess-board:before {\r\n  content: \"\\F43C\"; }\r\n\r\n.fa-chess-king:before {\r\n  content: \"\\F43F\"; }\r\n\r\n.fa-chess-knight:before {\r\n  content: \"\\F441\"; }\r\n\r\n.fa-chess-pawn:before {\r\n  content: \"\\F443\"; }\r\n\r\n.fa-chess-queen:before {\r\n  content: \"\\F445\"; }\r\n\r\n.fa-chess-rook:before {\r\n  content: \"\\F447\"; }\r\n\r\n.fa-chevron-circle-down:before {\r\n  content: \"\\F13A\"; }\r\n\r\n.fa-chevron-circle-left:before {\r\n  content: \"\\F137\"; }\r\n\r\n.fa-chevron-circle-right:before {\r\n  content: \"\\F138\"; }\r\n\r\n.fa-chevron-circle-up:before {\r\n  content: \"\\F139\"; }\r\n\r\n.fa-chevron-down:before {\r\n  content: \"\\F078\"; }\r\n\r\n.fa-chevron-left:before {\r\n  content: \"\\F053\"; }\r\n\r\n.fa-chevron-right:before {\r\n  content: \"\\F054\"; }\r\n\r\n.fa-chevron-up:before {\r\n  content: \"\\F077\"; }\r\n\r\n.fa-child:before {\r\n  content: \"\\F1AE\"; }\r\n\r\n.fa-chrome:before {\r\n  content: \"\\F268\"; }\r\n\r\n.fa-chromecast:before {\r\n  content: \"\\F838\"; }\r\n\r\n.fa-church:before {\r\n  content: \"\\F51D\"; }\r\n\r\n.fa-circle:before {\r\n  content: \"\\F111\"; }\r\n\r\n.fa-circle-notch:before {\r\n  content: \"\\F1CE\"; }\r\n\r\n.fa-city:before {\r\n  content: \"\\F64F\"; }\r\n\r\n.fa-clinic-medical:before {\r\n  content: \"\\F7F2\"; }\r\n\r\n.fa-clipboard:before {\r\n  content: \"\\F328\"; }\r\n\r\n.fa-clipboard-check:before {\r\n  content: \"\\F46C\"; }\r\n\r\n.fa-clipboard-list:before {\r\n  content: \"\\F46D\"; }\r\n\r\n.fa-clock:before {\r\n  content: \"\\F017\"; }\r\n\r\n.fa-clone:before {\r\n  content: \"\\F24D\"; }\r\n\r\n.fa-closed-captioning:before {\r\n  content: \"\\F20A\"; }\r\n\r\n.fa-cloud:before {\r\n  content: \"\\F0C2\"; }\r\n\r\n.fa-cloud-download-alt:before {\r\n  content: \"\\F381\"; }\r\n\r\n.fa-cloud-meatball:before {\r\n  content: \"\\F73B\"; }\r\n\r\n.fa-cloud-moon:before {\r\n  content: \"\\F6C3\"; }\r\n\r\n.fa-cloud-moon-rain:before {\r\n  content: \"\\F73C\"; }\r\n\r\n.fa-cloud-rain:before {\r\n  content: \"\\F73D\"; }\r\n\r\n.fa-cloud-showers-heavy:before {\r\n  content: \"\\F740\"; }\r\n\r\n.fa-cloud-sun:before {\r\n  content: \"\\F6C4\"; }\r\n\r\n.fa-cloud-sun-rain:before {\r\n  content: \"\\F743\"; }\r\n\r\n.fa-cloud-upload-alt:before {\r\n  content: \"\\F382\"; }\r\n\r\n.fa-cloudscale:before {\r\n  content: \"\\F383\"; }\r\n\r\n.fa-cloudsmith:before {\r\n  content: \"\\F384\"; }\r\n\r\n.fa-cloudversify:before {\r\n  content: \"\\F385\"; }\r\n\r\n.fa-cocktail:before {\r\n  content: \"\\F561\"; }\r\n\r\n.fa-code:before {\r\n  content: \"\\F121\"; }\r\n\r\n.fa-code-branch:before {\r\n  content: \"\\F126\"; }\r\n\r\n.fa-codepen:before {\r\n  content: \"\\F1CB\"; }\r\n\r\n.fa-codiepie:before {\r\n  content: \"\\F284\"; }\r\n\r\n.fa-coffee:before {\r\n  content: \"\\F0F4\"; }\r\n\r\n.fa-cog:before {\r\n  content: \"\\F013\"; }\r\n\r\n.fa-cogs:before {\r\n  content: \"\\F085\"; }\r\n\r\n.fa-coins:before {\r\n  content: \"\\F51E\"; }\r\n\r\n.fa-columns:before {\r\n  content: \"\\F0DB\"; }\r\n\r\n.fa-comment:before {\r\n  content: \"\\F075\"; }\r\n\r\n.fa-comment-alt:before {\r\n  content: \"\\F27A\"; }\r\n\r\n.fa-comment-dollar:before {\r\n  content: \"\\F651\"; }\r\n\r\n.fa-comment-dots:before {\r\n  content: \"\\F4AD\"; }\r\n\r\n.fa-comment-medical:before {\r\n  content: \"\\F7F5\"; }\r\n\r\n.fa-comment-slash:before {\r\n  content: \"\\F4B3\"; }\r\n\r\n.fa-comments:before {\r\n  content: \"\\F086\"; }\r\n\r\n.fa-comments-dollar:before {\r\n  content: \"\\F653\"; }\r\n\r\n.fa-compact-disc:before {\r\n  content: \"\\F51F\"; }\r\n\r\n.fa-compass:before {\r\n  content: \"\\F14E\"; }\r\n\r\n.fa-compress:before {\r\n  content: \"\\F066\"; }\r\n\r\n.fa-compress-alt:before {\r\n  content: \"\\F422\"; }\r\n\r\n.fa-compress-arrows-alt:before {\r\n  content: \"\\F78C\"; }\r\n\r\n.fa-concierge-bell:before {\r\n  content: \"\\F562\"; }\r\n\r\n.fa-confluence:before {\r\n  content: \"\\F78D\"; }\r\n\r\n.fa-connectdevelop:before {\r\n  content: \"\\F20E\"; }\r\n\r\n.fa-contao:before {\r\n  content: \"\\F26D\"; }\r\n\r\n.fa-cookie:before {\r\n  content: \"\\F563\"; }\r\n\r\n.fa-cookie-bite:before {\r\n  content: \"\\F564\"; }\r\n\r\n.fa-copy:before {\r\n  content: \"\\F0C5\"; }\r\n\r\n.fa-copyright:before {\r\n  content: \"\\F1F9\"; }\r\n\r\n.fa-cotton-bureau:before {\r\n  content: \"\\F89E\"; }\r\n\r\n.fa-couch:before {\r\n  content: \"\\F4B8\"; }\r\n\r\n.fa-cpanel:before {\r\n  content: \"\\F388\"; }\r\n\r\n.fa-creative-commons:before {\r\n  content: \"\\F25E\"; }\r\n\r\n.fa-creative-commons-by:before {\r\n  content: \"\\F4E7\"; }\r\n\r\n.fa-creative-commons-nc:before {\r\n  content: \"\\F4E8\"; }\r\n\r\n.fa-creative-commons-nc-eu:before {\r\n  content: \"\\F4E9\"; }\r\n\r\n.fa-creative-commons-nc-jp:before {\r\n  content: \"\\F4EA\"; }\r\n\r\n.fa-creative-commons-nd:before {\r\n  content: \"\\F4EB\"; }\r\n\r\n.fa-creative-commons-pd:before {\r\n  content: \"\\F4EC\"; }\r\n\r\n.fa-creative-commons-pd-alt:before {\r\n  content: \"\\F4ED\"; }\r\n\r\n.fa-creative-commons-remix:before {\r\n  content: \"\\F4EE\"; }\r\n\r\n.fa-creative-commons-sa:before {\r\n  content: \"\\F4EF\"; }\r\n\r\n.fa-creative-commons-sampling:before {\r\n  content: \"\\F4F0\"; }\r\n\r\n.fa-creative-commons-sampling-plus:before {\r\n  content: \"\\F4F1\"; }\r\n\r\n.fa-creative-commons-share:before {\r\n  content: \"\\F4F2\"; }\r\n\r\n.fa-creative-commons-zero:before {\r\n  content: \"\\F4F3\"; }\r\n\r\n.fa-credit-card:before {\r\n  content: \"\\F09D\"; }\r\n\r\n.fa-critical-role:before {\r\n  content: \"\\F6C9\"; }\r\n\r\n.fa-crop:before {\r\n  content: \"\\F125\"; }\r\n\r\n.fa-crop-alt:before {\r\n  content: \"\\F565\"; }\r\n\r\n.fa-cross:before {\r\n  content: \"\\F654\"; }\r\n\r\n.fa-crosshairs:before {\r\n  content: \"\\F05B\"; }\r\n\r\n.fa-crow:before {\r\n  content: \"\\F520\"; }\r\n\r\n.fa-crown:before {\r\n  content: \"\\F521\"; }\r\n\r\n.fa-crutch:before {\r\n  content: \"\\F7F7\"; }\r\n\r\n.fa-css3:before {\r\n  content: \"\\F13C\"; }\r\n\r\n.fa-css3-alt:before {\r\n  content: \"\\F38B\"; }\r\n\r\n.fa-cube:before {\r\n  content: \"\\F1B2\"; }\r\n\r\n.fa-cubes:before {\r\n  content: \"\\F1B3\"; }\r\n\r\n.fa-cut:before {\r\n  content: \"\\F0C4\"; }\r\n\r\n.fa-cuttlefish:before {\r\n  content: \"\\F38C\"; }\r\n\r\n.fa-d-and-d:before {\r\n  content: \"\\F38D\"; }\r\n\r\n.fa-d-and-d-beyond:before {\r\n  content: \"\\F6CA\"; }\r\n\r\n.fa-dailymotion:before {\r\n  content: \"\\F952\"; }\r\n\r\n.fa-dashcube:before {\r\n  content: \"\\F210\"; }\r\n\r\n.fa-database:before {\r\n  content: \"\\F1C0\"; }\r\n\r\n.fa-deaf:before {\r\n  content: \"\\F2A4\"; }\r\n\r\n.fa-delicious:before {\r\n  content: \"\\F1A5\"; }\r\n\r\n.fa-democrat:before {\r\n  content: \"\\F747\"; }\r\n\r\n.fa-deploydog:before {\r\n  content: \"\\F38E\"; }\r\n\r\n.fa-deskpro:before {\r\n  content: \"\\F38F\"; }\r\n\r\n.fa-desktop:before {\r\n  content: \"\\F108\"; }\r\n\r\n.fa-dev:before {\r\n  content: \"\\F6CC\"; }\r\n\r\n.fa-deviantart:before {\r\n  content: \"\\F1BD\"; }\r\n\r\n.fa-dharmachakra:before {\r\n  content: \"\\F655\"; }\r\n\r\n.fa-dhl:before {\r\n  content: \"\\F790\"; }\r\n\r\n.fa-diagnoses:before {\r\n  content: \"\\F470\"; }\r\n\r\n.fa-diaspora:before {\r\n  content: \"\\F791\"; }\r\n\r\n.fa-dice:before {\r\n  content: \"\\F522\"; }\r\n\r\n.fa-dice-d20:before {\r\n  content: \"\\F6CF\"; }\r\n\r\n.fa-dice-d6:before {\r\n  content: \"\\F6D1\"; }\r\n\r\n.fa-dice-five:before {\r\n  content: \"\\F523\"; }\r\n\r\n.fa-dice-four:before {\r\n  content: \"\\F524\"; }\r\n\r\n.fa-dice-one:before {\r\n  content: \"\\F525\"; }\r\n\r\n.fa-dice-six:before {\r\n  content: \"\\F526\"; }\r\n\r\n.fa-dice-three:before {\r\n  content: \"\\F527\"; }\r\n\r\n.fa-dice-two:before {\r\n  content: \"\\F528\"; }\r\n\r\n.fa-digg:before {\r\n  content: \"\\F1A6\"; }\r\n\r\n.fa-digital-ocean:before {\r\n  content: \"\\F391\"; }\r\n\r\n.fa-digital-tachograph:before {\r\n  content: \"\\F566\"; }\r\n\r\n.fa-directions:before {\r\n  content: \"\\F5EB\"; }\r\n\r\n.fa-discord:before {\r\n  content: \"\\F392\"; }\r\n\r\n.fa-discourse:before {\r\n  content: \"\\F393\"; }\r\n\r\n.fa-disease:before {\r\n  content: \"\\F7FA\"; }\r\n\r\n.fa-divide:before {\r\n  content: \"\\F529\"; }\r\n\r\n.fa-dizzy:before {\r\n  content: \"\\F567\"; }\r\n\r\n.fa-dna:before {\r\n  content: \"\\F471\"; }\r\n\r\n.fa-dochub:before {\r\n  content: \"\\F394\"; }\r\n\r\n.fa-docker:before {\r\n  content: \"\\F395\"; }\r\n\r\n.fa-dog:before {\r\n  content: \"\\F6D3\"; }\r\n\r\n.fa-dollar-sign:before {\r\n  content: \"\\F155\"; }\r\n\r\n.fa-dolly:before {\r\n  content: \"\\F472\"; }\r\n\r\n.fa-dolly-flatbed:before {\r\n  content: \"\\F474\"; }\r\n\r\n.fa-donate:before {\r\n  content: \"\\F4B9\"; }\r\n\r\n.fa-door-closed:before {\r\n  content: \"\\F52A\"; }\r\n\r\n.fa-door-open:before {\r\n  content: \"\\F52B\"; }\r\n\r\n.fa-dot-circle:before {\r\n  content: \"\\F192\"; }\r\n\r\n.fa-dove:before {\r\n  content: \"\\F4BA\"; }\r\n\r\n.fa-download:before {\r\n  content: \"\\F019\"; }\r\n\r\n.fa-draft2digital:before {\r\n  content: \"\\F396\"; }\r\n\r\n.fa-drafting-compass:before {\r\n  content: \"\\F568\"; }\r\n\r\n.fa-dragon:before {\r\n  content: \"\\F6D5\"; }\r\n\r\n.fa-draw-polygon:before {\r\n  content: \"\\F5EE\"; }\r\n\r\n.fa-dribbble:before {\r\n  content: \"\\F17D\"; }\r\n\r\n.fa-dribbble-square:before {\r\n  content: \"\\F397\"; }\r\n\r\n.fa-dropbox:before {\r\n  content: \"\\F16B\"; }\r\n\r\n.fa-drum:before {\r\n  content: \"\\F569\"; }\r\n\r\n.fa-drum-steelpan:before {\r\n  content: \"\\F56A\"; }\r\n\r\n.fa-drumstick-bite:before {\r\n  content: \"\\F6D7\"; }\r\n\r\n.fa-drupal:before {\r\n  content: \"\\F1A9\"; }\r\n\r\n.fa-dumbbell:before {\r\n  content: \"\\F44B\"; }\r\n\r\n.fa-dumpster:before {\r\n  content: \"\\F793\"; }\r\n\r\n.fa-dumpster-fire:before {\r\n  content: \"\\F794\"; }\r\n\r\n.fa-dungeon:before {\r\n  content: \"\\F6D9\"; }\r\n\r\n.fa-dyalog:before {\r\n  content: \"\\F399\"; }\r\n\r\n.fa-earlybirds:before {\r\n  content: \"\\F39A\"; }\r\n\r\n.fa-ebay:before {\r\n  content: \"\\F4F4\"; }\r\n\r\n.fa-edge:before {\r\n  content: \"\\F282\"; }\r\n\r\n.fa-edit:before {\r\n  content: \"\\F044\"; }\r\n\r\n.fa-egg:before {\r\n  content: \"\\F7FB\"; }\r\n\r\n.fa-eject:before {\r\n  content: \"\\F052\"; }\r\n\r\n.fa-elementor:before {\r\n  content: \"\\F430\"; }\r\n\r\n.fa-ellipsis-h:before {\r\n  content: \"\\F141\"; }\r\n\r\n.fa-ellipsis-v:before {\r\n  content: \"\\F142\"; }\r\n\r\n.fa-ello:before {\r\n  content: \"\\F5F1\"; }\r\n\r\n.fa-ember:before {\r\n  content: \"\\F423\"; }\r\n\r\n.fa-empire:before {\r\n  content: \"\\F1D1\"; }\r\n\r\n.fa-envelope:before {\r\n  content: \"\\F0E0\"; }\r\n\r\n.fa-envelope-open:before {\r\n  content: \"\\F2B6\"; }\r\n\r\n.fa-envelope-open-text:before {\r\n  content: \"\\F658\"; }\r\n\r\n.fa-envelope-square:before {\r\n  content: \"\\F199\"; }\r\n\r\n.fa-envira:before {\r\n  content: \"\\F299\"; }\r\n\r\n.fa-equals:before {\r\n  content: \"\\F52C\"; }\r\n\r\n.fa-eraser:before {\r\n  content: \"\\F12D\"; }\r\n\r\n.fa-erlang:before {\r\n  content: \"\\F39D\"; }\r\n\r\n.fa-ethereum:before {\r\n  content: \"\\F42E\"; }\r\n\r\n.fa-ethernet:before {\r\n  content: \"\\F796\"; }\r\n\r\n.fa-etsy:before {\r\n  content: \"\\F2D7\"; }\r\n\r\n.fa-euro-sign:before {\r\n  content: \"\\F153\"; }\r\n\r\n.fa-evernote:before {\r\n  content: \"\\F839\"; }\r\n\r\n.fa-exchange-alt:before {\r\n  content: \"\\F362\"; }\r\n\r\n.fa-exclamation:before {\r\n  content: \"\\F12A\"; }\r\n\r\n.fa-exclamation-circle:before {\r\n  content: \"\\F06A\"; }\r\n\r\n.fa-exclamation-triangle:before {\r\n  content: \"\\F071\"; }\r\n\r\n.fa-expand:before {\r\n  content: \"\\F065\"; }\r\n\r\n.fa-expand-alt:before {\r\n  content: \"\\F424\"; }\r\n\r\n.fa-expand-arrows-alt:before {\r\n  content: \"\\F31E\"; }\r\n\r\n.fa-expeditedssl:before {\r\n  content: \"\\F23E\"; }\r\n\r\n.fa-external-link-alt:before {\r\n  content: \"\\F35D\"; }\r\n\r\n.fa-external-link-square-alt:before {\r\n  content: \"\\F360\"; }\r\n\r\n.fa-eye:before {\r\n  content: \"\\F06E\"; }\r\n\r\n.fa-eye-dropper:before {\r\n  content: \"\\F1FB\"; }\r\n\r\n.fa-eye-slash:before {\r\n  content: \"\\F070\"; }\r\n\r\n.fa-facebook:before {\r\n  content: \"\\F09A\"; }\r\n\r\n.fa-facebook-f:before {\r\n  content: \"\\F39E\"; }\r\n\r\n.fa-facebook-messenger:before {\r\n  content: \"\\F39F\"; }\r\n\r\n.fa-facebook-square:before {\r\n  content: \"\\F082\"; }\r\n\r\n.fa-fan:before {\r\n  content: \"\\F863\"; }\r\n\r\n.fa-fantasy-flight-games:before {\r\n  content: \"\\F6DC\"; }\r\n\r\n.fa-fast-backward:before {\r\n  content: \"\\F049\"; }\r\n\r\n.fa-fast-forward:before {\r\n  content: \"\\F050\"; }\r\n\r\n.fa-faucet:before {\r\n  content: \"\\F905\"; }\r\n\r\n.fa-fax:before {\r\n  content: \"\\F1AC\"; }\r\n\r\n.fa-feather:before {\r\n  content: \"\\F52D\"; }\r\n\r\n.fa-feather-alt:before {\r\n  content: \"\\F56B\"; }\r\n\r\n.fa-fedex:before {\r\n  content: \"\\F797\"; }\r\n\r\n.fa-fedora:before {\r\n  content: \"\\F798\"; }\r\n\r\n.fa-female:before {\r\n  content: \"\\F182\"; }\r\n\r\n.fa-fighter-jet:before {\r\n  content: \"\\F0FB\"; }\r\n\r\n.fa-figma:before {\r\n  content: \"\\F799\"; }\r\n\r\n.fa-file:before {\r\n  content: \"\\F15B\"; }\r\n\r\n.fa-file-alt:before {\r\n  content: \"\\F15C\"; }\r\n\r\n.fa-file-archive:before {\r\n  content: \"\\F1C6\"; }\r\n\r\n.fa-file-audio:before {\r\n  content: \"\\F1C7\"; }\r\n\r\n.fa-file-code:before {\r\n  content: \"\\F1C9\"; }\r\n\r\n.fa-file-contract:before {\r\n  content: \"\\F56C\"; }\r\n\r\n.fa-file-csv:before {\r\n  content: \"\\F6DD\"; }\r\n\r\n.fa-file-download:before {\r\n  content: \"\\F56D\"; }\r\n\r\n.fa-file-excel:before {\r\n  content: \"\\F1C3\"; }\r\n\r\n.fa-file-export:before {\r\n  content: \"\\F56E\"; }\r\n\r\n.fa-file-image:before {\r\n  content: \"\\F1C5\"; }\r\n\r\n.fa-file-import:before {\r\n  content: \"\\F56F\"; }\r\n\r\n.fa-file-invoice:before {\r\n  content: \"\\F570\"; }\r\n\r\n.fa-file-invoice-dollar:before {\r\n  content: \"\\F571\"; }\r\n\r\n.fa-file-medical:before {\r\n  content: \"\\F477\"; }\r\n\r\n.fa-file-medical-alt:before {\r\n  content: \"\\F478\"; }\r\n\r\n.fa-file-pdf:before {\r\n  content: \"\\F1C1\"; }\r\n\r\n.fa-file-powerpoint:before {\r\n  content: \"\\F1C4\"; }\r\n\r\n.fa-file-prescription:before {\r\n  content: \"\\F572\"; }\r\n\r\n.fa-file-signature:before {\r\n  content: \"\\F573\"; }\r\n\r\n.fa-file-upload:before {\r\n  content: \"\\F574\"; }\r\n\r\n.fa-file-video:before {\r\n  content: \"\\F1C8\"; }\r\n\r\n.fa-file-word:before {\r\n  content: \"\\F1C2\"; }\r\n\r\n.fa-fill:before {\r\n  content: \"\\F575\"; }\r\n\r\n.fa-fill-drip:before {\r\n  content: \"\\F576\"; }\r\n\r\n.fa-film:before {\r\n  content: \"\\F008\"; }\r\n\r\n.fa-filter:before {\r\n  content: \"\\F0B0\"; }\r\n\r\n.fa-fingerprint:before {\r\n  content: \"\\F577\"; }\r\n\r\n.fa-fire:before {\r\n  content: \"\\F06D\"; }\r\n\r\n.fa-fire-alt:before {\r\n  content: \"\\F7E4\"; }\r\n\r\n.fa-fire-extinguisher:before {\r\n  content: \"\\F134\"; }\r\n\r\n.fa-firefox:before {\r\n  content: \"\\F269\"; }\r\n\r\n.fa-firefox-browser:before {\r\n  content: \"\\F907\"; }\r\n\r\n.fa-first-aid:before {\r\n  content: \"\\F479\"; }\r\n\r\n.fa-first-order:before {\r\n  content: \"\\F2B0\"; }\r\n\r\n.fa-first-order-alt:before {\r\n  content: \"\\F50A\"; }\r\n\r\n.fa-firstdraft:before {\r\n  content: \"\\F3A1\"; }\r\n\r\n.fa-fish:before {\r\n  content: \"\\F578\"; }\r\n\r\n.fa-fist-raised:before {\r\n  content: \"\\F6DE\"; }\r\n\r\n.fa-flag:before {\r\n  content: \"\\F024\"; }\r\n\r\n.fa-flag-checkered:before {\r\n  content: \"\\F11E\"; }\r\n\r\n.fa-flag-usa:before {\r\n  content: \"\\F74D\"; }\r\n\r\n.fa-flask:before {\r\n  content: \"\\F0C3\"; }\r\n\r\n.fa-flickr:before {\r\n  content: \"\\F16E\"; }\r\n\r\n.fa-flipboard:before {\r\n  content: \"\\F44D\"; }\r\n\r\n.fa-flushed:before {\r\n  content: \"\\F579\"; }\r\n\r\n.fa-fly:before {\r\n  content: \"\\F417\"; }\r\n\r\n.fa-folder:before {\r\n  content: \"\\F07B\"; }\r\n\r\n.fa-folder-minus:before {\r\n  content: \"\\F65D\"; }\r\n\r\n.fa-folder-open:before {\r\n  content: \"\\F07C\"; }\r\n\r\n.fa-folder-plus:before {\r\n  content: \"\\F65E\"; }\r\n\r\n.fa-font:before {\r\n  content: \"\\F031\"; }\r\n\r\n.fa-font-awesome:before {\r\n  content: \"\\F2B4\"; }\r\n\r\n.fa-font-awesome-alt:before {\r\n  content: \"\\F35C\"; }\r\n\r\n.fa-font-awesome-flag:before {\r\n  content: \"\\F425\"; }\r\n\r\n.fa-font-awesome-logo-full:before {\r\n  content: \"\\F4E6\"; }\r\n\r\n.fa-fonticons:before {\r\n  content: \"\\F280\"; }\r\n\r\n.fa-fonticons-fi:before {\r\n  content: \"\\F3A2\"; }\r\n\r\n.fa-football-ball:before {\r\n  content: \"\\F44E\"; }\r\n\r\n.fa-fort-awesome:before {\r\n  content: \"\\F286\"; }\r\n\r\n.fa-fort-awesome-alt:before {\r\n  content: \"\\F3A3\"; }\r\n\r\n.fa-forumbee:before {\r\n  content: \"\\F211\"; }\r\n\r\n.fa-forward:before {\r\n  content: \"\\F04E\"; }\r\n\r\n.fa-foursquare:before {\r\n  content: \"\\F180\"; }\r\n\r\n.fa-free-code-camp:before {\r\n  content: \"\\F2C5\"; }\r\n\r\n.fa-freebsd:before {\r\n  content: \"\\F3A4\"; }\r\n\r\n.fa-frog:before {\r\n  content: \"\\F52E\"; }\r\n\r\n.fa-frown:before {\r\n  content: \"\\F119\"; }\r\n\r\n.fa-frown-open:before {\r\n  content: \"\\F57A\"; }\r\n\r\n.fa-fulcrum:before {\r\n  content: \"\\F50B\"; }\r\n\r\n.fa-funnel-dollar:before {\r\n  content: \"\\F662\"; }\r\n\r\n.fa-futbol:before {\r\n  content: \"\\F1E3\"; }\r\n\r\n.fa-galactic-republic:before {\r\n  content: \"\\F50C\"; }\r\n\r\n.fa-galactic-senate:before {\r\n  content: \"\\F50D\"; }\r\n\r\n.fa-gamepad:before {\r\n  content: \"\\F11B\"; }\r\n\r\n.fa-gas-pump:before {\r\n  content: \"\\F52F\"; }\r\n\r\n.fa-gavel:before {\r\n  content: \"\\F0E3\"; }\r\n\r\n.fa-gem:before {\r\n  content: \"\\F3A5\"; }\r\n\r\n.fa-genderless:before {\r\n  content: \"\\F22D\"; }\r\n\r\n.fa-get-pocket:before {\r\n  content: \"\\F265\"; }\r\n\r\n.fa-gg:before {\r\n  content: \"\\F260\"; }\r\n\r\n.fa-gg-circle:before {\r\n  content: \"\\F261\"; }\r\n\r\n.fa-ghost:before {\r\n  content: \"\\F6E2\"; }\r\n\r\n.fa-gift:before {\r\n  content: \"\\F06B\"; }\r\n\r\n.fa-gifts:before {\r\n  content: \"\\F79C\"; }\r\n\r\n.fa-git:before {\r\n  content: \"\\F1D3\"; }\r\n\r\n.fa-git-alt:before {\r\n  content: \"\\F841\"; }\r\n\r\n.fa-git-square:before {\r\n  content: \"\\F1D2\"; }\r\n\r\n.fa-github:before {\r\n  content: \"\\F09B\"; }\r\n\r\n.fa-github-alt:before {\r\n  content: \"\\F113\"; }\r\n\r\n.fa-github-square:before {\r\n  content: \"\\F092\"; }\r\n\r\n.fa-gitkraken:before {\r\n  content: \"\\F3A6\"; }\r\n\r\n.fa-gitlab:before {\r\n  content: \"\\F296\"; }\r\n\r\n.fa-gitter:before {\r\n  content: \"\\F426\"; }\r\n\r\n.fa-glass-cheers:before {\r\n  content: \"\\F79F\"; }\r\n\r\n.fa-glass-martini:before {\r\n  content: \"\\F000\"; }\r\n\r\n.fa-glass-martini-alt:before {\r\n  content: \"\\F57B\"; }\r\n\r\n.fa-glass-whiskey:before {\r\n  content: \"\\F7A0\"; }\r\n\r\n.fa-glasses:before {\r\n  content: \"\\F530\"; }\r\n\r\n.fa-glide:before {\r\n  content: \"\\F2A5\"; }\r\n\r\n.fa-glide-g:before {\r\n  content: \"\\F2A6\"; }\r\n\r\n.fa-globe:before {\r\n  content: \"\\F0AC\"; }\r\n\r\n.fa-globe-africa:before {\r\n  content: \"\\F57C\"; }\r\n\r\n.fa-globe-americas:before {\r\n  content: \"\\F57D\"; }\r\n\r\n.fa-globe-asia:before {\r\n  content: \"\\F57E\"; }\r\n\r\n.fa-globe-europe:before {\r\n  content: \"\\F7A2\"; }\r\n\r\n.fa-gofore:before {\r\n  content: \"\\F3A7\"; }\r\n\r\n.fa-golf-ball:before {\r\n  content: \"\\F450\"; }\r\n\r\n.fa-goodreads:before {\r\n  content: \"\\F3A8\"; }\r\n\r\n.fa-goodreads-g:before {\r\n  content: \"\\F3A9\"; }\r\n\r\n.fa-google:before {\r\n  content: \"\\F1A0\"; }\r\n\r\n.fa-google-drive:before {\r\n  content: \"\\F3AA\"; }\r\n\r\n.fa-google-play:before {\r\n  content: \"\\F3AB\"; }\r\n\r\n.fa-google-plus:before {\r\n  content: \"\\F2B3\"; }\r\n\r\n.fa-google-plus-g:before {\r\n  content: \"\\F0D5\"; }\r\n\r\n.fa-google-plus-square:before {\r\n  content: \"\\F0D4\"; }\r\n\r\n.fa-google-wallet:before {\r\n  content: \"\\F1EE\"; }\r\n\r\n.fa-gopuram:before {\r\n  content: \"\\F664\"; }\r\n\r\n.fa-graduation-cap:before {\r\n  content: \"\\F19D\"; }\r\n\r\n.fa-gratipay:before {\r\n  content: \"\\F184\"; }\r\n\r\n.fa-grav:before {\r\n  content: \"\\F2D6\"; }\r\n\r\n.fa-greater-than:before {\r\n  content: \"\\F531\"; }\r\n\r\n.fa-greater-than-equal:before {\r\n  content: \"\\F532\"; }\r\n\r\n.fa-grimace:before {\r\n  content: \"\\F57F\"; }\r\n\r\n.fa-grin:before {\r\n  content: \"\\F580\"; }\r\n\r\n.fa-grin-alt:before {\r\n  content: \"\\F581\"; }\r\n\r\n.fa-grin-beam:before {\r\n  content: \"\\F582\"; }\r\n\r\n.fa-grin-beam-sweat:before {\r\n  content: \"\\F583\"; }\r\n\r\n.fa-grin-hearts:before {\r\n  content: \"\\F584\"; }\r\n\r\n.fa-grin-squint:before {\r\n  content: \"\\F585\"; }\r\n\r\n.fa-grin-squint-tears:before {\r\n  content: \"\\F586\"; }\r\n\r\n.fa-grin-stars:before {\r\n  content: \"\\F587\"; }\r\n\r\n.fa-grin-tears:before {\r\n  content: \"\\F588\"; }\r\n\r\n.fa-grin-tongue:before {\r\n  content: \"\\F589\"; }\r\n\r\n.fa-grin-tongue-squint:before {\r\n  content: \"\\F58A\"; }\r\n\r\n.fa-grin-tongue-wink:before {\r\n  content: \"\\F58B\"; }\r\n\r\n.fa-grin-wink:before {\r\n  content: \"\\F58C\"; }\r\n\r\n.fa-grip-horizontal:before {\r\n  content: \"\\F58D\"; }\r\n\r\n.fa-grip-lines:before {\r\n  content: \"\\F7A4\"; }\r\n\r\n.fa-grip-lines-vertical:before {\r\n  content: \"\\F7A5\"; }\r\n\r\n.fa-grip-vertical:before {\r\n  content: \"\\F58E\"; }\r\n\r\n.fa-gripfire:before {\r\n  content: \"\\F3AC\"; }\r\n\r\n.fa-grunt:before {\r\n  content: \"\\F3AD\"; }\r\n\r\n.fa-guitar:before {\r\n  content: \"\\F7A6\"; }\r\n\r\n.fa-gulp:before {\r\n  content: \"\\F3AE\"; }\r\n\r\n.fa-h-square:before {\r\n  content: \"\\F0FD\"; }\r\n\r\n.fa-hacker-news:before {\r\n  content: \"\\F1D4\"; }\r\n\r\n.fa-hacker-news-square:before {\r\n  content: \"\\F3AF\"; }\r\n\r\n.fa-hackerrank:before {\r\n  content: \"\\F5F7\"; }\r\n\r\n.fa-hamburger:before {\r\n  content: \"\\F805\"; }\r\n\r\n.fa-hammer:before {\r\n  content: \"\\F6E3\"; }\r\n\r\n.fa-hamsa:before {\r\n  content: \"\\F665\"; }\r\n\r\n.fa-hand-holding:before {\r\n  content: \"\\F4BD\"; }\r\n\r\n.fa-hand-holding-heart:before {\r\n  content: \"\\F4BE\"; }\r\n\r\n.fa-hand-holding-medical:before {\r\n  content: \"\\F95C\"; }\r\n\r\n.fa-hand-holding-usd:before {\r\n  content: \"\\F4C0\"; }\r\n\r\n.fa-hand-holding-water:before {\r\n  content: \"\\F4C1\"; }\r\n\r\n.fa-hand-lizard:before {\r\n  content: \"\\F258\"; }\r\n\r\n.fa-hand-middle-finger:before {\r\n  content: \"\\F806\"; }\r\n\r\n.fa-hand-paper:before {\r\n  content: \"\\F256\"; }\r\n\r\n.fa-hand-peace:before {\r\n  content: \"\\F25B\"; }\r\n\r\n.fa-hand-point-down:before {\r\n  content: \"\\F0A7\"; }\r\n\r\n.fa-hand-point-left:before {\r\n  content: \"\\F0A5\"; }\r\n\r\n.fa-hand-point-right:before {\r\n  content: \"\\F0A4\"; }\r\n\r\n.fa-hand-point-up:before {\r\n  content: \"\\F0A6\"; }\r\n\r\n.fa-hand-pointer:before {\r\n  content: \"\\F25A\"; }\r\n\r\n.fa-hand-rock:before {\r\n  content: \"\\F255\"; }\r\n\r\n.fa-hand-scissors:before {\r\n  content: \"\\F257\"; }\r\n\r\n.fa-hand-sparkles:before {\r\n  content: \"\\F95D\"; }\r\n\r\n.fa-hand-spock:before {\r\n  content: \"\\F259\"; }\r\n\r\n.fa-hands:before {\r\n  content: \"\\F4C2\"; }\r\n\r\n.fa-hands-helping:before {\r\n  content: \"\\F4C4\"; }\r\n\r\n.fa-hands-wash:before {\r\n  content: \"\\F95E\"; }\r\n\r\n.fa-handshake:before {\r\n  content: \"\\F2B5\"; }\r\n\r\n.fa-handshake-alt-slash:before {\r\n  content: \"\\F95F\"; }\r\n\r\n.fa-handshake-slash:before {\r\n  content: \"\\F960\"; }\r\n\r\n.fa-hanukiah:before {\r\n  content: \"\\F6E6\"; }\r\n\r\n.fa-hard-hat:before {\r\n  content: \"\\F807\"; }\r\n\r\n.fa-hashtag:before {\r\n  content: \"\\F292\"; }\r\n\r\n.fa-hat-cowboy:before {\r\n  content: \"\\F8C0\"; }\r\n\r\n.fa-hat-cowboy-side:before {\r\n  content: \"\\F8C1\"; }\r\n\r\n.fa-hat-wizard:before {\r\n  content: \"\\F6E8\"; }\r\n\r\n.fa-hdd:before {\r\n  content: \"\\F0A0\"; }\r\n\r\n.fa-head-side-cough:before {\r\n  content: \"\\F961\"; }\r\n\r\n.fa-head-side-cough-slash:before {\r\n  content: \"\\F962\"; }\r\n\r\n.fa-head-side-mask:before {\r\n  content: \"\\F963\"; }\r\n\r\n.fa-head-side-virus:before {\r\n  content: \"\\F964\"; }\r\n\r\n.fa-heading:before {\r\n  content: \"\\F1DC\"; }\r\n\r\n.fa-headphones:before {\r\n  content: \"\\F025\"; }\r\n\r\n.fa-headphones-alt:before {\r\n  content: \"\\F58F\"; }\r\n\r\n.fa-headset:before {\r\n  content: \"\\F590\"; }\r\n\r\n.fa-heart:before {\r\n  content: \"\\F004\"; }\r\n\r\n.fa-heart-broken:before {\r\n  content: \"\\F7A9\"; }\r\n\r\n.fa-heartbeat:before {\r\n  content: \"\\F21E\"; }\r\n\r\n.fa-helicopter:before {\r\n  content: \"\\F533\"; }\r\n\r\n.fa-highlighter:before {\r\n  content: \"\\F591\"; }\r\n\r\n.fa-hiking:before {\r\n  content: \"\\F6EC\"; }\r\n\r\n.fa-hippo:before {\r\n  content: \"\\F6ED\"; }\r\n\r\n.fa-hips:before {\r\n  content: \"\\F452\"; }\r\n\r\n.fa-hire-a-helper:before {\r\n  content: \"\\F3B0\"; }\r\n\r\n.fa-history:before {\r\n  content: \"\\F1DA\"; }\r\n\r\n.fa-hockey-puck:before {\r\n  content: \"\\F453\"; }\r\n\r\n.fa-holly-berry:before {\r\n  content: \"\\F7AA\"; }\r\n\r\n.fa-home:before {\r\n  content: \"\\F015\"; }\r\n\r\n.fa-hooli:before {\r\n  content: \"\\F427\"; }\r\n\r\n.fa-hornbill:before {\r\n  content: \"\\F592\"; }\r\n\r\n.fa-horse:before {\r\n  content: \"\\F6F0\"; }\r\n\r\n.fa-horse-head:before {\r\n  content: \"\\F7AB\"; }\r\n\r\n.fa-hospital:before {\r\n  content: \"\\F0F8\"; }\r\n\r\n.fa-hospital-alt:before {\r\n  content: \"\\F47D\"; }\r\n\r\n.fa-hospital-symbol:before {\r\n  content: \"\\F47E\"; }\r\n\r\n.fa-hospital-user:before {\r\n  content: \"\\F80D\"; }\r\n\r\n.fa-hot-tub:before {\r\n  content: \"\\F593\"; }\r\n\r\n.fa-hotdog:before {\r\n  content: \"\\F80F\"; }\r\n\r\n.fa-hotel:before {\r\n  content: \"\\F594\"; }\r\n\r\n.fa-hotjar:before {\r\n  content: \"\\F3B1\"; }\r\n\r\n.fa-hourglass:before {\r\n  content: \"\\F254\"; }\r\n\r\n.fa-hourglass-end:before {\r\n  content: \"\\F253\"; }\r\n\r\n.fa-hourglass-half:before {\r\n  content: \"\\F252\"; }\r\n\r\n.fa-hourglass-start:before {\r\n  content: \"\\F251\"; }\r\n\r\n.fa-house-damage:before {\r\n  content: \"\\F6F1\"; }\r\n\r\n.fa-house-user:before {\r\n  content: \"\\F965\"; }\r\n\r\n.fa-houzz:before {\r\n  content: \"\\F27C\"; }\r\n\r\n.fa-hryvnia:before {\r\n  content: \"\\F6F2\"; }\r\n\r\n.fa-html5:before {\r\n  content: \"\\F13B\"; }\r\n\r\n.fa-hubspot:before {\r\n  content: \"\\F3B2\"; }\r\n\r\n.fa-i-cursor:before {\r\n  content: \"\\F246\"; }\r\n\r\n.fa-ice-cream:before {\r\n  content: \"\\F810\"; }\r\n\r\n.fa-icicles:before {\r\n  content: \"\\F7AD\"; }\r\n\r\n.fa-icons:before {\r\n  content: \"\\F86D\"; }\r\n\r\n.fa-id-badge:before {\r\n  content: \"\\F2C1\"; }\r\n\r\n.fa-id-card:before {\r\n  content: \"\\F2C2\"; }\r\n\r\n.fa-id-card-alt:before {\r\n  content: \"\\F47F\"; }\r\n\r\n.fa-ideal:before {\r\n  content: \"\\F913\"; }\r\n\r\n.fa-igloo:before {\r\n  content: \"\\F7AE\"; }\r\n\r\n.fa-image:before {\r\n  content: \"\\F03E\"; }\r\n\r\n.fa-images:before {\r\n  content: \"\\F302\"; }\r\n\r\n.fa-imdb:before {\r\n  content: \"\\F2D8\"; }\r\n\r\n.fa-inbox:before {\r\n  content: \"\\F01C\"; }\r\n\r\n.fa-indent:before {\r\n  content: \"\\F03C\"; }\r\n\r\n.fa-industry:before {\r\n  content: \"\\F275\"; }\r\n\r\n.fa-infinity:before {\r\n  content: \"\\F534\"; }\r\n\r\n.fa-info:before {\r\n  content: \"\\F129\"; }\r\n\r\n.fa-info-circle:before {\r\n  content: \"\\F05A\"; }\r\n\r\n.fa-instagram:before {\r\n  content: \"\\F16D\"; }\r\n\r\n.fa-instagram-square:before {\r\n  content: \"\\F955\"; }\r\n\r\n.fa-intercom:before {\r\n  content: \"\\F7AF\"; }\r\n\r\n.fa-internet-explorer:before {\r\n  content: \"\\F26B\"; }\r\n\r\n.fa-invision:before {\r\n  content: \"\\F7B0\"; }\r\n\r\n.fa-ioxhost:before {\r\n  content: \"\\F208\"; }\r\n\r\n.fa-italic:before {\r\n  content: \"\\F033\"; }\r\n\r\n.fa-itch-io:before {\r\n  content: \"\\F83A\"; }\r\n\r\n.fa-itunes:before {\r\n  content: \"\\F3B4\"; }\r\n\r\n.fa-itunes-note:before {\r\n  content: \"\\F3B5\"; }\r\n\r\n.fa-java:before {\r\n  content: \"\\F4E4\"; }\r\n\r\n.fa-jedi:before {\r\n  content: \"\\F669\"; }\r\n\r\n.fa-jedi-order:before {\r\n  content: \"\\F50E\"; }\r\n\r\n.fa-jenkins:before {\r\n  content: \"\\F3B6\"; }\r\n\r\n.fa-jira:before {\r\n  content: \"\\F7B1\"; }\r\n\r\n.fa-joget:before {\r\n  content: \"\\F3B7\"; }\r\n\r\n.fa-joint:before {\r\n  content: \"\\F595\"; }\r\n\r\n.fa-joomla:before {\r\n  content: \"\\F1AA\"; }\r\n\r\n.fa-journal-whills:before {\r\n  content: \"\\F66A\"; }\r\n\r\n.fa-js:before {\r\n  content: \"\\F3B8\"; }\r\n\r\n.fa-js-square:before {\r\n  content: \"\\F3B9\"; }\r\n\r\n.fa-jsfiddle:before {\r\n  content: \"\\F1CC\"; }\r\n\r\n.fa-kaaba:before {\r\n  content: \"\\F66B\"; }\r\n\r\n.fa-kaggle:before {\r\n  content: \"\\F5FA\"; }\r\n\r\n.fa-key:before {\r\n  content: \"\\F084\"; }\r\n\r\n.fa-keybase:before {\r\n  content: \"\\F4F5\"; }\r\n\r\n.fa-keyboard:before {\r\n  content: \"\\F11C\"; }\r\n\r\n.fa-keycdn:before {\r\n  content: \"\\F3BA\"; }\r\n\r\n.fa-khanda:before {\r\n  content: \"\\F66D\"; }\r\n\r\n.fa-kickstarter:before {\r\n  content: \"\\F3BB\"; }\r\n\r\n.fa-kickstarter-k:before {\r\n  content: \"\\F3BC\"; }\r\n\r\n.fa-kiss:before {\r\n  content: \"\\F596\"; }\r\n\r\n.fa-kiss-beam:before {\r\n  content: \"\\F597\"; }\r\n\r\n.fa-kiss-wink-heart:before {\r\n  content: \"\\F598\"; }\r\n\r\n.fa-kiwi-bird:before {\r\n  content: \"\\F535\"; }\r\n\r\n.fa-korvue:before {\r\n  content: \"\\F42F\"; }\r\n\r\n.fa-landmark:before {\r\n  content: \"\\F66F\"; }\r\n\r\n.fa-language:before {\r\n  content: \"\\F1AB\"; }\r\n\r\n.fa-laptop:before {\r\n  content: \"\\F109\"; }\r\n\r\n.fa-laptop-code:before {\r\n  content: \"\\F5FC\"; }\r\n\r\n.fa-laptop-house:before {\r\n  content: \"\\F966\"; }\r\n\r\n.fa-laptop-medical:before {\r\n  content: \"\\F812\"; }\r\n\r\n.fa-laravel:before {\r\n  content: \"\\F3BD\"; }\r\n\r\n.fa-lastfm:before {\r\n  content: \"\\F202\"; }\r\n\r\n.fa-lastfm-square:before {\r\n  content: \"\\F203\"; }\r\n\r\n.fa-laugh:before {\r\n  content: \"\\F599\"; }\r\n\r\n.fa-laugh-beam:before {\r\n  content: \"\\F59A\"; }\r\n\r\n.fa-laugh-squint:before {\r\n  content: \"\\F59B\"; }\r\n\r\n.fa-laugh-wink:before {\r\n  content: \"\\F59C\"; }\r\n\r\n.fa-layer-group:before {\r\n  content: \"\\F5FD\"; }\r\n\r\n.fa-leaf:before {\r\n  content: \"\\F06C\"; }\r\n\r\n.fa-leanpub:before {\r\n  content: \"\\F212\"; }\r\n\r\n.fa-lemon:before {\r\n  content: \"\\F094\"; }\r\n\r\n.fa-less:before {\r\n  content: \"\\F41D\"; }\r\n\r\n.fa-less-than:before {\r\n  content: \"\\F536\"; }\r\n\r\n.fa-less-than-equal:before {\r\n  content: \"\\F537\"; }\r\n\r\n.fa-level-down-alt:before {\r\n  content: \"\\F3BE\"; }\r\n\r\n.fa-level-up-alt:before {\r\n  content: \"\\F3BF\"; }\r\n\r\n.fa-life-ring:before {\r\n  content: \"\\F1CD\"; }\r\n\r\n.fa-lightbulb:before {\r\n  content: \"\\F0EB\"; }\r\n\r\n.fa-line:before {\r\n  content: \"\\F3C0\"; }\r\n\r\n.fa-link:before {\r\n  content: \"\\F0C1\"; }\r\n\r\n.fa-linkedin:before {\r\n  content: \"\\F08C\"; }\r\n\r\n.fa-linkedin-in:before {\r\n  content: \"\\F0E1\"; }\r\n\r\n.fa-linode:before {\r\n  content: \"\\F2B8\"; }\r\n\r\n.fa-linux:before {\r\n  content: \"\\F17C\"; }\r\n\r\n.fa-lira-sign:before {\r\n  content: \"\\F195\"; }\r\n\r\n.fa-list:before {\r\n  content: \"\\F03A\"; }\r\n\r\n.fa-list-alt:before {\r\n  content: \"\\F022\"; }\r\n\r\n.fa-list-ol:before {\r\n  content: \"\\F0CB\"; }\r\n\r\n.fa-list-ul:before {\r\n  content: \"\\F0CA\"; }\r\n\r\n.fa-location-arrow:before {\r\n  content: \"\\F124\"; }\r\n\r\n.fa-lock:before {\r\n  content: \"\\F023\"; }\r\n\r\n.fa-lock-open:before {\r\n  content: \"\\F3C1\"; }\r\n\r\n.fa-long-arrow-alt-down:before {\r\n  content: \"\\F309\"; }\r\n\r\n.fa-long-arrow-alt-left:before {\r\n  content: \"\\F30A\"; }\r\n\r\n.fa-long-arrow-alt-right:before {\r\n  content: \"\\F30B\"; }\r\n\r\n.fa-long-arrow-alt-up:before {\r\n  content: \"\\F30C\"; }\r\n\r\n.fa-low-vision:before {\r\n  content: \"\\F2A8\"; }\r\n\r\n.fa-luggage-cart:before {\r\n  content: \"\\F59D\"; }\r\n\r\n.fa-lungs:before {\r\n  content: \"\\F604\"; }\r\n\r\n.fa-lungs-virus:before {\r\n  content: \"\\F967\"; }\r\n\r\n.fa-lyft:before {\r\n  content: \"\\F3C3\"; }\r\n\r\n.fa-magento:before {\r\n  content: \"\\F3C4\"; }\r\n\r\n.fa-magic:before {\r\n  content: \"\\F0D0\"; }\r\n\r\n.fa-magnet:before {\r\n  content: \"\\F076\"; }\r\n\r\n.fa-mail-bulk:before {\r\n  content: \"\\F674\"; }\r\n\r\n.fa-mailchimp:before {\r\n  content: \"\\F59E\"; }\r\n\r\n.fa-male:before {\r\n  content: \"\\F183\"; }\r\n\r\n.fa-mandalorian:before {\r\n  content: \"\\F50F\"; }\r\n\r\n.fa-map:before {\r\n  content: \"\\F279\"; }\r\n\r\n.fa-map-marked:before {\r\n  content: \"\\F59F\"; }\r\n\r\n.fa-map-marked-alt:before {\r\n  content: \"\\F5A0\"; }\r\n\r\n.fa-map-marker:before {\r\n  content: \"\\F041\"; }\r\n\r\n.fa-map-marker-alt:before {\r\n  content: \"\\F3C5\"; }\r\n\r\n.fa-map-pin:before {\r\n  content: \"\\F276\"; }\r\n\r\n.fa-map-signs:before {\r\n  content: \"\\F277\"; }\r\n\r\n.fa-markdown:before {\r\n  content: \"\\F60F\"; }\r\n\r\n.fa-marker:before {\r\n  content: \"\\F5A1\"; }\r\n\r\n.fa-mars:before {\r\n  content: \"\\F222\"; }\r\n\r\n.fa-mars-double:before {\r\n  content: \"\\F227\"; }\r\n\r\n.fa-mars-stroke:before {\r\n  content: \"\\F229\"; }\r\n\r\n.fa-mars-stroke-h:before {\r\n  content: \"\\F22B\"; }\r\n\r\n.fa-mars-stroke-v:before {\r\n  content: \"\\F22A\"; }\r\n\r\n.fa-mask:before {\r\n  content: \"\\F6FA\"; }\r\n\r\n.fa-mastodon:before {\r\n  content: \"\\F4F6\"; }\r\n\r\n.fa-maxcdn:before {\r\n  content: \"\\F136\"; }\r\n\r\n.fa-mdb:before {\r\n  content: \"\\F8CA\"; }\r\n\r\n.fa-medal:before {\r\n  content: \"\\F5A2\"; }\r\n\r\n.fa-medapps:before {\r\n  content: \"\\F3C6\"; }\r\n\r\n.fa-medium:before {\r\n  content: \"\\F23A\"; }\r\n\r\n.fa-medium-m:before {\r\n  content: \"\\F3C7\"; }\r\n\r\n.fa-medkit:before {\r\n  content: \"\\F0FA\"; }\r\n\r\n.fa-medrt:before {\r\n  content: \"\\F3C8\"; }\r\n\r\n.fa-meetup:before {\r\n  content: \"\\F2E0\"; }\r\n\r\n.fa-megaport:before {\r\n  content: \"\\F5A3\"; }\r\n\r\n.fa-meh:before {\r\n  content: \"\\F11A\"; }\r\n\r\n.fa-meh-blank:before {\r\n  content: \"\\F5A4\"; }\r\n\r\n.fa-meh-rolling-eyes:before {\r\n  content: \"\\F5A5\"; }\r\n\r\n.fa-memory:before {\r\n  content: \"\\F538\"; }\r\n\r\n.fa-mendeley:before {\r\n  content: \"\\F7B3\"; }\r\n\r\n.fa-menorah:before {\r\n  content: \"\\F676\"; }\r\n\r\n.fa-mercury:before {\r\n  content: \"\\F223\"; }\r\n\r\n.fa-meteor:before {\r\n  content: \"\\F753\"; }\r\n\r\n.fa-microblog:before {\r\n  content: \"\\F91A\"; }\r\n\r\n.fa-microchip:before {\r\n  content: \"\\F2DB\"; }\r\n\r\n.fa-microphone:before {\r\n  content: \"\\F130\"; }\r\n\r\n.fa-microphone-alt:before {\r\n  content: \"\\F3C9\"; }\r\n\r\n.fa-microphone-alt-slash:before {\r\n  content: \"\\F539\"; }\r\n\r\n.fa-microphone-slash:before {\r\n  content: \"\\F131\"; }\r\n\r\n.fa-microscope:before {\r\n  content: \"\\F610\"; }\r\n\r\n.fa-microsoft:before {\r\n  content: \"\\F3CA\"; }\r\n\r\n.fa-minus:before {\r\n  content: \"\\F068\"; }\r\n\r\n.fa-minus-circle:before {\r\n  content: \"\\F056\"; }\r\n\r\n.fa-minus-square:before {\r\n  content: \"\\F146\"; }\r\n\r\n.fa-mitten:before {\r\n  content: \"\\F7B5\"; }\r\n\r\n.fa-mix:before {\r\n  content: \"\\F3CB\"; }\r\n\r\n.fa-mixcloud:before {\r\n  content: \"\\F289\"; }\r\n\r\n.fa-mixer:before {\r\n  content: \"\\F956\"; }\r\n\r\n.fa-mizuni:before {\r\n  content: \"\\F3CC\"; }\r\n\r\n.fa-mobile:before {\r\n  content: \"\\F10B\"; }\r\n\r\n.fa-mobile-alt:before {\r\n  content: \"\\F3CD\"; }\r\n\r\n.fa-modx:before {\r\n  content: \"\\F285\"; }\r\n\r\n.fa-monero:before {\r\n  content: \"\\F3D0\"; }\r\n\r\n.fa-money-bill:before {\r\n  content: \"\\F0D6\"; }\r\n\r\n.fa-money-bill-alt:before {\r\n  content: \"\\F3D1\"; }\r\n\r\n.fa-money-bill-wave:before {\r\n  content: \"\\F53A\"; }\r\n\r\n.fa-money-bill-wave-alt:before {\r\n  content: \"\\F53B\"; }\r\n\r\n.fa-money-check:before {\r\n  content: \"\\F53C\"; }\r\n\r\n.fa-money-check-alt:before {\r\n  content: \"\\F53D\"; }\r\n\r\n.fa-monument:before {\r\n  content: \"\\F5A6\"; }\r\n\r\n.fa-moon:before {\r\n  content: \"\\F186\"; }\r\n\r\n.fa-mortar-pestle:before {\r\n  content: \"\\F5A7\"; }\r\n\r\n.fa-mosque:before {\r\n  content: \"\\F678\"; }\r\n\r\n.fa-motorcycle:before {\r\n  content: \"\\F21C\"; }\r\n\r\n.fa-mountain:before {\r\n  content: \"\\F6FC\"; }\r\n\r\n.fa-mouse:before {\r\n  content: \"\\F8CC\"; }\r\n\r\n.fa-mouse-pointer:before {\r\n  content: \"\\F245\"; }\r\n\r\n.fa-mug-hot:before {\r\n  content: \"\\F7B6\"; }\r\n\r\n.fa-music:before {\r\n  content: \"\\F001\"; }\r\n\r\n.fa-napster:before {\r\n  content: \"\\F3D2\"; }\r\n\r\n.fa-neos:before {\r\n  content: \"\\F612\"; }\r\n\r\n.fa-network-wired:before {\r\n  content: \"\\F6FF\"; }\r\n\r\n.fa-neuter:before {\r\n  content: \"\\F22C\"; }\r\n\r\n.fa-newspaper:before {\r\n  content: \"\\F1EA\"; }\r\n\r\n.fa-nimblr:before {\r\n  content: \"\\F5A8\"; }\r\n\r\n.fa-node:before {\r\n  content: \"\\F419\"; }\r\n\r\n.fa-node-js:before {\r\n  content: \"\\F3D3\"; }\r\n\r\n.fa-not-equal:before {\r\n  content: \"\\F53E\"; }\r\n\r\n.fa-notes-medical:before {\r\n  content: \"\\F481\"; }\r\n\r\n.fa-npm:before {\r\n  content: \"\\F3D4\"; }\r\n\r\n.fa-ns8:before {\r\n  content: \"\\F3D5\"; }\r\n\r\n.fa-nutritionix:before {\r\n  content: \"\\F3D6\"; }\r\n\r\n.fa-object-group:before {\r\n  content: \"\\F247\"; }\r\n\r\n.fa-object-ungroup:before {\r\n  content: \"\\F248\"; }\r\n\r\n.fa-odnoklassniki:before {\r\n  content: \"\\F263\"; }\r\n\r\n.fa-odnoklassniki-square:before {\r\n  content: \"\\F264\"; }\r\n\r\n.fa-oil-can:before {\r\n  content: \"\\F613\"; }\r\n\r\n.fa-old-republic:before {\r\n  content: \"\\F510\"; }\r\n\r\n.fa-om:before {\r\n  content: \"\\F679\"; }\r\n\r\n.fa-opencart:before {\r\n  content: \"\\F23D\"; }\r\n\r\n.fa-openid:before {\r\n  content: \"\\F19B\"; }\r\n\r\n.fa-opera:before {\r\n  content: \"\\F26A\"; }\r\n\r\n.fa-optin-monster:before {\r\n  content: \"\\F23C\"; }\r\n\r\n.fa-orcid:before {\r\n  content: \"\\F8D2\"; }\r\n\r\n.fa-osi:before {\r\n  content: \"\\F41A\"; }\r\n\r\n.fa-otter:before {\r\n  content: \"\\F700\"; }\r\n\r\n.fa-outdent:before {\r\n  content: \"\\F03B\"; }\r\n\r\n.fa-page4:before {\r\n  content: \"\\F3D7\"; }\r\n\r\n.fa-pagelines:before {\r\n  content: \"\\F18C\"; }\r\n\r\n.fa-pager:before {\r\n  content: \"\\F815\"; }\r\n\r\n.fa-paint-brush:before {\r\n  content: \"\\F1FC\"; }\r\n\r\n.fa-paint-roller:before {\r\n  content: \"\\F5AA\"; }\r\n\r\n.fa-palette:before {\r\n  content: \"\\F53F\"; }\r\n\r\n.fa-palfed:before {\r\n  content: \"\\F3D8\"; }\r\n\r\n.fa-pallet:before {\r\n  content: \"\\F482\"; }\r\n\r\n.fa-paper-plane:before {\r\n  content: \"\\F1D8\"; }\r\n\r\n.fa-paperclip:before {\r\n  content: \"\\F0C6\"; }\r\n\r\n.fa-parachute-box:before {\r\n  content: \"\\F4CD\"; }\r\n\r\n.fa-paragraph:before {\r\n  content: \"\\F1DD\"; }\r\n\r\n.fa-parking:before {\r\n  content: \"\\F540\"; }\r\n\r\n.fa-passport:before {\r\n  content: \"\\F5AB\"; }\r\n\r\n.fa-pastafarianism:before {\r\n  content: \"\\F67B\"; }\r\n\r\n.fa-paste:before {\r\n  content: \"\\F0EA\"; }\r\n\r\n.fa-patreon:before {\r\n  content: \"\\F3D9\"; }\r\n\r\n.fa-pause:before {\r\n  content: \"\\F04C\"; }\r\n\r\n.fa-pause-circle:before {\r\n  content: \"\\F28B\"; }\r\n\r\n.fa-paw:before {\r\n  content: \"\\F1B0\"; }\r\n\r\n.fa-paypal:before {\r\n  content: \"\\F1ED\"; }\r\n\r\n.fa-peace:before {\r\n  content: \"\\F67C\"; }\r\n\r\n.fa-pen:before {\r\n  content: \"\\F304\"; }\r\n\r\n.fa-pen-alt:before {\r\n  content: \"\\F305\"; }\r\n\r\n.fa-pen-fancy:before {\r\n  content: \"\\F5AC\"; }\r\n\r\n.fa-pen-nib:before {\r\n  content: \"\\F5AD\"; }\r\n\r\n.fa-pen-square:before {\r\n  content: \"\\F14B\"; }\r\n\r\n.fa-pencil-alt:before {\r\n  content: \"\\F303\"; }\r\n\r\n.fa-pencil-ruler:before {\r\n  content: \"\\F5AE\"; }\r\n\r\n.fa-penny-arcade:before {\r\n  content: \"\\F704\"; }\r\n\r\n.fa-people-arrows:before {\r\n  content: \"\\F968\"; }\r\n\r\n.fa-people-carry:before {\r\n  content: \"\\F4CE\"; }\r\n\r\n.fa-pepper-hot:before {\r\n  content: \"\\F816\"; }\r\n\r\n.fa-percent:before {\r\n  content: \"\\F295\"; }\r\n\r\n.fa-percentage:before {\r\n  content: \"\\F541\"; }\r\n\r\n.fa-periscope:before {\r\n  content: \"\\F3DA\"; }\r\n\r\n.fa-person-booth:before {\r\n  content: \"\\F756\"; }\r\n\r\n.fa-phabricator:before {\r\n  content: \"\\F3DB\"; }\r\n\r\n.fa-phoenix-framework:before {\r\n  content: \"\\F3DC\"; }\r\n\r\n.fa-phoenix-squadron:before {\r\n  content: \"\\F511\"; }\r\n\r\n.fa-phone:before {\r\n  content: \"\\F095\"; }\r\n\r\n.fa-phone-alt:before {\r\n  content: \"\\F879\"; }\r\n\r\n.fa-phone-slash:before {\r\n  content: \"\\F3DD\"; }\r\n\r\n.fa-phone-square:before {\r\n  content: \"\\F098\"; }\r\n\r\n.fa-phone-square-alt:before {\r\n  content: \"\\F87B\"; }\r\n\r\n.fa-phone-volume:before {\r\n  content: \"\\F2A0\"; }\r\n\r\n.fa-photo-video:before {\r\n  content: \"\\F87C\"; }\r\n\r\n.fa-php:before {\r\n  content: \"\\F457\"; }\r\n\r\n.fa-pied-piper:before {\r\n  content: \"\\F2AE\"; }\r\n\r\n.fa-pied-piper-alt:before {\r\n  content: \"\\F1A8\"; }\r\n\r\n.fa-pied-piper-hat:before {\r\n  content: \"\\F4E5\"; }\r\n\r\n.fa-pied-piper-pp:before {\r\n  content: \"\\F1A7\"; }\r\n\r\n.fa-pied-piper-square:before {\r\n  content: \"\\F91E\"; }\r\n\r\n.fa-piggy-bank:before {\r\n  content: \"\\F4D3\"; }\r\n\r\n.fa-pills:before {\r\n  content: \"\\F484\"; }\r\n\r\n.fa-pinterest:before {\r\n  content: \"\\F0D2\"; }\r\n\r\n.fa-pinterest-p:before {\r\n  content: \"\\F231\"; }\r\n\r\n.fa-pinterest-square:before {\r\n  content: \"\\F0D3\"; }\r\n\r\n.fa-pizza-slice:before {\r\n  content: \"\\F818\"; }\r\n\r\n.fa-place-of-worship:before {\r\n  content: \"\\F67F\"; }\r\n\r\n.fa-plane:before {\r\n  content: \"\\F072\"; }\r\n\r\n.fa-plane-arrival:before {\r\n  content: \"\\F5AF\"; }\r\n\r\n.fa-plane-departure:before {\r\n  content: \"\\F5B0\"; }\r\n\r\n.fa-plane-slash:before {\r\n  content: \"\\F969\"; }\r\n\r\n.fa-play:before {\r\n  content: \"\\F04B\"; }\r\n\r\n.fa-play-circle:before {\r\n  content: \"\\F144\"; }\r\n\r\n.fa-playstation:before {\r\n  content: \"\\F3DF\"; }\r\n\r\n.fa-plug:before {\r\n  content: \"\\F1E6\"; }\r\n\r\n.fa-plus:before {\r\n  content: \"\\F067\"; }\r\n\r\n.fa-plus-circle:before {\r\n  content: \"\\F055\"; }\r\n\r\n.fa-plus-square:before {\r\n  content: \"\\F0FE\"; }\r\n\r\n.fa-podcast:before {\r\n  content: \"\\F2CE\"; }\r\n\r\n.fa-poll:before {\r\n  content: \"\\F681\"; }\r\n\r\n.fa-poll-h:before {\r\n  content: \"\\F682\"; }\r\n\r\n.fa-poo:before {\r\n  content: \"\\F2FE\"; }\r\n\r\n.fa-poo-storm:before {\r\n  content: \"\\F75A\"; }\r\n\r\n.fa-poop:before {\r\n  content: \"\\F619\"; }\r\n\r\n.fa-portrait:before {\r\n  content: \"\\F3E0\"; }\r\n\r\n.fa-pound-sign:before {\r\n  content: \"\\F154\"; }\r\n\r\n.fa-power-off:before {\r\n  content: \"\\F011\"; }\r\n\r\n.fa-pray:before {\r\n  content: \"\\F683\"; }\r\n\r\n.fa-praying-hands:before {\r\n  content: \"\\F684\"; }\r\n\r\n.fa-prescription:before {\r\n  content: \"\\F5B1\"; }\r\n\r\n.fa-prescription-bottle:before {\r\n  content: \"\\F485\"; }\r\n\r\n.fa-prescription-bottle-alt:before {\r\n  content: \"\\F486\"; }\r\n\r\n.fa-print:before {\r\n  content: \"\\F02F\"; }\r\n\r\n.fa-procedures:before {\r\n  content: \"\\F487\"; }\r\n\r\n.fa-product-hunt:before {\r\n  content: \"\\F288\"; }\r\n\r\n.fa-project-diagram:before {\r\n  content: \"\\F542\"; }\r\n\r\n.fa-pump-medical:before {\r\n  content: \"\\F96A\"; }\r\n\r\n.fa-pump-soap:before {\r\n  content: \"\\F96B\"; }\r\n\r\n.fa-pushed:before {\r\n  content: \"\\F3E1\"; }\r\n\r\n.fa-puzzle-piece:before {\r\n  content: \"\\F12E\"; }\r\n\r\n.fa-python:before {\r\n  content: \"\\F3E2\"; }\r\n\r\n.fa-qq:before {\r\n  content: \"\\F1D6\"; }\r\n\r\n.fa-qrcode:before {\r\n  content: \"\\F029\"; }\r\n\r\n.fa-question:before {\r\n  content: \"\\F128\"; }\r\n\r\n.fa-question-circle:before {\r\n  content: \"\\F059\"; }\r\n\r\n.fa-quidditch:before {\r\n  content: \"\\F458\"; }\r\n\r\n.fa-quinscape:before {\r\n  content: \"\\F459\"; }\r\n\r\n.fa-quora:before {\r\n  content: \"\\F2C4\"; }\r\n\r\n.fa-quote-left:before {\r\n  content: \"\\F10D\"; }\r\n\r\n.fa-quote-right:before {\r\n  content: \"\\F10E\"; }\r\n\r\n.fa-quran:before {\r\n  content: \"\\F687\"; }\r\n\r\n.fa-r-project:before {\r\n  content: \"\\F4F7\"; }\r\n\r\n.fa-radiation:before {\r\n  content: \"\\F7B9\"; }\r\n\r\n.fa-radiation-alt:before {\r\n  content: \"\\F7BA\"; }\r\n\r\n.fa-rainbow:before {\r\n  content: \"\\F75B\"; }\r\n\r\n.fa-random:before {\r\n  content: \"\\F074\"; }\r\n\r\n.fa-raspberry-pi:before {\r\n  content: \"\\F7BB\"; }\r\n\r\n.fa-ravelry:before {\r\n  content: \"\\F2D9\"; }\r\n\r\n.fa-react:before {\r\n  content: \"\\F41B\"; }\r\n\r\n.fa-reacteurope:before {\r\n  content: \"\\F75D\"; }\r\n\r\n.fa-readme:before {\r\n  content: \"\\F4D5\"; }\r\n\r\n.fa-rebel:before {\r\n  content: \"\\F1D0\"; }\r\n\r\n.fa-receipt:before {\r\n  content: \"\\F543\"; }\r\n\r\n.fa-record-vinyl:before {\r\n  content: \"\\F8D9\"; }\r\n\r\n.fa-recycle:before {\r\n  content: \"\\F1B8\"; }\r\n\r\n.fa-red-river:before {\r\n  content: \"\\F3E3\"; }\r\n\r\n.fa-reddit:before {\r\n  content: \"\\F1A1\"; }\r\n\r\n.fa-reddit-alien:before {\r\n  content: \"\\F281\"; }\r\n\r\n.fa-reddit-square:before {\r\n  content: \"\\F1A2\"; }\r\n\r\n.fa-redhat:before {\r\n  content: \"\\F7BC\"; }\r\n\r\n.fa-redo:before {\r\n  content: \"\\F01E\"; }\r\n\r\n.fa-redo-alt:before {\r\n  content: \"\\F2F9\"; }\r\n\r\n.fa-registered:before {\r\n  content: \"\\F25D\"; }\r\n\r\n.fa-remove-format:before {\r\n  content: \"\\F87D\"; }\r\n\r\n.fa-renren:before {\r\n  content: \"\\F18B\"; }\r\n\r\n.fa-reply:before {\r\n  content: \"\\F3E5\"; }\r\n\r\n.fa-reply-all:before {\r\n  content: \"\\F122\"; }\r\n\r\n.fa-replyd:before {\r\n  content: \"\\F3E6\"; }\r\n\r\n.fa-republican:before {\r\n  content: \"\\F75E\"; }\r\n\r\n.fa-researchgate:before {\r\n  content: \"\\F4F8\"; }\r\n\r\n.fa-resolving:before {\r\n  content: \"\\F3E7\"; }\r\n\r\n.fa-restroom:before {\r\n  content: \"\\F7BD\"; }\r\n\r\n.fa-retweet:before {\r\n  content: \"\\F079\"; }\r\n\r\n.fa-rev:before {\r\n  content: \"\\F5B2\"; }\r\n\r\n.fa-ribbon:before {\r\n  content: \"\\F4D6\"; }\r\n\r\n.fa-ring:before {\r\n  content: \"\\F70B\"; }\r\n\r\n.fa-road:before {\r\n  content: \"\\F018\"; }\r\n\r\n.fa-robot:before {\r\n  content: \"\\F544\"; }\r\n\r\n.fa-rocket:before {\r\n  content: \"\\F135\"; }\r\n\r\n.fa-rocketchat:before {\r\n  content: \"\\F3E8\"; }\r\n\r\n.fa-rockrms:before {\r\n  content: \"\\F3E9\"; }\r\n\r\n.fa-route:before {\r\n  content: \"\\F4D7\"; }\r\n\r\n.fa-rss:before {\r\n  content: \"\\F09E\"; }\r\n\r\n.fa-rss-square:before {\r\n  content: \"\\F143\"; }\r\n\r\n.fa-ruble-sign:before {\r\n  content: \"\\F158\"; }\r\n\r\n.fa-ruler:before {\r\n  content: \"\\F545\"; }\r\n\r\n.fa-ruler-combined:before {\r\n  content: \"\\F546\"; }\r\n\r\n.fa-ruler-horizontal:before {\r\n  content: \"\\F547\"; }\r\n\r\n.fa-ruler-vertical:before {\r\n  content: \"\\F548\"; }\r\n\r\n.fa-running:before {\r\n  content: \"\\F70C\"; }\r\n\r\n.fa-rupee-sign:before {\r\n  content: \"\\F156\"; }\r\n\r\n.fa-sad-cry:before {\r\n  content: \"\\F5B3\"; }\r\n\r\n.fa-sad-tear:before {\r\n  content: \"\\F5B4\"; }\r\n\r\n.fa-safari:before {\r\n  content: \"\\F267\"; }\r\n\r\n.fa-salesforce:before {\r\n  content: \"\\F83B\"; }\r\n\r\n.fa-sass:before {\r\n  content: \"\\F41E\"; }\r\n\r\n.fa-satellite:before {\r\n  content: \"\\F7BF\"; }\r\n\r\n.fa-satellite-dish:before {\r\n  content: \"\\F7C0\"; }\r\n\r\n.fa-save:before {\r\n  content: \"\\F0C7\"; }\r\n\r\n.fa-schlix:before {\r\n  content: \"\\F3EA\"; }\r\n\r\n.fa-school:before {\r\n  content: \"\\F549\"; }\r\n\r\n.fa-screwdriver:before {\r\n  content: \"\\F54A\"; }\r\n\r\n.fa-scribd:before {\r\n  content: \"\\F28A\"; }\r\n\r\n.fa-scroll:before {\r\n  content: \"\\F70E\"; }\r\n\r\n.fa-sd-card:before {\r\n  content: \"\\F7C2\"; }\r\n\r\n.fa-search:before {\r\n  content: \"\\F002\"; }\r\n\r\n.fa-search-dollar:before {\r\n  content: \"\\F688\"; }\r\n\r\n.fa-search-location:before {\r\n  content: \"\\F689\"; }\r\n\r\n.fa-search-minus:before {\r\n  content: \"\\F010\"; }\r\n\r\n.fa-search-plus:before {\r\n  content: \"\\F00E\"; }\r\n\r\n.fa-searchengin:before {\r\n  content: \"\\F3EB\"; }\r\n\r\n.fa-seedling:before {\r\n  content: \"\\F4D8\"; }\r\n\r\n.fa-sellcast:before {\r\n  content: \"\\F2DA\"; }\r\n\r\n.fa-sellsy:before {\r\n  content: \"\\F213\"; }\r\n\r\n.fa-server:before {\r\n  content: \"\\F233\"; }\r\n\r\n.fa-servicestack:before {\r\n  content: \"\\F3EC\"; }\r\n\r\n.fa-shapes:before {\r\n  content: \"\\F61F\"; }\r\n\r\n.fa-share:before {\r\n  content: \"\\F064\"; }\r\n\r\n.fa-share-alt:before {\r\n  content: \"\\F1E0\"; }\r\n\r\n.fa-share-alt-square:before {\r\n  content: \"\\F1E1\"; }\r\n\r\n.fa-share-square:before {\r\n  content: \"\\F14D\"; }\r\n\r\n.fa-shekel-sign:before {\r\n  content: \"\\F20B\"; }\r\n\r\n.fa-shield-alt:before {\r\n  content: \"\\F3ED\"; }\r\n\r\n.fa-shield-virus:before {\r\n  content: \"\\F96C\"; }\r\n\r\n.fa-ship:before {\r\n  content: \"\\F21A\"; }\r\n\r\n.fa-shipping-fast:before {\r\n  content: \"\\F48B\"; }\r\n\r\n.fa-shirtsinbulk:before {\r\n  content: \"\\F214\"; }\r\n\r\n.fa-shoe-prints:before {\r\n  content: \"\\F54B\"; }\r\n\r\n.fa-shopify:before {\r\n  content: \"\\F957\"; }\r\n\r\n.fa-shopping-bag:before {\r\n  content: \"\\F290\"; }\r\n\r\n.fa-shopping-basket:before {\r\n  content: \"\\F291\"; }\r\n\r\n.fa-shopping-cart:before {\r\n  content: \"\\F07A\"; }\r\n\r\n.fa-shopware:before {\r\n  content: \"\\F5B5\"; }\r\n\r\n.fa-shower:before {\r\n  content: \"\\F2CC\"; }\r\n\r\n.fa-shuttle-van:before {\r\n  content: \"\\F5B6\"; }\r\n\r\n.fa-sign:before {\r\n  content: \"\\F4D9\"; }\r\n\r\n.fa-sign-in-alt:before {\r\n  content: \"\\F2F6\"; }\r\n\r\n.fa-sign-language:before {\r\n  content: \"\\F2A7\"; }\r\n\r\n.fa-sign-out-alt:before {\r\n  content: \"\\F2F5\"; }\r\n\r\n.fa-signal:before {\r\n  content: \"\\F012\"; }\r\n\r\n.fa-signature:before {\r\n  content: \"\\F5B7\"; }\r\n\r\n.fa-sim-card:before {\r\n  content: \"\\F7C4\"; }\r\n\r\n.fa-simplybuilt:before {\r\n  content: \"\\F215\"; }\r\n\r\n.fa-sistrix:before {\r\n  content: \"\\F3EE\"; }\r\n\r\n.fa-sitemap:before {\r\n  content: \"\\F0E8\"; }\r\n\r\n.fa-sith:before {\r\n  content: \"\\F512\"; }\r\n\r\n.fa-skating:before {\r\n  content: \"\\F7C5\"; }\r\n\r\n.fa-sketch:before {\r\n  content: \"\\F7C6\"; }\r\n\r\n.fa-skiing:before {\r\n  content: \"\\F7C9\"; }\r\n\r\n.fa-skiing-nordic:before {\r\n  content: \"\\F7CA\"; }\r\n\r\n.fa-skull:before {\r\n  content: \"\\F54C\"; }\r\n\r\n.fa-skull-crossbones:before {\r\n  content: \"\\F714\"; }\r\n\r\n.fa-skyatlas:before {\r\n  content: \"\\F216\"; }\r\n\r\n.fa-skype:before {\r\n  content: \"\\F17E\"; }\r\n\r\n.fa-slack:before {\r\n  content: \"\\F198\"; }\r\n\r\n.fa-slack-hash:before {\r\n  content: \"\\F3EF\"; }\r\n\r\n.fa-slash:before {\r\n  content: \"\\F715\"; }\r\n\r\n.fa-sleigh:before {\r\n  content: \"\\F7CC\"; }\r\n\r\n.fa-sliders-h:before {\r\n  content: \"\\F1DE\"; }\r\n\r\n.fa-slideshare:before {\r\n  content: \"\\F1E7\"; }\r\n\r\n.fa-smile:before {\r\n  content: \"\\F118\"; }\r\n\r\n.fa-smile-beam:before {\r\n  content: \"\\F5B8\"; }\r\n\r\n.fa-smile-wink:before {\r\n  content: \"\\F4DA\"; }\r\n\r\n.fa-smog:before {\r\n  content: \"\\F75F\"; }\r\n\r\n.fa-smoking:before {\r\n  content: \"\\F48D\"; }\r\n\r\n.fa-smoking-ban:before {\r\n  content: \"\\F54D\"; }\r\n\r\n.fa-sms:before {\r\n  content: \"\\F7CD\"; }\r\n\r\n.fa-snapchat:before {\r\n  content: \"\\F2AB\"; }\r\n\r\n.fa-snapchat-ghost:before {\r\n  content: \"\\F2AC\"; }\r\n\r\n.fa-snapchat-square:before {\r\n  content: \"\\F2AD\"; }\r\n\r\n.fa-snowboarding:before {\r\n  content: \"\\F7CE\"; }\r\n\r\n.fa-snowflake:before {\r\n  content: \"\\F2DC\"; }\r\n\r\n.fa-snowman:before {\r\n  content: \"\\F7D0\"; }\r\n\r\n.fa-snowplow:before {\r\n  content: \"\\F7D2\"; }\r\n\r\n.fa-soap:before {\r\n  content: \"\\F96E\"; }\r\n\r\n.fa-socks:before {\r\n  content: \"\\F696\"; }\r\n\r\n.fa-solar-panel:before {\r\n  content: \"\\F5BA\"; }\r\n\r\n.fa-sort:before {\r\n  content: \"\\F0DC\"; }\r\n\r\n.fa-sort-alpha-down:before {\r\n  content: \"\\F15D\"; }\r\n\r\n.fa-sort-alpha-down-alt:before {\r\n  content: \"\\F881\"; }\r\n\r\n.fa-sort-alpha-up:before {\r\n  content: \"\\F15E\"; }\r\n\r\n.fa-sort-alpha-up-alt:before {\r\n  content: \"\\F882\"; }\r\n\r\n.fa-sort-amount-down:before {\r\n  content: \"\\F160\"; }\r\n\r\n.fa-sort-amount-down-alt:before {\r\n  content: \"\\F884\"; }\r\n\r\n.fa-sort-amount-up:before {\r\n  content: \"\\F161\"; }\r\n\r\n.fa-sort-amount-up-alt:before {\r\n  content: \"\\F885\"; }\r\n\r\n.fa-sort-down:before {\r\n  content: \"\\F0DD\"; }\r\n\r\n.fa-sort-numeric-down:before {\r\n  content: \"\\F162\"; }\r\n\r\n.fa-sort-numeric-down-alt:before {\r\n  content: \"\\F886\"; }\r\n\r\n.fa-sort-numeric-up:before {\r\n  content: \"\\F163\"; }\r\n\r\n.fa-sort-numeric-up-alt:before {\r\n  content: \"\\F887\"; }\r\n\r\n.fa-sort-up:before {\r\n  content: \"\\F0DE\"; }\r\n\r\n.fa-soundcloud:before {\r\n  content: \"\\F1BE\"; }\r\n\r\n.fa-sourcetree:before {\r\n  content: \"\\F7D3\"; }\r\n\r\n.fa-spa:before {\r\n  content: \"\\F5BB\"; }\r\n\r\n.fa-space-shuttle:before {\r\n  content: \"\\F197\"; }\r\n\r\n.fa-speakap:before {\r\n  content: \"\\F3F3\"; }\r\n\r\n.fa-speaker-deck:before {\r\n  content: \"\\F83C\"; }\r\n\r\n.fa-spell-check:before {\r\n  content: \"\\F891\"; }\r\n\r\n.fa-spider:before {\r\n  content: \"\\F717\"; }\r\n\r\n.fa-spinner:before {\r\n  content: \"\\F110\"; }\r\n\r\n.fa-splotch:before {\r\n  content: \"\\F5BC\"; }\r\n\r\n.fa-spotify:before {\r\n  content: \"\\F1BC\"; }\r\n\r\n.fa-spray-can:before {\r\n  content: \"\\F5BD\"; }\r\n\r\n.fa-square:before {\r\n  content: \"\\F0C8\"; }\r\n\r\n.fa-square-full:before {\r\n  content: \"\\F45C\"; }\r\n\r\n.fa-square-root-alt:before {\r\n  content: \"\\F698\"; }\r\n\r\n.fa-squarespace:before {\r\n  content: \"\\F5BE\"; }\r\n\r\n.fa-stack-exchange:before {\r\n  content: \"\\F18D\"; }\r\n\r\n.fa-stack-overflow:before {\r\n  content: \"\\F16C\"; }\r\n\r\n.fa-stackpath:before {\r\n  content: \"\\F842\"; }\r\n\r\n.fa-stamp:before {\r\n  content: \"\\F5BF\"; }\r\n\r\n.fa-star:before {\r\n  content: \"\\F005\"; }\r\n\r\n.fa-star-and-crescent:before {\r\n  content: \"\\F699\"; }\r\n\r\n.fa-star-half:before {\r\n  content: \"\\F089\"; }\r\n\r\n.fa-star-half-alt:before {\r\n  content: \"\\F5C0\"; }\r\n\r\n.fa-star-of-david:before {\r\n  content: \"\\F69A\"; }\r\n\r\n.fa-star-of-life:before {\r\n  content: \"\\F621\"; }\r\n\r\n.fa-staylinked:before {\r\n  content: \"\\F3F5\"; }\r\n\r\n.fa-steam:before {\r\n  content: \"\\F1B6\"; }\r\n\r\n.fa-steam-square:before {\r\n  content: \"\\F1B7\"; }\r\n\r\n.fa-steam-symbol:before {\r\n  content: \"\\F3F6\"; }\r\n\r\n.fa-step-backward:before {\r\n  content: \"\\F048\"; }\r\n\r\n.fa-step-forward:before {\r\n  content: \"\\F051\"; }\r\n\r\n.fa-stethoscope:before {\r\n  content: \"\\F0F1\"; }\r\n\r\n.fa-sticker-mule:before {\r\n  content: \"\\F3F7\"; }\r\n\r\n.fa-sticky-note:before {\r\n  content: \"\\F249\"; }\r\n\r\n.fa-stop:before {\r\n  content: \"\\F04D\"; }\r\n\r\n.fa-stop-circle:before {\r\n  content: \"\\F28D\"; }\r\n\r\n.fa-stopwatch:before {\r\n  content: \"\\F2F2\"; }\r\n\r\n.fa-stopwatch-20:before {\r\n  content: \"\\F96F\"; }\r\n\r\n.fa-store:before {\r\n  content: \"\\F54E\"; }\r\n\r\n.fa-store-alt:before {\r\n  content: \"\\F54F\"; }\r\n\r\n.fa-store-alt-slash:before {\r\n  content: \"\\F970\"; }\r\n\r\n.fa-store-slash:before {\r\n  content: \"\\F971\"; }\r\n\r\n.fa-strava:before {\r\n  content: \"\\F428\"; }\r\n\r\n.fa-stream:before {\r\n  content: \"\\F550\"; }\r\n\r\n.fa-street-view:before {\r\n  content: \"\\F21D\"; }\r\n\r\n.fa-strikethrough:before {\r\n  content: \"\\F0CC\"; }\r\n\r\n.fa-stripe:before {\r\n  content: \"\\F429\"; }\r\n\r\n.fa-stripe-s:before {\r\n  content: \"\\F42A\"; }\r\n\r\n.fa-stroopwafel:before {\r\n  content: \"\\F551\"; }\r\n\r\n.fa-studiovinari:before {\r\n  content: \"\\F3F8\"; }\r\n\r\n.fa-stumbleupon:before {\r\n  content: \"\\F1A4\"; }\r\n\r\n.fa-stumbleupon-circle:before {\r\n  content: \"\\F1A3\"; }\r\n\r\n.fa-subscript:before {\r\n  content: \"\\F12C\"; }\r\n\r\n.fa-subway:before {\r\n  content: \"\\F239\"; }\r\n\r\n.fa-suitcase:before {\r\n  content: \"\\F0F2\"; }\r\n\r\n.fa-suitcase-rolling:before {\r\n  content: \"\\F5C1\"; }\r\n\r\n.fa-sun:before {\r\n  content: \"\\F185\"; }\r\n\r\n.fa-superpowers:before {\r\n  content: \"\\F2DD\"; }\r\n\r\n.fa-superscript:before {\r\n  content: \"\\F12B\"; }\r\n\r\n.fa-supple:before {\r\n  content: \"\\F3F9\"; }\r\n\r\n.fa-surprise:before {\r\n  content: \"\\F5C2\"; }\r\n\r\n.fa-suse:before {\r\n  content: \"\\F7D6\"; }\r\n\r\n.fa-swatchbook:before {\r\n  content: \"\\F5C3\"; }\r\n\r\n.fa-swift:before {\r\n  content: \"\\F8E1\"; }\r\n\r\n.fa-swimmer:before {\r\n  content: \"\\F5C4\"; }\r\n\r\n.fa-swimming-pool:before {\r\n  content: \"\\F5C5\"; }\r\n\r\n.fa-symfony:before {\r\n  content: \"\\F83D\"; }\r\n\r\n.fa-synagogue:before {\r\n  content: \"\\F69B\"; }\r\n\r\n.fa-sync:before {\r\n  content: \"\\F021\"; }\r\n\r\n.fa-sync-alt:before {\r\n  content: \"\\F2F1\"; }\r\n\r\n.fa-syringe:before {\r\n  content: \"\\F48E\"; }\r\n\r\n.fa-table:before {\r\n  content: \"\\F0CE\"; }\r\n\r\n.fa-table-tennis:before {\r\n  content: \"\\F45D\"; }\r\n\r\n.fa-tablet:before {\r\n  content: \"\\F10A\"; }\r\n\r\n.fa-tablet-alt:before {\r\n  content: \"\\F3FA\"; }\r\n\r\n.fa-tablets:before {\r\n  content: \"\\F490\"; }\r\n\r\n.fa-tachometer-alt:before {\r\n  content: \"\\F3FD\"; }\r\n\r\n.fa-tag:before {\r\n  content: \"\\F02B\"; }\r\n\r\n.fa-tags:before {\r\n  content: \"\\F02C\"; }\r\n\r\n.fa-tape:before {\r\n  content: \"\\F4DB\"; }\r\n\r\n.fa-tasks:before {\r\n  content: \"\\F0AE\"; }\r\n\r\n.fa-taxi:before {\r\n  content: \"\\F1BA\"; }\r\n\r\n.fa-teamspeak:before {\r\n  content: \"\\F4F9\"; }\r\n\r\n.fa-teeth:before {\r\n  content: \"\\F62E\"; }\r\n\r\n.fa-teeth-open:before {\r\n  content: \"\\F62F\"; }\r\n\r\n.fa-telegram:before {\r\n  content: \"\\F2C6\"; }\r\n\r\n.fa-telegram-plane:before {\r\n  content: \"\\F3FE\"; }\r\n\r\n.fa-temperature-high:before {\r\n  content: \"\\F769\"; }\r\n\r\n.fa-temperature-low:before {\r\n  content: \"\\F76B\"; }\r\n\r\n.fa-tencent-weibo:before {\r\n  content: \"\\F1D5\"; }\r\n\r\n.fa-tenge:before {\r\n  content: \"\\F7D7\"; }\r\n\r\n.fa-terminal:before {\r\n  content: \"\\F120\"; }\r\n\r\n.fa-text-height:before {\r\n  content: \"\\F034\"; }\r\n\r\n.fa-text-width:before {\r\n  content: \"\\F035\"; }\r\n\r\n.fa-th:before {\r\n  content: \"\\F00A\"; }\r\n\r\n.fa-th-large:before {\r\n  content: \"\\F009\"; }\r\n\r\n.fa-th-list:before {\r\n  content: \"\\F00B\"; }\r\n\r\n.fa-the-red-yeti:before {\r\n  content: \"\\F69D\"; }\r\n\r\n.fa-theater-masks:before {\r\n  content: \"\\F630\"; }\r\n\r\n.fa-themeco:before {\r\n  content: \"\\F5C6\"; }\r\n\r\n.fa-themeisle:before {\r\n  content: \"\\F2B2\"; }\r\n\r\n.fa-thermometer:before {\r\n  content: \"\\F491\"; }\r\n\r\n.fa-thermometer-empty:before {\r\n  content: \"\\F2CB\"; }\r\n\r\n.fa-thermometer-full:before {\r\n  content: \"\\F2C7\"; }\r\n\r\n.fa-thermometer-half:before {\r\n  content: \"\\F2C9\"; }\r\n\r\n.fa-thermometer-quarter:before {\r\n  content: \"\\F2CA\"; }\r\n\r\n.fa-thermometer-three-quarters:before {\r\n  content: \"\\F2C8\"; }\r\n\r\n.fa-think-peaks:before {\r\n  content: \"\\F731\"; }\r\n\r\n.fa-thumbs-down:before {\r\n  content: \"\\F165\"; }\r\n\r\n.fa-thumbs-up:before {\r\n  content: \"\\F164\"; }\r\n\r\n.fa-thumbtack:before {\r\n  content: \"\\F08D\"; }\r\n\r\n.fa-ticket-alt:before {\r\n  content: \"\\F3FF\"; }\r\n\r\n.fa-times:before {\r\n  content: \"\\F00D\"; }\r\n\r\n.fa-times-circle:before {\r\n  content: \"\\F057\"; }\r\n\r\n.fa-tint:before {\r\n  content: \"\\F043\"; }\r\n\r\n.fa-tint-slash:before {\r\n  content: \"\\F5C7\"; }\r\n\r\n.fa-tired:before {\r\n  content: \"\\F5C8\"; }\r\n\r\n.fa-toggle-off:before {\r\n  content: \"\\F204\"; }\r\n\r\n.fa-toggle-on:before {\r\n  content: \"\\F205\"; }\r\n\r\n.fa-toilet:before {\r\n  content: \"\\F7D8\"; }\r\n\r\n.fa-toilet-paper:before {\r\n  content: \"\\F71E\"; }\r\n\r\n.fa-toilet-paper-slash:before {\r\n  content: \"\\F972\"; }\r\n\r\n.fa-toolbox:before {\r\n  content: \"\\F552\"; }\r\n\r\n.fa-tools:before {\r\n  content: \"\\F7D9\"; }\r\n\r\n.fa-tooth:before {\r\n  content: \"\\F5C9\"; }\r\n\r\n.fa-torah:before {\r\n  content: \"\\F6A0\"; }\r\n\r\n.fa-torii-gate:before {\r\n  content: \"\\F6A1\"; }\r\n\r\n.fa-tractor:before {\r\n  content: \"\\F722\"; }\r\n\r\n.fa-trade-federation:before {\r\n  content: \"\\F513\"; }\r\n\r\n.fa-trademark:before {\r\n  content: \"\\F25C\"; }\r\n\r\n.fa-traffic-light:before {\r\n  content: \"\\F637\"; }\r\n\r\n.fa-trailer:before {\r\n  content: \"\\F941\"; }\r\n\r\n.fa-train:before {\r\n  content: \"\\F238\"; }\r\n\r\n.fa-tram:before {\r\n  content: \"\\F7DA\"; }\r\n\r\n.fa-transgender:before {\r\n  content: \"\\F224\"; }\r\n\r\n.fa-transgender-alt:before {\r\n  content: \"\\F225\"; }\r\n\r\n.fa-trash:before {\r\n  content: \"\\F1F8\"; }\r\n\r\n.fa-trash-alt:before {\r\n  content: \"\\F2ED\"; }\r\n\r\n.fa-trash-restore:before {\r\n  content: \"\\F829\"; }\r\n\r\n.fa-trash-restore-alt:before {\r\n  content: \"\\F82A\"; }\r\n\r\n.fa-tree:before {\r\n  content: \"\\F1BB\"; }\r\n\r\n.fa-trello:before {\r\n  content: \"\\F181\"; }\r\n\r\n.fa-tripadvisor:before {\r\n  content: \"\\F262\"; }\r\n\r\n.fa-trophy:before {\r\n  content: \"\\F091\"; }\r\n\r\n.fa-truck:before {\r\n  content: \"\\F0D1\"; }\r\n\r\n.fa-truck-loading:before {\r\n  content: \"\\F4DE\"; }\r\n\r\n.fa-truck-monster:before {\r\n  content: \"\\F63B\"; }\r\n\r\n.fa-truck-moving:before {\r\n  content: \"\\F4DF\"; }\r\n\r\n.fa-truck-pickup:before {\r\n  content: \"\\F63C\"; }\r\n\r\n.fa-tshirt:before {\r\n  content: \"\\F553\"; }\r\n\r\n.fa-tty:before {\r\n  content: \"\\F1E4\"; }\r\n\r\n.fa-tumblr:before {\r\n  content: \"\\F173\"; }\r\n\r\n.fa-tumblr-square:before {\r\n  content: \"\\F174\"; }\r\n\r\n.fa-tv:before {\r\n  content: \"\\F26C\"; }\r\n\r\n.fa-twitch:before {\r\n  content: \"\\F1E8\"; }\r\n\r\n.fa-twitter:before {\r\n  content: \"\\F099\"; }\r\n\r\n.fa-twitter-square:before {\r\n  content: \"\\F081\"; }\r\n\r\n.fa-typo3:before {\r\n  content: \"\\F42B\"; }\r\n\r\n.fa-uber:before {\r\n  content: \"\\F402\"; }\r\n\r\n.fa-ubuntu:before {\r\n  content: \"\\F7DF\"; }\r\n\r\n.fa-uikit:before {\r\n  content: \"\\F403\"; }\r\n\r\n.fa-umbraco:before {\r\n  content: \"\\F8E8\"; }\r\n\r\n.fa-umbrella:before {\r\n  content: \"\\F0E9\"; }\r\n\r\n.fa-umbrella-beach:before {\r\n  content: \"\\F5CA\"; }\r\n\r\n.fa-underline:before {\r\n  content: \"\\F0CD\"; }\r\n\r\n.fa-undo:before {\r\n  content: \"\\F0E2\"; }\r\n\r\n.fa-undo-alt:before {\r\n  content: \"\\F2EA\"; }\r\n\r\n.fa-uniregistry:before {\r\n  content: \"\\F404\"; }\r\n\r\n.fa-unity:before {\r\n  content: \"\\F949\"; }\r\n\r\n.fa-universal-access:before {\r\n  content: \"\\F29A\"; }\r\n\r\n.fa-university:before {\r\n  content: \"\\F19C\"; }\r\n\r\n.fa-unlink:before {\r\n  content: \"\\F127\"; }\r\n\r\n.fa-unlock:before {\r\n  content: \"\\F09C\"; }\r\n\r\n.fa-unlock-alt:before {\r\n  content: \"\\F13E\"; }\r\n\r\n.fa-untappd:before {\r\n  content: \"\\F405\"; }\r\n\r\n.fa-upload:before {\r\n  content: \"\\F093\"; }\r\n\r\n.fa-ups:before {\r\n  content: \"\\F7E0\"; }\r\n\r\n.fa-usb:before {\r\n  content: \"\\F287\"; }\r\n\r\n.fa-user:before {\r\n  content: \"\\F007\"; }\r\n\r\n.fa-user-alt:before {\r\n  content: \"\\F406\"; }\r\n\r\n.fa-user-alt-slash:before {\r\n  content: \"\\F4FA\"; }\r\n\r\n.fa-user-astronaut:before {\r\n  content: \"\\F4FB\"; }\r\n\r\n.fa-user-check:before {\r\n  content: \"\\F4FC\"; }\r\n\r\n.fa-user-circle:before {\r\n  content: \"\\F2BD\"; }\r\n\r\n.fa-user-clock:before {\r\n  content: \"\\F4FD\"; }\r\n\r\n.fa-user-cog:before {\r\n  content: \"\\F4FE\"; }\r\n\r\n.fa-user-edit:before {\r\n  content: \"\\F4FF\"; }\r\n\r\n.fa-user-friends:before {\r\n  content: \"\\F500\"; }\r\n\r\n.fa-user-graduate:before {\r\n  content: \"\\F501\"; }\r\n\r\n.fa-user-injured:before {\r\n  content: \"\\F728\"; }\r\n\r\n.fa-user-lock:before {\r\n  content: \"\\F502\"; }\r\n\r\n.fa-user-md:before {\r\n  content: \"\\F0F0\"; }\r\n\r\n.fa-user-minus:before {\r\n  content: \"\\F503\"; }\r\n\r\n.fa-user-ninja:before {\r\n  content: \"\\F504\"; }\r\n\r\n.fa-user-nurse:before {\r\n  content: \"\\F82F\"; }\r\n\r\n.fa-user-plus:before {\r\n  content: \"\\F234\"; }\r\n\r\n.fa-user-secret:before {\r\n  content: \"\\F21B\"; }\r\n\r\n.fa-user-shield:before {\r\n  content: \"\\F505\"; }\r\n\r\n.fa-user-slash:before {\r\n  content: \"\\F506\"; }\r\n\r\n.fa-user-tag:before {\r\n  content: \"\\F507\"; }\r\n\r\n.fa-user-tie:before {\r\n  content: \"\\F508\"; }\r\n\r\n.fa-user-times:before {\r\n  content: \"\\F235\"; }\r\n\r\n.fa-users:before {\r\n  content: \"\\F0C0\"; }\r\n\r\n.fa-users-cog:before {\r\n  content: \"\\F509\"; }\r\n\r\n.fa-usps:before {\r\n  content: \"\\F7E1\"; }\r\n\r\n.fa-ussunnah:before {\r\n  content: \"\\F407\"; }\r\n\r\n.fa-utensil-spoon:before {\r\n  content: \"\\F2E5\"; }\r\n\r\n.fa-utensils:before {\r\n  content: \"\\F2E7\"; }\r\n\r\n.fa-vaadin:before {\r\n  content: \"\\F408\"; }\r\n\r\n.fa-vector-square:before {\r\n  content: \"\\F5CB\"; }\r\n\r\n.fa-venus:before {\r\n  content: \"\\F221\"; }\r\n\r\n.fa-venus-double:before {\r\n  content: \"\\F226\"; }\r\n\r\n.fa-venus-mars:before {\r\n  content: \"\\F228\"; }\r\n\r\n.fa-viacoin:before {\r\n  content: \"\\F237\"; }\r\n\r\n.fa-viadeo:before {\r\n  content: \"\\F2A9\"; }\r\n\r\n.fa-viadeo-square:before {\r\n  content: \"\\F2AA\"; }\r\n\r\n.fa-vial:before {\r\n  content: \"\\F492\"; }\r\n\r\n.fa-vials:before {\r\n  content: \"\\F493\"; }\r\n\r\n.fa-viber:before {\r\n  content: \"\\F409\"; }\r\n\r\n.fa-video:before {\r\n  content: \"\\F03D\"; }\r\n\r\n.fa-video-slash:before {\r\n  content: \"\\F4E2\"; }\r\n\r\n.fa-vihara:before {\r\n  content: \"\\F6A7\"; }\r\n\r\n.fa-vimeo:before {\r\n  content: \"\\F40A\"; }\r\n\r\n.fa-vimeo-square:before {\r\n  content: \"\\F194\"; }\r\n\r\n.fa-vimeo-v:before {\r\n  content: \"\\F27D\"; }\r\n\r\n.fa-vine:before {\r\n  content: \"\\F1CA\"; }\r\n\r\n.fa-virus:before {\r\n  content: \"\\F974\"; }\r\n\r\n.fa-virus-slash:before {\r\n  content: \"\\F975\"; }\r\n\r\n.fa-viruses:before {\r\n  content: \"\\F976\"; }\r\n\r\n.fa-vk:before {\r\n  content: \"\\F189\"; }\r\n\r\n.fa-vnv:before {\r\n  content: \"\\F40B\"; }\r\n\r\n.fa-voicemail:before {\r\n  content: \"\\F897\"; }\r\n\r\n.fa-volleyball-ball:before {\r\n  content: \"\\F45F\"; }\r\n\r\n.fa-volume-down:before {\r\n  content: \"\\F027\"; }\r\n\r\n.fa-volume-mute:before {\r\n  content: \"\\F6A9\"; }\r\n\r\n.fa-volume-off:before {\r\n  content: \"\\F026\"; }\r\n\r\n.fa-volume-up:before {\r\n  content: \"\\F028\"; }\r\n\r\n.fa-vote-yea:before {\r\n  content: \"\\F772\"; }\r\n\r\n.fa-vr-cardboard:before {\r\n  content: \"\\F729\"; }\r\n\r\n.fa-vuejs:before {\r\n  content: \"\\F41F\"; }\r\n\r\n.fa-walking:before {\r\n  content: \"\\F554\"; }\r\n\r\n.fa-wallet:before {\r\n  content: \"\\F555\"; }\r\n\r\n.fa-warehouse:before {\r\n  content: \"\\F494\"; }\r\n\r\n.fa-water:before {\r\n  content: \"\\F773\"; }\r\n\r\n.fa-wave-square:before {\r\n  content: \"\\F83E\"; }\r\n\r\n.fa-waze:before {\r\n  content: \"\\F83F\"; }\r\n\r\n.fa-weebly:before {\r\n  content: \"\\F5CC\"; }\r\n\r\n.fa-weibo:before {\r\n  content: \"\\F18A\"; }\r\n\r\n.fa-weight:before {\r\n  content: \"\\F496\"; }\r\n\r\n.fa-weight-hanging:before {\r\n  content: \"\\F5CD\"; }\r\n\r\n.fa-weixin:before {\r\n  content: \"\\F1D7\"; }\r\n\r\n.fa-whatsapp:before {\r\n  content: \"\\F232\"; }\r\n\r\n.fa-whatsapp-square:before {\r\n  content: \"\\F40C\"; }\r\n\r\n.fa-wheelchair:before {\r\n  content: \"\\F193\"; }\r\n\r\n.fa-whmcs:before {\r\n  content: \"\\F40D\"; }\r\n\r\n.fa-wifi:before {\r\n  content: \"\\F1EB\"; }\r\n\r\n.fa-wikipedia-w:before {\r\n  content: \"\\F266\"; }\r\n\r\n.fa-wind:before {\r\n  content: \"\\F72E\"; }\r\n\r\n.fa-window-close:before {\r\n  content: \"\\F410\"; }\r\n\r\n.fa-window-maximize:before {\r\n  content: \"\\F2D0\"; }\r\n\r\n.fa-window-minimize:before {\r\n  content: \"\\F2D1\"; }\r\n\r\n.fa-window-restore:before {\r\n  content: \"\\F2D2\"; }\r\n\r\n.fa-windows:before {\r\n  content: \"\\F17A\"; }\r\n\r\n.fa-wine-bottle:before {\r\n  content: \"\\F72F\"; }\r\n\r\n.fa-wine-glass:before {\r\n  content: \"\\F4E3\"; }\r\n\r\n.fa-wine-glass-alt:before {\r\n  content: \"\\F5CE\"; }\r\n\r\n.fa-wix:before {\r\n  content: \"\\F5CF\"; }\r\n\r\n.fa-wizards-of-the-coast:before {\r\n  content: \"\\F730\"; }\r\n\r\n.fa-wolf-pack-battalion:before {\r\n  content: \"\\F514\"; }\r\n\r\n.fa-won-sign:before {\r\n  content: \"\\F159\"; }\r\n\r\n.fa-wordpress:before {\r\n  content: \"\\F19A\"; }\r\n\r\n.fa-wordpress-simple:before {\r\n  content: \"\\F411\"; }\r\n\r\n.fa-wpbeginner:before {\r\n  content: \"\\F297\"; }\r\n\r\n.fa-wpexplorer:before {\r\n  content: \"\\F2DE\"; }\r\n\r\n.fa-wpforms:before {\r\n  content: \"\\F298\"; }\r\n\r\n.fa-wpressr:before {\r\n  content: \"\\F3E4\"; }\r\n\r\n.fa-wrench:before {\r\n  content: \"\\F0AD\"; }\r\n\r\n.fa-x-ray:before {\r\n  content: \"\\F497\"; }\r\n\r\n.fa-xbox:before {\r\n  content: \"\\F412\"; }\r\n\r\n.fa-xing:before {\r\n  content: \"\\F168\"; }\r\n\r\n.fa-xing-square:before {\r\n  content: \"\\F169\"; }\r\n\r\n.fa-y-combinator:before {\r\n  content: \"\\F23B\"; }\r\n\r\n.fa-yahoo:before {\r\n  content: \"\\F19E\"; }\r\n\r\n.fa-yammer:before {\r\n  content: \"\\F840\"; }\r\n\r\n.fa-yandex:before {\r\n  content: \"\\F413\"; }\r\n\r\n.fa-yandex-international:before {\r\n  content: \"\\F414\"; }\r\n\r\n.fa-yarn:before {\r\n  content: \"\\F7E3\"; }\r\n\r\n.fa-yelp:before {\r\n  content: \"\\F1E9\"; }\r\n\r\n.fa-yen-sign:before {\r\n  content: \"\\F157\"; }\r\n\r\n.fa-yin-yang:before {\r\n  content: \"\\F6AD\"; }\r\n\r\n.fa-yoast:before {\r\n  content: \"\\F2B1\"; }\r\n\r\n.fa-youtube:before {\r\n  content: \"\\F167\"; }\r\n\r\n.fa-youtube-square:before {\r\n  content: \"\\F431\"; }\r\n\r\n.fa-zhihu:before {\r\n  content: \"\\F63F\"; }\r\n\r\n.sr-only {\r\n  border: 0;\r\n  clip: rect(0, 0, 0, 0);\r\n  height: 1px;\r\n  margin: -1px;\r\n  overflow: hidden;\r\n  padding: 0;\r\n  position: absolute;\r\n  width: 1px; }\r\n\r\n.sr-only-focusable:active, .sr-only-focusable:focus {\r\n  clip: auto;\r\n  height: auto;\r\n  margin: 0;\r\n  overflow: visible;\r\n  position: static;\r\n  width: auto; }\r\n@font-face {\r\n  font-family: 'Font Awesome 5 Brands';\r\n  font-style: normal;\r\n  font-weight: 400;\r\n  font-display: block;\r\n  src: url(" + escape(__webpack_require__(16)) + ");\r\n  src: url(" + escape(__webpack_require__(16)) + "?#iefix) format(\"embedded-opentype\"), url(" + escape(__webpack_require__(75)) + ") format(\"woff2\"), url(" + escape(__webpack_require__(76)) + ") format(\"woff\"), url(" + escape(__webpack_require__(77)) + ") format(\"truetype\"), url(" + escape(__webpack_require__(78)) + "#fontawesome) format(\"svg\"); }\r\n\r\n.fab {\r\n  font-family: 'Font Awesome 5 Brands';\r\n  font-weight: 400; }\r\n@font-face {\r\n  font-family: 'Font Awesome 5 Free';\r\n  font-style: normal;\r\n  font-weight: 400;\r\n  font-display: block;\r\n  src: url(" + escape(__webpack_require__(17)) + ");\r\n  src: url(" + escape(__webpack_require__(17)) + "?#iefix) format(\"embedded-opentype\"), url(" + escape(__webpack_require__(79)) + ") format(\"woff2\"), url(" + escape(__webpack_require__(80)) + ") format(\"woff\"), url(" + escape(__webpack_require__(81)) + ") format(\"truetype\"), url(" + escape(__webpack_require__(82)) + "#fontawesome) format(\"svg\"); }\r\n\r\n.far {\r\n  font-family: 'Font Awesome 5 Free';\r\n  font-weight: 400; }\r\n@font-face {\r\n  font-family: 'Font Awesome 5 Free';\r\n  font-style: normal;\r\n  font-weight: 900;\r\n  font-display: block;\r\n  src: url(" + escape(__webpack_require__(18)) + ");\r\n  src: url(" + escape(__webpack_require__(18)) + "?#iefix) format(\"embedded-opentype\"), url(" + escape(__webpack_require__(83)) + ") format(\"woff2\"), url(" + escape(__webpack_require__(84)) + ") format(\"woff\"), url(" + escape(__webpack_require__(85)) + ") format(\"truetype\"), url(" + escape(__webpack_require__(86)) + "#fontawesome) format(\"svg\"); }\r\n\r\n.fa,\r\n.fas {\r\n  font-family: 'Font Awesome 5 Free';\r\n  font-weight: 900; }\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports) {
+
+module.exports = function escape(url) {
+    if (typeof url !== 'string') {
+        return url
+    }
+    // If url is already wrapped in quotes, remove them
+    if (/^['"].*['"]$/.test(url)) {
+        url = url.slice(1, -1);
+    }
+    // Should url be wrapped?
+    // See https://drafts.csswg.org/css-values-3/#urls
+    if (/["'() \t\n]/.test(url)) {
+        return '"' + url.replace(/"/g, '\\"').replace(/\n/g, '\\n') + '"'
+    }
+
+    return url
+}
+
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
+
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports) {
+
+module.exports = "/fonts/fa-brands-400.woff2?a06da7f0950f9dd366fc9db9d56d618a";
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports) {
+
+module.exports = "/fonts/fa-brands-400.woff?ec3cfddedb8bebd2d7a3fdf511f7c1cc";
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports) {
+
+module.exports = "/fonts/fa-brands-400.ttf?13685372945d816a2b474fc082fd9aaa";
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports) {
+
+module.exports = "/fonts/fa-brands-400.svg?3debcaf1a98e4445d213fd0089d42f6b";
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports) {
+
+module.exports = "/fonts/fa-regular-400.woff2?c20b5b7362d8d7bb7eddf94344ace33e";
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports) {
+
+module.exports = "/fonts/fa-regular-400.woff?f89ea91ecd1ca2db7e09baa2c4b156d1";
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports) {
+
+module.exports = "/fonts/fa-regular-400.ttf?db78b9359171f24936b16d84f63af378";
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports) {
+
+module.exports = "/fonts/fa-regular-400.svg?89f9806b964f92ad282fd60947eba588";
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports) {
+
+module.exports = "/fonts/fa-solid-900.woff2?b15db15f746f29ffa02638cb455b8ec0";
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports) {
+
+module.exports = "/fonts/fa-solid-900.woff?bea989e82b07e9687c26fc58a4805021";
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports) {
+
+module.exports = "/fonts/fa-solid-900.ttf?1ab236ed440ee51810c56bd16628aef0";
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports) {
+
+module.exports = "/fonts/fa-solid-900.svg?ad912fd102f4052d3273dd838e0c671d";
+
+/***/ }),
+/* 87 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+
+var stylesInDom = {};
+
+var	memoize = function (fn) {
+	var memo;
+
+	return function () {
+		if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+		return memo;
+	};
+};
+
+var isOldIE = memoize(function () {
+	// Test for IE <= 9 as proposed by Browserhacks
+	// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+	// Tests for existence of standard globals is to allow style-loader
+	// to operate correctly into non-standard environments
+	// @see https://github.com/webpack-contrib/style-loader/issues/177
+	return window && document && document.all && !window.atob;
+});
+
+var getElement = (function (fn) {
+	var memo = {};
+
+	return function(selector) {
+		if (typeof memo[selector] === "undefined") {
+			memo[selector] = fn.call(this, selector);
+		}
+
+		return memo[selector]
+	};
+})(function (target) {
+	return document.querySelector(target)
+});
+
+var singleton = null;
+var	singletonCounter = 0;
+var	stylesInsertedAtTop = [];
+
+var	fixUrls = __webpack_require__(88);
+
+module.exports = function(list, options) {
+	if (typeof DEBUG !== "undefined" && DEBUG) {
+		if (typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+	}
+
+	options = options || {};
+
+	options.attrs = typeof options.attrs === "object" ? options.attrs : {};
+
+	// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+	// tags it will allow on a page
+	if (!options.singleton) options.singleton = isOldIE();
+
+	// By default, add <style> tags to the <head> element
+	if (!options.insertInto) options.insertInto = "head";
+
+	// By default, add <style> tags to the bottom of the target
+	if (!options.insertAt) options.insertAt = "bottom";
+
+	var styles = listToStyles(list, options);
+
+	addStylesToDom(styles, options);
+
+	return function update (newList) {
+		var mayRemove = [];
+
+		for (var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+
+			domStyle.refs--;
+			mayRemove.push(domStyle);
+		}
+
+		if(newList) {
+			var newStyles = listToStyles(newList, options);
+			addStylesToDom(newStyles, options);
+		}
+
+		for (var i = 0; i < mayRemove.length; i++) {
+			var domStyle = mayRemove[i];
+
+			if(domStyle.refs === 0) {
+				for (var j = 0; j < domStyle.parts.length; j++) domStyle.parts[j]();
+
+				delete stylesInDom[domStyle.id];
+			}
+		}
+	};
+};
+
+function addStylesToDom (styles, options) {
+	for (var i = 0; i < styles.length; i++) {
+		var item = styles[i];
+		var domStyle = stylesInDom[item.id];
+
+		if(domStyle) {
+			domStyle.refs++;
+
+			for(var j = 0; j < domStyle.parts.length; j++) {
+				domStyle.parts[j](item.parts[j]);
+			}
+
+			for(; j < item.parts.length; j++) {
+				domStyle.parts.push(addStyle(item.parts[j], options));
+			}
+		} else {
+			var parts = [];
+
+			for(var j = 0; j < item.parts.length; j++) {
+				parts.push(addStyle(item.parts[j], options));
+			}
+
+			stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+		}
+	}
+}
+
+function listToStyles (list, options) {
+	var styles = [];
+	var newStyles = {};
+
+	for (var i = 0; i < list.length; i++) {
+		var item = list[i];
+		var id = options.base ? item[0] + options.base : item[0];
+		var css = item[1];
+		var media = item[2];
+		var sourceMap = item[3];
+		var part = {css: css, media: media, sourceMap: sourceMap};
+
+		if(!newStyles[id]) styles.push(newStyles[id] = {id: id, parts: [part]});
+		else newStyles[id].parts.push(part);
+	}
+
+	return styles;
+}
+
+function insertStyleElement (options, style) {
+	var target = getElement(options.insertInto)
+
+	if (!target) {
+		throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
+	}
+
+	var lastStyleElementInsertedAtTop = stylesInsertedAtTop[stylesInsertedAtTop.length - 1];
+
+	if (options.insertAt === "top") {
+		if (!lastStyleElementInsertedAtTop) {
+			target.insertBefore(style, target.firstChild);
+		} else if (lastStyleElementInsertedAtTop.nextSibling) {
+			target.insertBefore(style, lastStyleElementInsertedAtTop.nextSibling);
+		} else {
+			target.appendChild(style);
+		}
+		stylesInsertedAtTop.push(style);
+	} else if (options.insertAt === "bottom") {
+		target.appendChild(style);
+	} else {
+		throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+	}
+}
+
+function removeStyleElement (style) {
+	if (style.parentNode === null) return false;
+	style.parentNode.removeChild(style);
+
+	var idx = stylesInsertedAtTop.indexOf(style);
+	if(idx >= 0) {
+		stylesInsertedAtTop.splice(idx, 1);
+	}
+}
+
+function createStyleElement (options) {
+	var style = document.createElement("style");
+
+	options.attrs.type = "text/css";
+
+	addAttrs(style, options.attrs);
+	insertStyleElement(options, style);
+
+	return style;
+}
+
+function createLinkElement (options) {
+	var link = document.createElement("link");
+
+	options.attrs.type = "text/css";
+	options.attrs.rel = "stylesheet";
+
+	addAttrs(link, options.attrs);
+	insertStyleElement(options, link);
+
+	return link;
+}
+
+function addAttrs (el, attrs) {
+	Object.keys(attrs).forEach(function (key) {
+		el.setAttribute(key, attrs[key]);
+	});
+}
+
+function addStyle (obj, options) {
+	var style, update, remove, result;
+
+	// If a transform function was defined, run it on the css
+	if (options.transform && obj.css) {
+	    result = options.transform(obj.css);
+
+	    if (result) {
+	    	// If transform returns a value, use that instead of the original css.
+	    	// This allows running runtime transformations on the css.
+	    	obj.css = result;
+	    } else {
+	    	// If the transform function returns a falsy value, don't add this css.
+	    	// This allows conditional loading of css
+	    	return function() {
+	    		// noop
+	    	};
+	    }
+	}
+
+	if (options.singleton) {
+		var styleIndex = singletonCounter++;
+
+		style = singleton || (singleton = createStyleElement(options));
+
+		update = applyToSingletonTag.bind(null, style, styleIndex, false);
+		remove = applyToSingletonTag.bind(null, style, styleIndex, true);
+
+	} else if (
+		obj.sourceMap &&
+		typeof URL === "function" &&
+		typeof URL.createObjectURL === "function" &&
+		typeof URL.revokeObjectURL === "function" &&
+		typeof Blob === "function" &&
+		typeof btoa === "function"
+	) {
+		style = createLinkElement(options);
+		update = updateLink.bind(null, style, options);
+		remove = function () {
+			removeStyleElement(style);
+
+			if(style.href) URL.revokeObjectURL(style.href);
+		};
+	} else {
+		style = createStyleElement(options);
+		update = applyToTag.bind(null, style);
+		remove = function () {
+			removeStyleElement(style);
+		};
+	}
+
+	update(obj);
+
+	return function updateStyle (newObj) {
+		if (newObj) {
+			if (
+				newObj.css === obj.css &&
+				newObj.media === obj.media &&
+				newObj.sourceMap === obj.sourceMap
+			) {
+				return;
+			}
+
+			update(obj = newObj);
+		} else {
+			remove();
+		}
+	};
+}
+
+var replaceText = (function () {
+	var textStore = [];
+
+	return function (index, replacement) {
+		textStore[index] = replacement;
+
+		return textStore.filter(Boolean).join('\n');
+	};
+})();
+
+function applyToSingletonTag (style, index, remove, obj) {
+	var css = remove ? "" : obj.css;
+
+	if (style.styleSheet) {
+		style.styleSheet.cssText = replaceText(index, css);
+	} else {
+		var cssNode = document.createTextNode(css);
+		var childNodes = style.childNodes;
+
+		if (childNodes[index]) style.removeChild(childNodes[index]);
+
+		if (childNodes.length) {
+			style.insertBefore(cssNode, childNodes[index]);
+		} else {
+			style.appendChild(cssNode);
+		}
+	}
+}
+
+function applyToTag (style, obj) {
+	var css = obj.css;
+	var media = obj.media;
+
+	if(media) {
+		style.setAttribute("media", media)
+	}
+
+	if(style.styleSheet) {
+		style.styleSheet.cssText = css;
+	} else {
+		while(style.firstChild) {
+			style.removeChild(style.firstChild);
+		}
+
+		style.appendChild(document.createTextNode(css));
+	}
+}
+
+function updateLink (link, options, obj) {
+	var css = obj.css;
+	var sourceMap = obj.sourceMap;
+
+	/*
+		If convertToAbsoluteUrls isn't defined, but sourcemaps are enabled
+		and there is no publicPath defined then lets turn convertToAbsoluteUrls
+		on by default.  Otherwise default to the convertToAbsoluteUrls option
+		directly
+	*/
+	var autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;
+
+	if (options.convertToAbsoluteUrls || autoFixUrls) {
+		css = fixUrls(css);
+	}
+
+	if (sourceMap) {
+		// http://stackoverflow.com/a/26603875
+		css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+	}
+
+	var blob = new Blob([css], { type: "text/css" });
+
+	var oldSrc = link.href;
+
+	link.href = URL.createObjectURL(blob);
+
+	if(oldSrc) URL.revokeObjectURL(oldSrc);
+}
+
+
+/***/ }),
+/* 88 */
+/***/ (function(module, exports) {
+
+
+/**
+ * When source maps are enabled, `style-loader` uses a link element with a data-uri to
+ * embed the css on the page. This breaks all relative urls because now they are relative to a
+ * bundle instead of the current page.
+ *
+ * One solution is to only use full urls, but that may be impossible.
+ *
+ * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
+ *
+ * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
+ *
+ */
+
+module.exports = function (css) {
+  // get current location
+  var location = typeof window !== "undefined" && window.location;
+
+  if (!location) {
+    throw new Error("fixUrls requires window.location");
+  }
+
+	// blank or null?
+	if (!css || typeof css !== "string") {
+	  return css;
+  }
+
+  var baseUrl = location.protocol + "//" + location.host;
+  var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, "/");
+
+	// convert each url(...)
+	/*
+	This regular expression is just a way to recursively match brackets within
+	a string.
+
+	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
+	   (  = Start a capturing group
+	     (?:  = Start a non-capturing group
+	         [^)(]  = Match anything that isn't a parentheses
+	         |  = OR
+	         \(  = Match a start parentheses
+	             (?:  = Start another non-capturing groups
+	                 [^)(]+  = Match anything that isn't a parentheses
+	                 |  = OR
+	                 \(  = Match a start parentheses
+	                     [^)(]*  = Match anything that isn't a parentheses
+	                 \)  = Match a end parentheses
+	             )  = End Group
+              *\) = Match anything and then a close parens
+          )  = Close non-capturing group
+          *  = Match anything
+       )  = Close capturing group
+	 \)  = Match a close parens
+
+	 /gi  = Get all matches, not the first.  Be case insensitive.
+	 */
+	var fixedCss = css.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function(fullMatch, origUrl) {
+		// strip quotes (if they exist)
+		var unquotedOrigUrl = origUrl
+			.trim()
+			.replace(/^"(.*)"$/, function(o, $1){ return $1; })
+			.replace(/^'(.*)'$/, function(o, $1){ return $1; });
+
+		// already a full url? no change
+		if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/)/i.test(unquotedOrigUrl)) {
+		  return fullMatch;
+		}
+
+		// convert the url to a full url
+		var newUrl;
+
+		if (unquotedOrigUrl.indexOf("//") === 0) {
+		  	//TODO: should we add protocol?
+			newUrl = unquotedOrigUrl;
+		} else if (unquotedOrigUrl.indexOf("/") === 0) {
+			// path should be relative to the base url
+			newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
+		} else {
+			// path should be relative to current directory
+			newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ""); // Strip leading './'
+		}
+
+		// send back the fixed url(...)
+		return "url(" + JSON.stringify(newUrl) + ")";
+	});
+
+	// send back the fixed css
+	return fixedCss;
+};
+
+
+/***/ }),
+/* 89 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 90 */,
+/* 91 */,
+/* 92 */,
+/* 93 */,
+/* 94 */,
+/* 95 */,
+/* 96 */,
+/* 97 */,
+/* 98 */,
+/* 99 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = index;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layout_form__ = __webpack_require__(2);
+
+
+
+
+function index() {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'otherContainer' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__layout_form__["d" /* Tab */], {
+            data: [{
+                name: 'Dados pessoais',
+                icon: 'fa fa-user',
+                content: "Dados pessoais"
+            }, {
+                name: 'Endereço',
+                icon: 'fa fa-map-pin',
+                content: "Endereço"
+            }, {
+                name: 'Contacto',
+                icon: 'fa fa-phone-alt',
+                content: "Contacto"
+            }],
+            isStep: true
+        })
+    );
+}
 
 /***/ })
 /******/ ]);

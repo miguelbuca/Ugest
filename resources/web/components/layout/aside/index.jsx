@@ -272,6 +272,7 @@ export default function index() {
                     <i className="fa fa-bars"/>
                 </button>
             </div>
+            <div>
             <div style={{
                 opacity: navToggle ? 1 : 0
             }} className="userSectionAside">
@@ -287,12 +288,20 @@ export default function index() {
                     </div>
                 </div>
             </div>
+            { !navToggle && (
+                <div style={{
+                    opacity: !navToggle ? 1 : 0
+                }} className="menuTitle">
+                    Menu
+                </div>
+            ) }
+            </div>
             <div>
                 <ul>
                     {
                         menu.map(({name,route,icon, childrean},index)=>{
                             return (
-                                <li onClick={(e)=>{
+                                <li onClick={()=>{
                                     setMenuOn(index)
 
                                     if(childrean){

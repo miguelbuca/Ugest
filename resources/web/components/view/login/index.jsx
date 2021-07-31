@@ -28,6 +28,7 @@ export default function index() {
                         />
                     </div>
                     <div>
+                        
                         <div className="logWith">
                             <i className="fab fa-github"/>
                             <i className="fab fa-facebook"/>

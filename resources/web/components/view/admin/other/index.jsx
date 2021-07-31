@@ -19,7 +19,7 @@ import NivelAcesso from './nivelacesso'
 
 export default function index(props) {
 
-  const { data } = useUgest()
+  const { data, setData } = useUgest()
 
   const { submenu, route } = props
 
@@ -74,6 +74,14 @@ export default function index(props) {
     setLastHover(produtos[0])
   }, [])
 
+  useEffect(() => {
+    setData({
+      ...data,
+        action:{}
+    })
+
+  }, [submenu])
+
   useEffect(async () => {
       const { data } = await Api.get( `/${route.toLocaleLowerCase()}`);
       setOtherData(data)
@@ -109,9 +117,11 @@ export default function index(props) {
 
                             setRes(res)
 
+                            props.onUpdate(res)
+
                             console.log(`/${route.toLocaleLowerCase()}`,{
                               ...data.action.toSave
-                            },res)
+                            },res,props)
                           }} >
                             Salvar
                             <i className="fa fa-save"/>

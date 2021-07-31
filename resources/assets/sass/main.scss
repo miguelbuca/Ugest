@@ -103,13 +103,34 @@
             transition: all .3s !important;
             overflow-x: hidden;
 
-            & .userSectionAside{
-                display: flex;
+            &>div:nth-child(2){
                 border-top: $ugest-border;
                 border-bottom: $ugest-border;
+                display: flex;
+                flex-direction: column;
+                position: relative;
+
+                & .menuTitle{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    transform: translate(-50%,-50%);
+                    transform: rotate(90deg);
+                    margin-top: 2rem;
+                    text-transform: uppercase;
+                    font-size: 11pt;
+                    color: $body-bg-default;
+                    opacity: 0;
+                    transition: all .3s;
+                }
+            }
+
+            & .userSectionAside{
+                display: flex;
                 padding: 1rem;
                 opacity: 1;
                 transition: all .3s;
+                width: 100%;
 
                 &>div{
                     background-color: rgba($color: #fff, $alpha: .06);

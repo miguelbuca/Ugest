@@ -8493,16 +8493,45 @@ button.close {
   overflow-x: hidden;
 }
 
+#root > main > aside > div:nth-child(2) {
+  border-top: solid 1px rgba(0, 0, 0, 0.06);
+  border-bottom: solid 1px rgba(0, 0, 0, 0.06);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+}
+
+#root > main > aside > div:nth-child(2) .menuTitle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  margin-top: 2rem;
+  text-transform: uppercase;
+  font-size: 11pt;
+  color: #f5f8fa;
+  opacity: 0;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
 #root > main > aside .userSectionAside {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border-top: solid 1px rgba(0, 0, 0, 0.06);
-  border-bottom: solid 1px rgba(0, 0, 0, 0.06);
   padding: 1rem;
   opacity: 1;
   -webkit-transition: all .3s;
   transition: all .3s;
+  width: 100%;
 }
 
 #root > main > aside .userSectionAside > div {
@@ -9053,18 +9082,12 @@ button.close {
           flex-direction: column;
 }
 
-.tab > div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.tab > div:first-child {
+.tab .tabContainerWithStep {
   background-color: #fff;
   margin-bottom: 1.5rem;
 }
 
-.tab > div:first-child > span {
+.tab .tabContainerWithStep > span {
   padding: 1.5rem;
   cursor: pointer;
   border-top: solid 3px transparent;
@@ -9073,15 +9096,41 @@ button.close {
       -ms-user-select: none !important;
           user-select: none !important;
   font-weight: bold;
+  -webkit-transition: all .3s;
+  transition: all .3s;
 }
 
-.tab > div:first-child > span[active="true"] {
+.tab .tabContainerWithStep > span[class="stepPass"] {
+  border-top: solid 3px green !important;
+  color: green !important;
+}
+
+.tab .tabContainerWithStep > span[active="true"] {
   border-top: solid 3px #D5A368;
   color: #D5A368;
 }
 
-.tab > div:first-child > span i {
+.tab .tabContainerWithStep > span i {
   margin-right: 1rem;
+}
+
+.tab .btnNextPrev {
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.tab > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .tab > div:last-child {

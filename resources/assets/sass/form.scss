@@ -88,30 +88,43 @@
     display: flex;
     flex-direction: column;
 
-    &>div{
-        display: flex;
+    & .tabContainerWithStep{
+        background-color: $body-bg;
+        margin-bottom: 1.5rem;
+        
+        &>span{
+            padding: 1.5rem;
+            cursor: pointer;
+            border-top: solid 3px transparent;
+            user-select: none !important;
+            font-weight: bold;
+            transition: all .3s;
 
-        &:first-child{
-            background-color: $body-bg;
-            margin-bottom: 1.5rem;
-            
-            &>span{
-                padding: 1.5rem;
-                cursor: pointer;
-                border-top: solid 3px transparent;
-                user-select: none !important;
-                font-weight: bold;
+            &[class="stepPass"]{
+                border-top: solid 3px green !important;
+                color: green !important;
+            }
 
-                &[active="true"]{
-                    border-top: solid 3px $system-color;
-                    color: $system-color;
-                }
+            &[active="true"]{
+                border-top: solid 3px $system-color;
+                color: $system-color;
+            }
 
-                & i{
-                    margin-right: 1rem;
-                }
+            & i{
+                margin-right: 1rem;
             }
         }
+    }
+
+    & .btnNextPrev{
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    &>div{
+        display: flex;
         &:last-child{
             flex: 1;
             background-color: $body-bg;

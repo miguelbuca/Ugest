@@ -27,7 +27,8 @@ export function Tab({
     data=[{
         name: '',
         content: <div></div>
-    }]
+    }],
+    isStep=false
 }) {
 
     const [ activeIndex, setActiveIndex ] = useState(0)
@@ -35,15 +36,35 @@ export function Tab({
 
     return(
         <div className="tab">
-            <div>
+            <div style={{
+                marginBottom: isStep ? '0' : '1.5rem'
+            }} className="tabContainerWithStep">
                 {
                     data.map(({ name , icon },index)=>{
                         return(
-                            <span onClick={()=>setActiveIndex(index)} active={index === activeIndex ? "true" : "false"} key={index}>{ icon && <i className={icon}/> }{name}</span>
+                            <span className={index<activeIndex && isStep ? "stepPass" : ""} onClick={()=>setActiveIndex(index)} active={index === activeIndex ? "true" : "false"} key={index}>{ icon && <i className={icon}/> }{name}</span>
                         )
                     })
                 }
             </div>
+            {isStep && <div className="btnNextPrev">
+                    {
+                        activeIndex > 0 
+                            && 
+                        <Button style={{
+                            marginRight: '1rem'
+                        }} onClick={()=>{
+                            if(activeIndex>0)setActiveIndex(activeIndex-1)
+                        }}>
+                            <i className="fa fa-chevron-left"/> Anterior 
+                        </Button>
+                    }
+                    <Button onClick={()=>{
+                        if(activeIndex<data.length-1)setActiveIndex(activeIndex+1)
+                    }}>
+                        {activeIndex+1!==data.length ? "Próximo" : "Finalizar"} <i className={activeIndex+1!==data.length ? "fa fa-chevron-right" : "fa fa-save"}/>
+                    </Button>
+                </div>}
             <div>
                 {data[activeIndex] && data[activeIndex].content}
             </div>
