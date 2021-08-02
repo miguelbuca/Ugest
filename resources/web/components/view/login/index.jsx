@@ -1,13 +1,20 @@
-import React from 'react'
+import React,{ useEffect } from 'react'
 
-import Logo from '../../../../assets/img/logo.jpeg'
+import Logo from '../../../../assets/img/logo.png'
 
 import { Input, Button } from '../../layout/form'
 
+import { useUgest } from '../context'
 
 export default function index() {
+
+
+    const { data: { preference : { mode } } } = useUgest()
+
+    console.log(mode)
+
     return (
-        <main className="loginContainer">
+        <main mode={ !mode ? "Escuro" : "Claro" } className="loginContainer">
             <div className="logo-box">
                 <img src={Logo} alt="Ugest-logo"/>
             </div>
@@ -28,13 +35,14 @@ export default function index() {
                         />
                     </div>
                     <div>
-                        
                         <div className="logWith">
                             <i className="fab fa-github"/>
                             <i className="fab fa-facebook"/>
                         </div>
                         <div>
-                            <Button>
+                            <Button onClick={()=>{
+                                window.location = '/'
+                            }}>
                                 Entrar
                                 <i className="fa fa-sign-in-alt"/>
                             </Button>

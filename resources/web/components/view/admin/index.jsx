@@ -7,6 +7,7 @@ import Other from './other'
 import Artigo from './artigo'
 import Stock from './stock'
 import Entidade from './entidade'
+import Usuario from './usuario'
 
 import { useUgest } from '../context'
 
@@ -21,12 +22,6 @@ export default function index() {
         setRoute(data.navigation)
         
     }, [data])
-
-
-    useEffect(() => {
-        console.log(route)
-    }, [route])
-    
     return (
         <div>
             <Header/>
@@ -45,6 +40,7 @@ export default function index() {
                                 { route.menu === 'Outras tabela' && <Other {...route}/> }
                                 { route.menu === 'Artigo' && <Artigo {...route}/> }
                                 { route.menu === 'Entidade' && <Entidade {...route}/> }
+                                { route.menu === 'Usuário' && <Usuario {...route}/> }
                                 { route.menu === 'stock' && <Stock {...route}/> }
                             </div>
                 }

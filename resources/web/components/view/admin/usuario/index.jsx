@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import Table from '../../../layout/form/table'
 
-import Form from './artigosForm'
+import Form from './usuarioForm'
 
 import Api from '../../../../api'
 

@@ -174,7 +174,7 @@ export default function index() {
             ]
         },
         {
-            name: 'Configuraçõe',
+            name: 'Configurações',
             route: 'configuracaoes',
             icon: 'fas fa-cogs',
             childrean: [

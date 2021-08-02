@@ -10,6 +10,9 @@ export const UgestProvider = ({ children }) => {
     navigation: {
         menu: 'Painel'
     },
+    preference:{
+      ...JSON.parse(localStorage.getItem('UserPreference')) || {}
+    },
     action:{
       toSave: {},
       toEdit: {}
@@ -18,7 +21,10 @@ export const UgestProvider = ({ children }) => {
   })
 
   useEffect(() => {
-    (async () => {
+    localStorage.setItem('UserPreference',JSON.stringify(data.preference))
+  }, [data])
+
+  useEffect(async() => {
           const res = await Api.get( `/estado`);
           setData({
             ...data,
@@ -26,7 +32,6 @@ export const UgestProvider = ({ children }) => {
               estado: res.data
             }
           })
-      })()
   }, [])
 
 

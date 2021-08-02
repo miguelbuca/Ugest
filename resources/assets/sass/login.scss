@@ -5,6 +5,10 @@
     align-items: center;
     flex-direction: column !important;
 
+    &[mode="Escuro"]{
+       
+    }
+
     & .logo-box{
         margin-bottom: 6rem;
         & img{
@@ -31,6 +35,7 @@
                 font-size: 14pt;
                 transition: all .2s;
                 cursor: pointer;
+                color: rgba(0, 0, 0, .5 ) !important;
 
                 &:hover{
                     color: $system-color;

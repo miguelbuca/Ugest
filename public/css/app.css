@@ -1,4 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@charset "UTF-8";
+@charset "UTF-8";
+
+/*@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");*/
 
 @font-face {
   font-family: 'Releway';
@@ -8475,6 +8477,98 @@ button.close {
       -ms-flex-direction: row;
           flex-direction: row;
   background-color: #f5f8fa;
+  -webkit-transition: background-color .3s;
+  transition: background-color .3s;
+}
+
+#root > main .tbOut {
+  -webkit-box-flex: 1 !important;
+      -ms-flex: 1 !important;
+          flex: 1 !important;
+}
+
+#root > main[mode="Escuro"] {
+  background-color: #252526;
+  color: #f5f8fa;
+  /** others */
+}
+
+#root > main[mode="Escuro"] .cContent {
+  width: 100% !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #252526 !important;
+}
+
+#root > main[mode="Escuro"] .btn-location {
+  border-color: #fff;
+}
+
+#root > main[mode="Escuro"] .cancel {
+  background-color: #4e4e4e !important;
+}
+
+#root > main[mode="Escuro"] > aside {
+  background-color: #1e1e1e !important;
+}
+
+#root > main[mode="Escuro"] > div > header {
+  border-left: solid 1px #252526;
+  background-color: #1e1e1e !important;
+}
+
+#root > main[mode="Escuro"] .stepPass {
+  border-top: solid 3px #e0777c !important;
+  color: #e0777c !important;
+}
+
+#root > main[mode="Escuro"] .tbOut,
+#root > main[mode="Escuro"] .popup_content,
+#root > main[mode="Escuro"] .cardTimeContainer > div,
+#root > main[mode="Escuro"] .formContent,
+#root > main[mode="Escuro"] .tabContainerWithStep,
+#root > main[mode="Escuro"] .tab > div:last-child {
+  background-color: #1e1e1e !important;
+  color: #e1e1e6;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+#root > main[mode="Escuro"] .tableConatiner th {
+  color: #D5A368;
+}
+
+#root > main[mode="Escuro"] .tableConatiner {
+  background-color: transparent;
+  width: 100%;
+}
+
+#root > main[mode="Escuro"] .tableConatiner > div:first-child > div:last-child button {
+  color: #e1e1e6;
+}
+
+#root > main[mode="Escuro"] .input input,
+#root > main[mode="Escuro"] .input select {
+  background-color: transparent;
+  border: solid 2px rgba(0, 0, 0, 0.4);
+}
+
+#root > main[mode="Escuro"] .input input:focus,
+#root > main[mode="Escuro"] .input select:focus {
+  border-color: #e0777c;
+  color: #e0777c;
+}
+
+#root > main[mode="Escuro"] .input input:focus ~ i,
+#root > main[mode="Escuro"] .input select:focus ~ i {
+  color: #e0777c !important;
 }
 
 #root > main > aside {
@@ -8706,6 +8800,7 @@ button.close {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  overflow: auto !important;
 }
 
 #root > main .mainContent > div {
@@ -8741,6 +8836,9 @@ button.close {
   border-bottom: solid 1px rgba(0, 0, 0, 0.06);
   height: 65px;
   max-height: 65px;
+  -webkit-transition: background-color .3s;
+  transition: background-color .3s;
+  border-left: solid 1px transparent;
 }
 
 #root > main > div > header .headerAvatar img {
@@ -8892,6 +8990,10 @@ button.close {
       -ms-flex-direction: column;
           flex-direction: column;
   width: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-bottom: 2rem;
 }
 
 #root > main .painelContainer .cardTimeContainer {
@@ -8935,9 +9037,9 @@ button.close {
 }
 
 #root > main .painelContainer .cardTimeContainer:nth-child(2) > div:first-child {
-  -webkit-box-flex: 3;
-      -ms-flex: 3;
-          flex: 3;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 #root > main .painelContainer .cardTimeContainer:nth-child(2) > div:last-child {
@@ -8967,6 +9069,10 @@ button.close {
   max-height: 80px !important;
 }
 
+.input * {
+  position: relative !important;
+}
+
 .input input,
 .input select {
   outline: none;
@@ -8976,8 +9082,8 @@ button.close {
 }
 
 .input i {
-  position: absolute;
-  top: 45%;
+  position: absolute !important;
+  top: 33px !important;
   left: 1rem;
   font-size: 1.2rem;
   color: rgba(0, 0, 0, 0.4);
@@ -9206,6 +9312,7 @@ button.close {
   -webkit-transition: all .2s;
   transition: all .2s;
   cursor: pointer;
+  color: rgba(0, 0, 0, 0.5) !important;
 }
 
 .loginContainer .card .logWith i:hover {
@@ -9428,6 +9535,10 @@ button.close {
 .isLow i {
   margin-right: .3rem;
   font-size: 8pt;
+}
+
+.pSearchIcon i {
+  top: 12px !important;
 }
 
 .popup {

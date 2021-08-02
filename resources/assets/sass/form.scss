@@ -5,6 +5,10 @@
     margin-bottom: 1rem;
     max-height: 80px !important;
 
+    & *{
+        position:  relative !important;
+    }
+
     & input,
     & select{
         outline: none;
@@ -14,8 +18,8 @@
     }
 
     & i{
-        position: absolute;
-        top: 45%;
+        position: absolute !important;
+        top: 33px !important;
         left: 1rem;
         font-size: 1.2rem;
         color: rgba($color: #000000, $alpha: .4);

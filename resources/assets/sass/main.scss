@@ -93,6 +93,87 @@
         display: flex;
         flex-direction: row;
         background-color: $body-bg-default;
+        transition: background-color .3s;
+    
+        & .tbOut{
+            flex: 1 !important;
+        }
+
+        &[mode="Escuro"]{
+            background-color: $body-bg-default-dark;
+            color: #f5f8fa;
+
+            & .cContent{
+                width: 100% !important;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: $body-bg-default-dark !important;
+            }
+
+            & .btn-location{
+                border-color: #fff;
+            }
+
+            & .cancel{
+                background-color: #4e4e4e !important;
+            }
+
+            &>aside{
+                background-color: rgb(30, 30, 30) !important;
+            }
+            &>div>header{
+                border-left: solid 1px $body-bg-default-dark;
+                background-color: rgb(30, 30, 30) !important;
+            }
+
+            & .stepPass{
+                border-top: solid 3px #e0777c !important;
+                color: #e0777c !important;
+            }
+
+            /** others */
+
+            & .tbOut,
+            & .popup_content,
+            & .cardTimeContainer>div,
+            & .formContent,
+            & .tabContainerWithStep,
+            & .tab>div:last-child{
+                background-color: rgb(30, 30, 30) !important; 
+                color: rgb(225, 225, 230);
+                box-shadow: $box-shadow;
+            }
+
+            & .tableConatiner th{
+                color: $system-color;
+            }
+            
+            & .tableConatiner{
+                background-color: transparent;
+                width: 100%;
+            }
+            & .tableConatiner > div:first-child > div:last-child button{
+                color: #e1e1e6;
+            }
+            & .input input, .input select{
+                background-color: transparent;
+                border: solid 2px rgba($color: #000, $alpha: .4);
+
+                &:focus{
+                    border-color: #e0777c;
+                    color: #e0777c;
+                }
+            }
+
+            & .input{
+                & input:focus ~ i,
+                & select:focus ~ i{
+                    color: #e0777c !important;
+                }
+            }
+        }
+
 
         &>aside{
             position: relative;
@@ -262,6 +343,7 @@
             display: flex;
             padding: 1rem 0;
             flex: 1;
+            overflow: auto !important;
 
             &>div{
                 display: flex;
@@ -285,6 +367,8 @@
             border-bottom: $ugest-border;
             height: 65px;
             max-height: 65px;
+            transition: background-color .3s;
+            border-left: solid 1px transparent;
 
             & .headerAvatar img{
                 width: 35px;
@@ -380,6 +464,8 @@
             display: flex;
             flex-direction: column;
             width: 100%;
+            flex: 1;
+            margin-bottom: 2rem;
 
             & .cardTimeContainer{
                 display: flex;
@@ -409,7 +495,7 @@
                         border: $ugest-border;
 
                         &:first-child{
-                            flex: 3;
+                            flex: 1;
                         }
                         &:last-child{
                             flex: 1;

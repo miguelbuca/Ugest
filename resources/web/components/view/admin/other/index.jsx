@@ -31,49 +31,6 @@ export default function index(props) {
 
   const [ res, setRes ] = useState()
 
-  const produtos = [
-    {
-      nome: 'Marcelo Burlon',
-      categoria: 'Roupa',
-      subcategoria: 'T-shert',
-      'preço': 25306,
-      estado: 'activo',
-      quantidade: 8,
-      foto: 'mrcb.jpg'
-    },
-    {
-      nome: 'Balanciaga',
-      categoria: 'Calçados',
-      subcategoria: 'Botas',
-      'preço': 4505.02,
-      estado: 'activo',
-      quantidade: 16,
-      foto: 'botas.jpg'
-    },
-    {
-      nome: 'SmartWath',
-      categoria: 'Eletrônicos',
-      subcategoria: 'Relógio',
-      'preço': 8500.728,
-      estado: 'activo',
-      quantidade: 3,
-      foto: 'relogio.jpg'
-    },
-    {
-      nome: 'Test',
-      categoria: 'Eletrônicos',
-      subcategoria: 'Relógio',
-      'preço': 70000,
-      estado: 'inativo',
-      quantidade: 35,
-      foto: 'relogio.jpg'
-    }
-  ]
-
-  useEffect(() => {
-    setLastHover(produtos[0])
-  }, [])
-
   useEffect(() => {
     setData({
       ...data,
@@ -116,8 +73,6 @@ export default function index(props) {
                             });
 
                             setRes(res)
-
-                            props.onUpdate(res)
 
                             console.log(`/${route.toLocaleLowerCase()}`,{
                               ...data.action.toSave

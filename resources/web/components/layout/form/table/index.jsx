@@ -45,7 +45,7 @@ export default function index({ data, options = {
         if(type === "preço") return <span className="monay">{Convert(value,'AOA')}</span>
         if(type === "quantidade") return <span className={'qtd '+ (parseInt(value)<= Min.qtd ? "isLow" : "")}>{ parseInt(value)<= Min.qtd && <i className="fa fa-arrow-down"/> }{value}</span>
 
-        return value
+        return value ? value : '-'
     }
 
     return (
@@ -70,7 +70,7 @@ export default function index({ data, options = {
             </Modal> }</div>}
             <div className="tableConatiner">
                 { options.header && <div>
-                    <div>
+                    <div className="pSearchIcon">
                         { options.header.search && <Input onChange={e=>setFilter(e.target.value)} icon="fa fa-search" placeholder="Pesquisar" /> }
                     </div>
                     <div>

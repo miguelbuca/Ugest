@@ -28,7 +28,8 @@ export function Tab({
         name: '',
         content: <div></div>
     }],
-    isStep=false
+    isStep=false,
+    onDone=()=>{}
 }) {
 
     const [ activeIndex, setActiveIndex ] = useState(0)
@@ -61,6 +62,8 @@ export function Tab({
                     }
                     <Button onClick={()=>{
                         if(activeIndex<data.length-1)setActiveIndex(activeIndex+1)
+
+                        if(activeIndex+1===data.length)onDone()
                     }}>
                         {activeIndex+1!==data.length ? "Próximo" : "Finalizar"} <i className={activeIndex+1!==data.length ? "fa fa-chevron-right" : "fa fa-save"}/>
                     </Button>
