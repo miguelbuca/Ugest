@@ -7,25 +7,22 @@ import { useUgest } from '../../context'
 
 import Api from '../../../../api'
 
-const Form = ({ route, ...props }) =>{
+const Form = (props) =>{
 
     const { data, setData } = useUgest()
     const [ estado, setEstado ] = useState([])
-    const [ tipoArtigo, setTipoArtigo ] = useState()
+    const [ nivelAcesso, setNivelAcesso ] = useState()
     
     useEffect(() => {
         setEstado(data.multUso.estado.map(({ est_id, est_designacao })=>{
             return { value: est_id, label: est_designacao }
         }))
-
-        console.log(data)
-
     }, [data])
 
     useEffect(async() => {
-        const res = await Api.get( `/tipoartigo`);
-            setTipoArtigo(res.data.map(({ tip_id, tip_designacao })=>{
-            return { value: tip_id, label: tip_designacao }
+        const res = await Api.get( `/nivelacesso`);
+            setNivelAcesso(res.data.map(({ niv_id, niv_designacao })=>{
+            return { value: niv_id, label: niv_designacao }
         }))
     }, [])
 
@@ -34,30 +31,81 @@ const Form = ({ route, ...props }) =>{
           ...data,
             action:{}
         })
-    }, [route])
+    }, [])
 
 
 
     return(
         <div className="formContent">
         <div className="fCr">
+        <Input 
+                icon="fas fa-user"
+                label="NIF/BI"
+                type="text"
+                placeholder="nif do proprietário"
+                onChange={e=>{
+                    console.log(e.target.value)
+                }}
+            />
+
+<Input 
+                icon="fas fa-user-check"
+                label="Proprietário"
+                type="text"
+                readOnly
+                placeholder="nome completo"
+                onChange={e=>{
+                    console.log(e.target.value)
+                }}
+            />
+            
 <Input 
                 icon="fas fa-pen"
-                label="Designação"
+                label="Nome"
                 type="text"
-                placeholder="Nome do artigo"
+                placeholder="nome.usuario"
                 onChange={e=>setData({
                     ...data,
                     action:{
                         ...data.action,
                         toSave: {
                             ...data.action.toSave,
-                            art_designacao: e.target.value
+                            usu_username: e.target.value
                         }
                     }
                 })}
             />
 <Select
+                label="Nível de acesso"
+                data={nivelAcesso}
+                onChange={e=>setData({
+                    ...data,
+                    action:{
+                        ...data.action,
+                        toSave: {
+                            ...data.action.toSave,
+                            usu_nivelAcesso_id: e.target.value
+                        }
+                    }
+                })}
+            />
+
+<Input 
+                icon="fas fa-lock"
+                label="Palavra passe"
+                type="password"
+                onChange={e=>setData({
+                    ...data,
+                    action:{
+                        ...data.action,
+                        toSave: {
+                            ...data.action.toSave,
+                            usu_password: e.target.value
+                        }
+                    }
+                })}
+            />
+            <Select
                 label="Estado"
                 data={estado}
                 onChange={e=>setData({
@@ -66,54 +114,7 @@ const Form = ({ route, ...props }) =>{
                         ...data.action,
                         toSave: {
                             ...data.action.toSave,
-                            art_estado_id: e.target.value
-                        }
-                    }
-                })}
-            />
-<Select
-                label="Tipo de Artigo"
-                data={tipoArtigo}
-                onChange={e=>setData({
-                    ...data,
-                    action:{
-                        ...data.action,
-                        toSave: {
-                            ...data.action.toSave,
-                            art_tipoArtigo_id: e.target.value
-                        }
-                    }
-                })}
-            />
-
-<Input 
-                icon="fas fa-box"
-                label="Stock mínimo"
-                type="number"
-                placeholder="0"
-                onChange={e=>setData({
-                    ...data,
-                    action:{
-                        ...data.action,
-                        toSave: {
-                            ...data.action.toSave,
-                            art_stock_minimo: e.target.value
-                        }
-                    }
-                })}
-            />
-             <Input 
-                icon="fas fa-boxes"
-                label="Stock real"
-                type="number"
-                placeholder="10"
-                onChange={e=>setData({
-                    ...data,
-                    action:{
-                        ...data.action,
-                        toSave: {
-                            ...data.action.toSave,
-                            art_stock_real: e.target.value
+                            usu_estado_id: e.target.value
                         }
                     }
                 })}
@@ -127,15 +128,10 @@ const Form = ({ route, ...props }) =>{
                 <i className="fa fa-times"/>
               </Button>
               <Button onClick={async()=>{
-                            const res = await Api.post( `/${route.toLocaleLowerCase()}`,{
-                              ...data.action.toSave
+                            const res = await Api.post( `/usuario`,{
+                              ...data.action.toSave,"usu_pessoa_id": "3"
                             });
-
-                            //setRes(res)
-
-                            console.log(`/${route.toLocaleLowerCase()}`,{
-                              ...data.action.toSave
-                            },res)
+                            props.onUpdate()
                           }}>
                 Salvar
                 <i className="fa fa-save"/>

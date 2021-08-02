@@ -44449,6 +44449,7 @@ function index() {
     Object(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
         if (!data.navigation) return;
         setRoute(data.navigation);
+        console.log(route);
     }, [data]);
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
@@ -48554,6 +48555,8 @@ function area() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__api__ = __webpack_require__(5);
 
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
@@ -48570,7 +48573,8 @@ function index(props) {
     var _this = this;
 
     var menu = props.menu,
-        submenu = props.submenu;
+        submenu = props.submenu,
+        route = props.route;
 
     var _useState = Object(__WEBPACK_IMPORTED_MODULE_1_react__["useState"])(),
         _useState2 = _slicedToArray(_useState, 2),
@@ -48579,94 +48583,56 @@ function index(props) {
 
     var _useState3 = Object(__WEBPACK_IMPORTED_MODULE_1_react__["useState"])([]),
         _useState4 = _slicedToArray(_useState3, 2),
-        artigo = _useState4[0],
-        setArtigo = _useState4[1];
+        usuario = _useState4[0],
+        setUsuario = _useState4[1];
 
-    var produtos = [{
-        nome: 'Marcelo Burlon',
-        categoria: 'Roupa',
-        subcategoria: 'T-shert',
-        'preço': 25306,
-        estado: 'activo',
-        quantidade: 8,
-        foto: 'mrcb.jpg'
-    }, {
-        nome: 'Balanciaga',
-        categoria: 'Calçados',
-        subcategoria: 'Botas',
-        'preço': 4505.02,
-        estado: 'activo',
-        quantidade: 16,
-        foto: 'botas.jpg'
-    }, {
-        nome: 'SmartWath',
-        categoria: 'Eletrônicos',
-        subcategoria: 'Relógio',
-        'preço': 8500.728,
-        estado: 'activo',
-        quantidade: 3,
-        foto: 'relogio.jpg'
-    }, {
-        nome: 'Test',
-        categoria: 'Eletrônicos',
-        subcategoria: 'Relógio',
-        'preço': 70000,
-        estado: 'inativo',
-        quantidade: 35,
-        foto: 'relogio.jpg'
-    }];
+    Object(__WEBPACK_IMPORTED_MODULE_1_react__["useEffect"])(_asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
+        var _ref2, data;
 
-    Object(__WEBPACK_IMPORTED_MODULE_1_react__["useEffect"])(function () {
-        _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
-            var _ref2, data;
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+            while (1) {
+                switch (_context.prev = _context.next) {
+                    case 0:
+                        _context.next = 2;
+                        return __WEBPACK_IMPORTED_MODULE_4__api__["a" /* default */].get('/' + route.toLocaleLowerCase());
 
-            return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+                    case 2:
+                        _ref2 = _context.sent;
+                        data = _ref2.data;
+
+                        setUsuario(data);
+
+                    case 5:
+                    case 'end':
+                        return _context.stop();
+                }
+            }
+        }, _callee, _this);
+    })), [menu]);
+
+    return submenu == 'Novo' ? __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__usuarioForm__["a" /* default */], _extends({}, props, { onUpdate: _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2() {
+            var _ref4, data;
+
+            return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
                 while (1) {
-                    switch (_context.prev = _context.next) {
+                    switch (_context2.prev = _context2.next) {
                         case 0:
-                            _context.next = 2;
-                            return __WEBPACK_IMPORTED_MODULE_4__api__["a" /* default */].get('/' + menu.toLocaleLowerCase());
+                            _context2.next = 2;
+                            return __WEBPACK_IMPORTED_MODULE_4__api__["a" /* default */].get('/' + route.toLocaleLowerCase());
 
                         case 2:
-                            _ref2 = _context.sent;
-                            data = _ref2.data;
+                            _ref4 = _context2.sent;
+                            data = _ref4.data;
 
-                            setArtigo(data);
+                            setUsuario(data);
 
                         case 5:
                         case 'end':
-                            return _context.stop();
+                            return _context2.stop();
                     }
                 }
-            }, _callee, _this);
-        }))();
-    }, [menu]);
-
-    return submenu == 'Novo' ? __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__usuarioForm__["a" /* default */], { onUpdate: function onUpdate() {
-            _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2() {
-                var _ref4, data;
-
-                return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
-                    while (1) {
-                        switch (_context2.prev = _context2.next) {
-                            case 0:
-                                _context2.next = 2;
-                                return __WEBPACK_IMPORTED_MODULE_4__api__["a" /* default */].get('/' + menu.toLocaleLowerCase());
-
-                            case 2:
-                                _ref4 = _context2.sent;
-                                data = _ref4.data;
-
-                                setArtigo(data);
-
-                            case 5:
-                            case 'end':
-                                return _context2.stop();
-                        }
-                    }
-                }, _callee2, _this);
-            }))();
-        }, route: menu }) : __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+            }, _callee2, _this);
+        })), route: menu })) : __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
         'div',
         { className: 'tbOut', style: {
                 padding: '2rem',
@@ -48691,7 +48657,7 @@ function index(props) {
                     }
                 }
             },
-            data: artigo })
+            data: usuario })
     );
 }
 
@@ -48717,7 +48683,6 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 
 
@@ -48726,11 +48691,7 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 
 
 
-
-var Form = function Form(_ref) {
-    var route = _ref.route,
-        props = _objectWithoutProperties(_ref, ['route']);
-
+var Form = function Form(props) {
     var _useUgest = Object(__WEBPACK_IMPORTED_MODULE_3__context__["b" /* useUgest */])(),
         data = _useUgest.data,
         setData = _useUgest.setData;
@@ -48742,18 +48703,16 @@ var Form = function Form(_ref) {
 
     var _useState3 = Object(__WEBPACK_IMPORTED_MODULE_1_react__["useState"])(),
         _useState4 = _slicedToArray(_useState3, 2),
-        tipoArtigo = _useState4[0],
-        setTipoArtigo = _useState4[1];
+        nivelAcesso = _useState4[0],
+        setNivelAcesso = _useState4[1];
 
     Object(__WEBPACK_IMPORTED_MODULE_1_react__["useEffect"])(function () {
-        setEstado(data.multUso.estado.map(function (_ref2) {
-            var est_id = _ref2.est_id,
-                est_designacao = _ref2.est_designacao;
+        setEstado(data.multUso.estado.map(function (_ref) {
+            var est_id = _ref.est_id,
+                est_designacao = _ref.est_designacao;
 
             return { value: est_id, label: est_designacao };
         }));
-
-        console.log(data);
     }, [data]);
 
     Object(__WEBPACK_IMPORTED_MODULE_1_react__["useEffect"])(_asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
@@ -48763,16 +48722,16 @@ var Form = function Form(_ref) {
                 switch (_context.prev = _context.next) {
                     case 0:
                         _context.next = 2;
-                        return __WEBPACK_IMPORTED_MODULE_4__api__["a" /* default */].get('/tipoartigo');
+                        return __WEBPACK_IMPORTED_MODULE_4__api__["a" /* default */].get('/nivelacesso');
 
                     case 2:
                         res = _context.sent;
 
-                        setTipoArtigo(res.data.map(function (_ref4) {
-                            var tip_id = _ref4.tip_id,
-                                tip_designacao = _ref4.tip_designacao;
+                        setNivelAcesso(res.data.map(function (_ref3) {
+                            var niv_id = _ref3.niv_id,
+                                niv_designacao = _ref3.niv_designacao;
 
-                            return { value: tip_id, label: tip_designacao };
+                            return { value: niv_id, label: niv_designacao };
                         }));
 
                     case 4:
@@ -48787,7 +48746,7 @@ var Form = function Form(_ref) {
         setData(_extends({}, data, {
             action: {}
         }));
-    }, [route]);
+    }, []);
 
     return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
         'div',
@@ -48796,15 +48755,61 @@ var Form = function Form(_ref) {
             'div',
             { className: 'fCr' },
             __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__layout_form__["b" /* Input */], {
-                icon: 'fas fa-pen',
-                label: 'Designa\xE7\xE3o',
+                icon: 'fas fa-user',
+                label: 'NIF/BI',
                 type: 'text',
-                placeholder: 'Nome do artigo',
+                placeholder: 'nif do propriet\xE1rio',
+                onChange: function onChange(e) {
+                    console.log(e.target.value);
+                }
+            }),
+            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__layout_form__["b" /* Input */], {
+                icon: 'fas fa-user-check',
+                label: 'Propriet\xE1rio',
+                type: 'text',
+                readOnly: true,
+                placeholder: 'nome completo',
+                onChange: function onChange(e) {
+                    console.log(e.target.value);
+                }
+            }),
+            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__layout_form__["b" /* Input */], {
+                icon: 'fas fa-pen',
+                label: 'Nome',
+                type: 'text',
+                placeholder: 'nome.usuario',
                 onChange: function onChange(e) {
                     return setData(_extends({}, data, {
                         action: _extends({}, data.action, {
                             toSave: _extends({}, data.action.toSave, {
-                                art_designacao: e.target.value
+                                usu_username: e.target.value
+                            })
+                        })
+                    }));
+                }
+            }),
+            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__layout_form__["c" /* Select */], {
+                label: 'N\xEDvel de acesso',
+                data: nivelAcesso,
+                onChange: function onChange(e) {
+                    return setData(_extends({}, data, {
+                        action: _extends({}, data.action, {
+                            toSave: _extends({}, data.action.toSave, {
+                                usu_nivelAcesso_id: e.target.value
+                            })
+                        })
+                    }));
+                }
+            }),
+            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__layout_form__["b" /* Input */], {
+                icon: 'fas fa-lock',
+                label: 'Palavra passe',
+                type: 'password',
+                onChange: function onChange(e) {
+                    return setData(_extends({}, data, {
+                        action: _extends({}, data.action, {
+                            toSave: _extends({}, data.action.toSave, {
+                                usu_password: e.target.value
                             })
                         })
                     }));
@@ -48817,50 +48822,7 @@ var Form = function Form(_ref) {
                     return setData(_extends({}, data, {
                         action: _extends({}, data.action, {
                             toSave: _extends({}, data.action.toSave, {
-                                art_estado_id: e.target.value
-                            })
-                        })
-                    }));
-                }
-            }),
-            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__layout_form__["c" /* Select */], {
-                label: 'Tipo de Artigo',
-                data: tipoArtigo,
-                onChange: function onChange(e) {
-                    return setData(_extends({}, data, {
-                        action: _extends({}, data.action, {
-                            toSave: _extends({}, data.action.toSave, {
-                                art_tipoArtigo_id: e.target.value
-                            })
-                        })
-                    }));
-                }
-            }),
-            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__layout_form__["b" /* Input */], {
-                icon: 'fas fa-box',
-                label: 'Stock m\xEDnimo',
-                type: 'number',
-                placeholder: '0',
-                onChange: function onChange(e) {
-                    return setData(_extends({}, data, {
-                        action: _extends({}, data.action, {
-                            toSave: _extends({}, data.action.toSave, {
-                                art_stock_minimo: e.target.value
-                            })
-                        })
-                    }));
-                }
-            }),
-            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__layout_form__["b" /* Input */], {
-                icon: 'fas fa-boxes',
-                label: 'Stock real',
-                type: 'number',
-                placeholder: '10',
-                onChange: function onChange(e) {
-                    return setData(_extends({}, data, {
-                        action: _extends({}, data.action, {
-                            toSave: _extends({}, data.action.toSave, {
-                                art_stock_real: e.target.value
+                                usu_estado_id: e.target.value
                             })
                         })
                     }));
@@ -48887,15 +48849,13 @@ var Form = function Form(_ref) {
                                 switch (_context2.prev = _context2.next) {
                                     case 0:
                                         _context2.next = 2;
-                                        return __WEBPACK_IMPORTED_MODULE_4__api__["a" /* default */].post('/' + route.toLocaleLowerCase(), _extends({}, data.action.toSave));
+                                        return __WEBPACK_IMPORTED_MODULE_4__api__["a" /* default */].post('/usuario', _extends({}, data.action.toSave, { "usu_pessoa_id": "3"
+                                        }));
 
                                     case 2:
                                         res = _context2.sent;
 
-
-                                        //setRes(res)
-
-                                        console.log('/' + route.toLocaleLowerCase(), _extends({}, data.action.toSave), res);
+                                        props.onUpdate();
 
                                     case 4:
                                     case 'end':

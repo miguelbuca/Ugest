@@ -20,7 +20,7 @@ export default function index() {
     useEffect(() => {
         if(!data.navigation)return
         setRoute(data.navigation)
-        
+        console.log(route)
     }, [data])
     return (
         <div>
