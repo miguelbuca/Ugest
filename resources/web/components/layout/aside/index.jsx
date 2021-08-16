@@ -3,20 +3,25 @@ import React, { useState, useEffect } from 'react'
 
 import Avatar from '../../../../assets/img/avatar.png'
 
-import { UgestProvider, useUgest } from '../../view/context'
+import { useUgest } from '../../view/context'
 
 export default function index() {
 
 
     const { data, setData } = useUgest()
 
-    const [ navToggle, setNavToggle ] = useState(true)
+    const [ navToggle, setNavToggle ] = useState(false)
     const [ menuOn, setMenuOn ] = useState(0)
 
     const [ submenu, setSubmenu ] = useState([])
     const [ submenuActive, setSubmenuActive] = useState(0)
 
     const menu = [
+        {
+            name: 'Faturar',
+            route: 'faturar',
+            icon: 'fa fa-barcode'
+        },
         {
             name: 'Painel',
             route: 'painel',

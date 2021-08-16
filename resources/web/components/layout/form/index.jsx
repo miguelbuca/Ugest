@@ -14,10 +14,10 @@ export function Input({
         </div>
     )
 }
-export function Button({children,className="",...props}) {
+export function Button({style,styleButton,children,className="",...props}) {
     return(
-        <div>
-            <button className={"btnSystem "+className} {...props}>
+        <div style={style}>
+            <button style={{styleButton}} className={"btnSystem "+className} {...props}>
                 {children}
             </button>
         </div>
@@ -103,9 +103,11 @@ export function InputFile({
 }) {
     return(
         <div className="inputFile">
-            <div>1</div>
-            <div>Clica ou arraste o seu arquivo aqui</div>
-            <input {...props} type="file" hidden={true} />
+            <label htmlFor="file">
+                <i className="fa fa-upload"/>
+                <div>Clica ou arraste o seu arquivo aqui</div>
+            </label>
+            <input id="file" {...props} type="file" hidden={true} />
         </div>
     )
 }

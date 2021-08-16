@@ -88,6 +88,166 @@
         flex-direction: column;
     }
 
+    & .faturarContainer{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        &>div:first-child{
+            display: flex;
+
+            & ul{
+                flex: 1;
+                list-style: none;
+                display: flex;
+                flex-direction: row;
+                padding-left: 0;
+                overflow-x: auto;
+                padding-bottom: 1rem;
+
+                & li{
+                    display: flex;
+                    align-items: center;
+                    padding: .3rem 1rem;
+                    background-color: $black-transprent;
+                    border-radius: 100px;
+                    cursor: pointer;
+
+                    & i{
+                        margin-right: .5rem;
+                        color: rgba($color: #000, $alpha: .45);
+                    }
+
+                    &[active="true"]{
+                        font-weight: bold;
+                        
+                        & i{
+                            color: #636b6f;
+                        }
+                    }
+
+                    &:not(:last-child){
+                        margin-right: .5rem;
+                    }
+                }
+            }
+        }
+
+        & .faturarContent{
+            flex: 1;
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+            gap: 20px;
+        }
+    }
+
+    & .counterContainer{
+        background-color: $body-bg-default;
+        border-radius: $default-radius;
+        display: flex;
+        flex-direction: row;
+        min-width: 5rem;
+        margin: 1rem 0;
+
+        &>*:nth-child(2){
+            margin: 0 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        & button{
+            background-color: #fff;
+            padding: .5rem 1rem;
+            border: none;
+            border-radius: $default-radius;
+            margin: .3rem;
+        }
+    }
+
+    & .productPropForm{
+        display: flex;
+        flex-direction: row;
+
+        &>div{
+            display: flex;
+            padding: 1rem;
+
+            &:first-child{
+                & img{
+                    width: 25rem;
+                    max-height: 35rem;
+                }
+            }
+            &:last-child{
+                min-width: 35rem;
+                flex-direction: column !important;
+
+                &>div{
+                    display: flex;
+                    
+                    
+
+                    &:first-child{
+                        flex: 1;
+                        display: flex;
+                        flex-direction: column;
+
+                        &>div{
+                            &:nth-child(2)>div{
+                                &:not(:last-child){
+                                    border-bottom: $ugest-border;
+                                    padding: .5rem 0;
+                                }
+                                &:last-child{
+                                    display: flex;
+                                    flex-direction: row;
+                                    align-items: center;
+
+                                    &>*:first-child{
+                                        margin-right: 1rem;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &:last-child{
+                        display: flex;
+                        justify-content: flex-end;
+                        align-items: center;
+                    }
+                }
+
+                & h3{
+                    margin: 0;
+                    margin-bottom: 1rem;
+                    padding: 0;
+                }
+            }
+        }
+    }
+
+    & .shoppingCount{
+        position: relative;
+        margin-right: .5rem;
+
+        &>span{
+            position: absolute;
+            bottom: -.5rem;
+            right: 0;
+            padding: .5rem;
+            background-color: $system-color;
+            color: $body-bg-default;
+            height: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 18px;
+            border-radius: 50%;
+            border: solid 1px $body-bg-default;
+        }
+    }
+
     &>main{
         height: 100vh;
         display: flex;
@@ -95,6 +255,27 @@
         background-color: $body-bg-default;
         transition: background-color .3s;
     
+
+        & .productContentMain{
+            display: flex;
+            flex-direction: row;
+
+            &>div{
+                display: flex;
+
+                &:first-child{
+                    align-items: flex-start;
+                    justify-content: flex-start;
+                    height: 100%;
+                    margin-right: 2rem  !important;
+                }
+                &:last-child{
+                    height: 100% !important;
+                    padding: 0 !important;
+                }
+            }
+        }
+
         & .tbOut{
             flex: 1 !important;
         }

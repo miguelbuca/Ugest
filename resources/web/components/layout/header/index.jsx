@@ -23,6 +23,10 @@ export default function index() {
           })
     }, [mode])
 
+    useEffect(() => {
+        console.log(data.shopping)
+    }, [data])
+
     return (
         <header>
             <div>
@@ -50,6 +54,12 @@ export default function index() {
                     </button>  
                     <button className="btn">
                         <i className="fa fa-search"/>
+                    </button>
+                    <button className="btn shoppingCount">
+                        <i className="fa fa-shopping-basket" />
+                        {
+                            Object.keys(data.shopping.artigo).length > 0 && <span>{Object.keys(data.shopping.artigo).length}</span>
+                        }
                     </button>
                     <span className="headerAvatar">
                         <img src={Avatar} alt="user-photo"/>

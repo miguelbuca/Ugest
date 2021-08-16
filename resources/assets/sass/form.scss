@@ -38,29 +38,28 @@
 .inputFile{
     display: flex;
     flex-direction: row;
+    display: flex;
+    padding: 1rem;
+    border: dotted 1px silver;
+    height: 160px;
 
     & input[type="file"]{
         display: none !important;
     }
-    &>div{
+    & label{
         display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
 
-        &:first-child{
-            width: 200px;
-            height: 200px;
-            margin-right: 2rem;
-        }
-
-        &:nth-child(2){
-            flex: 1 !important;
-            border: solid 2px #ccc;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        & i{
+            font-size: 24pt;
         }
     }
 }
 .btnSystem{
+    width: 100%;
     background-color: $system-color !important;
     border-radius: $default-radius;
     padding: .5rem 1rem;

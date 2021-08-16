@@ -39,7 +39,11 @@ const Form = ({ route, ...props }) =>{
 
 
     return(
-        <div className="formContent">
+        <div className="productContentMain">
+            <div>
+                <InputFile />
+            </div>
+            <div className="formContent">
         <div className="fCr">
 <Input 
                 icon="fas fa-pen"
@@ -119,29 +123,35 @@ const Form = ({ route, ...props }) =>{
                 })}
             />
 </div>
-<div>
-<Button className="cancel" style={{
-                  marginRight: '1rem',
-                }}>
-                Cancelar
-                <i className="fa fa-times"/>
-              </Button>
-              <Button onClick={async()=>{
-                            const res = await Api.post( `/${route.toLocaleLowerCase()}`,{
-                              ...data.action.toSave
-                            });
+            <div style={{
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'flex-end',
+                alignItems: 'flex-end'
+            }}>
+                <Button className="cancel" style={{
+                            marginRight: '1rem',
+                            }}>
+                            Cancelar
+                            <i className="fa fa-times"/>
+                        </Button>
+                <Button onClick={async()=>{
+                                        const res = await Api.post( `/${route.toLocaleLowerCase()}`,{
+                                        ...data.action.toSave
+                                        });
 
-                            //setRes(res)
+                                        //setRes(res)
 
-                            console.log(`/${route.toLocaleLowerCase()}`,{
-                              ...data.action.toSave
-                            },res)
-                          }}>
-                Salvar
-                <i className="fa fa-save"/>
-              </Button>
-</div>
-    </div>
+                                        console.log(`/${route.toLocaleLowerCase()}`,{
+                                        ...data.action.toSave
+                                        },res)
+                                    }}>
+                            Salvar
+                            <i className="fa fa-save"/>
+                        </Button>
+            </div>
+        </div>
+        </div>
     )
 }
 

@@ -8,7 +8,7 @@ export const UgestProvider = ({ children }) => {
 
   const [ data, setData ] = useState({
     navigation: {
-        menu: 'Painel'
+        menu: 'Faturar'
     },
     preference:{
       ...JSON.parse(localStorage.getItem('UserPreference')) || {}
@@ -17,11 +17,14 @@ export const UgestProvider = ({ children }) => {
       toSave: {},
       toEdit: {}
     },
+    shopping: {
+      artigo: {}
+    },
     multUso:{}
   })
 
   useEffect(() => {
-    localStorage.setItem('UserPreference',JSON.stringify(data.preference))
+    localStorage.setItem('UserPreference', JSON.stringify(data.preference))
   }, [data])
 
   useEffect(async() => {

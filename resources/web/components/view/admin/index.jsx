@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import Header from '../../layout/header'
 
+import Faturar from './faturar'
 import Painel from './painel'
 import Other from './other'
 import Artigo from './artigo'
@@ -27,7 +28,7 @@ export default function index() {
             <Header/>
             {
                 route && (
-                    route.menu !== 'Painel' && (
+                    route.menu !== 'Painel' && route.menu !== 'Faturar' && (
                     <div className="navscale">
                         {route.submenu ? <span>{route.menu}<i className="fa fa-chevron-right"/>{route.submenu}</span> : <span>{route.menu}</span>}
                     </div>)
@@ -36,6 +37,7 @@ export default function index() {
             <main className="mainContent">
                 {
                     route && <div>
+                                { route.menu === 'Faturar' && <Faturar {...route}/> }
                                 { route.menu === 'Painel' && <Painel {...route}/> }
                                 { route.menu === 'Outras tabela' && <Other {...route}/> }
                                 { route.menu === 'Artigo' && <Artigo {...route}/> }

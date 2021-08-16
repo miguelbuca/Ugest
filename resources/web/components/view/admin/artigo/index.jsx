@@ -6,67 +6,54 @@ import Form from './artigosForm'
 
 import Api from '../../../../api'
 
+import { Tab } from '../../../layout/form'
+
 export default function index(props) {
 
     const { menu,submenu  } = props
 
     const [ lastHover, setLastHover ]  = useState()
 
-    const [ artigo, setArtigo ] = useState([])
+  const [artigo, setArtigo] = useState([])
+  
+  const [ tabContent, setTabContent ]  = useState([])
 
-    const produtos = [
-        {
-          nome: 'Marcelo Burlon',
-          categoria: 'Roupa',
-          subcategoria: 'T-shert',
-          'preço': 25306,
-          estado: 'activo',
-          quantidade: 8,
-          foto: 'mrcb.jpg'
-        },
-        {
-          nome: 'Balanciaga',
-          categoria: 'Calçados',
-          subcategoria: 'Botas',
-          'preço': 4505.02,
-          estado: 'activo',
-          quantidade: 16,
-          foto: 'botas.jpg'
-        },
-        {
-          nome: 'SmartWath',
-          categoria: 'Eletrônicos',
-          subcategoria: 'Relógio',
-          'preço': 8500.728,
-          estado: 'activo',
-          quantidade: 3,
-          foto: 'relogio.jpg'
-        },
-        {
-          nome: 'Test',
-          categoria: 'Eletrônicos',
-          subcategoria: 'Relógio',
-          'preço': 70000,
-          estado: 'inativo',
-          quantidade: 35,
-          foto: 'relogio.jpg'
-        }
-    ]
-
+    useEffect(async () => {
+          const { data } = await Api.get( `/${menu.toLocaleLowerCase()}`);
+          setArtigo(data)
+    }, [menu])
+  
     useEffect(() => {
-      (async () => {
-            const { data } = await Api.get( `/${menu.toLocaleLowerCase()}`);
-            setArtigo(data)
-        })()
-    }, [ menu ])
+
+      setTabContent([
+          {
+              name: 'Produto',
+              icon: 'fa fa-tag',
+              content: (
+                <section className="otherForms">
+                  <Form onUpdate={async()=>{
+                      const { data } = await Api.get( `/${menu.toLocaleLowerCase()}`);
+                      setArtigo(data)
+                }} route={menu} />
+                </section>
+              )
+          },
+          {
+              name: 'Serviço',
+              icon: 'fa fa-cog',
+            content: (
+                "ola"
+              )
+          }
+      ])
+}, [submenu])
 
     return (
-                submenu == 'Novo' ? <Form onUpdate={()=>{
-                      (async () => {
-                        const { data } = await Api.get( `/${menu.toLocaleLowerCase()}`);
-                        setArtigo(data)
-                    })()
-                }} route={menu} /> : (
+                submenu == 'Novo' ?   <div className="otherContainer">
+                <Tab
+                    data={tabContent}
+                />
+            </div>  : (
                     <div className="tbOut" style={{
                         padding: '2rem',
                         width: '100%',
