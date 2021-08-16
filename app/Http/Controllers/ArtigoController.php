@@ -8,11 +8,19 @@ class ArtigoController extends Controller
 {
     public function index()
     {
-        return Artigo::all();
+        // return Artigo::all();
+        return Artigo::join('tipoartigos', 'tipoartigos.tip_id', '=', 'artigos.art_tipoArtigo_id')
+                    ->join('estados', 'estados.est_id', '=', 'tipoartigos.tip_estado_id')
+                    ->get();
     }
 
     public function store(Request $req)
     {
+        $newImageName = time().'-'.$req->art_designacao.'.'.$req->art_imagem->extension();
+        $req->art_imagem->move(public_path('uploads'), $newImageName);
+
+        // dd($newImage);
+
         try {
             $artigo = new Artigo;
 
@@ -21,6 +29,7 @@ class ArtigoController extends Controller
             $artigo->art_stock_minimo = $req->art_stock_minimo;
             $artigo->art_stock_real = $req->art_stock_real;
             $artigo->art_estado_id = $req->art_estado_id;
+            $artigo->art_imagem = $newImageName;
 
             $result = $artigo->save();
 
@@ -36,7 +45,10 @@ class ArtigoController extends Controller
 
     public function show($id)
     {
-        return $id ? Artigo::find($id) : Artigo::all();
+        return Artigo::join('tipoartigos', 'tipoartigos.tip_id', '=', 'artigos.art_tipoArtigo_id')
+                    ->join('estados', 'estados.est_id', '=', 'tipoartigos.tip_estado_id')
+                    ->where('artigos.art_id', $id)
+                    ->get();
     }
 
     public function update(Request $req, $id)

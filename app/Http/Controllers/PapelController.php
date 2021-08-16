@@ -8,7 +8,9 @@ class PapelController extends Controller
 {
     public function index()
     {
-        return Papei::all();
+        // return Papei::all();
+        return Papei::join('estados', 'estados.est_id', '=', 'papeis.pap_estado_id')
+                    ->get();
     }
 
     public function store(Request $req)
@@ -33,7 +35,9 @@ class PapelController extends Controller
 
     public function show($id)
     {
-        return $id ? Papei::find($id) : Papei::all();
+        return Papei::join('estados', 'estados.est_id', '=', 'papeis.pap_estado_id')
+                    ->where('papeis.pap_id', $id)
+                    ->get();
     }
 
     public function update(Request $req, $id)

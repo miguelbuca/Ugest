@@ -8,7 +8,8 @@ class TipoArtigoController extends Controller
 {
     public function index()
     {
-        return Tipoartigo::all();
+        return Tipoartigo::join('estados', 'estados.est_id', '=', 'tipoartigos.tip_estado_id')
+                        ->get();
     }
 
     public function store(Request $req)
@@ -33,7 +34,9 @@ class TipoArtigoController extends Controller
 
     public function show($id)
     {
-        return $id ? Tipoartigo::find($id) : Tipoartigo::all();
+        return Tipoartigo::join('estados', 'estados.est_id', '=', 'tipoartigos.tip_estado_id')
+                        ->where('estados.est_id', $id)
+                        ->get();
     }
 
     public function update(Request $req, $id)

@@ -36,7 +36,8 @@ class Artigo extends Model
 		'art_estado_id' => 'int',
 		'art_tipoArtigo_id' => 'int',
 		'art_stock_minimo' => 'int',
-		'art_stock_real' => 'int'
+		'art_stock_real' => 'int',
+		'art_imagem' => 'string',
 	];
 
 	protected $fillable = [
@@ -44,7 +45,8 @@ class Artigo extends Model
 		'art_estado_id',
 		'art_tipoArtigo_id',
 		'art_stock_minimo',
-		'art_stock_real'
+		'art_stock_real',
+		'art_imagem',
 	];
 
 	public function estado()
