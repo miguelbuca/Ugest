@@ -1,0 +1,24 @@
+.shoppingConatiner{
+    width: 100%;
+
+    &>div{
+        display: flex;
+        flex-direction: column;
+
+        &:first-child{
+            background-color: $body-bg;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: row;
+
+            &>div{
+                display: flex;
+
+                &:first-child{
+                    flex: 1;
+                }
+            }
+        }
+    }
+}

@@ -1,5 +1,5 @@
 import React from 'react'
-import relogioIMG from '../../../../../assets/img/relogio.jpg'
+import relogioIMG from '../../../../../assets/img/relogio.png'
 
 import { Button } from '../../../layout/form'
 

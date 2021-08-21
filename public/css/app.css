@@ -8749,6 +8749,10 @@ button.close {
   /** others */
 }
 
+#root > main[mode="Escuro"] .productCard {
+  background-color: #1e1e1e !important;
+}
+
 #root > main[mode="Escuro"] .cContent {
   width: 100% !important;
   display: -webkit-box;
@@ -9894,6 +9898,45 @@ button.close {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+}
+
+.shoppingConatiner {
+  width: 100%;
+}
+
+.shoppingConatiner > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.shoppingConatiner > div:first-child {
+  background-color: #fff;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.shoppingConatiner > div:first-child > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.shoppingConatiner > div:first-child > div:first-child {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 .productCard {

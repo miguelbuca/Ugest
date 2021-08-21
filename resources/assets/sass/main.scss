@@ -284,6 +284,10 @@
             background-color: $body-bg-default-dark;
             color: #f5f8fa;
 
+            & .productCard{
+                background-color: #1e1e1e !important;
+            }
+
             & .cContent{
                 width: 100% !important;
                 display: flex;

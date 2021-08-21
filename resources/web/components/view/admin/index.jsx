@@ -9,6 +9,7 @@ import Artigo from './artigo'
 import Stock from './stock'
 import Entidade from './entidade'
 import Usuario from './usuario'
+import Shopping from './shopping'
 
 import { useUgest } from '../context'
 
@@ -43,7 +44,8 @@ export default function index() {
                                 { route.menu === 'Artigo' && <Artigo {...route}/> }
                                 { route.menu === 'Entidade' && <Entidade {...route}/> }
                                 { route.menu === 'Usuário' && <Usuario {...route}/> }
-                                { route.menu === 'stock' && <Stock {...route}/> }
+                                {route.menu === 'stock' && <Stock {...route} />}
+                                { route.route === 'shopping-cart' && <Shopping {...route}/> }
                             </div>
                 }
             </main>

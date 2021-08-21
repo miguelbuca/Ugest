@@ -1,0 +1,15 @@
+.shoppingConatiner {
+  width: 100%;
+}
+
+.shoppingConatiner > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.shoppingConatiner > div:first-child {
+  background-color: red;
+  background-color: 2rem;
+}
+/*# sourceMappingURL=shopping.css.map */

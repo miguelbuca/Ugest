@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 25);
+/******/ 	return __webpack_require__(__webpack_require__.s = 24);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -73,7 +73,7 @@
 if (false) {
   module.exports = require('./cjs/react.production.min.js');
 } else {
-  module.exports = __webpack_require__(27);
+  module.exports = __webpack_require__(26);
 }
 
 
@@ -370,7 +370,7 @@ function InputFile(_ref7) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 
 
@@ -388,7 +388,7 @@ var Api = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.create({
 
 
 var bind = __webpack_require__(12);
-var isBuffer = __webpack_require__(39);
+var isBuffer = __webpack_require__(38);
 
 /*global toString:true*/
 
@@ -694,7 +694,7 @@ module.exports = {
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(35);
+module.exports = __webpack_require__(34);
 
 
 /***/ }),
@@ -706,9 +706,9 @@ module.exports = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_money__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_condiction__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_condiction__ = __webpack_require__(77);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__index__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modal__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modal__ = __webpack_require__(18);
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 
@@ -1035,7 +1035,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(4);
-var normalizeHeaderName = __webpack_require__(42);
+var normalizeHeaderName = __webpack_require__(41);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -1125,7 +1125,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(41)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(40)))
 
 /***/ }),
 /* 9 */
@@ -1147,7 +1147,7 @@ function Convert(number) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports,"__esModule",{value:!0});var _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},_extends=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var r=arguments[t];for(var n in r)Object.prototype.hasOwnProperty.call(r,n)&&(e[n]=r[n])}return e},_createClass=function(){function n(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(e,t,r){return t&&n(e.prototype,t),r&&n(e,r),e}}(),_apexcharts=__webpack_require__(68),_apexcharts2=_interopRequireDefault(_apexcharts),_react=__webpack_require__(0),_react2=_interopRequireDefault(_react),_propTypes=__webpack_require__(69),_propTypes2=_interopRequireDefault(_propTypes);function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}function _defineProperty(e,t,r){return t in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}function _objectWithoutProperties(e,t){var r={};for(var n in e)0<=t.indexOf(n)||Object.prototype.hasOwnProperty.call(e,n)&&(r[n]=e[n]);return r}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _possibleConstructorReturn(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function _inherits(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}window.ApexCharts=_apexcharts2.default;var Charts=function(){function r(e){_classCallCheck(this,r);var t=_possibleConstructorReturn(this,(r.__proto__||Object.getPrototypeOf(r)).call(this,e));return _react2.default.createRef?t.chartRef=_react2.default.createRef():t.setRef=function(e){return t.chartRef=e},t.chart=null,t}return _inherits(r,_react.Component),_createClass(r,[{key:"render",value:function(){var e=_objectWithoutProperties(this.props,[]);return _react2.default.createElement("div",_extends({ref:_react2.default.createRef?this.chartRef:this.setRef},e))}},{key:"componentDidMount",value:function(){var e=_react2.default.createRef?this.chartRef.current:this.chartRef;this.chart=new _apexcharts2.default(e,this.getConfig()),this.chart.render()}},{key:"getConfig",value:function(){var e=this.props,t=e.type,r=e.height,n=e.width,o=e.series,i=e.options,a={chart:{type:t,height:r,width:n},series:o};return this.extend(i,a)}},{key:"isObject",value:function(e){return e&&"object"===(void 0===e?"undefined":_typeof(e))&&!Array.isArray(e)&&null!=e}},{key:"extend",value:function(t,r){var n=this;"function"!=typeof Object.assign&&(Object.assign=function(e){if(null==e)throw new TypeError("Cannot convert undefined or null to object");for(var t=Object(e),r=1;r<arguments.length;r++){var n=arguments[r];if(null!=n)for(var o in n)n.hasOwnProperty(o)&&(t[o]=n[o])}return t});var o=Object.assign({},t);return this.isObject(t)&&this.isObject(r)&&Object.keys(r).forEach(function(e){n.isObject(r[e])&&e in t?o[e]=n.extend(t[e],r[e]):Object.assign(o,_defineProperty({},e,r[e]))}),o}},{key:"componentDidUpdate",value:function(e){if(!this.chart)return null;var t=this.props,r=t.options,n=t.series,o=t.height,i=t.width,a=JSON.stringify(e.options),s=JSON.stringify(e.series),c=JSON.stringify(r),u=JSON.stringify(n);a===c&&s===u&&o===e.height&&i===e.width||(s===u?this.chart.updateOptions(this.getConfig()):a===c&&o===e.height&&i===e.width?this.chart.updateSeries(n):this.chart.updateOptions(this.getConfig()))}},{key:"componentWillUnmount",value:function(){this.chart&&"function"==typeof this.chart.destroy&&this.chart.destroy()}}]),r}();(exports.default=Charts).propTypes={type:_propTypes2.default.string.isRequired,width:_propTypes2.default.any,height:_propTypes2.default.any,series:_propTypes2.default.array.isRequired,options:_propTypes2.default.object.isRequired},Charts.defaultProps={type:"line",width:"100%",height:"auto"};
+Object.defineProperty(exports,"__esModule",{value:!0});var _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},_extends=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var r=arguments[t];for(var n in r)Object.prototype.hasOwnProperty.call(r,n)&&(e[n]=r[n])}return e},_createClass=function(){function n(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(e,t,r){return t&&n(e.prototype,t),r&&n(e,r),e}}(),_apexcharts=__webpack_require__(69),_apexcharts2=_interopRequireDefault(_apexcharts),_react=__webpack_require__(0),_react2=_interopRequireDefault(_react),_propTypes=__webpack_require__(70),_propTypes2=_interopRequireDefault(_propTypes);function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}function _defineProperty(e,t,r){return t in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}function _objectWithoutProperties(e,t){var r={};for(var n in e)0<=t.indexOf(n)||Object.prototype.hasOwnProperty.call(e,n)&&(r[n]=e[n]);return r}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _possibleConstructorReturn(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function _inherits(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}window.ApexCharts=_apexcharts2.default;var Charts=function(){function r(e){_classCallCheck(this,r);var t=_possibleConstructorReturn(this,(r.__proto__||Object.getPrototypeOf(r)).call(this,e));return _react2.default.createRef?t.chartRef=_react2.default.createRef():t.setRef=function(e){return t.chartRef=e},t.chart=null,t}return _inherits(r,_react.Component),_createClass(r,[{key:"render",value:function(){var e=_objectWithoutProperties(this.props,[]);return _react2.default.createElement("div",_extends({ref:_react2.default.createRef?this.chartRef:this.setRef},e))}},{key:"componentDidMount",value:function(){var e=_react2.default.createRef?this.chartRef.current:this.chartRef;this.chart=new _apexcharts2.default(e,this.getConfig()),this.chart.render()}},{key:"getConfig",value:function(){var e=this.props,t=e.type,r=e.height,n=e.width,o=e.series,i=e.options,a={chart:{type:t,height:r,width:n},series:o};return this.extend(i,a)}},{key:"isObject",value:function(e){return e&&"object"===(void 0===e?"undefined":_typeof(e))&&!Array.isArray(e)&&null!=e}},{key:"extend",value:function(t,r){var n=this;"function"!=typeof Object.assign&&(Object.assign=function(e){if(null==e)throw new TypeError("Cannot convert undefined or null to object");for(var t=Object(e),r=1;r<arguments.length;r++){var n=arguments[r];if(null!=n)for(var o in n)n.hasOwnProperty(o)&&(t[o]=n[o])}return t});var o=Object.assign({},t);return this.isObject(t)&&this.isObject(r)&&Object.keys(r).forEach(function(e){n.isObject(r[e])&&e in t?o[e]=n.extend(t[e],r[e]):Object.assign(o,_defineProperty({},e,r[e]))}),o}},{key:"componentDidUpdate",value:function(e){if(!this.chart)return null;var t=this.props,r=t.options,n=t.series,o=t.height,i=t.width,a=JSON.stringify(e.options),s=JSON.stringify(e.series),c=JSON.stringify(r),u=JSON.stringify(n);a===c&&s===u&&o===e.height&&i===e.width||(s===u?this.chart.updateOptions(this.getConfig()):a===c&&o===e.height&&i===e.width?this.chart.updateSeries(n):this.chart.updateOptions(this.getConfig()))}},{key:"componentWillUnmount",value:function(){this.chart&&"function"==typeof this.chart.destroy&&this.chart.destroy()}}]),r}();(exports.default=Charts).propTypes={type:_propTypes2.default.string.isRequired,width:_propTypes2.default.any,height:_propTypes2.default.any,series:_propTypes2.default.array.isRequired,options:_propTypes2.default.object.isRequired},Charts.defaultProps={type:"line",width:"100%",height:"auto"};
 
 /***/ }),
 /* 11 */
@@ -1181,12 +1181,12 @@ module.exports = function bind(fn, thisArg) {
 
 
 var utils = __webpack_require__(4);
-var settle = __webpack_require__(43);
-var buildURL = __webpack_require__(45);
-var parseHeaders = __webpack_require__(46);
-var isURLSameOrigin = __webpack_require__(47);
+var settle = __webpack_require__(42);
+var buildURL = __webpack_require__(44);
+var parseHeaders = __webpack_require__(45);
+var isURLSameOrigin = __webpack_require__(46);
 var createError = __webpack_require__(14);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(48);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(47);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -1283,7 +1283,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(49);
+      var cookies = __webpack_require__(48);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -1367,7 +1367,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(44);
+var enhanceError = __webpack_require__(43);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -1431,12 +1431,6 @@ module.exports = "/images/avatar.png?2f4e223c250c10174d9333e8b396bd51";
 
 /***/ }),
 /* 18 */
-/***/ (function(module, exports) {
-
-module.exports = "/images/relogio.jpg?8630f033a7e5311c1c8e96023bcae0db";
-
-/***/ }),
-/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1483,7 +1477,7 @@ var Modal = function Modal(_ref) {
 /* harmony default export */ __webpack_exports__["a"] = (Modal);
 
 /***/ }),
-/* 20 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1492,12 +1486,12 @@ var Modal = function Modal(_ref) {
 if (false) {
   module.exports = require('./cjs/react-is.production.min.js');
 } else {
-  module.exports = __webpack_require__(70);
+  module.exports = __webpack_require__(71);
 }
 
 
 /***/ }),
-/* 21 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1516,45 +1510,45 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 22 */
+/* 21 */
 /***/ (function(module, exports) {
 
 module.exports = "/fonts/fa-brands-400.eot?c1868c9545d2de1cf8488f1dadd8c9d0";
 
 /***/ }),
-/* 23 */
+/* 22 */
 /***/ (function(module, exports) {
 
 module.exports = "/fonts/fa-regular-400.eot?261d666b0147c6c5cda07265f98b8f8c";
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, exports) {
 
 module.exports = "/fonts/fa-solid-900.eot?a0369ea57eb6d3843d6474c035111f29";
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(26);
-module.exports = __webpack_require__(111);
+__webpack_require__(25);
+module.exports = __webpack_require__(112);
 
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_view_login__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__main__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_view_login__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__main__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_view_context__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__assets_font_fontawesome_css_all_css__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__assets_font_fontawesome_css_all_css__ = __webpack_require__(94);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__assets_font_fontawesome_css_all_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__assets_font_fontawesome_css_all_css__);
 
 
@@ -1578,7 +1572,7 @@ var App = function App() {
 __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(App, null), document.getElementById('root'));
 
 /***/ }),
-/* 27 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3918,7 +3912,7 @@ exports.version = ReactVersion;
 
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3958,12 +3952,12 @@ if (false) {
   checkDCE();
   module.exports = require('./cjs/react-dom.production.min.js');
 } else {
-  module.exports = __webpack_require__(29);
+  module.exports = __webpack_require__(28);
 }
 
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3984,8 +3978,8 @@ if (true) {
 
 var React = __webpack_require__(0);
 var _assign = __webpack_require__(7);
-var Scheduler = __webpack_require__(30);
-var tracing = __webpack_require__(32);
+var Scheduler = __webpack_require__(29);
+var tracing = __webpack_require__(31);
 
 var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
 
@@ -30232,7 +30226,7 @@ exports.version = ReactVersion;
 
 
 /***/ }),
-/* 30 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30241,12 +30235,12 @@ exports.version = ReactVersion;
 if (false) {
   module.exports = require('./cjs/scheduler.production.min.js');
 } else {
-  module.exports = __webpack_require__(31);
+  module.exports = __webpack_require__(30);
 }
 
 
 /***/ }),
-/* 31 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30899,7 +30893,7 @@ exports.unstable_wrapCallback = unstable_wrapCallback;
 
 
 /***/ }),
-/* 32 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30908,12 +30902,12 @@ exports.unstable_wrapCallback = unstable_wrapCallback;
 if (false) {
   module.exports = require('./cjs/scheduler-tracing.production.min.js');
 } else {
-  module.exports = __webpack_require__(33);
+  module.exports = __webpack_require__(32);
 }
 
 
 /***/ }),
-/* 33 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31267,7 +31261,7 @@ exports.unstable_wrap = unstable_wrap;
 
 
 /***/ }),
-/* 34 */
+/* 33 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -31359,7 +31353,7 @@ function index() {
 }
 
 /***/ }),
-/* 35 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -31384,7 +31378,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(36);
+module.exports = __webpack_require__(35);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -31400,7 +31394,7 @@ if (hadRuntime) {
 
 
 /***/ }),
-/* 36 */
+/* 35 */
 /***/ (function(module, exports) {
 
 /**
@@ -32133,13 +32127,13 @@ if (hadRuntime) {
 
 
 /***/ }),
-/* 37 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(38);
+module.exports = __webpack_require__(37);
 
 /***/ }),
-/* 38 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32147,7 +32141,7 @@ module.exports = __webpack_require__(38);
 
 var utils = __webpack_require__(4);
 var bind = __webpack_require__(12);
-var Axios = __webpack_require__(40);
+var Axios = __webpack_require__(39);
 var defaults = __webpack_require__(8);
 
 /**
@@ -32182,14 +32176,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(16);
-axios.CancelToken = __webpack_require__(55);
+axios.CancelToken = __webpack_require__(54);
 axios.isCancel = __webpack_require__(15);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(56);
+axios.spread = __webpack_require__(55);
 
 module.exports = axios;
 
@@ -32198,7 +32192,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 39 */
+/* 38 */
 /***/ (function(module, exports) {
 
 /*!
@@ -32225,7 +32219,7 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 40 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32233,10 +32227,10 @@ function isSlowBuffer (obj) {
 
 var defaults = __webpack_require__(8);
 var utils = __webpack_require__(4);
-var InterceptorManager = __webpack_require__(50);
-var dispatchRequest = __webpack_require__(51);
-var isAbsoluteURL = __webpack_require__(53);
-var combineURLs = __webpack_require__(54);
+var InterceptorManager = __webpack_require__(49);
+var dispatchRequest = __webpack_require__(50);
+var isAbsoluteURL = __webpack_require__(52);
+var combineURLs = __webpack_require__(53);
 
 /**
  * Create a new instance of Axios
@@ -32318,7 +32312,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 41 */
+/* 40 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -32508,7 +32502,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 42 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32527,7 +32521,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 43 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32560,7 +32554,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 44 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32588,7 +32582,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 45 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32663,7 +32657,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 46 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32707,7 +32701,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 47 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32782,7 +32776,7 @@ module.exports = (
 
 
 /***/ }),
-/* 48 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32825,7 +32819,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 49 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32885,7 +32879,7 @@ module.exports = (
 
 
 /***/ }),
-/* 50 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32944,14 +32938,14 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 51 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(4);
-var transformData = __webpack_require__(52);
+var transformData = __webpack_require__(51);
 var isCancel = __webpack_require__(15);
 var defaults = __webpack_require__(8);
 
@@ -33030,7 +33024,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 52 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33057,7 +33051,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 53 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33078,7 +33072,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 54 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33099,7 +33093,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 55 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33163,7 +33157,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 56 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33197,15 +33191,15 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 57 */
+/* 56 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = index;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_layout_aside__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_view_admin__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_layout_aside__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_view_admin__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_view_context__ = __webpack_require__(1);
 
 
@@ -33230,12 +33224,12 @@ function index() {
 }
 
 /***/ }),
-/* 58 */
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = index;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
@@ -33640,7 +33634,7 @@ function index() {
 }
 
 /***/ }),
-/* 59 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -44528,22 +44522,23 @@ return jQuery;
 
 
 /***/ }),
-/* 60 */
+/* 59 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = index;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layout_header__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__faturar__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__painel__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__other__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__artigo__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__stock__ = __webpack_require__(85);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__entidade__ = __webpack_require__(87);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__usuario__ = __webpack_require__(91);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__context__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layout_header__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__faturar__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__painel__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__other__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__artigo__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__stock__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__entidade__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__usuario__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shopping__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__context__ = __webpack_require__(1);
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 
@@ -44560,8 +44555,9 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 
 
 
+
 function index() {
-    var _useUgest = Object(__WEBPACK_IMPORTED_MODULE_9__context__["b" /* useUgest */])(),
+    var _useUgest = Object(__WEBPACK_IMPORTED_MODULE_10__context__["b" /* useUgest */])(),
         data = _useUgest.data,
         setData = _useUgest.setData;
 
@@ -44606,14 +44602,15 @@ function index() {
                 route.menu === 'Artigo' && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__artigo__["a" /* default */], route),
                 route.menu === 'Entidade' && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__entidade__["a" /* default */], route),
                 route.menu === 'Usuário' && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8__usuario__["a" /* default */], route),
-                route.menu === 'stock' && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__stock__["a" /* default */], route)
+                route.menu === 'stock' && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__stock__["a" /* default */], route),
+                route.route === 'shopping-cart' && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__shopping__["a" /* default */], route)
             )
         )
     );
 }
 
 /***/ }),
-/* 61 */
+/* 60 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -44716,7 +44713,14 @@ function index() {
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'button',
-                    { className: 'btn shoppingCount' },
+                    { onClick: function onClick() {
+                            setData(_extends({}, data, {
+                                navigation: {
+                                    menu: 'Lista de compras',
+                                    route: 'shopping-cart'
+                                }
+                            }));
+                        }, className: 'btn shoppingCount' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-shopping-basket' }),
                     Object.keys(data.shopping.artigo).length > 0 && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'span',
@@ -44735,7 +44739,7 @@ function index() {
 }
 
 /***/ }),
-/* 62 */
+/* 61 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -44743,8 +44747,8 @@ function index() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__layout_form_Card__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__layout_form_modal__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__layout_form_Card__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__layout_form_modal__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__productPropForm__ = __webpack_require__(64);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__api__ = __webpack_require__(3);
 
@@ -44884,14 +44888,14 @@ function index() {
 /* harmony default export */ __webpack_exports__["a"] = (index);
 
 /***/ }),
-/* 63 */
+/* 62 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_img_relogio_jpg__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_img_relogio_jpg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__assets_img_relogio_jpg__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_img_relogio_png__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_img_relogio_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__assets_img_relogio_png__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__layout_form__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util_money__ = __webpack_require__(9);
 
@@ -44915,7 +44919,7 @@ function index(_ref) {
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: __WEBPACK_IMPORTED_MODULE_1__assets_img_relogio_jpg___default.a, alt: 'produto' })
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: __WEBPACK_IMPORTED_MODULE_1__assets_img_relogio_png___default.a, alt: 'produto' })
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
@@ -44976,17 +44980,23 @@ function index(_ref) {
 /* harmony default export */ __webpack_exports__["a"] = (index);
 
 /***/ }),
+/* 63 */
+/***/ (function(module, exports) {
+
+module.exports = "/images/relogio.png?f17a514040cbcfd486e314a862f82eba";
+
+/***/ }),
 /* 64 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_img_relogio_jpg__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_img_relogio_jpg__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_img_relogio_jpg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__assets_img_relogio_jpg__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_money__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__layout_form__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__layout_form_counter__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__layout_form_counter__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__context__ = __webpack_require__(1);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -45106,6 +45116,12 @@ function productPropForm(_ref) {
 
 /***/ }),
 /* 65 */
+/***/ (function(module, exports) {
+
+module.exports = "/images/relogio.jpg?8630f033a7e5311c1c8e96023bcae0db";
+
+/***/ }),
+/* 66 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45162,16 +45178,16 @@ function index(_ref) {
 /* harmony default export */ __webpack_exports__["a"] = (index);
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = index;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layout_chart_bar__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__layout_chart_donut__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__layout_chart_area__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layout_chart_bar__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__layout_chart_donut__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__layout_chart_area__ = __webpack_require__(75);
 
 
 
@@ -45221,7 +45237,7 @@ function index() {
 }
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45259,7 +45275,7 @@ function bar() {
 }
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45281,7 +45297,7 @@ function(){function t(t){t.remember("_draggable",this),this.el=t}t.prototype.ini
 
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -45292,12 +45308,12 @@ function(){function t(t){t.remember("_draggable",this),this.el=t}t.prototype.ini
  */
 
 if (true) {
-  var ReactIs = __webpack_require__(20);
+  var ReactIs = __webpack_require__(19);
 
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(71)(ReactIs.isElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(72)(ReactIs.isElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
@@ -45306,7 +45322,7 @@ if (true) {
 
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45494,7 +45510,7 @@ exports.typeOf = typeOf;
 
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45507,11 +45523,11 @@ exports.typeOf = typeOf;
 
 
 
-var ReactIs = __webpack_require__(20);
+var ReactIs = __webpack_require__(19);
 var assign = __webpack_require__(7);
 
-var ReactPropTypesSecret = __webpack_require__(21);
-var checkPropTypes = __webpack_require__(72);
+var ReactPropTypesSecret = __webpack_require__(20);
+var checkPropTypes = __webpack_require__(73);
 
 var has = Function.call.bind(Object.prototype.hasOwnProperty);
 var printWarning = function() {};
@@ -46092,7 +46108,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46108,7 +46124,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 var printWarning = function() {};
 
 if (true) {
-  var ReactPropTypesSecret = __webpack_require__(21);
+  var ReactPropTypesSecret = __webpack_require__(20);
   var loggedTypeFailures = {};
   var has = Function.call.bind(Object.prototype.hasOwnProperty);
 
@@ -46201,7 +46217,7 @@ module.exports = checkPropTypes;
 
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46244,7 +46260,7 @@ function donut() {
 }
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46299,7 +46315,7 @@ function area() {
 }
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46312,12 +46328,12 @@ function area() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__layout_form_table__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__context__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__api__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__estado__ = __webpack_require__(77);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__subcategoria__ = __webpack_require__(78);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__papel__ = __webpack_require__(79);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__categoria__ = __webpack_require__(80);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__tipoartigo__ = __webpack_require__(81);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__nivelacesso__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__estado__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__subcategoria__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__papel__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__categoria__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__tipoartigo__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__nivelacesso__ = __webpack_require__(83);
 
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -46513,7 +46529,7 @@ function index(props) {
 }
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46523,7 +46539,7 @@ var Min = {
 };
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46566,7 +46582,7 @@ function index() {
 }
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46640,7 +46656,7 @@ function index() {
 }
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46714,7 +46730,7 @@ function index() {
 }
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46847,7 +46863,7 @@ function index() {
 }
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46921,7 +46937,7 @@ function index() {
 }
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46995,7 +47011,7 @@ function index() {
 }
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47005,7 +47021,7 @@ function index() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__layout_form_table__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__artigosForm__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__artigosForm__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__api__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__layout_form__ = __webpack_require__(2);
 
@@ -47144,7 +47160,7 @@ function index(props) {
 }
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47376,7 +47392,7 @@ var Form = function Form(_ref) {
 /* harmony default export */ __webpack_exports__["a"] = (Form);
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47384,7 +47400,7 @@ var Form = function Form(_ref) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layout_form_table__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stockForm__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stockForm__ = __webpack_require__(87);
 
 
 
@@ -47459,7 +47475,7 @@ function index(props) {
 }
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47540,7 +47556,7 @@ var Form = function Form() {
 /* harmony default export */ __webpack_exports__["a"] = (Form);
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47553,9 +47569,9 @@ var Form = function Form() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__context__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__api__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__layout_form_table__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__dodospessoais__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__contacto__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__endereco__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__dodospessoais__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__contacto__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__endereco__ = __webpack_require__(91);
 
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -47719,7 +47735,7 @@ function index(_ref) {
 }
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47954,7 +47970,7 @@ function index() {
 }
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48126,7 +48142,7 @@ function index() {
 }
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48314,7 +48330,7 @@ function index() {
 }
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48324,7 +48340,7 @@ function index() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__layout_form_table__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__usuarioForm__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__usuarioForm__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__api__ = __webpack_require__(3);
 
 
@@ -48435,7 +48451,7 @@ function index(props) {
 }
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48647,13 +48663,13 @@ var Form = function Form(props) {
 /* harmony default export */ __webpack_exports__["a"] = (Form);
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(94);
+var content = __webpack_require__(95);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -48661,7 +48677,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(109)(content, options);
+var update = __webpack_require__(110)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -48678,22 +48694,22 @@ if(false) {
 }
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var escape = __webpack_require__(95);
-exports = module.exports = __webpack_require__(96)(false);
+var escape = __webpack_require__(96);
+exports = module.exports = __webpack_require__(97)(false);
 // imports
 
 
 // module
-exports.push([module.i, "/*!\r\n * Font Awesome Free 5.13.0 by @fontawesome - https://fontawesome.com\r\n * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)\r\n */\r\n.fa,\r\n.fas,\r\n.far,\r\n.fal,\r\n.fad,\r\n.fab {\r\n  -moz-osx-font-smoothing: grayscale;\r\n  -webkit-font-smoothing: antialiased;\r\n  display: inline-block;\r\n  font-style: normal;\r\n  font-variant: normal;\r\n  text-rendering: auto;\r\n  line-height: 1; }\r\n\r\n.fa-lg {\r\n  font-size: 1.33333em;\r\n  line-height: 0.75em;\r\n  vertical-align: -.0667em; }\r\n\r\n.fa-xs {\r\n  font-size: .75em; }\r\n\r\n.fa-sm {\r\n  font-size: .875em; }\r\n\r\n.fa-1x {\r\n  font-size: 1em; }\r\n\r\n.fa-2x {\r\n  font-size: 2em; }\r\n\r\n.fa-3x {\r\n  font-size: 3em; }\r\n\r\n.fa-4x {\r\n  font-size: 4em; }\r\n\r\n.fa-5x {\r\n  font-size: 5em; }\r\n\r\n.fa-6x {\r\n  font-size: 6em; }\r\n\r\n.fa-7x {\r\n  font-size: 7em; }\r\n\r\n.fa-8x {\r\n  font-size: 8em; }\r\n\r\n.fa-9x {\r\n  font-size: 9em; }\r\n\r\n.fa-10x {\r\n  font-size: 10em; }\r\n\r\n.fa-fw {\r\n  text-align: center;\r\n  width: 1.25em; }\r\n\r\n.fa-ul {\r\n  list-style-type: none;\r\n  margin-left: 2.5em;\r\n  padding-left: 0; }\r\n  .fa-ul > li {\r\n    position: relative; }\r\n\r\n.fa-li {\r\n  left: -2em;\r\n  position: absolute;\r\n  text-align: center;\r\n  width: 2em;\r\n  line-height: inherit; }\r\n\r\n.fa-border {\r\n  border: solid 0.08em #eee;\r\n  border-radius: .1em;\r\n  padding: .2em .25em .15em; }\r\n\r\n.fa-pull-left {\r\n  float: left; }\r\n\r\n.fa-pull-right {\r\n  float: right; }\r\n\r\n.fa.fa-pull-left,\r\n.fas.fa-pull-left,\r\n.far.fa-pull-left,\r\n.fal.fa-pull-left,\r\n.fab.fa-pull-left {\r\n  margin-right: .3em; }\r\n\r\n.fa.fa-pull-right,\r\n.fas.fa-pull-right,\r\n.far.fa-pull-right,\r\n.fal.fa-pull-right,\r\n.fab.fa-pull-right {\r\n  margin-left: .3em; }\r\n\r\n.fa-spin {\r\n  -webkit-animation: fa-spin 2s infinite linear;\r\n          animation: fa-spin 2s infinite linear; }\r\n\r\n.fa-pulse {\r\n  -webkit-animation: fa-spin 1s infinite steps(8);\r\n          animation: fa-spin 1s infinite steps(8); }\r\n\r\n@-webkit-keyframes fa-spin {\r\n  0% {\r\n    -webkit-transform: rotate(0deg);\r\n            transform: rotate(0deg); }\r\n  100% {\r\n    -webkit-transform: rotate(360deg);\r\n            transform: rotate(360deg); } }\r\n\r\n@keyframes fa-spin {\r\n  0% {\r\n    -webkit-transform: rotate(0deg);\r\n            transform: rotate(0deg); }\r\n  100% {\r\n    -webkit-transform: rotate(360deg);\r\n            transform: rotate(360deg); } }\r\n\r\n.fa-rotate-90 {\r\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=1)\";\r\n  -webkit-transform: rotate(90deg);\r\n          transform: rotate(90deg); }\r\n\r\n.fa-rotate-180 {\r\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2)\";\r\n  -webkit-transform: rotate(180deg);\r\n          transform: rotate(180deg); }\r\n\r\n.fa-rotate-270 {\r\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=3)\";\r\n  -webkit-transform: rotate(270deg);\r\n          transform: rotate(270deg); }\r\n\r\n.fa-flip-horizontal {\r\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)\";\r\n  -webkit-transform: scale(-1, 1);\r\n          transform: scale(-1, 1); }\r\n\r\n.fa-flip-vertical {\r\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)\";\r\n  -webkit-transform: scale(1, -1);\r\n          transform: scale(1, -1); }\r\n\r\n.fa-flip-both, .fa-flip-horizontal.fa-flip-vertical {\r\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)\";\r\n  -webkit-transform: scale(-1, -1);\r\n          transform: scale(-1, -1); }\r\n\r\n:root .fa-rotate-90,\r\n:root .fa-rotate-180,\r\n:root .fa-rotate-270,\r\n:root .fa-flip-horizontal,\r\n:root .fa-flip-vertical,\r\n:root .fa-flip-both {\r\n  -webkit-filter: none;\r\n          filter: none; }\r\n\r\n.fa-stack {\r\n  display: inline-block;\r\n  height: 2em;\r\n  line-height: 2em;\r\n  position: relative;\r\n  vertical-align: middle;\r\n  width: 2.5em; }\r\n\r\n.fa-stack-1x,\r\n.fa-stack-2x {\r\n  left: 0;\r\n  position: absolute;\r\n  text-align: center;\r\n  width: 100%; }\r\n\r\n.fa-stack-1x {\r\n  line-height: inherit; }\r\n\r\n.fa-stack-2x {\r\n  font-size: 2em; }\r\n\r\n.fa-inverse {\r\n  color: #fff; }\r\n\r\n/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen\r\nreaders do not read off random characters that represent icons */\r\n.fa-500px:before {\r\n  content: \"\\F26E\"; }\r\n\r\n.fa-accessible-icon:before {\r\n  content: \"\\F368\"; }\r\n\r\n.fa-accusoft:before {\r\n  content: \"\\F369\"; }\r\n\r\n.fa-acquisitions-incorporated:before {\r\n  content: \"\\F6AF\"; }\r\n\r\n.fa-ad:before {\r\n  content: \"\\F641\"; }\r\n\r\n.fa-address-book:before {\r\n  content: \"\\F2B9\"; }\r\n\r\n.fa-address-card:before {\r\n  content: \"\\F2BB\"; }\r\n\r\n.fa-adjust:before {\r\n  content: \"\\F042\"; }\r\n\r\n.fa-adn:before {\r\n  content: \"\\F170\"; }\r\n\r\n.fa-adobe:before {\r\n  content: \"\\F778\"; }\r\n\r\n.fa-adversal:before {\r\n  content: \"\\F36A\"; }\r\n\r\n.fa-affiliatetheme:before {\r\n  content: \"\\F36B\"; }\r\n\r\n.fa-air-freshener:before {\r\n  content: \"\\F5D0\"; }\r\n\r\n.fa-airbnb:before {\r\n  content: \"\\F834\"; }\r\n\r\n.fa-algolia:before {\r\n  content: \"\\F36C\"; }\r\n\r\n.fa-align-center:before {\r\n  content: \"\\F037\"; }\r\n\r\n.fa-align-justify:before {\r\n  content: \"\\F039\"; }\r\n\r\n.fa-align-left:before {\r\n  content: \"\\F036\"; }\r\n\r\n.fa-align-right:before {\r\n  content: \"\\F038\"; }\r\n\r\n.fa-alipay:before {\r\n  content: \"\\F642\"; }\r\n\r\n.fa-allergies:before {\r\n  content: \"\\F461\"; }\r\n\r\n.fa-amazon:before {\r\n  content: \"\\F270\"; }\r\n\r\n.fa-amazon-pay:before {\r\n  content: \"\\F42C\"; }\r\n\r\n.fa-ambulance:before {\r\n  content: \"\\F0F9\"; }\r\n\r\n.fa-american-sign-language-interpreting:before {\r\n  content: \"\\F2A3\"; }\r\n\r\n.fa-amilia:before {\r\n  content: \"\\F36D\"; }\r\n\r\n.fa-anchor:before {\r\n  content: \"\\F13D\"; }\r\n\r\n.fa-android:before {\r\n  content: \"\\F17B\"; }\r\n\r\n.fa-angellist:before {\r\n  content: \"\\F209\"; }\r\n\r\n.fa-angle-double-down:before {\r\n  content: \"\\F103\"; }\r\n\r\n.fa-angle-double-left:before {\r\n  content: \"\\F100\"; }\r\n\r\n.fa-angle-double-right:before {\r\n  content: \"\\F101\"; }\r\n\r\n.fa-angle-double-up:before {\r\n  content: \"\\F102\"; }\r\n\r\n.fa-angle-down:before {\r\n  content: \"\\F107\"; }\r\n\r\n.fa-angle-left:before {\r\n  content: \"\\F104\"; }\r\n\r\n.fa-angle-right:before {\r\n  content: \"\\F105\"; }\r\n\r\n.fa-angle-up:before {\r\n  content: \"\\F106\"; }\r\n\r\n.fa-angry:before {\r\n  content: \"\\F556\"; }\r\n\r\n.fa-angrycreative:before {\r\n  content: \"\\F36E\"; }\r\n\r\n.fa-angular:before {\r\n  content: \"\\F420\"; }\r\n\r\n.fa-ankh:before {\r\n  content: \"\\F644\"; }\r\n\r\n.fa-app-store:before {\r\n  content: \"\\F36F\"; }\r\n\r\n.fa-app-store-ios:before {\r\n  content: \"\\F370\"; }\r\n\r\n.fa-apper:before {\r\n  content: \"\\F371\"; }\r\n\r\n.fa-apple:before {\r\n  content: \"\\F179\"; }\r\n\r\n.fa-apple-alt:before {\r\n  content: \"\\F5D1\"; }\r\n\r\n.fa-apple-pay:before {\r\n  content: \"\\F415\"; }\r\n\r\n.fa-archive:before {\r\n  content: \"\\F187\"; }\r\n\r\n.fa-archway:before {\r\n  content: \"\\F557\"; }\r\n\r\n.fa-arrow-alt-circle-down:before {\r\n  content: \"\\F358\"; }\r\n\r\n.fa-arrow-alt-circle-left:before {\r\n  content: \"\\F359\"; }\r\n\r\n.fa-arrow-alt-circle-right:before {\r\n  content: \"\\F35A\"; }\r\n\r\n.fa-arrow-alt-circle-up:before {\r\n  content: \"\\F35B\"; }\r\n\r\n.fa-arrow-circle-down:before {\r\n  content: \"\\F0AB\"; }\r\n\r\n.fa-arrow-circle-left:before {\r\n  content: \"\\F0A8\"; }\r\n\r\n.fa-arrow-circle-right:before {\r\n  content: \"\\F0A9\"; }\r\n\r\n.fa-arrow-circle-up:before {\r\n  content: \"\\F0AA\"; }\r\n\r\n.fa-arrow-down:before {\r\n  content: \"\\F063\"; }\r\n\r\n.fa-arrow-left:before {\r\n  content: \"\\F060\"; }\r\n\r\n.fa-arrow-right:before {\r\n  content: \"\\F061\"; }\r\n\r\n.fa-arrow-up:before {\r\n  content: \"\\F062\"; }\r\n\r\n.fa-arrows-alt:before {\r\n  content: \"\\F0B2\"; }\r\n\r\n.fa-arrows-alt-h:before {\r\n  content: \"\\F337\"; }\r\n\r\n.fa-arrows-alt-v:before {\r\n  content: \"\\F338\"; }\r\n\r\n.fa-artstation:before {\r\n  content: \"\\F77A\"; }\r\n\r\n.fa-assistive-listening-systems:before {\r\n  content: \"\\F2A2\"; }\r\n\r\n.fa-asterisk:before {\r\n  content: \"\\F069\"; }\r\n\r\n.fa-asymmetrik:before {\r\n  content: \"\\F372\"; }\r\n\r\n.fa-at:before {\r\n  content: \"\\F1FA\"; }\r\n\r\n.fa-atlas:before {\r\n  content: \"\\F558\"; }\r\n\r\n.fa-atlassian:before {\r\n  content: \"\\F77B\"; }\r\n\r\n.fa-atom:before {\r\n  content: \"\\F5D2\"; }\r\n\r\n.fa-audible:before {\r\n  content: \"\\F373\"; }\r\n\r\n.fa-audio-description:before {\r\n  content: \"\\F29E\"; }\r\n\r\n.fa-autoprefixer:before {\r\n  content: \"\\F41C\"; }\r\n\r\n.fa-avianex:before {\r\n  content: \"\\F374\"; }\r\n\r\n.fa-aviato:before {\r\n  content: \"\\F421\"; }\r\n\r\n.fa-award:before {\r\n  content: \"\\F559\"; }\r\n\r\n.fa-aws:before {\r\n  content: \"\\F375\"; }\r\n\r\n.fa-baby:before {\r\n  content: \"\\F77C\"; }\r\n\r\n.fa-baby-carriage:before {\r\n  content: \"\\F77D\"; }\r\n\r\n.fa-backspace:before {\r\n  content: \"\\F55A\"; }\r\n\r\n.fa-backward:before {\r\n  content: \"\\F04A\"; }\r\n\r\n.fa-bacon:before {\r\n  content: \"\\F7E5\"; }\r\n\r\n.fa-bahai:before {\r\n  content: \"\\F666\"; }\r\n\r\n.fa-balance-scale:before {\r\n  content: \"\\F24E\"; }\r\n\r\n.fa-balance-scale-left:before {\r\n  content: \"\\F515\"; }\r\n\r\n.fa-balance-scale-right:before {\r\n  content: \"\\F516\"; }\r\n\r\n.fa-ban:before {\r\n  content: \"\\F05E\"; }\r\n\r\n.fa-band-aid:before {\r\n  content: \"\\F462\"; }\r\n\r\n.fa-bandcamp:before {\r\n  content: \"\\F2D5\"; }\r\n\r\n.fa-barcode:before {\r\n  content: \"\\F02A\"; }\r\n\r\n.fa-bars:before {\r\n  content: \"\\F0C9\"; }\r\n\r\n.fa-baseball-ball:before {\r\n  content: \"\\F433\"; }\r\n\r\n.fa-basketball-ball:before {\r\n  content: \"\\F434\"; }\r\n\r\n.fa-bath:before {\r\n  content: \"\\F2CD\"; }\r\n\r\n.fa-battery-empty:before {\r\n  content: \"\\F244\"; }\r\n\r\n.fa-battery-full:before {\r\n  content: \"\\F240\"; }\r\n\r\n.fa-battery-half:before {\r\n  content: \"\\F242\"; }\r\n\r\n.fa-battery-quarter:before {\r\n  content: \"\\F243\"; }\r\n\r\n.fa-battery-three-quarters:before {\r\n  content: \"\\F241\"; }\r\n\r\n.fa-battle-net:before {\r\n  content: \"\\F835\"; }\r\n\r\n.fa-bed:before {\r\n  content: \"\\F236\"; }\r\n\r\n.fa-beer:before {\r\n  content: \"\\F0FC\"; }\r\n\r\n.fa-behance:before {\r\n  content: \"\\F1B4\"; }\r\n\r\n.fa-behance-square:before {\r\n  content: \"\\F1B5\"; }\r\n\r\n.fa-bell:before {\r\n  content: \"\\F0F3\"; }\r\n\r\n.fa-bell-slash:before {\r\n  content: \"\\F1F6\"; }\r\n\r\n.fa-bezier-curve:before {\r\n  content: \"\\F55B\"; }\r\n\r\n.fa-bible:before {\r\n  content: \"\\F647\"; }\r\n\r\n.fa-bicycle:before {\r\n  content: \"\\F206\"; }\r\n\r\n.fa-biking:before {\r\n  content: \"\\F84A\"; }\r\n\r\n.fa-bimobject:before {\r\n  content: \"\\F378\"; }\r\n\r\n.fa-binoculars:before {\r\n  content: \"\\F1E5\"; }\r\n\r\n.fa-biohazard:before {\r\n  content: \"\\F780\"; }\r\n\r\n.fa-birthday-cake:before {\r\n  content: \"\\F1FD\"; }\r\n\r\n.fa-bitbucket:before {\r\n  content: \"\\F171\"; }\r\n\r\n.fa-bitcoin:before {\r\n  content: \"\\F379\"; }\r\n\r\n.fa-bity:before {\r\n  content: \"\\F37A\"; }\r\n\r\n.fa-black-tie:before {\r\n  content: \"\\F27E\"; }\r\n\r\n.fa-blackberry:before {\r\n  content: \"\\F37B\"; }\r\n\r\n.fa-blender:before {\r\n  content: \"\\F517\"; }\r\n\r\n.fa-blender-phone:before {\r\n  content: \"\\F6B6\"; }\r\n\r\n.fa-blind:before {\r\n  content: \"\\F29D\"; }\r\n\r\n.fa-blog:before {\r\n  content: \"\\F781\"; }\r\n\r\n.fa-blogger:before {\r\n  content: \"\\F37C\"; }\r\n\r\n.fa-blogger-b:before {\r\n  content: \"\\F37D\"; }\r\n\r\n.fa-bluetooth:before {\r\n  content: \"\\F293\"; }\r\n\r\n.fa-bluetooth-b:before {\r\n  content: \"\\F294\"; }\r\n\r\n.fa-bold:before {\r\n  content: \"\\F032\"; }\r\n\r\n.fa-bolt:before {\r\n  content: \"\\F0E7\"; }\r\n\r\n.fa-bomb:before {\r\n  content: \"\\F1E2\"; }\r\n\r\n.fa-bone:before {\r\n  content: \"\\F5D7\"; }\r\n\r\n.fa-bong:before {\r\n  content: \"\\F55C\"; }\r\n\r\n.fa-book:before {\r\n  content: \"\\F02D\"; }\r\n\r\n.fa-book-dead:before {\r\n  content: \"\\F6B7\"; }\r\n\r\n.fa-book-medical:before {\r\n  content: \"\\F7E6\"; }\r\n\r\n.fa-book-open:before {\r\n  content: \"\\F518\"; }\r\n\r\n.fa-book-reader:before {\r\n  content: \"\\F5DA\"; }\r\n\r\n.fa-bookmark:before {\r\n  content: \"\\F02E\"; }\r\n\r\n.fa-bootstrap:before {\r\n  content: \"\\F836\"; }\r\n\r\n.fa-border-all:before {\r\n  content: \"\\F84C\"; }\r\n\r\n.fa-border-none:before {\r\n  content: \"\\F850\"; }\r\n\r\n.fa-border-style:before {\r\n  content: \"\\F853\"; }\r\n\r\n.fa-bowling-ball:before {\r\n  content: \"\\F436\"; }\r\n\r\n.fa-box:before {\r\n  content: \"\\F466\"; }\r\n\r\n.fa-box-open:before {\r\n  content: \"\\F49E\"; }\r\n\r\n.fa-box-tissue:before {\r\n  content: \"\\F95B\"; }\r\n\r\n.fa-boxes:before {\r\n  content: \"\\F468\"; }\r\n\r\n.fa-braille:before {\r\n  content: \"\\F2A1\"; }\r\n\r\n.fa-brain:before {\r\n  content: \"\\F5DC\"; }\r\n\r\n.fa-bread-slice:before {\r\n  content: \"\\F7EC\"; }\r\n\r\n.fa-briefcase:before {\r\n  content: \"\\F0B1\"; }\r\n\r\n.fa-briefcase-medical:before {\r\n  content: \"\\F469\"; }\r\n\r\n.fa-broadcast-tower:before {\r\n  content: \"\\F519\"; }\r\n\r\n.fa-broom:before {\r\n  content: \"\\F51A\"; }\r\n\r\n.fa-brush:before {\r\n  content: \"\\F55D\"; }\r\n\r\n.fa-btc:before {\r\n  content: \"\\F15A\"; }\r\n\r\n.fa-buffer:before {\r\n  content: \"\\F837\"; }\r\n\r\n.fa-bug:before {\r\n  content: \"\\F188\"; }\r\n\r\n.fa-building:before {\r\n  content: \"\\F1AD\"; }\r\n\r\n.fa-bullhorn:before {\r\n  content: \"\\F0A1\"; }\r\n\r\n.fa-bullseye:before {\r\n  content: \"\\F140\"; }\r\n\r\n.fa-burn:before {\r\n  content: \"\\F46A\"; }\r\n\r\n.fa-buromobelexperte:before {\r\n  content: \"\\F37F\"; }\r\n\r\n.fa-bus:before {\r\n  content: \"\\F207\"; }\r\n\r\n.fa-bus-alt:before {\r\n  content: \"\\F55E\"; }\r\n\r\n.fa-business-time:before {\r\n  content: \"\\F64A\"; }\r\n\r\n.fa-buy-n-large:before {\r\n  content: \"\\F8A6\"; }\r\n\r\n.fa-buysellads:before {\r\n  content: \"\\F20D\"; }\r\n\r\n.fa-calculator:before {\r\n  content: \"\\F1EC\"; }\r\n\r\n.fa-calendar:before {\r\n  content: \"\\F133\"; }\r\n\r\n.fa-calendar-alt:before {\r\n  content: \"\\F073\"; }\r\n\r\n.fa-calendar-check:before {\r\n  content: \"\\F274\"; }\r\n\r\n.fa-calendar-day:before {\r\n  content: \"\\F783\"; }\r\n\r\n.fa-calendar-minus:before {\r\n  content: \"\\F272\"; }\r\n\r\n.fa-calendar-plus:before {\r\n  content: \"\\F271\"; }\r\n\r\n.fa-calendar-times:before {\r\n  content: \"\\F273\"; }\r\n\r\n.fa-calendar-week:before {\r\n  content: \"\\F784\"; }\r\n\r\n.fa-camera:before {\r\n  content: \"\\F030\"; }\r\n\r\n.fa-camera-retro:before {\r\n  content: \"\\F083\"; }\r\n\r\n.fa-campground:before {\r\n  content: \"\\F6BB\"; }\r\n\r\n.fa-canadian-maple-leaf:before {\r\n  content: \"\\F785\"; }\r\n\r\n.fa-candy-cane:before {\r\n  content: \"\\F786\"; }\r\n\r\n.fa-cannabis:before {\r\n  content: \"\\F55F\"; }\r\n\r\n.fa-capsules:before {\r\n  content: \"\\F46B\"; }\r\n\r\n.fa-car:before {\r\n  content: \"\\F1B9\"; }\r\n\r\n.fa-car-alt:before {\r\n  content: \"\\F5DE\"; }\r\n\r\n.fa-car-battery:before {\r\n  content: \"\\F5DF\"; }\r\n\r\n.fa-car-crash:before {\r\n  content: \"\\F5E1\"; }\r\n\r\n.fa-car-side:before {\r\n  content: \"\\F5E4\"; }\r\n\r\n.fa-caravan:before {\r\n  content: \"\\F8FF\"; }\r\n\r\n.fa-caret-down:before {\r\n  content: \"\\F0D7\"; }\r\n\r\n.fa-caret-left:before {\r\n  content: \"\\F0D9\"; }\r\n\r\n.fa-caret-right:before {\r\n  content: \"\\F0DA\"; }\r\n\r\n.fa-caret-square-down:before {\r\n  content: \"\\F150\"; }\r\n\r\n.fa-caret-square-left:before {\r\n  content: \"\\F191\"; }\r\n\r\n.fa-caret-square-right:before {\r\n  content: \"\\F152\"; }\r\n\r\n.fa-caret-square-up:before {\r\n  content: \"\\F151\"; }\r\n\r\n.fa-caret-up:before {\r\n  content: \"\\F0D8\"; }\r\n\r\n.fa-carrot:before {\r\n  content: \"\\F787\"; }\r\n\r\n.fa-cart-arrow-down:before {\r\n  content: \"\\F218\"; }\r\n\r\n.fa-cart-plus:before {\r\n  content: \"\\F217\"; }\r\n\r\n.fa-cash-register:before {\r\n  content: \"\\F788\"; }\r\n\r\n.fa-cat:before {\r\n  content: \"\\F6BE\"; }\r\n\r\n.fa-cc-amazon-pay:before {\r\n  content: \"\\F42D\"; }\r\n\r\n.fa-cc-amex:before {\r\n  content: \"\\F1F3\"; }\r\n\r\n.fa-cc-apple-pay:before {\r\n  content: \"\\F416\"; }\r\n\r\n.fa-cc-diners-club:before {\r\n  content: \"\\F24C\"; }\r\n\r\n.fa-cc-discover:before {\r\n  content: \"\\F1F2\"; }\r\n\r\n.fa-cc-jcb:before {\r\n  content: \"\\F24B\"; }\r\n\r\n.fa-cc-mastercard:before {\r\n  content: \"\\F1F1\"; }\r\n\r\n.fa-cc-paypal:before {\r\n  content: \"\\F1F4\"; }\r\n\r\n.fa-cc-stripe:before {\r\n  content: \"\\F1F5\"; }\r\n\r\n.fa-cc-visa:before {\r\n  content: \"\\F1F0\"; }\r\n\r\n.fa-centercode:before {\r\n  content: \"\\F380\"; }\r\n\r\n.fa-centos:before {\r\n  content: \"\\F789\"; }\r\n\r\n.fa-certificate:before {\r\n  content: \"\\F0A3\"; }\r\n\r\n.fa-chair:before {\r\n  content: \"\\F6C0\"; }\r\n\r\n.fa-chalkboard:before {\r\n  content: \"\\F51B\"; }\r\n\r\n.fa-chalkboard-teacher:before {\r\n  content: \"\\F51C\"; }\r\n\r\n.fa-charging-station:before {\r\n  content: \"\\F5E7\"; }\r\n\r\n.fa-chart-area:before {\r\n  content: \"\\F1FE\"; }\r\n\r\n.fa-chart-bar:before {\r\n  content: \"\\F080\"; }\r\n\r\n.fa-chart-line:before {\r\n  content: \"\\F201\"; }\r\n\r\n.fa-chart-pie:before {\r\n  content: \"\\F200\"; }\r\n\r\n.fa-check:before {\r\n  content: \"\\F00C\"; }\r\n\r\n.fa-check-circle:before {\r\n  content: \"\\F058\"; }\r\n\r\n.fa-check-double:before {\r\n  content: \"\\F560\"; }\r\n\r\n.fa-check-square:before {\r\n  content: \"\\F14A\"; }\r\n\r\n.fa-cheese:before {\r\n  content: \"\\F7EF\"; }\r\n\r\n.fa-chess:before {\r\n  content: \"\\F439\"; }\r\n\r\n.fa-chess-bishop:before {\r\n  content: \"\\F43A\"; }\r\n\r\n.fa-chess-board:before {\r\n  content: \"\\F43C\"; }\r\n\r\n.fa-chess-king:before {\r\n  content: \"\\F43F\"; }\r\n\r\n.fa-chess-knight:before {\r\n  content: \"\\F441\"; }\r\n\r\n.fa-chess-pawn:before {\r\n  content: \"\\F443\"; }\r\n\r\n.fa-chess-queen:before {\r\n  content: \"\\F445\"; }\r\n\r\n.fa-chess-rook:before {\r\n  content: \"\\F447\"; }\r\n\r\n.fa-chevron-circle-down:before {\r\n  content: \"\\F13A\"; }\r\n\r\n.fa-chevron-circle-left:before {\r\n  content: \"\\F137\"; }\r\n\r\n.fa-chevron-circle-right:before {\r\n  content: \"\\F138\"; }\r\n\r\n.fa-chevron-circle-up:before {\r\n  content: \"\\F139\"; }\r\n\r\n.fa-chevron-down:before {\r\n  content: \"\\F078\"; }\r\n\r\n.fa-chevron-left:before {\r\n  content: \"\\F053\"; }\r\n\r\n.fa-chevron-right:before {\r\n  content: \"\\F054\"; }\r\n\r\n.fa-chevron-up:before {\r\n  content: \"\\F077\"; }\r\n\r\n.fa-child:before {\r\n  content: \"\\F1AE\"; }\r\n\r\n.fa-chrome:before {\r\n  content: \"\\F268\"; }\r\n\r\n.fa-chromecast:before {\r\n  content: \"\\F838\"; }\r\n\r\n.fa-church:before {\r\n  content: \"\\F51D\"; }\r\n\r\n.fa-circle:before {\r\n  content: \"\\F111\"; }\r\n\r\n.fa-circle-notch:before {\r\n  content: \"\\F1CE\"; }\r\n\r\n.fa-city:before {\r\n  content: \"\\F64F\"; }\r\n\r\n.fa-clinic-medical:before {\r\n  content: \"\\F7F2\"; }\r\n\r\n.fa-clipboard:before {\r\n  content: \"\\F328\"; }\r\n\r\n.fa-clipboard-check:before {\r\n  content: \"\\F46C\"; }\r\n\r\n.fa-clipboard-list:before {\r\n  content: \"\\F46D\"; }\r\n\r\n.fa-clock:before {\r\n  content: \"\\F017\"; }\r\n\r\n.fa-clone:before {\r\n  content: \"\\F24D\"; }\r\n\r\n.fa-closed-captioning:before {\r\n  content: \"\\F20A\"; }\r\n\r\n.fa-cloud:before {\r\n  content: \"\\F0C2\"; }\r\n\r\n.fa-cloud-download-alt:before {\r\n  content: \"\\F381\"; }\r\n\r\n.fa-cloud-meatball:before {\r\n  content: \"\\F73B\"; }\r\n\r\n.fa-cloud-moon:before {\r\n  content: \"\\F6C3\"; }\r\n\r\n.fa-cloud-moon-rain:before {\r\n  content: \"\\F73C\"; }\r\n\r\n.fa-cloud-rain:before {\r\n  content: \"\\F73D\"; }\r\n\r\n.fa-cloud-showers-heavy:before {\r\n  content: \"\\F740\"; }\r\n\r\n.fa-cloud-sun:before {\r\n  content: \"\\F6C4\"; }\r\n\r\n.fa-cloud-sun-rain:before {\r\n  content: \"\\F743\"; }\r\n\r\n.fa-cloud-upload-alt:before {\r\n  content: \"\\F382\"; }\r\n\r\n.fa-cloudscale:before {\r\n  content: \"\\F383\"; }\r\n\r\n.fa-cloudsmith:before {\r\n  content: \"\\F384\"; }\r\n\r\n.fa-cloudversify:before {\r\n  content: \"\\F385\"; }\r\n\r\n.fa-cocktail:before {\r\n  content: \"\\F561\"; }\r\n\r\n.fa-code:before {\r\n  content: \"\\F121\"; }\r\n\r\n.fa-code-branch:before {\r\n  content: \"\\F126\"; }\r\n\r\n.fa-codepen:before {\r\n  content: \"\\F1CB\"; }\r\n\r\n.fa-codiepie:before {\r\n  content: \"\\F284\"; }\r\n\r\n.fa-coffee:before {\r\n  content: \"\\F0F4\"; }\r\n\r\n.fa-cog:before {\r\n  content: \"\\F013\"; }\r\n\r\n.fa-cogs:before {\r\n  content: \"\\F085\"; }\r\n\r\n.fa-coins:before {\r\n  content: \"\\F51E\"; }\r\n\r\n.fa-columns:before {\r\n  content: \"\\F0DB\"; }\r\n\r\n.fa-comment:before {\r\n  content: \"\\F075\"; }\r\n\r\n.fa-comment-alt:before {\r\n  content: \"\\F27A\"; }\r\n\r\n.fa-comment-dollar:before {\r\n  content: \"\\F651\"; }\r\n\r\n.fa-comment-dots:before {\r\n  content: \"\\F4AD\"; }\r\n\r\n.fa-comment-medical:before {\r\n  content: \"\\F7F5\"; }\r\n\r\n.fa-comment-slash:before {\r\n  content: \"\\F4B3\"; }\r\n\r\n.fa-comments:before {\r\n  content: \"\\F086\"; }\r\n\r\n.fa-comments-dollar:before {\r\n  content: \"\\F653\"; }\r\n\r\n.fa-compact-disc:before {\r\n  content: \"\\F51F\"; }\r\n\r\n.fa-compass:before {\r\n  content: \"\\F14E\"; }\r\n\r\n.fa-compress:before {\r\n  content: \"\\F066\"; }\r\n\r\n.fa-compress-alt:before {\r\n  content: \"\\F422\"; }\r\n\r\n.fa-compress-arrows-alt:before {\r\n  content: \"\\F78C\"; }\r\n\r\n.fa-concierge-bell:before {\r\n  content: \"\\F562\"; }\r\n\r\n.fa-confluence:before {\r\n  content: \"\\F78D\"; }\r\n\r\n.fa-connectdevelop:before {\r\n  content: \"\\F20E\"; }\r\n\r\n.fa-contao:before {\r\n  content: \"\\F26D\"; }\r\n\r\n.fa-cookie:before {\r\n  content: \"\\F563\"; }\r\n\r\n.fa-cookie-bite:before {\r\n  content: \"\\F564\"; }\r\n\r\n.fa-copy:before {\r\n  content: \"\\F0C5\"; }\r\n\r\n.fa-copyright:before {\r\n  content: \"\\F1F9\"; }\r\n\r\n.fa-cotton-bureau:before {\r\n  content: \"\\F89E\"; }\r\n\r\n.fa-couch:before {\r\n  content: \"\\F4B8\"; }\r\n\r\n.fa-cpanel:before {\r\n  content: \"\\F388\"; }\r\n\r\n.fa-creative-commons:before {\r\n  content: \"\\F25E\"; }\r\n\r\n.fa-creative-commons-by:before {\r\n  content: \"\\F4E7\"; }\r\n\r\n.fa-creative-commons-nc:before {\r\n  content: \"\\F4E8\"; }\r\n\r\n.fa-creative-commons-nc-eu:before {\r\n  content: \"\\F4E9\"; }\r\n\r\n.fa-creative-commons-nc-jp:before {\r\n  content: \"\\F4EA\"; }\r\n\r\n.fa-creative-commons-nd:before {\r\n  content: \"\\F4EB\"; }\r\n\r\n.fa-creative-commons-pd:before {\r\n  content: \"\\F4EC\"; }\r\n\r\n.fa-creative-commons-pd-alt:before {\r\n  content: \"\\F4ED\"; }\r\n\r\n.fa-creative-commons-remix:before {\r\n  content: \"\\F4EE\"; }\r\n\r\n.fa-creative-commons-sa:before {\r\n  content: \"\\F4EF\"; }\r\n\r\n.fa-creative-commons-sampling:before {\r\n  content: \"\\F4F0\"; }\r\n\r\n.fa-creative-commons-sampling-plus:before {\r\n  content: \"\\F4F1\"; }\r\n\r\n.fa-creative-commons-share:before {\r\n  content: \"\\F4F2\"; }\r\n\r\n.fa-creative-commons-zero:before {\r\n  content: \"\\F4F3\"; }\r\n\r\n.fa-credit-card:before {\r\n  content: \"\\F09D\"; }\r\n\r\n.fa-critical-role:before {\r\n  content: \"\\F6C9\"; }\r\n\r\n.fa-crop:before {\r\n  content: \"\\F125\"; }\r\n\r\n.fa-crop-alt:before {\r\n  content: \"\\F565\"; }\r\n\r\n.fa-cross:before {\r\n  content: \"\\F654\"; }\r\n\r\n.fa-crosshairs:before {\r\n  content: \"\\F05B\"; }\r\n\r\n.fa-crow:before {\r\n  content: \"\\F520\"; }\r\n\r\n.fa-crown:before {\r\n  content: \"\\F521\"; }\r\n\r\n.fa-crutch:before {\r\n  content: \"\\F7F7\"; }\r\n\r\n.fa-css3:before {\r\n  content: \"\\F13C\"; }\r\n\r\n.fa-css3-alt:before {\r\n  content: \"\\F38B\"; }\r\n\r\n.fa-cube:before {\r\n  content: \"\\F1B2\"; }\r\n\r\n.fa-cubes:before {\r\n  content: \"\\F1B3\"; }\r\n\r\n.fa-cut:before {\r\n  content: \"\\F0C4\"; }\r\n\r\n.fa-cuttlefish:before {\r\n  content: \"\\F38C\"; }\r\n\r\n.fa-d-and-d:before {\r\n  content: \"\\F38D\"; }\r\n\r\n.fa-d-and-d-beyond:before {\r\n  content: \"\\F6CA\"; }\r\n\r\n.fa-dailymotion:before {\r\n  content: \"\\F952\"; }\r\n\r\n.fa-dashcube:before {\r\n  content: \"\\F210\"; }\r\n\r\n.fa-database:before {\r\n  content: \"\\F1C0\"; }\r\n\r\n.fa-deaf:before {\r\n  content: \"\\F2A4\"; }\r\n\r\n.fa-delicious:before {\r\n  content: \"\\F1A5\"; }\r\n\r\n.fa-democrat:before {\r\n  content: \"\\F747\"; }\r\n\r\n.fa-deploydog:before {\r\n  content: \"\\F38E\"; }\r\n\r\n.fa-deskpro:before {\r\n  content: \"\\F38F\"; }\r\n\r\n.fa-desktop:before {\r\n  content: \"\\F108\"; }\r\n\r\n.fa-dev:before {\r\n  content: \"\\F6CC\"; }\r\n\r\n.fa-deviantart:before {\r\n  content: \"\\F1BD\"; }\r\n\r\n.fa-dharmachakra:before {\r\n  content: \"\\F655\"; }\r\n\r\n.fa-dhl:before {\r\n  content: \"\\F790\"; }\r\n\r\n.fa-diagnoses:before {\r\n  content: \"\\F470\"; }\r\n\r\n.fa-diaspora:before {\r\n  content: \"\\F791\"; }\r\n\r\n.fa-dice:before {\r\n  content: \"\\F522\"; }\r\n\r\n.fa-dice-d20:before {\r\n  content: \"\\F6CF\"; }\r\n\r\n.fa-dice-d6:before {\r\n  content: \"\\F6D1\"; }\r\n\r\n.fa-dice-five:before {\r\n  content: \"\\F523\"; }\r\n\r\n.fa-dice-four:before {\r\n  content: \"\\F524\"; }\r\n\r\n.fa-dice-one:before {\r\n  content: \"\\F525\"; }\r\n\r\n.fa-dice-six:before {\r\n  content: \"\\F526\"; }\r\n\r\n.fa-dice-three:before {\r\n  content: \"\\F527\"; }\r\n\r\n.fa-dice-two:before {\r\n  content: \"\\F528\"; }\r\n\r\n.fa-digg:before {\r\n  content: \"\\F1A6\"; }\r\n\r\n.fa-digital-ocean:before {\r\n  content: \"\\F391\"; }\r\n\r\n.fa-digital-tachograph:before {\r\n  content: \"\\F566\"; }\r\n\r\n.fa-directions:before {\r\n  content: \"\\F5EB\"; }\r\n\r\n.fa-discord:before {\r\n  content: \"\\F392\"; }\r\n\r\n.fa-discourse:before {\r\n  content: \"\\F393\"; }\r\n\r\n.fa-disease:before {\r\n  content: \"\\F7FA\"; }\r\n\r\n.fa-divide:before {\r\n  content: \"\\F529\"; }\r\n\r\n.fa-dizzy:before {\r\n  content: \"\\F567\"; }\r\n\r\n.fa-dna:before {\r\n  content: \"\\F471\"; }\r\n\r\n.fa-dochub:before {\r\n  content: \"\\F394\"; }\r\n\r\n.fa-docker:before {\r\n  content: \"\\F395\"; }\r\n\r\n.fa-dog:before {\r\n  content: \"\\F6D3\"; }\r\n\r\n.fa-dollar-sign:before {\r\n  content: \"\\F155\"; }\r\n\r\n.fa-dolly:before {\r\n  content: \"\\F472\"; }\r\n\r\n.fa-dolly-flatbed:before {\r\n  content: \"\\F474\"; }\r\n\r\n.fa-donate:before {\r\n  content: \"\\F4B9\"; }\r\n\r\n.fa-door-closed:before {\r\n  content: \"\\F52A\"; }\r\n\r\n.fa-door-open:before {\r\n  content: \"\\F52B\"; }\r\n\r\n.fa-dot-circle:before {\r\n  content: \"\\F192\"; }\r\n\r\n.fa-dove:before {\r\n  content: \"\\F4BA\"; }\r\n\r\n.fa-download:before {\r\n  content: \"\\F019\"; }\r\n\r\n.fa-draft2digital:before {\r\n  content: \"\\F396\"; }\r\n\r\n.fa-drafting-compass:before {\r\n  content: \"\\F568\"; }\r\n\r\n.fa-dragon:before {\r\n  content: \"\\F6D5\"; }\r\n\r\n.fa-draw-polygon:before {\r\n  content: \"\\F5EE\"; }\r\n\r\n.fa-dribbble:before {\r\n  content: \"\\F17D\"; }\r\n\r\n.fa-dribbble-square:before {\r\n  content: \"\\F397\"; }\r\n\r\n.fa-dropbox:before {\r\n  content: \"\\F16B\"; }\r\n\r\n.fa-drum:before {\r\n  content: \"\\F569\"; }\r\n\r\n.fa-drum-steelpan:before {\r\n  content: \"\\F56A\"; }\r\n\r\n.fa-drumstick-bite:before {\r\n  content: \"\\F6D7\"; }\r\n\r\n.fa-drupal:before {\r\n  content: \"\\F1A9\"; }\r\n\r\n.fa-dumbbell:before {\r\n  content: \"\\F44B\"; }\r\n\r\n.fa-dumpster:before {\r\n  content: \"\\F793\"; }\r\n\r\n.fa-dumpster-fire:before {\r\n  content: \"\\F794\"; }\r\n\r\n.fa-dungeon:before {\r\n  content: \"\\F6D9\"; }\r\n\r\n.fa-dyalog:before {\r\n  content: \"\\F399\"; }\r\n\r\n.fa-earlybirds:before {\r\n  content: \"\\F39A\"; }\r\n\r\n.fa-ebay:before {\r\n  content: \"\\F4F4\"; }\r\n\r\n.fa-edge:before {\r\n  content: \"\\F282\"; }\r\n\r\n.fa-edit:before {\r\n  content: \"\\F044\"; }\r\n\r\n.fa-egg:before {\r\n  content: \"\\F7FB\"; }\r\n\r\n.fa-eject:before {\r\n  content: \"\\F052\"; }\r\n\r\n.fa-elementor:before {\r\n  content: \"\\F430\"; }\r\n\r\n.fa-ellipsis-h:before {\r\n  content: \"\\F141\"; }\r\n\r\n.fa-ellipsis-v:before {\r\n  content: \"\\F142\"; }\r\n\r\n.fa-ello:before {\r\n  content: \"\\F5F1\"; }\r\n\r\n.fa-ember:before {\r\n  content: \"\\F423\"; }\r\n\r\n.fa-empire:before {\r\n  content: \"\\F1D1\"; }\r\n\r\n.fa-envelope:before {\r\n  content: \"\\F0E0\"; }\r\n\r\n.fa-envelope-open:before {\r\n  content: \"\\F2B6\"; }\r\n\r\n.fa-envelope-open-text:before {\r\n  content: \"\\F658\"; }\r\n\r\n.fa-envelope-square:before {\r\n  content: \"\\F199\"; }\r\n\r\n.fa-envira:before {\r\n  content: \"\\F299\"; }\r\n\r\n.fa-equals:before {\r\n  content: \"\\F52C\"; }\r\n\r\n.fa-eraser:before {\r\n  content: \"\\F12D\"; }\r\n\r\n.fa-erlang:before {\r\n  content: \"\\F39D\"; }\r\n\r\n.fa-ethereum:before {\r\n  content: \"\\F42E\"; }\r\n\r\n.fa-ethernet:before {\r\n  content: \"\\F796\"; }\r\n\r\n.fa-etsy:before {\r\n  content: \"\\F2D7\"; }\r\n\r\n.fa-euro-sign:before {\r\n  content: \"\\F153\"; }\r\n\r\n.fa-evernote:before {\r\n  content: \"\\F839\"; }\r\n\r\n.fa-exchange-alt:before {\r\n  content: \"\\F362\"; }\r\n\r\n.fa-exclamation:before {\r\n  content: \"\\F12A\"; }\r\n\r\n.fa-exclamation-circle:before {\r\n  content: \"\\F06A\"; }\r\n\r\n.fa-exclamation-triangle:before {\r\n  content: \"\\F071\"; }\r\n\r\n.fa-expand:before {\r\n  content: \"\\F065\"; }\r\n\r\n.fa-expand-alt:before {\r\n  content: \"\\F424\"; }\r\n\r\n.fa-expand-arrows-alt:before {\r\n  content: \"\\F31E\"; }\r\n\r\n.fa-expeditedssl:before {\r\n  content: \"\\F23E\"; }\r\n\r\n.fa-external-link-alt:before {\r\n  content: \"\\F35D\"; }\r\n\r\n.fa-external-link-square-alt:before {\r\n  content: \"\\F360\"; }\r\n\r\n.fa-eye:before {\r\n  content: \"\\F06E\"; }\r\n\r\n.fa-eye-dropper:before {\r\n  content: \"\\F1FB\"; }\r\n\r\n.fa-eye-slash:before {\r\n  content: \"\\F070\"; }\r\n\r\n.fa-facebook:before {\r\n  content: \"\\F09A\"; }\r\n\r\n.fa-facebook-f:before {\r\n  content: \"\\F39E\"; }\r\n\r\n.fa-facebook-messenger:before {\r\n  content: \"\\F39F\"; }\r\n\r\n.fa-facebook-square:before {\r\n  content: \"\\F082\"; }\r\n\r\n.fa-fan:before {\r\n  content: \"\\F863\"; }\r\n\r\n.fa-fantasy-flight-games:before {\r\n  content: \"\\F6DC\"; }\r\n\r\n.fa-fast-backward:before {\r\n  content: \"\\F049\"; }\r\n\r\n.fa-fast-forward:before {\r\n  content: \"\\F050\"; }\r\n\r\n.fa-faucet:before {\r\n  content: \"\\F905\"; }\r\n\r\n.fa-fax:before {\r\n  content: \"\\F1AC\"; }\r\n\r\n.fa-feather:before {\r\n  content: \"\\F52D\"; }\r\n\r\n.fa-feather-alt:before {\r\n  content: \"\\F56B\"; }\r\n\r\n.fa-fedex:before {\r\n  content: \"\\F797\"; }\r\n\r\n.fa-fedora:before {\r\n  content: \"\\F798\"; }\r\n\r\n.fa-female:before {\r\n  content: \"\\F182\"; }\r\n\r\n.fa-fighter-jet:before {\r\n  content: \"\\F0FB\"; }\r\n\r\n.fa-figma:before {\r\n  content: \"\\F799\"; }\r\n\r\n.fa-file:before {\r\n  content: \"\\F15B\"; }\r\n\r\n.fa-file-alt:before {\r\n  content: \"\\F15C\"; }\r\n\r\n.fa-file-archive:before {\r\n  content: \"\\F1C6\"; }\r\n\r\n.fa-file-audio:before {\r\n  content: \"\\F1C7\"; }\r\n\r\n.fa-file-code:before {\r\n  content: \"\\F1C9\"; }\r\n\r\n.fa-file-contract:before {\r\n  content: \"\\F56C\"; }\r\n\r\n.fa-file-csv:before {\r\n  content: \"\\F6DD\"; }\r\n\r\n.fa-file-download:before {\r\n  content: \"\\F56D\"; }\r\n\r\n.fa-file-excel:before {\r\n  content: \"\\F1C3\"; }\r\n\r\n.fa-file-export:before {\r\n  content: \"\\F56E\"; }\r\n\r\n.fa-file-image:before {\r\n  content: \"\\F1C5\"; }\r\n\r\n.fa-file-import:before {\r\n  content: \"\\F56F\"; }\r\n\r\n.fa-file-invoice:before {\r\n  content: \"\\F570\"; }\r\n\r\n.fa-file-invoice-dollar:before {\r\n  content: \"\\F571\"; }\r\n\r\n.fa-file-medical:before {\r\n  content: \"\\F477\"; }\r\n\r\n.fa-file-medical-alt:before {\r\n  content: \"\\F478\"; }\r\n\r\n.fa-file-pdf:before {\r\n  content: \"\\F1C1\"; }\r\n\r\n.fa-file-powerpoint:before {\r\n  content: \"\\F1C4\"; }\r\n\r\n.fa-file-prescription:before {\r\n  content: \"\\F572\"; }\r\n\r\n.fa-file-signature:before {\r\n  content: \"\\F573\"; }\r\n\r\n.fa-file-upload:before {\r\n  content: \"\\F574\"; }\r\n\r\n.fa-file-video:before {\r\n  content: \"\\F1C8\"; }\r\n\r\n.fa-file-word:before {\r\n  content: \"\\F1C2\"; }\r\n\r\n.fa-fill:before {\r\n  content: \"\\F575\"; }\r\n\r\n.fa-fill-drip:before {\r\n  content: \"\\F576\"; }\r\n\r\n.fa-film:before {\r\n  content: \"\\F008\"; }\r\n\r\n.fa-filter:before {\r\n  content: \"\\F0B0\"; }\r\n\r\n.fa-fingerprint:before {\r\n  content: \"\\F577\"; }\r\n\r\n.fa-fire:before {\r\n  content: \"\\F06D\"; }\r\n\r\n.fa-fire-alt:before {\r\n  content: \"\\F7E4\"; }\r\n\r\n.fa-fire-extinguisher:before {\r\n  content: \"\\F134\"; }\r\n\r\n.fa-firefox:before {\r\n  content: \"\\F269\"; }\r\n\r\n.fa-firefox-browser:before {\r\n  content: \"\\F907\"; }\r\n\r\n.fa-first-aid:before {\r\n  content: \"\\F479\"; }\r\n\r\n.fa-first-order:before {\r\n  content: \"\\F2B0\"; }\r\n\r\n.fa-first-order-alt:before {\r\n  content: \"\\F50A\"; }\r\n\r\n.fa-firstdraft:before {\r\n  content: \"\\F3A1\"; }\r\n\r\n.fa-fish:before {\r\n  content: \"\\F578\"; }\r\n\r\n.fa-fist-raised:before {\r\n  content: \"\\F6DE\"; }\r\n\r\n.fa-flag:before {\r\n  content: \"\\F024\"; }\r\n\r\n.fa-flag-checkered:before {\r\n  content: \"\\F11E\"; }\r\n\r\n.fa-flag-usa:before {\r\n  content: \"\\F74D\"; }\r\n\r\n.fa-flask:before {\r\n  content: \"\\F0C3\"; }\r\n\r\n.fa-flickr:before {\r\n  content: \"\\F16E\"; }\r\n\r\n.fa-flipboard:before {\r\n  content: \"\\F44D\"; }\r\n\r\n.fa-flushed:before {\r\n  content: \"\\F579\"; }\r\n\r\n.fa-fly:before {\r\n  content: \"\\F417\"; }\r\n\r\n.fa-folder:before {\r\n  content: \"\\F07B\"; }\r\n\r\n.fa-folder-minus:before {\r\n  content: \"\\F65D\"; }\r\n\r\n.fa-folder-open:before {\r\n  content: \"\\F07C\"; }\r\n\r\n.fa-folder-plus:before {\r\n  content: \"\\F65E\"; }\r\n\r\n.fa-font:before {\r\n  content: \"\\F031\"; }\r\n\r\n.fa-font-awesome:before {\r\n  content: \"\\F2B4\"; }\r\n\r\n.fa-font-awesome-alt:before {\r\n  content: \"\\F35C\"; }\r\n\r\n.fa-font-awesome-flag:before {\r\n  content: \"\\F425\"; }\r\n\r\n.fa-font-awesome-logo-full:before {\r\n  content: \"\\F4E6\"; }\r\n\r\n.fa-fonticons:before {\r\n  content: \"\\F280\"; }\r\n\r\n.fa-fonticons-fi:before {\r\n  content: \"\\F3A2\"; }\r\n\r\n.fa-football-ball:before {\r\n  content: \"\\F44E\"; }\r\n\r\n.fa-fort-awesome:before {\r\n  content: \"\\F286\"; }\r\n\r\n.fa-fort-awesome-alt:before {\r\n  content: \"\\F3A3\"; }\r\n\r\n.fa-forumbee:before {\r\n  content: \"\\F211\"; }\r\n\r\n.fa-forward:before {\r\n  content: \"\\F04E\"; }\r\n\r\n.fa-foursquare:before {\r\n  content: \"\\F180\"; }\r\n\r\n.fa-free-code-camp:before {\r\n  content: \"\\F2C5\"; }\r\n\r\n.fa-freebsd:before {\r\n  content: \"\\F3A4\"; }\r\n\r\n.fa-frog:before {\r\n  content: \"\\F52E\"; }\r\n\r\n.fa-frown:before {\r\n  content: \"\\F119\"; }\r\n\r\n.fa-frown-open:before {\r\n  content: \"\\F57A\"; }\r\n\r\n.fa-fulcrum:before {\r\n  content: \"\\F50B\"; }\r\n\r\n.fa-funnel-dollar:before {\r\n  content: \"\\F662\"; }\r\n\r\n.fa-futbol:before {\r\n  content: \"\\F1E3\"; }\r\n\r\n.fa-galactic-republic:before {\r\n  content: \"\\F50C\"; }\r\n\r\n.fa-galactic-senate:before {\r\n  content: \"\\F50D\"; }\r\n\r\n.fa-gamepad:before {\r\n  content: \"\\F11B\"; }\r\n\r\n.fa-gas-pump:before {\r\n  content: \"\\F52F\"; }\r\n\r\n.fa-gavel:before {\r\n  content: \"\\F0E3\"; }\r\n\r\n.fa-gem:before {\r\n  content: \"\\F3A5\"; }\r\n\r\n.fa-genderless:before {\r\n  content: \"\\F22D\"; }\r\n\r\n.fa-get-pocket:before {\r\n  content: \"\\F265\"; }\r\n\r\n.fa-gg:before {\r\n  content: \"\\F260\"; }\r\n\r\n.fa-gg-circle:before {\r\n  content: \"\\F261\"; }\r\n\r\n.fa-ghost:before {\r\n  content: \"\\F6E2\"; }\r\n\r\n.fa-gift:before {\r\n  content: \"\\F06B\"; }\r\n\r\n.fa-gifts:before {\r\n  content: \"\\F79C\"; }\r\n\r\n.fa-git:before {\r\n  content: \"\\F1D3\"; }\r\n\r\n.fa-git-alt:before {\r\n  content: \"\\F841\"; }\r\n\r\n.fa-git-square:before {\r\n  content: \"\\F1D2\"; }\r\n\r\n.fa-github:before {\r\n  content: \"\\F09B\"; }\r\n\r\n.fa-github-alt:before {\r\n  content: \"\\F113\"; }\r\n\r\n.fa-github-square:before {\r\n  content: \"\\F092\"; }\r\n\r\n.fa-gitkraken:before {\r\n  content: \"\\F3A6\"; }\r\n\r\n.fa-gitlab:before {\r\n  content: \"\\F296\"; }\r\n\r\n.fa-gitter:before {\r\n  content: \"\\F426\"; }\r\n\r\n.fa-glass-cheers:before {\r\n  content: \"\\F79F\"; }\r\n\r\n.fa-glass-martini:before {\r\n  content: \"\\F000\"; }\r\n\r\n.fa-glass-martini-alt:before {\r\n  content: \"\\F57B\"; }\r\n\r\n.fa-glass-whiskey:before {\r\n  content: \"\\F7A0\"; }\r\n\r\n.fa-glasses:before {\r\n  content: \"\\F530\"; }\r\n\r\n.fa-glide:before {\r\n  content: \"\\F2A5\"; }\r\n\r\n.fa-glide-g:before {\r\n  content: \"\\F2A6\"; }\r\n\r\n.fa-globe:before {\r\n  content: \"\\F0AC\"; }\r\n\r\n.fa-globe-africa:before {\r\n  content: \"\\F57C\"; }\r\n\r\n.fa-globe-americas:before {\r\n  content: \"\\F57D\"; }\r\n\r\n.fa-globe-asia:before {\r\n  content: \"\\F57E\"; }\r\n\r\n.fa-globe-europe:before {\r\n  content: \"\\F7A2\"; }\r\n\r\n.fa-gofore:before {\r\n  content: \"\\F3A7\"; }\r\n\r\n.fa-golf-ball:before {\r\n  content: \"\\F450\"; }\r\n\r\n.fa-goodreads:before {\r\n  content: \"\\F3A8\"; }\r\n\r\n.fa-goodreads-g:before {\r\n  content: \"\\F3A9\"; }\r\n\r\n.fa-google:before {\r\n  content: \"\\F1A0\"; }\r\n\r\n.fa-google-drive:before {\r\n  content: \"\\F3AA\"; }\r\n\r\n.fa-google-play:before {\r\n  content: \"\\F3AB\"; }\r\n\r\n.fa-google-plus:before {\r\n  content: \"\\F2B3\"; }\r\n\r\n.fa-google-plus-g:before {\r\n  content: \"\\F0D5\"; }\r\n\r\n.fa-google-plus-square:before {\r\n  content: \"\\F0D4\"; }\r\n\r\n.fa-google-wallet:before {\r\n  content: \"\\F1EE\"; }\r\n\r\n.fa-gopuram:before {\r\n  content: \"\\F664\"; }\r\n\r\n.fa-graduation-cap:before {\r\n  content: \"\\F19D\"; }\r\n\r\n.fa-gratipay:before {\r\n  content: \"\\F184\"; }\r\n\r\n.fa-grav:before {\r\n  content: \"\\F2D6\"; }\r\n\r\n.fa-greater-than:before {\r\n  content: \"\\F531\"; }\r\n\r\n.fa-greater-than-equal:before {\r\n  content: \"\\F532\"; }\r\n\r\n.fa-grimace:before {\r\n  content: \"\\F57F\"; }\r\n\r\n.fa-grin:before {\r\n  content: \"\\F580\"; }\r\n\r\n.fa-grin-alt:before {\r\n  content: \"\\F581\"; }\r\n\r\n.fa-grin-beam:before {\r\n  content: \"\\F582\"; }\r\n\r\n.fa-grin-beam-sweat:before {\r\n  content: \"\\F583\"; }\r\n\r\n.fa-grin-hearts:before {\r\n  content: \"\\F584\"; }\r\n\r\n.fa-grin-squint:before {\r\n  content: \"\\F585\"; }\r\n\r\n.fa-grin-squint-tears:before {\r\n  content: \"\\F586\"; }\r\n\r\n.fa-grin-stars:before {\r\n  content: \"\\F587\"; }\r\n\r\n.fa-grin-tears:before {\r\n  content: \"\\F588\"; }\r\n\r\n.fa-grin-tongue:before {\r\n  content: \"\\F589\"; }\r\n\r\n.fa-grin-tongue-squint:before {\r\n  content: \"\\F58A\"; }\r\n\r\n.fa-grin-tongue-wink:before {\r\n  content: \"\\F58B\"; }\r\n\r\n.fa-grin-wink:before {\r\n  content: \"\\F58C\"; }\r\n\r\n.fa-grip-horizontal:before {\r\n  content: \"\\F58D\"; }\r\n\r\n.fa-grip-lines:before {\r\n  content: \"\\F7A4\"; }\r\n\r\n.fa-grip-lines-vertical:before {\r\n  content: \"\\F7A5\"; }\r\n\r\n.fa-grip-vertical:before {\r\n  content: \"\\F58E\"; }\r\n\r\n.fa-gripfire:before {\r\n  content: \"\\F3AC\"; }\r\n\r\n.fa-grunt:before {\r\n  content: \"\\F3AD\"; }\r\n\r\n.fa-guitar:before {\r\n  content: \"\\F7A6\"; }\r\n\r\n.fa-gulp:before {\r\n  content: \"\\F3AE\"; }\r\n\r\n.fa-h-square:before {\r\n  content: \"\\F0FD\"; }\r\n\r\n.fa-hacker-news:before {\r\n  content: \"\\F1D4\"; }\r\n\r\n.fa-hacker-news-square:before {\r\n  content: \"\\F3AF\"; }\r\n\r\n.fa-hackerrank:before {\r\n  content: \"\\F5F7\"; }\r\n\r\n.fa-hamburger:before {\r\n  content: \"\\F805\"; }\r\n\r\n.fa-hammer:before {\r\n  content: \"\\F6E3\"; }\r\n\r\n.fa-hamsa:before {\r\n  content: \"\\F665\"; }\r\n\r\n.fa-hand-holding:before {\r\n  content: \"\\F4BD\"; }\r\n\r\n.fa-hand-holding-heart:before {\r\n  content: \"\\F4BE\"; }\r\n\r\n.fa-hand-holding-medical:before {\r\n  content: \"\\F95C\"; }\r\n\r\n.fa-hand-holding-usd:before {\r\n  content: \"\\F4C0\"; }\r\n\r\n.fa-hand-holding-water:before {\r\n  content: \"\\F4C1\"; }\r\n\r\n.fa-hand-lizard:before {\r\n  content: \"\\F258\"; }\r\n\r\n.fa-hand-middle-finger:before {\r\n  content: \"\\F806\"; }\r\n\r\n.fa-hand-paper:before {\r\n  content: \"\\F256\"; }\r\n\r\n.fa-hand-peace:before {\r\n  content: \"\\F25B\"; }\r\n\r\n.fa-hand-point-down:before {\r\n  content: \"\\F0A7\"; }\r\n\r\n.fa-hand-point-left:before {\r\n  content: \"\\F0A5\"; }\r\n\r\n.fa-hand-point-right:before {\r\n  content: \"\\F0A4\"; }\r\n\r\n.fa-hand-point-up:before {\r\n  content: \"\\F0A6\"; }\r\n\r\n.fa-hand-pointer:before {\r\n  content: \"\\F25A\"; }\r\n\r\n.fa-hand-rock:before {\r\n  content: \"\\F255\"; }\r\n\r\n.fa-hand-scissors:before {\r\n  content: \"\\F257\"; }\r\n\r\n.fa-hand-sparkles:before {\r\n  content: \"\\F95D\"; }\r\n\r\n.fa-hand-spock:before {\r\n  content: \"\\F259\"; }\r\n\r\n.fa-hands:before {\r\n  content: \"\\F4C2\"; }\r\n\r\n.fa-hands-helping:before {\r\n  content: \"\\F4C4\"; }\r\n\r\n.fa-hands-wash:before {\r\n  content: \"\\F95E\"; }\r\n\r\n.fa-handshake:before {\r\n  content: \"\\F2B5\"; }\r\n\r\n.fa-handshake-alt-slash:before {\r\n  content: \"\\F95F\"; }\r\n\r\n.fa-handshake-slash:before {\r\n  content: \"\\F960\"; }\r\n\r\n.fa-hanukiah:before {\r\n  content: \"\\F6E6\"; }\r\n\r\n.fa-hard-hat:before {\r\n  content: \"\\F807\"; }\r\n\r\n.fa-hashtag:before {\r\n  content: \"\\F292\"; }\r\n\r\n.fa-hat-cowboy:before {\r\n  content: \"\\F8C0\"; }\r\n\r\n.fa-hat-cowboy-side:before {\r\n  content: \"\\F8C1\"; }\r\n\r\n.fa-hat-wizard:before {\r\n  content: \"\\F6E8\"; }\r\n\r\n.fa-hdd:before {\r\n  content: \"\\F0A0\"; }\r\n\r\n.fa-head-side-cough:before {\r\n  content: \"\\F961\"; }\r\n\r\n.fa-head-side-cough-slash:before {\r\n  content: \"\\F962\"; }\r\n\r\n.fa-head-side-mask:before {\r\n  content: \"\\F963\"; }\r\n\r\n.fa-head-side-virus:before {\r\n  content: \"\\F964\"; }\r\n\r\n.fa-heading:before {\r\n  content: \"\\F1DC\"; }\r\n\r\n.fa-headphones:before {\r\n  content: \"\\F025\"; }\r\n\r\n.fa-headphones-alt:before {\r\n  content: \"\\F58F\"; }\r\n\r\n.fa-headset:before {\r\n  content: \"\\F590\"; }\r\n\r\n.fa-heart:before {\r\n  content: \"\\F004\"; }\r\n\r\n.fa-heart-broken:before {\r\n  content: \"\\F7A9\"; }\r\n\r\n.fa-heartbeat:before {\r\n  content: \"\\F21E\"; }\r\n\r\n.fa-helicopter:before {\r\n  content: \"\\F533\"; }\r\n\r\n.fa-highlighter:before {\r\n  content: \"\\F591\"; }\r\n\r\n.fa-hiking:before {\r\n  content: \"\\F6EC\"; }\r\n\r\n.fa-hippo:before {\r\n  content: \"\\F6ED\"; }\r\n\r\n.fa-hips:before {\r\n  content: \"\\F452\"; }\r\n\r\n.fa-hire-a-helper:before {\r\n  content: \"\\F3B0\"; }\r\n\r\n.fa-history:before {\r\n  content: \"\\F1DA\"; }\r\n\r\n.fa-hockey-puck:before {\r\n  content: \"\\F453\"; }\r\n\r\n.fa-holly-berry:before {\r\n  content: \"\\F7AA\"; }\r\n\r\n.fa-home:before {\r\n  content: \"\\F015\"; }\r\n\r\n.fa-hooli:before {\r\n  content: \"\\F427\"; }\r\n\r\n.fa-hornbill:before {\r\n  content: \"\\F592\"; }\r\n\r\n.fa-horse:before {\r\n  content: \"\\F6F0\"; }\r\n\r\n.fa-horse-head:before {\r\n  content: \"\\F7AB\"; }\r\n\r\n.fa-hospital:before {\r\n  content: \"\\F0F8\"; }\r\n\r\n.fa-hospital-alt:before {\r\n  content: \"\\F47D\"; }\r\n\r\n.fa-hospital-symbol:before {\r\n  content: \"\\F47E\"; }\r\n\r\n.fa-hospital-user:before {\r\n  content: \"\\F80D\"; }\r\n\r\n.fa-hot-tub:before {\r\n  content: \"\\F593\"; }\r\n\r\n.fa-hotdog:before {\r\n  content: \"\\F80F\"; }\r\n\r\n.fa-hotel:before {\r\n  content: \"\\F594\"; }\r\n\r\n.fa-hotjar:before {\r\n  content: \"\\F3B1\"; }\r\n\r\n.fa-hourglass:before {\r\n  content: \"\\F254\"; }\r\n\r\n.fa-hourglass-end:before {\r\n  content: \"\\F253\"; }\r\n\r\n.fa-hourglass-half:before {\r\n  content: \"\\F252\"; }\r\n\r\n.fa-hourglass-start:before {\r\n  content: \"\\F251\"; }\r\n\r\n.fa-house-damage:before {\r\n  content: \"\\F6F1\"; }\r\n\r\n.fa-house-user:before {\r\n  content: \"\\F965\"; }\r\n\r\n.fa-houzz:before {\r\n  content: \"\\F27C\"; }\r\n\r\n.fa-hryvnia:before {\r\n  content: \"\\F6F2\"; }\r\n\r\n.fa-html5:before {\r\n  content: \"\\F13B\"; }\r\n\r\n.fa-hubspot:before {\r\n  content: \"\\F3B2\"; }\r\n\r\n.fa-i-cursor:before {\r\n  content: \"\\F246\"; }\r\n\r\n.fa-ice-cream:before {\r\n  content: \"\\F810\"; }\r\n\r\n.fa-icicles:before {\r\n  content: \"\\F7AD\"; }\r\n\r\n.fa-icons:before {\r\n  content: \"\\F86D\"; }\r\n\r\n.fa-id-badge:before {\r\n  content: \"\\F2C1\"; }\r\n\r\n.fa-id-card:before {\r\n  content: \"\\F2C2\"; }\r\n\r\n.fa-id-card-alt:before {\r\n  content: \"\\F47F\"; }\r\n\r\n.fa-ideal:before {\r\n  content: \"\\F913\"; }\r\n\r\n.fa-igloo:before {\r\n  content: \"\\F7AE\"; }\r\n\r\n.fa-image:before {\r\n  content: \"\\F03E\"; }\r\n\r\n.fa-images:before {\r\n  content: \"\\F302\"; }\r\n\r\n.fa-imdb:before {\r\n  content: \"\\F2D8\"; }\r\n\r\n.fa-inbox:before {\r\n  content: \"\\F01C\"; }\r\n\r\n.fa-indent:before {\r\n  content: \"\\F03C\"; }\r\n\r\n.fa-industry:before {\r\n  content: \"\\F275\"; }\r\n\r\n.fa-infinity:before {\r\n  content: \"\\F534\"; }\r\n\r\n.fa-info:before {\r\n  content: \"\\F129\"; }\r\n\r\n.fa-info-circle:before {\r\n  content: \"\\F05A\"; }\r\n\r\n.fa-instagram:before {\r\n  content: \"\\F16D\"; }\r\n\r\n.fa-instagram-square:before {\r\n  content: \"\\F955\"; }\r\n\r\n.fa-intercom:before {\r\n  content: \"\\F7AF\"; }\r\n\r\n.fa-internet-explorer:before {\r\n  content: \"\\F26B\"; }\r\n\r\n.fa-invision:before {\r\n  content: \"\\F7B0\"; }\r\n\r\n.fa-ioxhost:before {\r\n  content: \"\\F208\"; }\r\n\r\n.fa-italic:before {\r\n  content: \"\\F033\"; }\r\n\r\n.fa-itch-io:before {\r\n  content: \"\\F83A\"; }\r\n\r\n.fa-itunes:before {\r\n  content: \"\\F3B4\"; }\r\n\r\n.fa-itunes-note:before {\r\n  content: \"\\F3B5\"; }\r\n\r\n.fa-java:before {\r\n  content: \"\\F4E4\"; }\r\n\r\n.fa-jedi:before {\r\n  content: \"\\F669\"; }\r\n\r\n.fa-jedi-order:before {\r\n  content: \"\\F50E\"; }\r\n\r\n.fa-jenkins:before {\r\n  content: \"\\F3B6\"; }\r\n\r\n.fa-jira:before {\r\n  content: \"\\F7B1\"; }\r\n\r\n.fa-joget:before {\r\n  content: \"\\F3B7\"; }\r\n\r\n.fa-joint:before {\r\n  content: \"\\F595\"; }\r\n\r\n.fa-joomla:before {\r\n  content: \"\\F1AA\"; }\r\n\r\n.fa-journal-whills:before {\r\n  content: \"\\F66A\"; }\r\n\r\n.fa-js:before {\r\n  content: \"\\F3B8\"; }\r\n\r\n.fa-js-square:before {\r\n  content: \"\\F3B9\"; }\r\n\r\n.fa-jsfiddle:before {\r\n  content: \"\\F1CC\"; }\r\n\r\n.fa-kaaba:before {\r\n  content: \"\\F66B\"; }\r\n\r\n.fa-kaggle:before {\r\n  content: \"\\F5FA\"; }\r\n\r\n.fa-key:before {\r\n  content: \"\\F084\"; }\r\n\r\n.fa-keybase:before {\r\n  content: \"\\F4F5\"; }\r\n\r\n.fa-keyboard:before {\r\n  content: \"\\F11C\"; }\r\n\r\n.fa-keycdn:before {\r\n  content: \"\\F3BA\"; }\r\n\r\n.fa-khanda:before {\r\n  content: \"\\F66D\"; }\r\n\r\n.fa-kickstarter:before {\r\n  content: \"\\F3BB\"; }\r\n\r\n.fa-kickstarter-k:before {\r\n  content: \"\\F3BC\"; }\r\n\r\n.fa-kiss:before {\r\n  content: \"\\F596\"; }\r\n\r\n.fa-kiss-beam:before {\r\n  content: \"\\F597\"; }\r\n\r\n.fa-kiss-wink-heart:before {\r\n  content: \"\\F598\"; }\r\n\r\n.fa-kiwi-bird:before {\r\n  content: \"\\F535\"; }\r\n\r\n.fa-korvue:before {\r\n  content: \"\\F42F\"; }\r\n\r\n.fa-landmark:before {\r\n  content: \"\\F66F\"; }\r\n\r\n.fa-language:before {\r\n  content: \"\\F1AB\"; }\r\n\r\n.fa-laptop:before {\r\n  content: \"\\F109\"; }\r\n\r\n.fa-laptop-code:before {\r\n  content: \"\\F5FC\"; }\r\n\r\n.fa-laptop-house:before {\r\n  content: \"\\F966\"; }\r\n\r\n.fa-laptop-medical:before {\r\n  content: \"\\F812\"; }\r\n\r\n.fa-laravel:before {\r\n  content: \"\\F3BD\"; }\r\n\r\n.fa-lastfm:before {\r\n  content: \"\\F202\"; }\r\n\r\n.fa-lastfm-square:before {\r\n  content: \"\\F203\"; }\r\n\r\n.fa-laugh:before {\r\n  content: \"\\F599\"; }\r\n\r\n.fa-laugh-beam:before {\r\n  content: \"\\F59A\"; }\r\n\r\n.fa-laugh-squint:before {\r\n  content: \"\\F59B\"; }\r\n\r\n.fa-laugh-wink:before {\r\n  content: \"\\F59C\"; }\r\n\r\n.fa-layer-group:before {\r\n  content: \"\\F5FD\"; }\r\n\r\n.fa-leaf:before {\r\n  content: \"\\F06C\"; }\r\n\r\n.fa-leanpub:before {\r\n  content: \"\\F212\"; }\r\n\r\n.fa-lemon:before {\r\n  content: \"\\F094\"; }\r\n\r\n.fa-less:before {\r\n  content: \"\\F41D\"; }\r\n\r\n.fa-less-than:before {\r\n  content: \"\\F536\"; }\r\n\r\n.fa-less-than-equal:before {\r\n  content: \"\\F537\"; }\r\n\r\n.fa-level-down-alt:before {\r\n  content: \"\\F3BE\"; }\r\n\r\n.fa-level-up-alt:before {\r\n  content: \"\\F3BF\"; }\r\n\r\n.fa-life-ring:before {\r\n  content: \"\\F1CD\"; }\r\n\r\n.fa-lightbulb:before {\r\n  content: \"\\F0EB\"; }\r\n\r\n.fa-line:before {\r\n  content: \"\\F3C0\"; }\r\n\r\n.fa-link:before {\r\n  content: \"\\F0C1\"; }\r\n\r\n.fa-linkedin:before {\r\n  content: \"\\F08C\"; }\r\n\r\n.fa-linkedin-in:before {\r\n  content: \"\\F0E1\"; }\r\n\r\n.fa-linode:before {\r\n  content: \"\\F2B8\"; }\r\n\r\n.fa-linux:before {\r\n  content: \"\\F17C\"; }\r\n\r\n.fa-lira-sign:before {\r\n  content: \"\\F195\"; }\r\n\r\n.fa-list:before {\r\n  content: \"\\F03A\"; }\r\n\r\n.fa-list-alt:before {\r\n  content: \"\\F022\"; }\r\n\r\n.fa-list-ol:before {\r\n  content: \"\\F0CB\"; }\r\n\r\n.fa-list-ul:before {\r\n  content: \"\\F0CA\"; }\r\n\r\n.fa-location-arrow:before {\r\n  content: \"\\F124\"; }\r\n\r\n.fa-lock:before {\r\n  content: \"\\F023\"; }\r\n\r\n.fa-lock-open:before {\r\n  content: \"\\F3C1\"; }\r\n\r\n.fa-long-arrow-alt-down:before {\r\n  content: \"\\F309\"; }\r\n\r\n.fa-long-arrow-alt-left:before {\r\n  content: \"\\F30A\"; }\r\n\r\n.fa-long-arrow-alt-right:before {\r\n  content: \"\\F30B\"; }\r\n\r\n.fa-long-arrow-alt-up:before {\r\n  content: \"\\F30C\"; }\r\n\r\n.fa-low-vision:before {\r\n  content: \"\\F2A8\"; }\r\n\r\n.fa-luggage-cart:before {\r\n  content: \"\\F59D\"; }\r\n\r\n.fa-lungs:before {\r\n  content: \"\\F604\"; }\r\n\r\n.fa-lungs-virus:before {\r\n  content: \"\\F967\"; }\r\n\r\n.fa-lyft:before {\r\n  content: \"\\F3C3\"; }\r\n\r\n.fa-magento:before {\r\n  content: \"\\F3C4\"; }\r\n\r\n.fa-magic:before {\r\n  content: \"\\F0D0\"; }\r\n\r\n.fa-magnet:before {\r\n  content: \"\\F076\"; }\r\n\r\n.fa-mail-bulk:before {\r\n  content: \"\\F674\"; }\r\n\r\n.fa-mailchimp:before {\r\n  content: \"\\F59E\"; }\r\n\r\n.fa-male:before {\r\n  content: \"\\F183\"; }\r\n\r\n.fa-mandalorian:before {\r\n  content: \"\\F50F\"; }\r\n\r\n.fa-map:before {\r\n  content: \"\\F279\"; }\r\n\r\n.fa-map-marked:before {\r\n  content: \"\\F59F\"; }\r\n\r\n.fa-map-marked-alt:before {\r\n  content: \"\\F5A0\"; }\r\n\r\n.fa-map-marker:before {\r\n  content: \"\\F041\"; }\r\n\r\n.fa-map-marker-alt:before {\r\n  content: \"\\F3C5\"; }\r\n\r\n.fa-map-pin:before {\r\n  content: \"\\F276\"; }\r\n\r\n.fa-map-signs:before {\r\n  content: \"\\F277\"; }\r\n\r\n.fa-markdown:before {\r\n  content: \"\\F60F\"; }\r\n\r\n.fa-marker:before {\r\n  content: \"\\F5A1\"; }\r\n\r\n.fa-mars:before {\r\n  content: \"\\F222\"; }\r\n\r\n.fa-mars-double:before {\r\n  content: \"\\F227\"; }\r\n\r\n.fa-mars-stroke:before {\r\n  content: \"\\F229\"; }\r\n\r\n.fa-mars-stroke-h:before {\r\n  content: \"\\F22B\"; }\r\n\r\n.fa-mars-stroke-v:before {\r\n  content: \"\\F22A\"; }\r\n\r\n.fa-mask:before {\r\n  content: \"\\F6FA\"; }\r\n\r\n.fa-mastodon:before {\r\n  content: \"\\F4F6\"; }\r\n\r\n.fa-maxcdn:before {\r\n  content: \"\\F136\"; }\r\n\r\n.fa-mdb:before {\r\n  content: \"\\F8CA\"; }\r\n\r\n.fa-medal:before {\r\n  content: \"\\F5A2\"; }\r\n\r\n.fa-medapps:before {\r\n  content: \"\\F3C6\"; }\r\n\r\n.fa-medium:before {\r\n  content: \"\\F23A\"; }\r\n\r\n.fa-medium-m:before {\r\n  content: \"\\F3C7\"; }\r\n\r\n.fa-medkit:before {\r\n  content: \"\\F0FA\"; }\r\n\r\n.fa-medrt:before {\r\n  content: \"\\F3C8\"; }\r\n\r\n.fa-meetup:before {\r\n  content: \"\\F2E0\"; }\r\n\r\n.fa-megaport:before {\r\n  content: \"\\F5A3\"; }\r\n\r\n.fa-meh:before {\r\n  content: \"\\F11A\"; }\r\n\r\n.fa-meh-blank:before {\r\n  content: \"\\F5A4\"; }\r\n\r\n.fa-meh-rolling-eyes:before {\r\n  content: \"\\F5A5\"; }\r\n\r\n.fa-memory:before {\r\n  content: \"\\F538\"; }\r\n\r\n.fa-mendeley:before {\r\n  content: \"\\F7B3\"; }\r\n\r\n.fa-menorah:before {\r\n  content: \"\\F676\"; }\r\n\r\n.fa-mercury:before {\r\n  content: \"\\F223\"; }\r\n\r\n.fa-meteor:before {\r\n  content: \"\\F753\"; }\r\n\r\n.fa-microblog:before {\r\n  content: \"\\F91A\"; }\r\n\r\n.fa-microchip:before {\r\n  content: \"\\F2DB\"; }\r\n\r\n.fa-microphone:before {\r\n  content: \"\\F130\"; }\r\n\r\n.fa-microphone-alt:before {\r\n  content: \"\\F3C9\"; }\r\n\r\n.fa-microphone-alt-slash:before {\r\n  content: \"\\F539\"; }\r\n\r\n.fa-microphone-slash:before {\r\n  content: \"\\F131\"; }\r\n\r\n.fa-microscope:before {\r\n  content: \"\\F610\"; }\r\n\r\n.fa-microsoft:before {\r\n  content: \"\\F3CA\"; }\r\n\r\n.fa-minus:before {\r\n  content: \"\\F068\"; }\r\n\r\n.fa-minus-circle:before {\r\n  content: \"\\F056\"; }\r\n\r\n.fa-minus-square:before {\r\n  content: \"\\F146\"; }\r\n\r\n.fa-mitten:before {\r\n  content: \"\\F7B5\"; }\r\n\r\n.fa-mix:before {\r\n  content: \"\\F3CB\"; }\r\n\r\n.fa-mixcloud:before {\r\n  content: \"\\F289\"; }\r\n\r\n.fa-mixer:before {\r\n  content: \"\\F956\"; }\r\n\r\n.fa-mizuni:before {\r\n  content: \"\\F3CC\"; }\r\n\r\n.fa-mobile:before {\r\n  content: \"\\F10B\"; }\r\n\r\n.fa-mobile-alt:before {\r\n  content: \"\\F3CD\"; }\r\n\r\n.fa-modx:before {\r\n  content: \"\\F285\"; }\r\n\r\n.fa-monero:before {\r\n  content: \"\\F3D0\"; }\r\n\r\n.fa-money-bill:before {\r\n  content: \"\\F0D6\"; }\r\n\r\n.fa-money-bill-alt:before {\r\n  content: \"\\F3D1\"; }\r\n\r\n.fa-money-bill-wave:before {\r\n  content: \"\\F53A\"; }\r\n\r\n.fa-money-bill-wave-alt:before {\r\n  content: \"\\F53B\"; }\r\n\r\n.fa-money-check:before {\r\n  content: \"\\F53C\"; }\r\n\r\n.fa-money-check-alt:before {\r\n  content: \"\\F53D\"; }\r\n\r\n.fa-monument:before {\r\n  content: \"\\F5A6\"; }\r\n\r\n.fa-moon:before {\r\n  content: \"\\F186\"; }\r\n\r\n.fa-mortar-pestle:before {\r\n  content: \"\\F5A7\"; }\r\n\r\n.fa-mosque:before {\r\n  content: \"\\F678\"; }\r\n\r\n.fa-motorcycle:before {\r\n  content: \"\\F21C\"; }\r\n\r\n.fa-mountain:before {\r\n  content: \"\\F6FC\"; }\r\n\r\n.fa-mouse:before {\r\n  content: \"\\F8CC\"; }\r\n\r\n.fa-mouse-pointer:before {\r\n  content: \"\\F245\"; }\r\n\r\n.fa-mug-hot:before {\r\n  content: \"\\F7B6\"; }\r\n\r\n.fa-music:before {\r\n  content: \"\\F001\"; }\r\n\r\n.fa-napster:before {\r\n  content: \"\\F3D2\"; }\r\n\r\n.fa-neos:before {\r\n  content: \"\\F612\"; }\r\n\r\n.fa-network-wired:before {\r\n  content: \"\\F6FF\"; }\r\n\r\n.fa-neuter:before {\r\n  content: \"\\F22C\"; }\r\n\r\n.fa-newspaper:before {\r\n  content: \"\\F1EA\"; }\r\n\r\n.fa-nimblr:before {\r\n  content: \"\\F5A8\"; }\r\n\r\n.fa-node:before {\r\n  content: \"\\F419\"; }\r\n\r\n.fa-node-js:before {\r\n  content: \"\\F3D3\"; }\r\n\r\n.fa-not-equal:before {\r\n  content: \"\\F53E\"; }\r\n\r\n.fa-notes-medical:before {\r\n  content: \"\\F481\"; }\r\n\r\n.fa-npm:before {\r\n  content: \"\\F3D4\"; }\r\n\r\n.fa-ns8:before {\r\n  content: \"\\F3D5\"; }\r\n\r\n.fa-nutritionix:before {\r\n  content: \"\\F3D6\"; }\r\n\r\n.fa-object-group:before {\r\n  content: \"\\F247\"; }\r\n\r\n.fa-object-ungroup:before {\r\n  content: \"\\F248\"; }\r\n\r\n.fa-odnoklassniki:before {\r\n  content: \"\\F263\"; }\r\n\r\n.fa-odnoklassniki-square:before {\r\n  content: \"\\F264\"; }\r\n\r\n.fa-oil-can:before {\r\n  content: \"\\F613\"; }\r\n\r\n.fa-old-republic:before {\r\n  content: \"\\F510\"; }\r\n\r\n.fa-om:before {\r\n  content: \"\\F679\"; }\r\n\r\n.fa-opencart:before {\r\n  content: \"\\F23D\"; }\r\n\r\n.fa-openid:before {\r\n  content: \"\\F19B\"; }\r\n\r\n.fa-opera:before {\r\n  content: \"\\F26A\"; }\r\n\r\n.fa-optin-monster:before {\r\n  content: \"\\F23C\"; }\r\n\r\n.fa-orcid:before {\r\n  content: \"\\F8D2\"; }\r\n\r\n.fa-osi:before {\r\n  content: \"\\F41A\"; }\r\n\r\n.fa-otter:before {\r\n  content: \"\\F700\"; }\r\n\r\n.fa-outdent:before {\r\n  content: \"\\F03B\"; }\r\n\r\n.fa-page4:before {\r\n  content: \"\\F3D7\"; }\r\n\r\n.fa-pagelines:before {\r\n  content: \"\\F18C\"; }\r\n\r\n.fa-pager:before {\r\n  content: \"\\F815\"; }\r\n\r\n.fa-paint-brush:before {\r\n  content: \"\\F1FC\"; }\r\n\r\n.fa-paint-roller:before {\r\n  content: \"\\F5AA\"; }\r\n\r\n.fa-palette:before {\r\n  content: \"\\F53F\"; }\r\n\r\n.fa-palfed:before {\r\n  content: \"\\F3D8\"; }\r\n\r\n.fa-pallet:before {\r\n  content: \"\\F482\"; }\r\n\r\n.fa-paper-plane:before {\r\n  content: \"\\F1D8\"; }\r\n\r\n.fa-paperclip:before {\r\n  content: \"\\F0C6\"; }\r\n\r\n.fa-parachute-box:before {\r\n  content: \"\\F4CD\"; }\r\n\r\n.fa-paragraph:before {\r\n  content: \"\\F1DD\"; }\r\n\r\n.fa-parking:before {\r\n  content: \"\\F540\"; }\r\n\r\n.fa-passport:before {\r\n  content: \"\\F5AB\"; }\r\n\r\n.fa-pastafarianism:before {\r\n  content: \"\\F67B\"; }\r\n\r\n.fa-paste:before {\r\n  content: \"\\F0EA\"; }\r\n\r\n.fa-patreon:before {\r\n  content: \"\\F3D9\"; }\r\n\r\n.fa-pause:before {\r\n  content: \"\\F04C\"; }\r\n\r\n.fa-pause-circle:before {\r\n  content: \"\\F28B\"; }\r\n\r\n.fa-paw:before {\r\n  content: \"\\F1B0\"; }\r\n\r\n.fa-paypal:before {\r\n  content: \"\\F1ED\"; }\r\n\r\n.fa-peace:before {\r\n  content: \"\\F67C\"; }\r\n\r\n.fa-pen:before {\r\n  content: \"\\F304\"; }\r\n\r\n.fa-pen-alt:before {\r\n  content: \"\\F305\"; }\r\n\r\n.fa-pen-fancy:before {\r\n  content: \"\\F5AC\"; }\r\n\r\n.fa-pen-nib:before {\r\n  content: \"\\F5AD\"; }\r\n\r\n.fa-pen-square:before {\r\n  content: \"\\F14B\"; }\r\n\r\n.fa-pencil-alt:before {\r\n  content: \"\\F303\"; }\r\n\r\n.fa-pencil-ruler:before {\r\n  content: \"\\F5AE\"; }\r\n\r\n.fa-penny-arcade:before {\r\n  content: \"\\F704\"; }\r\n\r\n.fa-people-arrows:before {\r\n  content: \"\\F968\"; }\r\n\r\n.fa-people-carry:before {\r\n  content: \"\\F4CE\"; }\r\n\r\n.fa-pepper-hot:before {\r\n  content: \"\\F816\"; }\r\n\r\n.fa-percent:before {\r\n  content: \"\\F295\"; }\r\n\r\n.fa-percentage:before {\r\n  content: \"\\F541\"; }\r\n\r\n.fa-periscope:before {\r\n  content: \"\\F3DA\"; }\r\n\r\n.fa-person-booth:before {\r\n  content: \"\\F756\"; }\r\n\r\n.fa-phabricator:before {\r\n  content: \"\\F3DB\"; }\r\n\r\n.fa-phoenix-framework:before {\r\n  content: \"\\F3DC\"; }\r\n\r\n.fa-phoenix-squadron:before {\r\n  content: \"\\F511\"; }\r\n\r\n.fa-phone:before {\r\n  content: \"\\F095\"; }\r\n\r\n.fa-phone-alt:before {\r\n  content: \"\\F879\"; }\r\n\r\n.fa-phone-slash:before {\r\n  content: \"\\F3DD\"; }\r\n\r\n.fa-phone-square:before {\r\n  content: \"\\F098\"; }\r\n\r\n.fa-phone-square-alt:before {\r\n  content: \"\\F87B\"; }\r\n\r\n.fa-phone-volume:before {\r\n  content: \"\\F2A0\"; }\r\n\r\n.fa-photo-video:before {\r\n  content: \"\\F87C\"; }\r\n\r\n.fa-php:before {\r\n  content: \"\\F457\"; }\r\n\r\n.fa-pied-piper:before {\r\n  content: \"\\F2AE\"; }\r\n\r\n.fa-pied-piper-alt:before {\r\n  content: \"\\F1A8\"; }\r\n\r\n.fa-pied-piper-hat:before {\r\n  content: \"\\F4E5\"; }\r\n\r\n.fa-pied-piper-pp:before {\r\n  content: \"\\F1A7\"; }\r\n\r\n.fa-pied-piper-square:before {\r\n  content: \"\\F91E\"; }\r\n\r\n.fa-piggy-bank:before {\r\n  content: \"\\F4D3\"; }\r\n\r\n.fa-pills:before {\r\n  content: \"\\F484\"; }\r\n\r\n.fa-pinterest:before {\r\n  content: \"\\F0D2\"; }\r\n\r\n.fa-pinterest-p:before {\r\n  content: \"\\F231\"; }\r\n\r\n.fa-pinterest-square:before {\r\n  content: \"\\F0D3\"; }\r\n\r\n.fa-pizza-slice:before {\r\n  content: \"\\F818\"; }\r\n\r\n.fa-place-of-worship:before {\r\n  content: \"\\F67F\"; }\r\n\r\n.fa-plane:before {\r\n  content: \"\\F072\"; }\r\n\r\n.fa-plane-arrival:before {\r\n  content: \"\\F5AF\"; }\r\n\r\n.fa-plane-departure:before {\r\n  content: \"\\F5B0\"; }\r\n\r\n.fa-plane-slash:before {\r\n  content: \"\\F969\"; }\r\n\r\n.fa-play:before {\r\n  content: \"\\F04B\"; }\r\n\r\n.fa-play-circle:before {\r\n  content: \"\\F144\"; }\r\n\r\n.fa-playstation:before {\r\n  content: \"\\F3DF\"; }\r\n\r\n.fa-plug:before {\r\n  content: \"\\F1E6\"; }\r\n\r\n.fa-plus:before {\r\n  content: \"\\F067\"; }\r\n\r\n.fa-plus-circle:before {\r\n  content: \"\\F055\"; }\r\n\r\n.fa-plus-square:before {\r\n  content: \"\\F0FE\"; }\r\n\r\n.fa-podcast:before {\r\n  content: \"\\F2CE\"; }\r\n\r\n.fa-poll:before {\r\n  content: \"\\F681\"; }\r\n\r\n.fa-poll-h:before {\r\n  content: \"\\F682\"; }\r\n\r\n.fa-poo:before {\r\n  content: \"\\F2FE\"; }\r\n\r\n.fa-poo-storm:before {\r\n  content: \"\\F75A\"; }\r\n\r\n.fa-poop:before {\r\n  content: \"\\F619\"; }\r\n\r\n.fa-portrait:before {\r\n  content: \"\\F3E0\"; }\r\n\r\n.fa-pound-sign:before {\r\n  content: \"\\F154\"; }\r\n\r\n.fa-power-off:before {\r\n  content: \"\\F011\"; }\r\n\r\n.fa-pray:before {\r\n  content: \"\\F683\"; }\r\n\r\n.fa-praying-hands:before {\r\n  content: \"\\F684\"; }\r\n\r\n.fa-prescription:before {\r\n  content: \"\\F5B1\"; }\r\n\r\n.fa-prescription-bottle:before {\r\n  content: \"\\F485\"; }\r\n\r\n.fa-prescription-bottle-alt:before {\r\n  content: \"\\F486\"; }\r\n\r\n.fa-print:before {\r\n  content: \"\\F02F\"; }\r\n\r\n.fa-procedures:before {\r\n  content: \"\\F487\"; }\r\n\r\n.fa-product-hunt:before {\r\n  content: \"\\F288\"; }\r\n\r\n.fa-project-diagram:before {\r\n  content: \"\\F542\"; }\r\n\r\n.fa-pump-medical:before {\r\n  content: \"\\F96A\"; }\r\n\r\n.fa-pump-soap:before {\r\n  content: \"\\F96B\"; }\r\n\r\n.fa-pushed:before {\r\n  content: \"\\F3E1\"; }\r\n\r\n.fa-puzzle-piece:before {\r\n  content: \"\\F12E\"; }\r\n\r\n.fa-python:before {\r\n  content: \"\\F3E2\"; }\r\n\r\n.fa-qq:before {\r\n  content: \"\\F1D6\"; }\r\n\r\n.fa-qrcode:before {\r\n  content: \"\\F029\"; }\r\n\r\n.fa-question:before {\r\n  content: \"\\F128\"; }\r\n\r\n.fa-question-circle:before {\r\n  content: \"\\F059\"; }\r\n\r\n.fa-quidditch:before {\r\n  content: \"\\F458\"; }\r\n\r\n.fa-quinscape:before {\r\n  content: \"\\F459\"; }\r\n\r\n.fa-quora:before {\r\n  content: \"\\F2C4\"; }\r\n\r\n.fa-quote-left:before {\r\n  content: \"\\F10D\"; }\r\n\r\n.fa-quote-right:before {\r\n  content: \"\\F10E\"; }\r\n\r\n.fa-quran:before {\r\n  content: \"\\F687\"; }\r\n\r\n.fa-r-project:before {\r\n  content: \"\\F4F7\"; }\r\n\r\n.fa-radiation:before {\r\n  content: \"\\F7B9\"; }\r\n\r\n.fa-radiation-alt:before {\r\n  content: \"\\F7BA\"; }\r\n\r\n.fa-rainbow:before {\r\n  content: \"\\F75B\"; }\r\n\r\n.fa-random:before {\r\n  content: \"\\F074\"; }\r\n\r\n.fa-raspberry-pi:before {\r\n  content: \"\\F7BB\"; }\r\n\r\n.fa-ravelry:before {\r\n  content: \"\\F2D9\"; }\r\n\r\n.fa-react:before {\r\n  content: \"\\F41B\"; }\r\n\r\n.fa-reacteurope:before {\r\n  content: \"\\F75D\"; }\r\n\r\n.fa-readme:before {\r\n  content: \"\\F4D5\"; }\r\n\r\n.fa-rebel:before {\r\n  content: \"\\F1D0\"; }\r\n\r\n.fa-receipt:before {\r\n  content: \"\\F543\"; }\r\n\r\n.fa-record-vinyl:before {\r\n  content: \"\\F8D9\"; }\r\n\r\n.fa-recycle:before {\r\n  content: \"\\F1B8\"; }\r\n\r\n.fa-red-river:before {\r\n  content: \"\\F3E3\"; }\r\n\r\n.fa-reddit:before {\r\n  content: \"\\F1A1\"; }\r\n\r\n.fa-reddit-alien:before {\r\n  content: \"\\F281\"; }\r\n\r\n.fa-reddit-square:before {\r\n  content: \"\\F1A2\"; }\r\n\r\n.fa-redhat:before {\r\n  content: \"\\F7BC\"; }\r\n\r\n.fa-redo:before {\r\n  content: \"\\F01E\"; }\r\n\r\n.fa-redo-alt:before {\r\n  content: \"\\F2F9\"; }\r\n\r\n.fa-registered:before {\r\n  content: \"\\F25D\"; }\r\n\r\n.fa-remove-format:before {\r\n  content: \"\\F87D\"; }\r\n\r\n.fa-renren:before {\r\n  content: \"\\F18B\"; }\r\n\r\n.fa-reply:before {\r\n  content: \"\\F3E5\"; }\r\n\r\n.fa-reply-all:before {\r\n  content: \"\\F122\"; }\r\n\r\n.fa-replyd:before {\r\n  content: \"\\F3E6\"; }\r\n\r\n.fa-republican:before {\r\n  content: \"\\F75E\"; }\r\n\r\n.fa-researchgate:before {\r\n  content: \"\\F4F8\"; }\r\n\r\n.fa-resolving:before {\r\n  content: \"\\F3E7\"; }\r\n\r\n.fa-restroom:before {\r\n  content: \"\\F7BD\"; }\r\n\r\n.fa-retweet:before {\r\n  content: \"\\F079\"; }\r\n\r\n.fa-rev:before {\r\n  content: \"\\F5B2\"; }\r\n\r\n.fa-ribbon:before {\r\n  content: \"\\F4D6\"; }\r\n\r\n.fa-ring:before {\r\n  content: \"\\F70B\"; }\r\n\r\n.fa-road:before {\r\n  content: \"\\F018\"; }\r\n\r\n.fa-robot:before {\r\n  content: \"\\F544\"; }\r\n\r\n.fa-rocket:before {\r\n  content: \"\\F135\"; }\r\n\r\n.fa-rocketchat:before {\r\n  content: \"\\F3E8\"; }\r\n\r\n.fa-rockrms:before {\r\n  content: \"\\F3E9\"; }\r\n\r\n.fa-route:before {\r\n  content: \"\\F4D7\"; }\r\n\r\n.fa-rss:before {\r\n  content: \"\\F09E\"; }\r\n\r\n.fa-rss-square:before {\r\n  content: \"\\F143\"; }\r\n\r\n.fa-ruble-sign:before {\r\n  content: \"\\F158\"; }\r\n\r\n.fa-ruler:before {\r\n  content: \"\\F545\"; }\r\n\r\n.fa-ruler-combined:before {\r\n  content: \"\\F546\"; }\r\n\r\n.fa-ruler-horizontal:before {\r\n  content: \"\\F547\"; }\r\n\r\n.fa-ruler-vertical:before {\r\n  content: \"\\F548\"; }\r\n\r\n.fa-running:before {\r\n  content: \"\\F70C\"; }\r\n\r\n.fa-rupee-sign:before {\r\n  content: \"\\F156\"; }\r\n\r\n.fa-sad-cry:before {\r\n  content: \"\\F5B3\"; }\r\n\r\n.fa-sad-tear:before {\r\n  content: \"\\F5B4\"; }\r\n\r\n.fa-safari:before {\r\n  content: \"\\F267\"; }\r\n\r\n.fa-salesforce:before {\r\n  content: \"\\F83B\"; }\r\n\r\n.fa-sass:before {\r\n  content: \"\\F41E\"; }\r\n\r\n.fa-satellite:before {\r\n  content: \"\\F7BF\"; }\r\n\r\n.fa-satellite-dish:before {\r\n  content: \"\\F7C0\"; }\r\n\r\n.fa-save:before {\r\n  content: \"\\F0C7\"; }\r\n\r\n.fa-schlix:before {\r\n  content: \"\\F3EA\"; }\r\n\r\n.fa-school:before {\r\n  content: \"\\F549\"; }\r\n\r\n.fa-screwdriver:before {\r\n  content: \"\\F54A\"; }\r\n\r\n.fa-scribd:before {\r\n  content: \"\\F28A\"; }\r\n\r\n.fa-scroll:before {\r\n  content: \"\\F70E\"; }\r\n\r\n.fa-sd-card:before {\r\n  content: \"\\F7C2\"; }\r\n\r\n.fa-search:before {\r\n  content: \"\\F002\"; }\r\n\r\n.fa-search-dollar:before {\r\n  content: \"\\F688\"; }\r\n\r\n.fa-search-location:before {\r\n  content: \"\\F689\"; }\r\n\r\n.fa-search-minus:before {\r\n  content: \"\\F010\"; }\r\n\r\n.fa-search-plus:before {\r\n  content: \"\\F00E\"; }\r\n\r\n.fa-searchengin:before {\r\n  content: \"\\F3EB\"; }\r\n\r\n.fa-seedling:before {\r\n  content: \"\\F4D8\"; }\r\n\r\n.fa-sellcast:before {\r\n  content: \"\\F2DA\"; }\r\n\r\n.fa-sellsy:before {\r\n  content: \"\\F213\"; }\r\n\r\n.fa-server:before {\r\n  content: \"\\F233\"; }\r\n\r\n.fa-servicestack:before {\r\n  content: \"\\F3EC\"; }\r\n\r\n.fa-shapes:before {\r\n  content: \"\\F61F\"; }\r\n\r\n.fa-share:before {\r\n  content: \"\\F064\"; }\r\n\r\n.fa-share-alt:before {\r\n  content: \"\\F1E0\"; }\r\n\r\n.fa-share-alt-square:before {\r\n  content: \"\\F1E1\"; }\r\n\r\n.fa-share-square:before {\r\n  content: \"\\F14D\"; }\r\n\r\n.fa-shekel-sign:before {\r\n  content: \"\\F20B\"; }\r\n\r\n.fa-shield-alt:before {\r\n  content: \"\\F3ED\"; }\r\n\r\n.fa-shield-virus:before {\r\n  content: \"\\F96C\"; }\r\n\r\n.fa-ship:before {\r\n  content: \"\\F21A\"; }\r\n\r\n.fa-shipping-fast:before {\r\n  content: \"\\F48B\"; }\r\n\r\n.fa-shirtsinbulk:before {\r\n  content: \"\\F214\"; }\r\n\r\n.fa-shoe-prints:before {\r\n  content: \"\\F54B\"; }\r\n\r\n.fa-shopify:before {\r\n  content: \"\\F957\"; }\r\n\r\n.fa-shopping-bag:before {\r\n  content: \"\\F290\"; }\r\n\r\n.fa-shopping-basket:before {\r\n  content: \"\\F291\"; }\r\n\r\n.fa-shopping-cart:before {\r\n  content: \"\\F07A\"; }\r\n\r\n.fa-shopware:before {\r\n  content: \"\\F5B5\"; }\r\n\r\n.fa-shower:before {\r\n  content: \"\\F2CC\"; }\r\n\r\n.fa-shuttle-van:before {\r\n  content: \"\\F5B6\"; }\r\n\r\n.fa-sign:before {\r\n  content: \"\\F4D9\"; }\r\n\r\n.fa-sign-in-alt:before {\r\n  content: \"\\F2F6\"; }\r\n\r\n.fa-sign-language:before {\r\n  content: \"\\F2A7\"; }\r\n\r\n.fa-sign-out-alt:before {\r\n  content: \"\\F2F5\"; }\r\n\r\n.fa-signal:before {\r\n  content: \"\\F012\"; }\r\n\r\n.fa-signature:before {\r\n  content: \"\\F5B7\"; }\r\n\r\n.fa-sim-card:before {\r\n  content: \"\\F7C4\"; }\r\n\r\n.fa-simplybuilt:before {\r\n  content: \"\\F215\"; }\r\n\r\n.fa-sistrix:before {\r\n  content: \"\\F3EE\"; }\r\n\r\n.fa-sitemap:before {\r\n  content: \"\\F0E8\"; }\r\n\r\n.fa-sith:before {\r\n  content: \"\\F512\"; }\r\n\r\n.fa-skating:before {\r\n  content: \"\\F7C5\"; }\r\n\r\n.fa-sketch:before {\r\n  content: \"\\F7C6\"; }\r\n\r\n.fa-skiing:before {\r\n  content: \"\\F7C9\"; }\r\n\r\n.fa-skiing-nordic:before {\r\n  content: \"\\F7CA\"; }\r\n\r\n.fa-skull:before {\r\n  content: \"\\F54C\"; }\r\n\r\n.fa-skull-crossbones:before {\r\n  content: \"\\F714\"; }\r\n\r\n.fa-skyatlas:before {\r\n  content: \"\\F216\"; }\r\n\r\n.fa-skype:before {\r\n  content: \"\\F17E\"; }\r\n\r\n.fa-slack:before {\r\n  content: \"\\F198\"; }\r\n\r\n.fa-slack-hash:before {\r\n  content: \"\\F3EF\"; }\r\n\r\n.fa-slash:before {\r\n  content: \"\\F715\"; }\r\n\r\n.fa-sleigh:before {\r\n  content: \"\\F7CC\"; }\r\n\r\n.fa-sliders-h:before {\r\n  content: \"\\F1DE\"; }\r\n\r\n.fa-slideshare:before {\r\n  content: \"\\F1E7\"; }\r\n\r\n.fa-smile:before {\r\n  content: \"\\F118\"; }\r\n\r\n.fa-smile-beam:before {\r\n  content: \"\\F5B8\"; }\r\n\r\n.fa-smile-wink:before {\r\n  content: \"\\F4DA\"; }\r\n\r\n.fa-smog:before {\r\n  content: \"\\F75F\"; }\r\n\r\n.fa-smoking:before {\r\n  content: \"\\F48D\"; }\r\n\r\n.fa-smoking-ban:before {\r\n  content: \"\\F54D\"; }\r\n\r\n.fa-sms:before {\r\n  content: \"\\F7CD\"; }\r\n\r\n.fa-snapchat:before {\r\n  content: \"\\F2AB\"; }\r\n\r\n.fa-snapchat-ghost:before {\r\n  content: \"\\F2AC\"; }\r\n\r\n.fa-snapchat-square:before {\r\n  content: \"\\F2AD\"; }\r\n\r\n.fa-snowboarding:before {\r\n  content: \"\\F7CE\"; }\r\n\r\n.fa-snowflake:before {\r\n  content: \"\\F2DC\"; }\r\n\r\n.fa-snowman:before {\r\n  content: \"\\F7D0\"; }\r\n\r\n.fa-snowplow:before {\r\n  content: \"\\F7D2\"; }\r\n\r\n.fa-soap:before {\r\n  content: \"\\F96E\"; }\r\n\r\n.fa-socks:before {\r\n  content: \"\\F696\"; }\r\n\r\n.fa-solar-panel:before {\r\n  content: \"\\F5BA\"; }\r\n\r\n.fa-sort:before {\r\n  content: \"\\F0DC\"; }\r\n\r\n.fa-sort-alpha-down:before {\r\n  content: \"\\F15D\"; }\r\n\r\n.fa-sort-alpha-down-alt:before {\r\n  content: \"\\F881\"; }\r\n\r\n.fa-sort-alpha-up:before {\r\n  content: \"\\F15E\"; }\r\n\r\n.fa-sort-alpha-up-alt:before {\r\n  content: \"\\F882\"; }\r\n\r\n.fa-sort-amount-down:before {\r\n  content: \"\\F160\"; }\r\n\r\n.fa-sort-amount-down-alt:before {\r\n  content: \"\\F884\"; }\r\n\r\n.fa-sort-amount-up:before {\r\n  content: \"\\F161\"; }\r\n\r\n.fa-sort-amount-up-alt:before {\r\n  content: \"\\F885\"; }\r\n\r\n.fa-sort-down:before {\r\n  content: \"\\F0DD\"; }\r\n\r\n.fa-sort-numeric-down:before {\r\n  content: \"\\F162\"; }\r\n\r\n.fa-sort-numeric-down-alt:before {\r\n  content: \"\\F886\"; }\r\n\r\n.fa-sort-numeric-up:before {\r\n  content: \"\\F163\"; }\r\n\r\n.fa-sort-numeric-up-alt:before {\r\n  content: \"\\F887\"; }\r\n\r\n.fa-sort-up:before {\r\n  content: \"\\F0DE\"; }\r\n\r\n.fa-soundcloud:before {\r\n  content: \"\\F1BE\"; }\r\n\r\n.fa-sourcetree:before {\r\n  content: \"\\F7D3\"; }\r\n\r\n.fa-spa:before {\r\n  content: \"\\F5BB\"; }\r\n\r\n.fa-space-shuttle:before {\r\n  content: \"\\F197\"; }\r\n\r\n.fa-speakap:before {\r\n  content: \"\\F3F3\"; }\r\n\r\n.fa-speaker-deck:before {\r\n  content: \"\\F83C\"; }\r\n\r\n.fa-spell-check:before {\r\n  content: \"\\F891\"; }\r\n\r\n.fa-spider:before {\r\n  content: \"\\F717\"; }\r\n\r\n.fa-spinner:before {\r\n  content: \"\\F110\"; }\r\n\r\n.fa-splotch:before {\r\n  content: \"\\F5BC\"; }\r\n\r\n.fa-spotify:before {\r\n  content: \"\\F1BC\"; }\r\n\r\n.fa-spray-can:before {\r\n  content: \"\\F5BD\"; }\r\n\r\n.fa-square:before {\r\n  content: \"\\F0C8\"; }\r\n\r\n.fa-square-full:before {\r\n  content: \"\\F45C\"; }\r\n\r\n.fa-square-root-alt:before {\r\n  content: \"\\F698\"; }\r\n\r\n.fa-squarespace:before {\r\n  content: \"\\F5BE\"; }\r\n\r\n.fa-stack-exchange:before {\r\n  content: \"\\F18D\"; }\r\n\r\n.fa-stack-overflow:before {\r\n  content: \"\\F16C\"; }\r\n\r\n.fa-stackpath:before {\r\n  content: \"\\F842\"; }\r\n\r\n.fa-stamp:before {\r\n  content: \"\\F5BF\"; }\r\n\r\n.fa-star:before {\r\n  content: \"\\F005\"; }\r\n\r\n.fa-star-and-crescent:before {\r\n  content: \"\\F699\"; }\r\n\r\n.fa-star-half:before {\r\n  content: \"\\F089\"; }\r\n\r\n.fa-star-half-alt:before {\r\n  content: \"\\F5C0\"; }\r\n\r\n.fa-star-of-david:before {\r\n  content: \"\\F69A\"; }\r\n\r\n.fa-star-of-life:before {\r\n  content: \"\\F621\"; }\r\n\r\n.fa-staylinked:before {\r\n  content: \"\\F3F5\"; }\r\n\r\n.fa-steam:before {\r\n  content: \"\\F1B6\"; }\r\n\r\n.fa-steam-square:before {\r\n  content: \"\\F1B7\"; }\r\n\r\n.fa-steam-symbol:before {\r\n  content: \"\\F3F6\"; }\r\n\r\n.fa-step-backward:before {\r\n  content: \"\\F048\"; }\r\n\r\n.fa-step-forward:before {\r\n  content: \"\\F051\"; }\r\n\r\n.fa-stethoscope:before {\r\n  content: \"\\F0F1\"; }\r\n\r\n.fa-sticker-mule:before {\r\n  content: \"\\F3F7\"; }\r\n\r\n.fa-sticky-note:before {\r\n  content: \"\\F249\"; }\r\n\r\n.fa-stop:before {\r\n  content: \"\\F04D\"; }\r\n\r\n.fa-stop-circle:before {\r\n  content: \"\\F28D\"; }\r\n\r\n.fa-stopwatch:before {\r\n  content: \"\\F2F2\"; }\r\n\r\n.fa-stopwatch-20:before {\r\n  content: \"\\F96F\"; }\r\n\r\n.fa-store:before {\r\n  content: \"\\F54E\"; }\r\n\r\n.fa-store-alt:before {\r\n  content: \"\\F54F\"; }\r\n\r\n.fa-store-alt-slash:before {\r\n  content: \"\\F970\"; }\r\n\r\n.fa-store-slash:before {\r\n  content: \"\\F971\"; }\r\n\r\n.fa-strava:before {\r\n  content: \"\\F428\"; }\r\n\r\n.fa-stream:before {\r\n  content: \"\\F550\"; }\r\n\r\n.fa-street-view:before {\r\n  content: \"\\F21D\"; }\r\n\r\n.fa-strikethrough:before {\r\n  content: \"\\F0CC\"; }\r\n\r\n.fa-stripe:before {\r\n  content: \"\\F429\"; }\r\n\r\n.fa-stripe-s:before {\r\n  content: \"\\F42A\"; }\r\n\r\n.fa-stroopwafel:before {\r\n  content: \"\\F551\"; }\r\n\r\n.fa-studiovinari:before {\r\n  content: \"\\F3F8\"; }\r\n\r\n.fa-stumbleupon:before {\r\n  content: \"\\F1A4\"; }\r\n\r\n.fa-stumbleupon-circle:before {\r\n  content: \"\\F1A3\"; }\r\n\r\n.fa-subscript:before {\r\n  content: \"\\F12C\"; }\r\n\r\n.fa-subway:before {\r\n  content: \"\\F239\"; }\r\n\r\n.fa-suitcase:before {\r\n  content: \"\\F0F2\"; }\r\n\r\n.fa-suitcase-rolling:before {\r\n  content: \"\\F5C1\"; }\r\n\r\n.fa-sun:before {\r\n  content: \"\\F185\"; }\r\n\r\n.fa-superpowers:before {\r\n  content: \"\\F2DD\"; }\r\n\r\n.fa-superscript:before {\r\n  content: \"\\F12B\"; }\r\n\r\n.fa-supple:before {\r\n  content: \"\\F3F9\"; }\r\n\r\n.fa-surprise:before {\r\n  content: \"\\F5C2\"; }\r\n\r\n.fa-suse:before {\r\n  content: \"\\F7D6\"; }\r\n\r\n.fa-swatchbook:before {\r\n  content: \"\\F5C3\"; }\r\n\r\n.fa-swift:before {\r\n  content: \"\\F8E1\"; }\r\n\r\n.fa-swimmer:before {\r\n  content: \"\\F5C4\"; }\r\n\r\n.fa-swimming-pool:before {\r\n  content: \"\\F5C5\"; }\r\n\r\n.fa-symfony:before {\r\n  content: \"\\F83D\"; }\r\n\r\n.fa-synagogue:before {\r\n  content: \"\\F69B\"; }\r\n\r\n.fa-sync:before {\r\n  content: \"\\F021\"; }\r\n\r\n.fa-sync-alt:before {\r\n  content: \"\\F2F1\"; }\r\n\r\n.fa-syringe:before {\r\n  content: \"\\F48E\"; }\r\n\r\n.fa-table:before {\r\n  content: \"\\F0CE\"; }\r\n\r\n.fa-table-tennis:before {\r\n  content: \"\\F45D\"; }\r\n\r\n.fa-tablet:before {\r\n  content: \"\\F10A\"; }\r\n\r\n.fa-tablet-alt:before {\r\n  content: \"\\F3FA\"; }\r\n\r\n.fa-tablets:before {\r\n  content: \"\\F490\"; }\r\n\r\n.fa-tachometer-alt:before {\r\n  content: \"\\F3FD\"; }\r\n\r\n.fa-tag:before {\r\n  content: \"\\F02B\"; }\r\n\r\n.fa-tags:before {\r\n  content: \"\\F02C\"; }\r\n\r\n.fa-tape:before {\r\n  content: \"\\F4DB\"; }\r\n\r\n.fa-tasks:before {\r\n  content: \"\\F0AE\"; }\r\n\r\n.fa-taxi:before {\r\n  content: \"\\F1BA\"; }\r\n\r\n.fa-teamspeak:before {\r\n  content: \"\\F4F9\"; }\r\n\r\n.fa-teeth:before {\r\n  content: \"\\F62E\"; }\r\n\r\n.fa-teeth-open:before {\r\n  content: \"\\F62F\"; }\r\n\r\n.fa-telegram:before {\r\n  content: \"\\F2C6\"; }\r\n\r\n.fa-telegram-plane:before {\r\n  content: \"\\F3FE\"; }\r\n\r\n.fa-temperature-high:before {\r\n  content: \"\\F769\"; }\r\n\r\n.fa-temperature-low:before {\r\n  content: \"\\F76B\"; }\r\n\r\n.fa-tencent-weibo:before {\r\n  content: \"\\F1D5\"; }\r\n\r\n.fa-tenge:before {\r\n  content: \"\\F7D7\"; }\r\n\r\n.fa-terminal:before {\r\n  content: \"\\F120\"; }\r\n\r\n.fa-text-height:before {\r\n  content: \"\\F034\"; }\r\n\r\n.fa-text-width:before {\r\n  content: \"\\F035\"; }\r\n\r\n.fa-th:before {\r\n  content: \"\\F00A\"; }\r\n\r\n.fa-th-large:before {\r\n  content: \"\\F009\"; }\r\n\r\n.fa-th-list:before {\r\n  content: \"\\F00B\"; }\r\n\r\n.fa-the-red-yeti:before {\r\n  content: \"\\F69D\"; }\r\n\r\n.fa-theater-masks:before {\r\n  content: \"\\F630\"; }\r\n\r\n.fa-themeco:before {\r\n  content: \"\\F5C6\"; }\r\n\r\n.fa-themeisle:before {\r\n  content: \"\\F2B2\"; }\r\n\r\n.fa-thermometer:before {\r\n  content: \"\\F491\"; }\r\n\r\n.fa-thermometer-empty:before {\r\n  content: \"\\F2CB\"; }\r\n\r\n.fa-thermometer-full:before {\r\n  content: \"\\F2C7\"; }\r\n\r\n.fa-thermometer-half:before {\r\n  content: \"\\F2C9\"; }\r\n\r\n.fa-thermometer-quarter:before {\r\n  content: \"\\F2CA\"; }\r\n\r\n.fa-thermometer-three-quarters:before {\r\n  content: \"\\F2C8\"; }\r\n\r\n.fa-think-peaks:before {\r\n  content: \"\\F731\"; }\r\n\r\n.fa-thumbs-down:before {\r\n  content: \"\\F165\"; }\r\n\r\n.fa-thumbs-up:before {\r\n  content: \"\\F164\"; }\r\n\r\n.fa-thumbtack:before {\r\n  content: \"\\F08D\"; }\r\n\r\n.fa-ticket-alt:before {\r\n  content: \"\\F3FF\"; }\r\n\r\n.fa-times:before {\r\n  content: \"\\F00D\"; }\r\n\r\n.fa-times-circle:before {\r\n  content: \"\\F057\"; }\r\n\r\n.fa-tint:before {\r\n  content: \"\\F043\"; }\r\n\r\n.fa-tint-slash:before {\r\n  content: \"\\F5C7\"; }\r\n\r\n.fa-tired:before {\r\n  content: \"\\F5C8\"; }\r\n\r\n.fa-toggle-off:before {\r\n  content: \"\\F204\"; }\r\n\r\n.fa-toggle-on:before {\r\n  content: \"\\F205\"; }\r\n\r\n.fa-toilet:before {\r\n  content: \"\\F7D8\"; }\r\n\r\n.fa-toilet-paper:before {\r\n  content: \"\\F71E\"; }\r\n\r\n.fa-toilet-paper-slash:before {\r\n  content: \"\\F972\"; }\r\n\r\n.fa-toolbox:before {\r\n  content: \"\\F552\"; }\r\n\r\n.fa-tools:before {\r\n  content: \"\\F7D9\"; }\r\n\r\n.fa-tooth:before {\r\n  content: \"\\F5C9\"; }\r\n\r\n.fa-torah:before {\r\n  content: \"\\F6A0\"; }\r\n\r\n.fa-torii-gate:before {\r\n  content: \"\\F6A1\"; }\r\n\r\n.fa-tractor:before {\r\n  content: \"\\F722\"; }\r\n\r\n.fa-trade-federation:before {\r\n  content: \"\\F513\"; }\r\n\r\n.fa-trademark:before {\r\n  content: \"\\F25C\"; }\r\n\r\n.fa-traffic-light:before {\r\n  content: \"\\F637\"; }\r\n\r\n.fa-trailer:before {\r\n  content: \"\\F941\"; }\r\n\r\n.fa-train:before {\r\n  content: \"\\F238\"; }\r\n\r\n.fa-tram:before {\r\n  content: \"\\F7DA\"; }\r\n\r\n.fa-transgender:before {\r\n  content: \"\\F224\"; }\r\n\r\n.fa-transgender-alt:before {\r\n  content: \"\\F225\"; }\r\n\r\n.fa-trash:before {\r\n  content: \"\\F1F8\"; }\r\n\r\n.fa-trash-alt:before {\r\n  content: \"\\F2ED\"; }\r\n\r\n.fa-trash-restore:before {\r\n  content: \"\\F829\"; }\r\n\r\n.fa-trash-restore-alt:before {\r\n  content: \"\\F82A\"; }\r\n\r\n.fa-tree:before {\r\n  content: \"\\F1BB\"; }\r\n\r\n.fa-trello:before {\r\n  content: \"\\F181\"; }\r\n\r\n.fa-tripadvisor:before {\r\n  content: \"\\F262\"; }\r\n\r\n.fa-trophy:before {\r\n  content: \"\\F091\"; }\r\n\r\n.fa-truck:before {\r\n  content: \"\\F0D1\"; }\r\n\r\n.fa-truck-loading:before {\r\n  content: \"\\F4DE\"; }\r\n\r\n.fa-truck-monster:before {\r\n  content: \"\\F63B\"; }\r\n\r\n.fa-truck-moving:before {\r\n  content: \"\\F4DF\"; }\r\n\r\n.fa-truck-pickup:before {\r\n  content: \"\\F63C\"; }\r\n\r\n.fa-tshirt:before {\r\n  content: \"\\F553\"; }\r\n\r\n.fa-tty:before {\r\n  content: \"\\F1E4\"; }\r\n\r\n.fa-tumblr:before {\r\n  content: \"\\F173\"; }\r\n\r\n.fa-tumblr-square:before {\r\n  content: \"\\F174\"; }\r\n\r\n.fa-tv:before {\r\n  content: \"\\F26C\"; }\r\n\r\n.fa-twitch:before {\r\n  content: \"\\F1E8\"; }\r\n\r\n.fa-twitter:before {\r\n  content: \"\\F099\"; }\r\n\r\n.fa-twitter-square:before {\r\n  content: \"\\F081\"; }\r\n\r\n.fa-typo3:before {\r\n  content: \"\\F42B\"; }\r\n\r\n.fa-uber:before {\r\n  content: \"\\F402\"; }\r\n\r\n.fa-ubuntu:before {\r\n  content: \"\\F7DF\"; }\r\n\r\n.fa-uikit:before {\r\n  content: \"\\F403\"; }\r\n\r\n.fa-umbraco:before {\r\n  content: \"\\F8E8\"; }\r\n\r\n.fa-umbrella:before {\r\n  content: \"\\F0E9\"; }\r\n\r\n.fa-umbrella-beach:before {\r\n  content: \"\\F5CA\"; }\r\n\r\n.fa-underline:before {\r\n  content: \"\\F0CD\"; }\r\n\r\n.fa-undo:before {\r\n  content: \"\\F0E2\"; }\r\n\r\n.fa-undo-alt:before {\r\n  content: \"\\F2EA\"; }\r\n\r\n.fa-uniregistry:before {\r\n  content: \"\\F404\"; }\r\n\r\n.fa-unity:before {\r\n  content: \"\\F949\"; }\r\n\r\n.fa-universal-access:before {\r\n  content: \"\\F29A\"; }\r\n\r\n.fa-university:before {\r\n  content: \"\\F19C\"; }\r\n\r\n.fa-unlink:before {\r\n  content: \"\\F127\"; }\r\n\r\n.fa-unlock:before {\r\n  content: \"\\F09C\"; }\r\n\r\n.fa-unlock-alt:before {\r\n  content: \"\\F13E\"; }\r\n\r\n.fa-untappd:before {\r\n  content: \"\\F405\"; }\r\n\r\n.fa-upload:before {\r\n  content: \"\\F093\"; }\r\n\r\n.fa-ups:before {\r\n  content: \"\\F7E0\"; }\r\n\r\n.fa-usb:before {\r\n  content: \"\\F287\"; }\r\n\r\n.fa-user:before {\r\n  content: \"\\F007\"; }\r\n\r\n.fa-user-alt:before {\r\n  content: \"\\F406\"; }\r\n\r\n.fa-user-alt-slash:before {\r\n  content: \"\\F4FA\"; }\r\n\r\n.fa-user-astronaut:before {\r\n  content: \"\\F4FB\"; }\r\n\r\n.fa-user-check:before {\r\n  content: \"\\F4FC\"; }\r\n\r\n.fa-user-circle:before {\r\n  content: \"\\F2BD\"; }\r\n\r\n.fa-user-clock:before {\r\n  content: \"\\F4FD\"; }\r\n\r\n.fa-user-cog:before {\r\n  content: \"\\F4FE\"; }\r\n\r\n.fa-user-edit:before {\r\n  content: \"\\F4FF\"; }\r\n\r\n.fa-user-friends:before {\r\n  content: \"\\F500\"; }\r\n\r\n.fa-user-graduate:before {\r\n  content: \"\\F501\"; }\r\n\r\n.fa-user-injured:before {\r\n  content: \"\\F728\"; }\r\n\r\n.fa-user-lock:before {\r\n  content: \"\\F502\"; }\r\n\r\n.fa-user-md:before {\r\n  content: \"\\F0F0\"; }\r\n\r\n.fa-user-minus:before {\r\n  content: \"\\F503\"; }\r\n\r\n.fa-user-ninja:before {\r\n  content: \"\\F504\"; }\r\n\r\n.fa-user-nurse:before {\r\n  content: \"\\F82F\"; }\r\n\r\n.fa-user-plus:before {\r\n  content: \"\\F234\"; }\r\n\r\n.fa-user-secret:before {\r\n  content: \"\\F21B\"; }\r\n\r\n.fa-user-shield:before {\r\n  content: \"\\F505\"; }\r\n\r\n.fa-user-slash:before {\r\n  content: \"\\F506\"; }\r\n\r\n.fa-user-tag:before {\r\n  content: \"\\F507\"; }\r\n\r\n.fa-user-tie:before {\r\n  content: \"\\F508\"; }\r\n\r\n.fa-user-times:before {\r\n  content: \"\\F235\"; }\r\n\r\n.fa-users:before {\r\n  content: \"\\F0C0\"; }\r\n\r\n.fa-users-cog:before {\r\n  content: \"\\F509\"; }\r\n\r\n.fa-usps:before {\r\n  content: \"\\F7E1\"; }\r\n\r\n.fa-ussunnah:before {\r\n  content: \"\\F407\"; }\r\n\r\n.fa-utensil-spoon:before {\r\n  content: \"\\F2E5\"; }\r\n\r\n.fa-utensils:before {\r\n  content: \"\\F2E7\"; }\r\n\r\n.fa-vaadin:before {\r\n  content: \"\\F408\"; }\r\n\r\n.fa-vector-square:before {\r\n  content: \"\\F5CB\"; }\r\n\r\n.fa-venus:before {\r\n  content: \"\\F221\"; }\r\n\r\n.fa-venus-double:before {\r\n  content: \"\\F226\"; }\r\n\r\n.fa-venus-mars:before {\r\n  content: \"\\F228\"; }\r\n\r\n.fa-viacoin:before {\r\n  content: \"\\F237\"; }\r\n\r\n.fa-viadeo:before {\r\n  content: \"\\F2A9\"; }\r\n\r\n.fa-viadeo-square:before {\r\n  content: \"\\F2AA\"; }\r\n\r\n.fa-vial:before {\r\n  content: \"\\F492\"; }\r\n\r\n.fa-vials:before {\r\n  content: \"\\F493\"; }\r\n\r\n.fa-viber:before {\r\n  content: \"\\F409\"; }\r\n\r\n.fa-video:before {\r\n  content: \"\\F03D\"; }\r\n\r\n.fa-video-slash:before {\r\n  content: \"\\F4E2\"; }\r\n\r\n.fa-vihara:before {\r\n  content: \"\\F6A7\"; }\r\n\r\n.fa-vimeo:before {\r\n  content: \"\\F40A\"; }\r\n\r\n.fa-vimeo-square:before {\r\n  content: \"\\F194\"; }\r\n\r\n.fa-vimeo-v:before {\r\n  content: \"\\F27D\"; }\r\n\r\n.fa-vine:before {\r\n  content: \"\\F1CA\"; }\r\n\r\n.fa-virus:before {\r\n  content: \"\\F974\"; }\r\n\r\n.fa-virus-slash:before {\r\n  content: \"\\F975\"; }\r\n\r\n.fa-viruses:before {\r\n  content: \"\\F976\"; }\r\n\r\n.fa-vk:before {\r\n  content: \"\\F189\"; }\r\n\r\n.fa-vnv:before {\r\n  content: \"\\F40B\"; }\r\n\r\n.fa-voicemail:before {\r\n  content: \"\\F897\"; }\r\n\r\n.fa-volleyball-ball:before {\r\n  content: \"\\F45F\"; }\r\n\r\n.fa-volume-down:before {\r\n  content: \"\\F027\"; }\r\n\r\n.fa-volume-mute:before {\r\n  content: \"\\F6A9\"; }\r\n\r\n.fa-volume-off:before {\r\n  content: \"\\F026\"; }\r\n\r\n.fa-volume-up:before {\r\n  content: \"\\F028\"; }\r\n\r\n.fa-vote-yea:before {\r\n  content: \"\\F772\"; }\r\n\r\n.fa-vr-cardboard:before {\r\n  content: \"\\F729\"; }\r\n\r\n.fa-vuejs:before {\r\n  content: \"\\F41F\"; }\r\n\r\n.fa-walking:before {\r\n  content: \"\\F554\"; }\r\n\r\n.fa-wallet:before {\r\n  content: \"\\F555\"; }\r\n\r\n.fa-warehouse:before {\r\n  content: \"\\F494\"; }\r\n\r\n.fa-water:before {\r\n  content: \"\\F773\"; }\r\n\r\n.fa-wave-square:before {\r\n  content: \"\\F83E\"; }\r\n\r\n.fa-waze:before {\r\n  content: \"\\F83F\"; }\r\n\r\n.fa-weebly:before {\r\n  content: \"\\F5CC\"; }\r\n\r\n.fa-weibo:before {\r\n  content: \"\\F18A\"; }\r\n\r\n.fa-weight:before {\r\n  content: \"\\F496\"; }\r\n\r\n.fa-weight-hanging:before {\r\n  content: \"\\F5CD\"; }\r\n\r\n.fa-weixin:before {\r\n  content: \"\\F1D7\"; }\r\n\r\n.fa-whatsapp:before {\r\n  content: \"\\F232\"; }\r\n\r\n.fa-whatsapp-square:before {\r\n  content: \"\\F40C\"; }\r\n\r\n.fa-wheelchair:before {\r\n  content: \"\\F193\"; }\r\n\r\n.fa-whmcs:before {\r\n  content: \"\\F40D\"; }\r\n\r\n.fa-wifi:before {\r\n  content: \"\\F1EB\"; }\r\n\r\n.fa-wikipedia-w:before {\r\n  content: \"\\F266\"; }\r\n\r\n.fa-wind:before {\r\n  content: \"\\F72E\"; }\r\n\r\n.fa-window-close:before {\r\n  content: \"\\F410\"; }\r\n\r\n.fa-window-maximize:before {\r\n  content: \"\\F2D0\"; }\r\n\r\n.fa-window-minimize:before {\r\n  content: \"\\F2D1\"; }\r\n\r\n.fa-window-restore:before {\r\n  content: \"\\F2D2\"; }\r\n\r\n.fa-windows:before {\r\n  content: \"\\F17A\"; }\r\n\r\n.fa-wine-bottle:before {\r\n  content: \"\\F72F\"; }\r\n\r\n.fa-wine-glass:before {\r\n  content: \"\\F4E3\"; }\r\n\r\n.fa-wine-glass-alt:before {\r\n  content: \"\\F5CE\"; }\r\n\r\n.fa-wix:before {\r\n  content: \"\\F5CF\"; }\r\n\r\n.fa-wizards-of-the-coast:before {\r\n  content: \"\\F730\"; }\r\n\r\n.fa-wolf-pack-battalion:before {\r\n  content: \"\\F514\"; }\r\n\r\n.fa-won-sign:before {\r\n  content: \"\\F159\"; }\r\n\r\n.fa-wordpress:before {\r\n  content: \"\\F19A\"; }\r\n\r\n.fa-wordpress-simple:before {\r\n  content: \"\\F411\"; }\r\n\r\n.fa-wpbeginner:before {\r\n  content: \"\\F297\"; }\r\n\r\n.fa-wpexplorer:before {\r\n  content: \"\\F2DE\"; }\r\n\r\n.fa-wpforms:before {\r\n  content: \"\\F298\"; }\r\n\r\n.fa-wpressr:before {\r\n  content: \"\\F3E4\"; }\r\n\r\n.fa-wrench:before {\r\n  content: \"\\F0AD\"; }\r\n\r\n.fa-x-ray:before {\r\n  content: \"\\F497\"; }\r\n\r\n.fa-xbox:before {\r\n  content: \"\\F412\"; }\r\n\r\n.fa-xing:before {\r\n  content: \"\\F168\"; }\r\n\r\n.fa-xing-square:before {\r\n  content: \"\\F169\"; }\r\n\r\n.fa-y-combinator:before {\r\n  content: \"\\F23B\"; }\r\n\r\n.fa-yahoo:before {\r\n  content: \"\\F19E\"; }\r\n\r\n.fa-yammer:before {\r\n  content: \"\\F840\"; }\r\n\r\n.fa-yandex:before {\r\n  content: \"\\F413\"; }\r\n\r\n.fa-yandex-international:before {\r\n  content: \"\\F414\"; }\r\n\r\n.fa-yarn:before {\r\n  content: \"\\F7E3\"; }\r\n\r\n.fa-yelp:before {\r\n  content: \"\\F1E9\"; }\r\n\r\n.fa-yen-sign:before {\r\n  content: \"\\F157\"; }\r\n\r\n.fa-yin-yang:before {\r\n  content: \"\\F6AD\"; }\r\n\r\n.fa-yoast:before {\r\n  content: \"\\F2B1\"; }\r\n\r\n.fa-youtube:before {\r\n  content: \"\\F167\"; }\r\n\r\n.fa-youtube-square:before {\r\n  content: \"\\F431\"; }\r\n\r\n.fa-zhihu:before {\r\n  content: \"\\F63F\"; }\r\n\r\n.sr-only {\r\n  border: 0;\r\n  clip: rect(0, 0, 0, 0);\r\n  height: 1px;\r\n  margin: -1px;\r\n  overflow: hidden;\r\n  padding: 0;\r\n  position: absolute;\r\n  width: 1px; }\r\n\r\n.sr-only-focusable:active, .sr-only-focusable:focus {\r\n  clip: auto;\r\n  height: auto;\r\n  margin: 0;\r\n  overflow: visible;\r\n  position: static;\r\n  width: auto; }\r\n@font-face {\r\n  font-family: 'Font Awesome 5 Brands';\r\n  font-style: normal;\r\n  font-weight: 400;\r\n  font-display: block;\r\n  src: url(" + escape(__webpack_require__(22)) + ");\r\n  src: url(" + escape(__webpack_require__(22)) + "?#iefix) format(\"embedded-opentype\"), url(" + escape(__webpack_require__(97)) + ") format(\"woff2\"), url(" + escape(__webpack_require__(98)) + ") format(\"woff\"), url(" + escape(__webpack_require__(99)) + ") format(\"truetype\"), url(" + escape(__webpack_require__(100)) + "#fontawesome) format(\"svg\"); }\r\n\r\n.fab {\r\n  font-family: 'Font Awesome 5 Brands';\r\n  font-weight: 400; }\r\n@font-face {\r\n  font-family: 'Font Awesome 5 Free';\r\n  font-style: normal;\r\n  font-weight: 400;\r\n  font-display: block;\r\n  src: url(" + escape(__webpack_require__(23)) + ");\r\n  src: url(" + escape(__webpack_require__(23)) + "?#iefix) format(\"embedded-opentype\"), url(" + escape(__webpack_require__(101)) + ") format(\"woff2\"), url(" + escape(__webpack_require__(102)) + ") format(\"woff\"), url(" + escape(__webpack_require__(103)) + ") format(\"truetype\"), url(" + escape(__webpack_require__(104)) + "#fontawesome) format(\"svg\"); }\r\n\r\n.far {\r\n  font-family: 'Font Awesome 5 Free';\r\n  font-weight: 400; }\r\n@font-face {\r\n  font-family: 'Font Awesome 5 Free';\r\n  font-style: normal;\r\n  font-weight: 900;\r\n  font-display: block;\r\n  src: url(" + escape(__webpack_require__(24)) + ");\r\n  src: url(" + escape(__webpack_require__(24)) + "?#iefix) format(\"embedded-opentype\"), url(" + escape(__webpack_require__(105)) + ") format(\"woff2\"), url(" + escape(__webpack_require__(106)) + ") format(\"woff\"), url(" + escape(__webpack_require__(107)) + ") format(\"truetype\"), url(" + escape(__webpack_require__(108)) + "#fontawesome) format(\"svg\"); }\r\n\r\n.fa,\r\n.fas {\r\n  font-family: 'Font Awesome 5 Free';\r\n  font-weight: 900; }\r\n", ""]);
+exports.push([module.i, "/*!\r\n * Font Awesome Free 5.13.0 by @fontawesome - https://fontawesome.com\r\n * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)\r\n */\r\n.fa,\r\n.fas,\r\n.far,\r\n.fal,\r\n.fad,\r\n.fab {\r\n  -moz-osx-font-smoothing: grayscale;\r\n  -webkit-font-smoothing: antialiased;\r\n  display: inline-block;\r\n  font-style: normal;\r\n  font-variant: normal;\r\n  text-rendering: auto;\r\n  line-height: 1; }\r\n\r\n.fa-lg {\r\n  font-size: 1.33333em;\r\n  line-height: 0.75em;\r\n  vertical-align: -.0667em; }\r\n\r\n.fa-xs {\r\n  font-size: .75em; }\r\n\r\n.fa-sm {\r\n  font-size: .875em; }\r\n\r\n.fa-1x {\r\n  font-size: 1em; }\r\n\r\n.fa-2x {\r\n  font-size: 2em; }\r\n\r\n.fa-3x {\r\n  font-size: 3em; }\r\n\r\n.fa-4x {\r\n  font-size: 4em; }\r\n\r\n.fa-5x {\r\n  font-size: 5em; }\r\n\r\n.fa-6x {\r\n  font-size: 6em; }\r\n\r\n.fa-7x {\r\n  font-size: 7em; }\r\n\r\n.fa-8x {\r\n  font-size: 8em; }\r\n\r\n.fa-9x {\r\n  font-size: 9em; }\r\n\r\n.fa-10x {\r\n  font-size: 10em; }\r\n\r\n.fa-fw {\r\n  text-align: center;\r\n  width: 1.25em; }\r\n\r\n.fa-ul {\r\n  list-style-type: none;\r\n  margin-left: 2.5em;\r\n  padding-left: 0; }\r\n  .fa-ul > li {\r\n    position: relative; }\r\n\r\n.fa-li {\r\n  left: -2em;\r\n  position: absolute;\r\n  text-align: center;\r\n  width: 2em;\r\n  line-height: inherit; }\r\n\r\n.fa-border {\r\n  border: solid 0.08em #eee;\r\n  border-radius: .1em;\r\n  padding: .2em .25em .15em; }\r\n\r\n.fa-pull-left {\r\n  float: left; }\r\n\r\n.fa-pull-right {\r\n  float: right; }\r\n\r\n.fa.fa-pull-left,\r\n.fas.fa-pull-left,\r\n.far.fa-pull-left,\r\n.fal.fa-pull-left,\r\n.fab.fa-pull-left {\r\n  margin-right: .3em; }\r\n\r\n.fa.fa-pull-right,\r\n.fas.fa-pull-right,\r\n.far.fa-pull-right,\r\n.fal.fa-pull-right,\r\n.fab.fa-pull-right {\r\n  margin-left: .3em; }\r\n\r\n.fa-spin {\r\n  -webkit-animation: fa-spin 2s infinite linear;\r\n          animation: fa-spin 2s infinite linear; }\r\n\r\n.fa-pulse {\r\n  -webkit-animation: fa-spin 1s infinite steps(8);\r\n          animation: fa-spin 1s infinite steps(8); }\r\n\r\n@-webkit-keyframes fa-spin {\r\n  0% {\r\n    -webkit-transform: rotate(0deg);\r\n            transform: rotate(0deg); }\r\n  100% {\r\n    -webkit-transform: rotate(360deg);\r\n            transform: rotate(360deg); } }\r\n\r\n@keyframes fa-spin {\r\n  0% {\r\n    -webkit-transform: rotate(0deg);\r\n            transform: rotate(0deg); }\r\n  100% {\r\n    -webkit-transform: rotate(360deg);\r\n            transform: rotate(360deg); } }\r\n\r\n.fa-rotate-90 {\r\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=1)\";\r\n  -webkit-transform: rotate(90deg);\r\n          transform: rotate(90deg); }\r\n\r\n.fa-rotate-180 {\r\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2)\";\r\n  -webkit-transform: rotate(180deg);\r\n          transform: rotate(180deg); }\r\n\r\n.fa-rotate-270 {\r\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=3)\";\r\n  -webkit-transform: rotate(270deg);\r\n          transform: rotate(270deg); }\r\n\r\n.fa-flip-horizontal {\r\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)\";\r\n  -webkit-transform: scale(-1, 1);\r\n          transform: scale(-1, 1); }\r\n\r\n.fa-flip-vertical {\r\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)\";\r\n  -webkit-transform: scale(1, -1);\r\n          transform: scale(1, -1); }\r\n\r\n.fa-flip-both, .fa-flip-horizontal.fa-flip-vertical {\r\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)\";\r\n  -webkit-transform: scale(-1, -1);\r\n          transform: scale(-1, -1); }\r\n\r\n:root .fa-rotate-90,\r\n:root .fa-rotate-180,\r\n:root .fa-rotate-270,\r\n:root .fa-flip-horizontal,\r\n:root .fa-flip-vertical,\r\n:root .fa-flip-both {\r\n  -webkit-filter: none;\r\n          filter: none; }\r\n\r\n.fa-stack {\r\n  display: inline-block;\r\n  height: 2em;\r\n  line-height: 2em;\r\n  position: relative;\r\n  vertical-align: middle;\r\n  width: 2.5em; }\r\n\r\n.fa-stack-1x,\r\n.fa-stack-2x {\r\n  left: 0;\r\n  position: absolute;\r\n  text-align: center;\r\n  width: 100%; }\r\n\r\n.fa-stack-1x {\r\n  line-height: inherit; }\r\n\r\n.fa-stack-2x {\r\n  font-size: 2em; }\r\n\r\n.fa-inverse {\r\n  color: #fff; }\r\n\r\n/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen\r\nreaders do not read off random characters that represent icons */\r\n.fa-500px:before {\r\n  content: \"\\F26E\"; }\r\n\r\n.fa-accessible-icon:before {\r\n  content: \"\\F368\"; }\r\n\r\n.fa-accusoft:before {\r\n  content: \"\\F369\"; }\r\n\r\n.fa-acquisitions-incorporated:before {\r\n  content: \"\\F6AF\"; }\r\n\r\n.fa-ad:before {\r\n  content: \"\\F641\"; }\r\n\r\n.fa-address-book:before {\r\n  content: \"\\F2B9\"; }\r\n\r\n.fa-address-card:before {\r\n  content: \"\\F2BB\"; }\r\n\r\n.fa-adjust:before {\r\n  content: \"\\F042\"; }\r\n\r\n.fa-adn:before {\r\n  content: \"\\F170\"; }\r\n\r\n.fa-adobe:before {\r\n  content: \"\\F778\"; }\r\n\r\n.fa-adversal:before {\r\n  content: \"\\F36A\"; }\r\n\r\n.fa-affiliatetheme:before {\r\n  content: \"\\F36B\"; }\r\n\r\n.fa-air-freshener:before {\r\n  content: \"\\F5D0\"; }\r\n\r\n.fa-airbnb:before {\r\n  content: \"\\F834\"; }\r\n\r\n.fa-algolia:before {\r\n  content: \"\\F36C\"; }\r\n\r\n.fa-align-center:before {\r\n  content: \"\\F037\"; }\r\n\r\n.fa-align-justify:before {\r\n  content: \"\\F039\"; }\r\n\r\n.fa-align-left:before {\r\n  content: \"\\F036\"; }\r\n\r\n.fa-align-right:before {\r\n  content: \"\\F038\"; }\r\n\r\n.fa-alipay:before {\r\n  content: \"\\F642\"; }\r\n\r\n.fa-allergies:before {\r\n  content: \"\\F461\"; }\r\n\r\n.fa-amazon:before {\r\n  content: \"\\F270\"; }\r\n\r\n.fa-amazon-pay:before {\r\n  content: \"\\F42C\"; }\r\n\r\n.fa-ambulance:before {\r\n  content: \"\\F0F9\"; }\r\n\r\n.fa-american-sign-language-interpreting:before {\r\n  content: \"\\F2A3\"; }\r\n\r\n.fa-amilia:before {\r\n  content: \"\\F36D\"; }\r\n\r\n.fa-anchor:before {\r\n  content: \"\\F13D\"; }\r\n\r\n.fa-android:before {\r\n  content: \"\\F17B\"; }\r\n\r\n.fa-angellist:before {\r\n  content: \"\\F209\"; }\r\n\r\n.fa-angle-double-down:before {\r\n  content: \"\\F103\"; }\r\n\r\n.fa-angle-double-left:before {\r\n  content: \"\\F100\"; }\r\n\r\n.fa-angle-double-right:before {\r\n  content: \"\\F101\"; }\r\n\r\n.fa-angle-double-up:before {\r\n  content: \"\\F102\"; }\r\n\r\n.fa-angle-down:before {\r\n  content: \"\\F107\"; }\r\n\r\n.fa-angle-left:before {\r\n  content: \"\\F104\"; }\r\n\r\n.fa-angle-right:before {\r\n  content: \"\\F105\"; }\r\n\r\n.fa-angle-up:before {\r\n  content: \"\\F106\"; }\r\n\r\n.fa-angry:before {\r\n  content: \"\\F556\"; }\r\n\r\n.fa-angrycreative:before {\r\n  content: \"\\F36E\"; }\r\n\r\n.fa-angular:before {\r\n  content: \"\\F420\"; }\r\n\r\n.fa-ankh:before {\r\n  content: \"\\F644\"; }\r\n\r\n.fa-app-store:before {\r\n  content: \"\\F36F\"; }\r\n\r\n.fa-app-store-ios:before {\r\n  content: \"\\F370\"; }\r\n\r\n.fa-apper:before {\r\n  content: \"\\F371\"; }\r\n\r\n.fa-apple:before {\r\n  content: \"\\F179\"; }\r\n\r\n.fa-apple-alt:before {\r\n  content: \"\\F5D1\"; }\r\n\r\n.fa-apple-pay:before {\r\n  content: \"\\F415\"; }\r\n\r\n.fa-archive:before {\r\n  content: \"\\F187\"; }\r\n\r\n.fa-archway:before {\r\n  content: \"\\F557\"; }\r\n\r\n.fa-arrow-alt-circle-down:before {\r\n  content: \"\\F358\"; }\r\n\r\n.fa-arrow-alt-circle-left:before {\r\n  content: \"\\F359\"; }\r\n\r\n.fa-arrow-alt-circle-right:before {\r\n  content: \"\\F35A\"; }\r\n\r\n.fa-arrow-alt-circle-up:before {\r\n  content: \"\\F35B\"; }\r\n\r\n.fa-arrow-circle-down:before {\r\n  content: \"\\F0AB\"; }\r\n\r\n.fa-arrow-circle-left:before {\r\n  content: \"\\F0A8\"; }\r\n\r\n.fa-arrow-circle-right:before {\r\n  content: \"\\F0A9\"; }\r\n\r\n.fa-arrow-circle-up:before {\r\n  content: \"\\F0AA\"; }\r\n\r\n.fa-arrow-down:before {\r\n  content: \"\\F063\"; }\r\n\r\n.fa-arrow-left:before {\r\n  content: \"\\F060\"; }\r\n\r\n.fa-arrow-right:before {\r\n  content: \"\\F061\"; }\r\n\r\n.fa-arrow-up:before {\r\n  content: \"\\F062\"; }\r\n\r\n.fa-arrows-alt:before {\r\n  content: \"\\F0B2\"; }\r\n\r\n.fa-arrows-alt-h:before {\r\n  content: \"\\F337\"; }\r\n\r\n.fa-arrows-alt-v:before {\r\n  content: \"\\F338\"; }\r\n\r\n.fa-artstation:before {\r\n  content: \"\\F77A\"; }\r\n\r\n.fa-assistive-listening-systems:before {\r\n  content: \"\\F2A2\"; }\r\n\r\n.fa-asterisk:before {\r\n  content: \"\\F069\"; }\r\n\r\n.fa-asymmetrik:before {\r\n  content: \"\\F372\"; }\r\n\r\n.fa-at:before {\r\n  content: \"\\F1FA\"; }\r\n\r\n.fa-atlas:before {\r\n  content: \"\\F558\"; }\r\n\r\n.fa-atlassian:before {\r\n  content: \"\\F77B\"; }\r\n\r\n.fa-atom:before {\r\n  content: \"\\F5D2\"; }\r\n\r\n.fa-audible:before {\r\n  content: \"\\F373\"; }\r\n\r\n.fa-audio-description:before {\r\n  content: \"\\F29E\"; }\r\n\r\n.fa-autoprefixer:before {\r\n  content: \"\\F41C\"; }\r\n\r\n.fa-avianex:before {\r\n  content: \"\\F374\"; }\r\n\r\n.fa-aviato:before {\r\n  content: \"\\F421\"; }\r\n\r\n.fa-award:before {\r\n  content: \"\\F559\"; }\r\n\r\n.fa-aws:before {\r\n  content: \"\\F375\"; }\r\n\r\n.fa-baby:before {\r\n  content: \"\\F77C\"; }\r\n\r\n.fa-baby-carriage:before {\r\n  content: \"\\F77D\"; }\r\n\r\n.fa-backspace:before {\r\n  content: \"\\F55A\"; }\r\n\r\n.fa-backward:before {\r\n  content: \"\\F04A\"; }\r\n\r\n.fa-bacon:before {\r\n  content: \"\\F7E5\"; }\r\n\r\n.fa-bahai:before {\r\n  content: \"\\F666\"; }\r\n\r\n.fa-balance-scale:before {\r\n  content: \"\\F24E\"; }\r\n\r\n.fa-balance-scale-left:before {\r\n  content: \"\\F515\"; }\r\n\r\n.fa-balance-scale-right:before {\r\n  content: \"\\F516\"; }\r\n\r\n.fa-ban:before {\r\n  content: \"\\F05E\"; }\r\n\r\n.fa-band-aid:before {\r\n  content: \"\\F462\"; }\r\n\r\n.fa-bandcamp:before {\r\n  content: \"\\F2D5\"; }\r\n\r\n.fa-barcode:before {\r\n  content: \"\\F02A\"; }\r\n\r\n.fa-bars:before {\r\n  content: \"\\F0C9\"; }\r\n\r\n.fa-baseball-ball:before {\r\n  content: \"\\F433\"; }\r\n\r\n.fa-basketball-ball:before {\r\n  content: \"\\F434\"; }\r\n\r\n.fa-bath:before {\r\n  content: \"\\F2CD\"; }\r\n\r\n.fa-battery-empty:before {\r\n  content: \"\\F244\"; }\r\n\r\n.fa-battery-full:before {\r\n  content: \"\\F240\"; }\r\n\r\n.fa-battery-half:before {\r\n  content: \"\\F242\"; }\r\n\r\n.fa-battery-quarter:before {\r\n  content: \"\\F243\"; }\r\n\r\n.fa-battery-three-quarters:before {\r\n  content: \"\\F241\"; }\r\n\r\n.fa-battle-net:before {\r\n  content: \"\\F835\"; }\r\n\r\n.fa-bed:before {\r\n  content: \"\\F236\"; }\r\n\r\n.fa-beer:before {\r\n  content: \"\\F0FC\"; }\r\n\r\n.fa-behance:before {\r\n  content: \"\\F1B4\"; }\r\n\r\n.fa-behance-square:before {\r\n  content: \"\\F1B5\"; }\r\n\r\n.fa-bell:before {\r\n  content: \"\\F0F3\"; }\r\n\r\n.fa-bell-slash:before {\r\n  content: \"\\F1F6\"; }\r\n\r\n.fa-bezier-curve:before {\r\n  content: \"\\F55B\"; }\r\n\r\n.fa-bible:before {\r\n  content: \"\\F647\"; }\r\n\r\n.fa-bicycle:before {\r\n  content: \"\\F206\"; }\r\n\r\n.fa-biking:before {\r\n  content: \"\\F84A\"; }\r\n\r\n.fa-bimobject:before {\r\n  content: \"\\F378\"; }\r\n\r\n.fa-binoculars:before {\r\n  content: \"\\F1E5\"; }\r\n\r\n.fa-biohazard:before {\r\n  content: \"\\F780\"; }\r\n\r\n.fa-birthday-cake:before {\r\n  content: \"\\F1FD\"; }\r\n\r\n.fa-bitbucket:before {\r\n  content: \"\\F171\"; }\r\n\r\n.fa-bitcoin:before {\r\n  content: \"\\F379\"; }\r\n\r\n.fa-bity:before {\r\n  content: \"\\F37A\"; }\r\n\r\n.fa-black-tie:before {\r\n  content: \"\\F27E\"; }\r\n\r\n.fa-blackberry:before {\r\n  content: \"\\F37B\"; }\r\n\r\n.fa-blender:before {\r\n  content: \"\\F517\"; }\r\n\r\n.fa-blender-phone:before {\r\n  content: \"\\F6B6\"; }\r\n\r\n.fa-blind:before {\r\n  content: \"\\F29D\"; }\r\n\r\n.fa-blog:before {\r\n  content: \"\\F781\"; }\r\n\r\n.fa-blogger:before {\r\n  content: \"\\F37C\"; }\r\n\r\n.fa-blogger-b:before {\r\n  content: \"\\F37D\"; }\r\n\r\n.fa-bluetooth:before {\r\n  content: \"\\F293\"; }\r\n\r\n.fa-bluetooth-b:before {\r\n  content: \"\\F294\"; }\r\n\r\n.fa-bold:before {\r\n  content: \"\\F032\"; }\r\n\r\n.fa-bolt:before {\r\n  content: \"\\F0E7\"; }\r\n\r\n.fa-bomb:before {\r\n  content: \"\\F1E2\"; }\r\n\r\n.fa-bone:before {\r\n  content: \"\\F5D7\"; }\r\n\r\n.fa-bong:before {\r\n  content: \"\\F55C\"; }\r\n\r\n.fa-book:before {\r\n  content: \"\\F02D\"; }\r\n\r\n.fa-book-dead:before {\r\n  content: \"\\F6B7\"; }\r\n\r\n.fa-book-medical:before {\r\n  content: \"\\F7E6\"; }\r\n\r\n.fa-book-open:before {\r\n  content: \"\\F518\"; }\r\n\r\n.fa-book-reader:before {\r\n  content: \"\\F5DA\"; }\r\n\r\n.fa-bookmark:before {\r\n  content: \"\\F02E\"; }\r\n\r\n.fa-bootstrap:before {\r\n  content: \"\\F836\"; }\r\n\r\n.fa-border-all:before {\r\n  content: \"\\F84C\"; }\r\n\r\n.fa-border-none:before {\r\n  content: \"\\F850\"; }\r\n\r\n.fa-border-style:before {\r\n  content: \"\\F853\"; }\r\n\r\n.fa-bowling-ball:before {\r\n  content: \"\\F436\"; }\r\n\r\n.fa-box:before {\r\n  content: \"\\F466\"; }\r\n\r\n.fa-box-open:before {\r\n  content: \"\\F49E\"; }\r\n\r\n.fa-box-tissue:before {\r\n  content: \"\\F95B\"; }\r\n\r\n.fa-boxes:before {\r\n  content: \"\\F468\"; }\r\n\r\n.fa-braille:before {\r\n  content: \"\\F2A1\"; }\r\n\r\n.fa-brain:before {\r\n  content: \"\\F5DC\"; }\r\n\r\n.fa-bread-slice:before {\r\n  content: \"\\F7EC\"; }\r\n\r\n.fa-briefcase:before {\r\n  content: \"\\F0B1\"; }\r\n\r\n.fa-briefcase-medical:before {\r\n  content: \"\\F469\"; }\r\n\r\n.fa-broadcast-tower:before {\r\n  content: \"\\F519\"; }\r\n\r\n.fa-broom:before {\r\n  content: \"\\F51A\"; }\r\n\r\n.fa-brush:before {\r\n  content: \"\\F55D\"; }\r\n\r\n.fa-btc:before {\r\n  content: \"\\F15A\"; }\r\n\r\n.fa-buffer:before {\r\n  content: \"\\F837\"; }\r\n\r\n.fa-bug:before {\r\n  content: \"\\F188\"; }\r\n\r\n.fa-building:before {\r\n  content: \"\\F1AD\"; }\r\n\r\n.fa-bullhorn:before {\r\n  content: \"\\F0A1\"; }\r\n\r\n.fa-bullseye:before {\r\n  content: \"\\F140\"; }\r\n\r\n.fa-burn:before {\r\n  content: \"\\F46A\"; }\r\n\r\n.fa-buromobelexperte:before {\r\n  content: \"\\F37F\"; }\r\n\r\n.fa-bus:before {\r\n  content: \"\\F207\"; }\r\n\r\n.fa-bus-alt:before {\r\n  content: \"\\F55E\"; }\r\n\r\n.fa-business-time:before {\r\n  content: \"\\F64A\"; }\r\n\r\n.fa-buy-n-large:before {\r\n  content: \"\\F8A6\"; }\r\n\r\n.fa-buysellads:before {\r\n  content: \"\\F20D\"; }\r\n\r\n.fa-calculator:before {\r\n  content: \"\\F1EC\"; }\r\n\r\n.fa-calendar:before {\r\n  content: \"\\F133\"; }\r\n\r\n.fa-calendar-alt:before {\r\n  content: \"\\F073\"; }\r\n\r\n.fa-calendar-check:before {\r\n  content: \"\\F274\"; }\r\n\r\n.fa-calendar-day:before {\r\n  content: \"\\F783\"; }\r\n\r\n.fa-calendar-minus:before {\r\n  content: \"\\F272\"; }\r\n\r\n.fa-calendar-plus:before {\r\n  content: \"\\F271\"; }\r\n\r\n.fa-calendar-times:before {\r\n  content: \"\\F273\"; }\r\n\r\n.fa-calendar-week:before {\r\n  content: \"\\F784\"; }\r\n\r\n.fa-camera:before {\r\n  content: \"\\F030\"; }\r\n\r\n.fa-camera-retro:before {\r\n  content: \"\\F083\"; }\r\n\r\n.fa-campground:before {\r\n  content: \"\\F6BB\"; }\r\n\r\n.fa-canadian-maple-leaf:before {\r\n  content: \"\\F785\"; }\r\n\r\n.fa-candy-cane:before {\r\n  content: \"\\F786\"; }\r\n\r\n.fa-cannabis:before {\r\n  content: \"\\F55F\"; }\r\n\r\n.fa-capsules:before {\r\n  content: \"\\F46B\"; }\r\n\r\n.fa-car:before {\r\n  content: \"\\F1B9\"; }\r\n\r\n.fa-car-alt:before {\r\n  content: \"\\F5DE\"; }\r\n\r\n.fa-car-battery:before {\r\n  content: \"\\F5DF\"; }\r\n\r\n.fa-car-crash:before {\r\n  content: \"\\F5E1\"; }\r\n\r\n.fa-car-side:before {\r\n  content: \"\\F5E4\"; }\r\n\r\n.fa-caravan:before {\r\n  content: \"\\F8FF\"; }\r\n\r\n.fa-caret-down:before {\r\n  content: \"\\F0D7\"; }\r\n\r\n.fa-caret-left:before {\r\n  content: \"\\F0D9\"; }\r\n\r\n.fa-caret-right:before {\r\n  content: \"\\F0DA\"; }\r\n\r\n.fa-caret-square-down:before {\r\n  content: \"\\F150\"; }\r\n\r\n.fa-caret-square-left:before {\r\n  content: \"\\F191\"; }\r\n\r\n.fa-caret-square-right:before {\r\n  content: \"\\F152\"; }\r\n\r\n.fa-caret-square-up:before {\r\n  content: \"\\F151\"; }\r\n\r\n.fa-caret-up:before {\r\n  content: \"\\F0D8\"; }\r\n\r\n.fa-carrot:before {\r\n  content: \"\\F787\"; }\r\n\r\n.fa-cart-arrow-down:before {\r\n  content: \"\\F218\"; }\r\n\r\n.fa-cart-plus:before {\r\n  content: \"\\F217\"; }\r\n\r\n.fa-cash-register:before {\r\n  content: \"\\F788\"; }\r\n\r\n.fa-cat:before {\r\n  content: \"\\F6BE\"; }\r\n\r\n.fa-cc-amazon-pay:before {\r\n  content: \"\\F42D\"; }\r\n\r\n.fa-cc-amex:before {\r\n  content: \"\\F1F3\"; }\r\n\r\n.fa-cc-apple-pay:before {\r\n  content: \"\\F416\"; }\r\n\r\n.fa-cc-diners-club:before {\r\n  content: \"\\F24C\"; }\r\n\r\n.fa-cc-discover:before {\r\n  content: \"\\F1F2\"; }\r\n\r\n.fa-cc-jcb:before {\r\n  content: \"\\F24B\"; }\r\n\r\n.fa-cc-mastercard:before {\r\n  content: \"\\F1F1\"; }\r\n\r\n.fa-cc-paypal:before {\r\n  content: \"\\F1F4\"; }\r\n\r\n.fa-cc-stripe:before {\r\n  content: \"\\F1F5\"; }\r\n\r\n.fa-cc-visa:before {\r\n  content: \"\\F1F0\"; }\r\n\r\n.fa-centercode:before {\r\n  content: \"\\F380\"; }\r\n\r\n.fa-centos:before {\r\n  content: \"\\F789\"; }\r\n\r\n.fa-certificate:before {\r\n  content: \"\\F0A3\"; }\r\n\r\n.fa-chair:before {\r\n  content: \"\\F6C0\"; }\r\n\r\n.fa-chalkboard:before {\r\n  content: \"\\F51B\"; }\r\n\r\n.fa-chalkboard-teacher:before {\r\n  content: \"\\F51C\"; }\r\n\r\n.fa-charging-station:before {\r\n  content: \"\\F5E7\"; }\r\n\r\n.fa-chart-area:before {\r\n  content: \"\\F1FE\"; }\r\n\r\n.fa-chart-bar:before {\r\n  content: \"\\F080\"; }\r\n\r\n.fa-chart-line:before {\r\n  content: \"\\F201\"; }\r\n\r\n.fa-chart-pie:before {\r\n  content: \"\\F200\"; }\r\n\r\n.fa-check:before {\r\n  content: \"\\F00C\"; }\r\n\r\n.fa-check-circle:before {\r\n  content: \"\\F058\"; }\r\n\r\n.fa-check-double:before {\r\n  content: \"\\F560\"; }\r\n\r\n.fa-check-square:before {\r\n  content: \"\\F14A\"; }\r\n\r\n.fa-cheese:before {\r\n  content: \"\\F7EF\"; }\r\n\r\n.fa-chess:before {\r\n  content: \"\\F439\"; }\r\n\r\n.fa-chess-bishop:before {\r\n  content: \"\\F43A\"; }\r\n\r\n.fa-chess-board:before {\r\n  content: \"\\F43C\"; }\r\n\r\n.fa-chess-king:before {\r\n  content: \"\\F43F\"; }\r\n\r\n.fa-chess-knight:before {\r\n  content: \"\\F441\"; }\r\n\r\n.fa-chess-pawn:before {\r\n  content: \"\\F443\"; }\r\n\r\n.fa-chess-queen:before {\r\n  content: \"\\F445\"; }\r\n\r\n.fa-chess-rook:before {\r\n  content: \"\\F447\"; }\r\n\r\n.fa-chevron-circle-down:before {\r\n  content: \"\\F13A\"; }\r\n\r\n.fa-chevron-circle-left:before {\r\n  content: \"\\F137\"; }\r\n\r\n.fa-chevron-circle-right:before {\r\n  content: \"\\F138\"; }\r\n\r\n.fa-chevron-circle-up:before {\r\n  content: \"\\F139\"; }\r\n\r\n.fa-chevron-down:before {\r\n  content: \"\\F078\"; }\r\n\r\n.fa-chevron-left:before {\r\n  content: \"\\F053\"; }\r\n\r\n.fa-chevron-right:before {\r\n  content: \"\\F054\"; }\r\n\r\n.fa-chevron-up:before {\r\n  content: \"\\F077\"; }\r\n\r\n.fa-child:before {\r\n  content: \"\\F1AE\"; }\r\n\r\n.fa-chrome:before {\r\n  content: \"\\F268\"; }\r\n\r\n.fa-chromecast:before {\r\n  content: \"\\F838\"; }\r\n\r\n.fa-church:before {\r\n  content: \"\\F51D\"; }\r\n\r\n.fa-circle:before {\r\n  content: \"\\F111\"; }\r\n\r\n.fa-circle-notch:before {\r\n  content: \"\\F1CE\"; }\r\n\r\n.fa-city:before {\r\n  content: \"\\F64F\"; }\r\n\r\n.fa-clinic-medical:before {\r\n  content: \"\\F7F2\"; }\r\n\r\n.fa-clipboard:before {\r\n  content: \"\\F328\"; }\r\n\r\n.fa-clipboard-check:before {\r\n  content: \"\\F46C\"; }\r\n\r\n.fa-clipboard-list:before {\r\n  content: \"\\F46D\"; }\r\n\r\n.fa-clock:before {\r\n  content: \"\\F017\"; }\r\n\r\n.fa-clone:before {\r\n  content: \"\\F24D\"; }\r\n\r\n.fa-closed-captioning:before {\r\n  content: \"\\F20A\"; }\r\n\r\n.fa-cloud:before {\r\n  content: \"\\F0C2\"; }\r\n\r\n.fa-cloud-download-alt:before {\r\n  content: \"\\F381\"; }\r\n\r\n.fa-cloud-meatball:before {\r\n  content: \"\\F73B\"; }\r\n\r\n.fa-cloud-moon:before {\r\n  content: \"\\F6C3\"; }\r\n\r\n.fa-cloud-moon-rain:before {\r\n  content: \"\\F73C\"; }\r\n\r\n.fa-cloud-rain:before {\r\n  content: \"\\F73D\"; }\r\n\r\n.fa-cloud-showers-heavy:before {\r\n  content: \"\\F740\"; }\r\n\r\n.fa-cloud-sun:before {\r\n  content: \"\\F6C4\"; }\r\n\r\n.fa-cloud-sun-rain:before {\r\n  content: \"\\F743\"; }\r\n\r\n.fa-cloud-upload-alt:before {\r\n  content: \"\\F382\"; }\r\n\r\n.fa-cloudscale:before {\r\n  content: \"\\F383\"; }\r\n\r\n.fa-cloudsmith:before {\r\n  content: \"\\F384\"; }\r\n\r\n.fa-cloudversify:before {\r\n  content: \"\\F385\"; }\r\n\r\n.fa-cocktail:before {\r\n  content: \"\\F561\"; }\r\n\r\n.fa-code:before {\r\n  content: \"\\F121\"; }\r\n\r\n.fa-code-branch:before {\r\n  content: \"\\F126\"; }\r\n\r\n.fa-codepen:before {\r\n  content: \"\\F1CB\"; }\r\n\r\n.fa-codiepie:before {\r\n  content: \"\\F284\"; }\r\n\r\n.fa-coffee:before {\r\n  content: \"\\F0F4\"; }\r\n\r\n.fa-cog:before {\r\n  content: \"\\F013\"; }\r\n\r\n.fa-cogs:before {\r\n  content: \"\\F085\"; }\r\n\r\n.fa-coins:before {\r\n  content: \"\\F51E\"; }\r\n\r\n.fa-columns:before {\r\n  content: \"\\F0DB\"; }\r\n\r\n.fa-comment:before {\r\n  content: \"\\F075\"; }\r\n\r\n.fa-comment-alt:before {\r\n  content: \"\\F27A\"; }\r\n\r\n.fa-comment-dollar:before {\r\n  content: \"\\F651\"; }\r\n\r\n.fa-comment-dots:before {\r\n  content: \"\\F4AD\"; }\r\n\r\n.fa-comment-medical:before {\r\n  content: \"\\F7F5\"; }\r\n\r\n.fa-comment-slash:before {\r\n  content: \"\\F4B3\"; }\r\n\r\n.fa-comments:before {\r\n  content: \"\\F086\"; }\r\n\r\n.fa-comments-dollar:before {\r\n  content: \"\\F653\"; }\r\n\r\n.fa-compact-disc:before {\r\n  content: \"\\F51F\"; }\r\n\r\n.fa-compass:before {\r\n  content: \"\\F14E\"; }\r\n\r\n.fa-compress:before {\r\n  content: \"\\F066\"; }\r\n\r\n.fa-compress-alt:before {\r\n  content: \"\\F422\"; }\r\n\r\n.fa-compress-arrows-alt:before {\r\n  content: \"\\F78C\"; }\r\n\r\n.fa-concierge-bell:before {\r\n  content: \"\\F562\"; }\r\n\r\n.fa-confluence:before {\r\n  content: \"\\F78D\"; }\r\n\r\n.fa-connectdevelop:before {\r\n  content: \"\\F20E\"; }\r\n\r\n.fa-contao:before {\r\n  content: \"\\F26D\"; }\r\n\r\n.fa-cookie:before {\r\n  content: \"\\F563\"; }\r\n\r\n.fa-cookie-bite:before {\r\n  content: \"\\F564\"; }\r\n\r\n.fa-copy:before {\r\n  content: \"\\F0C5\"; }\r\n\r\n.fa-copyright:before {\r\n  content: \"\\F1F9\"; }\r\n\r\n.fa-cotton-bureau:before {\r\n  content: \"\\F89E\"; }\r\n\r\n.fa-couch:before {\r\n  content: \"\\F4B8\"; }\r\n\r\n.fa-cpanel:before {\r\n  content: \"\\F388\"; }\r\n\r\n.fa-creative-commons:before {\r\n  content: \"\\F25E\"; }\r\n\r\n.fa-creative-commons-by:before {\r\n  content: \"\\F4E7\"; }\r\n\r\n.fa-creative-commons-nc:before {\r\n  content: \"\\F4E8\"; }\r\n\r\n.fa-creative-commons-nc-eu:before {\r\n  content: \"\\F4E9\"; }\r\n\r\n.fa-creative-commons-nc-jp:before {\r\n  content: \"\\F4EA\"; }\r\n\r\n.fa-creative-commons-nd:before {\r\n  content: \"\\F4EB\"; }\r\n\r\n.fa-creative-commons-pd:before {\r\n  content: \"\\F4EC\"; }\r\n\r\n.fa-creative-commons-pd-alt:before {\r\n  content: \"\\F4ED\"; }\r\n\r\n.fa-creative-commons-remix:before {\r\n  content: \"\\F4EE\"; }\r\n\r\n.fa-creative-commons-sa:before {\r\n  content: \"\\F4EF\"; }\r\n\r\n.fa-creative-commons-sampling:before {\r\n  content: \"\\F4F0\"; }\r\n\r\n.fa-creative-commons-sampling-plus:before {\r\n  content: \"\\F4F1\"; }\r\n\r\n.fa-creative-commons-share:before {\r\n  content: \"\\F4F2\"; }\r\n\r\n.fa-creative-commons-zero:before {\r\n  content: \"\\F4F3\"; }\r\n\r\n.fa-credit-card:before {\r\n  content: \"\\F09D\"; }\r\n\r\n.fa-critical-role:before {\r\n  content: \"\\F6C9\"; }\r\n\r\n.fa-crop:before {\r\n  content: \"\\F125\"; }\r\n\r\n.fa-crop-alt:before {\r\n  content: \"\\F565\"; }\r\n\r\n.fa-cross:before {\r\n  content: \"\\F654\"; }\r\n\r\n.fa-crosshairs:before {\r\n  content: \"\\F05B\"; }\r\n\r\n.fa-crow:before {\r\n  content: \"\\F520\"; }\r\n\r\n.fa-crown:before {\r\n  content: \"\\F521\"; }\r\n\r\n.fa-crutch:before {\r\n  content: \"\\F7F7\"; }\r\n\r\n.fa-css3:before {\r\n  content: \"\\F13C\"; }\r\n\r\n.fa-css3-alt:before {\r\n  content: \"\\F38B\"; }\r\n\r\n.fa-cube:before {\r\n  content: \"\\F1B2\"; }\r\n\r\n.fa-cubes:before {\r\n  content: \"\\F1B3\"; }\r\n\r\n.fa-cut:before {\r\n  content: \"\\F0C4\"; }\r\n\r\n.fa-cuttlefish:before {\r\n  content: \"\\F38C\"; }\r\n\r\n.fa-d-and-d:before {\r\n  content: \"\\F38D\"; }\r\n\r\n.fa-d-and-d-beyond:before {\r\n  content: \"\\F6CA\"; }\r\n\r\n.fa-dailymotion:before {\r\n  content: \"\\F952\"; }\r\n\r\n.fa-dashcube:before {\r\n  content: \"\\F210\"; }\r\n\r\n.fa-database:before {\r\n  content: \"\\F1C0\"; }\r\n\r\n.fa-deaf:before {\r\n  content: \"\\F2A4\"; }\r\n\r\n.fa-delicious:before {\r\n  content: \"\\F1A5\"; }\r\n\r\n.fa-democrat:before {\r\n  content: \"\\F747\"; }\r\n\r\n.fa-deploydog:before {\r\n  content: \"\\F38E\"; }\r\n\r\n.fa-deskpro:before {\r\n  content: \"\\F38F\"; }\r\n\r\n.fa-desktop:before {\r\n  content: \"\\F108\"; }\r\n\r\n.fa-dev:before {\r\n  content: \"\\F6CC\"; }\r\n\r\n.fa-deviantart:before {\r\n  content: \"\\F1BD\"; }\r\n\r\n.fa-dharmachakra:before {\r\n  content: \"\\F655\"; }\r\n\r\n.fa-dhl:before {\r\n  content: \"\\F790\"; }\r\n\r\n.fa-diagnoses:before {\r\n  content: \"\\F470\"; }\r\n\r\n.fa-diaspora:before {\r\n  content: \"\\F791\"; }\r\n\r\n.fa-dice:before {\r\n  content: \"\\F522\"; }\r\n\r\n.fa-dice-d20:before {\r\n  content: \"\\F6CF\"; }\r\n\r\n.fa-dice-d6:before {\r\n  content: \"\\F6D1\"; }\r\n\r\n.fa-dice-five:before {\r\n  content: \"\\F523\"; }\r\n\r\n.fa-dice-four:before {\r\n  content: \"\\F524\"; }\r\n\r\n.fa-dice-one:before {\r\n  content: \"\\F525\"; }\r\n\r\n.fa-dice-six:before {\r\n  content: \"\\F526\"; }\r\n\r\n.fa-dice-three:before {\r\n  content: \"\\F527\"; }\r\n\r\n.fa-dice-two:before {\r\n  content: \"\\F528\"; }\r\n\r\n.fa-digg:before {\r\n  content: \"\\F1A6\"; }\r\n\r\n.fa-digital-ocean:before {\r\n  content: \"\\F391\"; }\r\n\r\n.fa-digital-tachograph:before {\r\n  content: \"\\F566\"; }\r\n\r\n.fa-directions:before {\r\n  content: \"\\F5EB\"; }\r\n\r\n.fa-discord:before {\r\n  content: \"\\F392\"; }\r\n\r\n.fa-discourse:before {\r\n  content: \"\\F393\"; }\r\n\r\n.fa-disease:before {\r\n  content: \"\\F7FA\"; }\r\n\r\n.fa-divide:before {\r\n  content: \"\\F529\"; }\r\n\r\n.fa-dizzy:before {\r\n  content: \"\\F567\"; }\r\n\r\n.fa-dna:before {\r\n  content: \"\\F471\"; }\r\n\r\n.fa-dochub:before {\r\n  content: \"\\F394\"; }\r\n\r\n.fa-docker:before {\r\n  content: \"\\F395\"; }\r\n\r\n.fa-dog:before {\r\n  content: \"\\F6D3\"; }\r\n\r\n.fa-dollar-sign:before {\r\n  content: \"\\F155\"; }\r\n\r\n.fa-dolly:before {\r\n  content: \"\\F472\"; }\r\n\r\n.fa-dolly-flatbed:before {\r\n  content: \"\\F474\"; }\r\n\r\n.fa-donate:before {\r\n  content: \"\\F4B9\"; }\r\n\r\n.fa-door-closed:before {\r\n  content: \"\\F52A\"; }\r\n\r\n.fa-door-open:before {\r\n  content: \"\\F52B\"; }\r\n\r\n.fa-dot-circle:before {\r\n  content: \"\\F192\"; }\r\n\r\n.fa-dove:before {\r\n  content: \"\\F4BA\"; }\r\n\r\n.fa-download:before {\r\n  content: \"\\F019\"; }\r\n\r\n.fa-draft2digital:before {\r\n  content: \"\\F396\"; }\r\n\r\n.fa-drafting-compass:before {\r\n  content: \"\\F568\"; }\r\n\r\n.fa-dragon:before {\r\n  content: \"\\F6D5\"; }\r\n\r\n.fa-draw-polygon:before {\r\n  content: \"\\F5EE\"; }\r\n\r\n.fa-dribbble:before {\r\n  content: \"\\F17D\"; }\r\n\r\n.fa-dribbble-square:before {\r\n  content: \"\\F397\"; }\r\n\r\n.fa-dropbox:before {\r\n  content: \"\\F16B\"; }\r\n\r\n.fa-drum:before {\r\n  content: \"\\F569\"; }\r\n\r\n.fa-drum-steelpan:before {\r\n  content: \"\\F56A\"; }\r\n\r\n.fa-drumstick-bite:before {\r\n  content: \"\\F6D7\"; }\r\n\r\n.fa-drupal:before {\r\n  content: \"\\F1A9\"; }\r\n\r\n.fa-dumbbell:before {\r\n  content: \"\\F44B\"; }\r\n\r\n.fa-dumpster:before {\r\n  content: \"\\F793\"; }\r\n\r\n.fa-dumpster-fire:before {\r\n  content: \"\\F794\"; }\r\n\r\n.fa-dungeon:before {\r\n  content: \"\\F6D9\"; }\r\n\r\n.fa-dyalog:before {\r\n  content: \"\\F399\"; }\r\n\r\n.fa-earlybirds:before {\r\n  content: \"\\F39A\"; }\r\n\r\n.fa-ebay:before {\r\n  content: \"\\F4F4\"; }\r\n\r\n.fa-edge:before {\r\n  content: \"\\F282\"; }\r\n\r\n.fa-edit:before {\r\n  content: \"\\F044\"; }\r\n\r\n.fa-egg:before {\r\n  content: \"\\F7FB\"; }\r\n\r\n.fa-eject:before {\r\n  content: \"\\F052\"; }\r\n\r\n.fa-elementor:before {\r\n  content: \"\\F430\"; }\r\n\r\n.fa-ellipsis-h:before {\r\n  content: \"\\F141\"; }\r\n\r\n.fa-ellipsis-v:before {\r\n  content: \"\\F142\"; }\r\n\r\n.fa-ello:before {\r\n  content: \"\\F5F1\"; }\r\n\r\n.fa-ember:before {\r\n  content: \"\\F423\"; }\r\n\r\n.fa-empire:before {\r\n  content: \"\\F1D1\"; }\r\n\r\n.fa-envelope:before {\r\n  content: \"\\F0E0\"; }\r\n\r\n.fa-envelope-open:before {\r\n  content: \"\\F2B6\"; }\r\n\r\n.fa-envelope-open-text:before {\r\n  content: \"\\F658\"; }\r\n\r\n.fa-envelope-square:before {\r\n  content: \"\\F199\"; }\r\n\r\n.fa-envira:before {\r\n  content: \"\\F299\"; }\r\n\r\n.fa-equals:before {\r\n  content: \"\\F52C\"; }\r\n\r\n.fa-eraser:before {\r\n  content: \"\\F12D\"; }\r\n\r\n.fa-erlang:before {\r\n  content: \"\\F39D\"; }\r\n\r\n.fa-ethereum:before {\r\n  content: \"\\F42E\"; }\r\n\r\n.fa-ethernet:before {\r\n  content: \"\\F796\"; }\r\n\r\n.fa-etsy:before {\r\n  content: \"\\F2D7\"; }\r\n\r\n.fa-euro-sign:before {\r\n  content: \"\\F153\"; }\r\n\r\n.fa-evernote:before {\r\n  content: \"\\F839\"; }\r\n\r\n.fa-exchange-alt:before {\r\n  content: \"\\F362\"; }\r\n\r\n.fa-exclamation:before {\r\n  content: \"\\F12A\"; }\r\n\r\n.fa-exclamation-circle:before {\r\n  content: \"\\F06A\"; }\r\n\r\n.fa-exclamation-triangle:before {\r\n  content: \"\\F071\"; }\r\n\r\n.fa-expand:before {\r\n  content: \"\\F065\"; }\r\n\r\n.fa-expand-alt:before {\r\n  content: \"\\F424\"; }\r\n\r\n.fa-expand-arrows-alt:before {\r\n  content: \"\\F31E\"; }\r\n\r\n.fa-expeditedssl:before {\r\n  content: \"\\F23E\"; }\r\n\r\n.fa-external-link-alt:before {\r\n  content: \"\\F35D\"; }\r\n\r\n.fa-external-link-square-alt:before {\r\n  content: \"\\F360\"; }\r\n\r\n.fa-eye:before {\r\n  content: \"\\F06E\"; }\r\n\r\n.fa-eye-dropper:before {\r\n  content: \"\\F1FB\"; }\r\n\r\n.fa-eye-slash:before {\r\n  content: \"\\F070\"; }\r\n\r\n.fa-facebook:before {\r\n  content: \"\\F09A\"; }\r\n\r\n.fa-facebook-f:before {\r\n  content: \"\\F39E\"; }\r\n\r\n.fa-facebook-messenger:before {\r\n  content: \"\\F39F\"; }\r\n\r\n.fa-facebook-square:before {\r\n  content: \"\\F082\"; }\r\n\r\n.fa-fan:before {\r\n  content: \"\\F863\"; }\r\n\r\n.fa-fantasy-flight-games:before {\r\n  content: \"\\F6DC\"; }\r\n\r\n.fa-fast-backward:before {\r\n  content: \"\\F049\"; }\r\n\r\n.fa-fast-forward:before {\r\n  content: \"\\F050\"; }\r\n\r\n.fa-faucet:before {\r\n  content: \"\\F905\"; }\r\n\r\n.fa-fax:before {\r\n  content: \"\\F1AC\"; }\r\n\r\n.fa-feather:before {\r\n  content: \"\\F52D\"; }\r\n\r\n.fa-feather-alt:before {\r\n  content: \"\\F56B\"; }\r\n\r\n.fa-fedex:before {\r\n  content: \"\\F797\"; }\r\n\r\n.fa-fedora:before {\r\n  content: \"\\F798\"; }\r\n\r\n.fa-female:before {\r\n  content: \"\\F182\"; }\r\n\r\n.fa-fighter-jet:before {\r\n  content: \"\\F0FB\"; }\r\n\r\n.fa-figma:before {\r\n  content: \"\\F799\"; }\r\n\r\n.fa-file:before {\r\n  content: \"\\F15B\"; }\r\n\r\n.fa-file-alt:before {\r\n  content: \"\\F15C\"; }\r\n\r\n.fa-file-archive:before {\r\n  content: \"\\F1C6\"; }\r\n\r\n.fa-file-audio:before {\r\n  content: \"\\F1C7\"; }\r\n\r\n.fa-file-code:before {\r\n  content: \"\\F1C9\"; }\r\n\r\n.fa-file-contract:before {\r\n  content: \"\\F56C\"; }\r\n\r\n.fa-file-csv:before {\r\n  content: \"\\F6DD\"; }\r\n\r\n.fa-file-download:before {\r\n  content: \"\\F56D\"; }\r\n\r\n.fa-file-excel:before {\r\n  content: \"\\F1C3\"; }\r\n\r\n.fa-file-export:before {\r\n  content: \"\\F56E\"; }\r\n\r\n.fa-file-image:before {\r\n  content: \"\\F1C5\"; }\r\n\r\n.fa-file-import:before {\r\n  content: \"\\F56F\"; }\r\n\r\n.fa-file-invoice:before {\r\n  content: \"\\F570\"; }\r\n\r\n.fa-file-invoice-dollar:before {\r\n  content: \"\\F571\"; }\r\n\r\n.fa-file-medical:before {\r\n  content: \"\\F477\"; }\r\n\r\n.fa-file-medical-alt:before {\r\n  content: \"\\F478\"; }\r\n\r\n.fa-file-pdf:before {\r\n  content: \"\\F1C1\"; }\r\n\r\n.fa-file-powerpoint:before {\r\n  content: \"\\F1C4\"; }\r\n\r\n.fa-file-prescription:before {\r\n  content: \"\\F572\"; }\r\n\r\n.fa-file-signature:before {\r\n  content: \"\\F573\"; }\r\n\r\n.fa-file-upload:before {\r\n  content: \"\\F574\"; }\r\n\r\n.fa-file-video:before {\r\n  content: \"\\F1C8\"; }\r\n\r\n.fa-file-word:before {\r\n  content: \"\\F1C2\"; }\r\n\r\n.fa-fill:before {\r\n  content: \"\\F575\"; }\r\n\r\n.fa-fill-drip:before {\r\n  content: \"\\F576\"; }\r\n\r\n.fa-film:before {\r\n  content: \"\\F008\"; }\r\n\r\n.fa-filter:before {\r\n  content: \"\\F0B0\"; }\r\n\r\n.fa-fingerprint:before {\r\n  content: \"\\F577\"; }\r\n\r\n.fa-fire:before {\r\n  content: \"\\F06D\"; }\r\n\r\n.fa-fire-alt:before {\r\n  content: \"\\F7E4\"; }\r\n\r\n.fa-fire-extinguisher:before {\r\n  content: \"\\F134\"; }\r\n\r\n.fa-firefox:before {\r\n  content: \"\\F269\"; }\r\n\r\n.fa-firefox-browser:before {\r\n  content: \"\\F907\"; }\r\n\r\n.fa-first-aid:before {\r\n  content: \"\\F479\"; }\r\n\r\n.fa-first-order:before {\r\n  content: \"\\F2B0\"; }\r\n\r\n.fa-first-order-alt:before {\r\n  content: \"\\F50A\"; }\r\n\r\n.fa-firstdraft:before {\r\n  content: \"\\F3A1\"; }\r\n\r\n.fa-fish:before {\r\n  content: \"\\F578\"; }\r\n\r\n.fa-fist-raised:before {\r\n  content: \"\\F6DE\"; }\r\n\r\n.fa-flag:before {\r\n  content: \"\\F024\"; }\r\n\r\n.fa-flag-checkered:before {\r\n  content: \"\\F11E\"; }\r\n\r\n.fa-flag-usa:before {\r\n  content: \"\\F74D\"; }\r\n\r\n.fa-flask:before {\r\n  content: \"\\F0C3\"; }\r\n\r\n.fa-flickr:before {\r\n  content: \"\\F16E\"; }\r\n\r\n.fa-flipboard:before {\r\n  content: \"\\F44D\"; }\r\n\r\n.fa-flushed:before {\r\n  content: \"\\F579\"; }\r\n\r\n.fa-fly:before {\r\n  content: \"\\F417\"; }\r\n\r\n.fa-folder:before {\r\n  content: \"\\F07B\"; }\r\n\r\n.fa-folder-minus:before {\r\n  content: \"\\F65D\"; }\r\n\r\n.fa-folder-open:before {\r\n  content: \"\\F07C\"; }\r\n\r\n.fa-folder-plus:before {\r\n  content: \"\\F65E\"; }\r\n\r\n.fa-font:before {\r\n  content: \"\\F031\"; }\r\n\r\n.fa-font-awesome:before {\r\n  content: \"\\F2B4\"; }\r\n\r\n.fa-font-awesome-alt:before {\r\n  content: \"\\F35C\"; }\r\n\r\n.fa-font-awesome-flag:before {\r\n  content: \"\\F425\"; }\r\n\r\n.fa-font-awesome-logo-full:before {\r\n  content: \"\\F4E6\"; }\r\n\r\n.fa-fonticons:before {\r\n  content: \"\\F280\"; }\r\n\r\n.fa-fonticons-fi:before {\r\n  content: \"\\F3A2\"; }\r\n\r\n.fa-football-ball:before {\r\n  content: \"\\F44E\"; }\r\n\r\n.fa-fort-awesome:before {\r\n  content: \"\\F286\"; }\r\n\r\n.fa-fort-awesome-alt:before {\r\n  content: \"\\F3A3\"; }\r\n\r\n.fa-forumbee:before {\r\n  content: \"\\F211\"; }\r\n\r\n.fa-forward:before {\r\n  content: \"\\F04E\"; }\r\n\r\n.fa-foursquare:before {\r\n  content: \"\\F180\"; }\r\n\r\n.fa-free-code-camp:before {\r\n  content: \"\\F2C5\"; }\r\n\r\n.fa-freebsd:before {\r\n  content: \"\\F3A4\"; }\r\n\r\n.fa-frog:before {\r\n  content: \"\\F52E\"; }\r\n\r\n.fa-frown:before {\r\n  content: \"\\F119\"; }\r\n\r\n.fa-frown-open:before {\r\n  content: \"\\F57A\"; }\r\n\r\n.fa-fulcrum:before {\r\n  content: \"\\F50B\"; }\r\n\r\n.fa-funnel-dollar:before {\r\n  content: \"\\F662\"; }\r\n\r\n.fa-futbol:before {\r\n  content: \"\\F1E3\"; }\r\n\r\n.fa-galactic-republic:before {\r\n  content: \"\\F50C\"; }\r\n\r\n.fa-galactic-senate:before {\r\n  content: \"\\F50D\"; }\r\n\r\n.fa-gamepad:before {\r\n  content: \"\\F11B\"; }\r\n\r\n.fa-gas-pump:before {\r\n  content: \"\\F52F\"; }\r\n\r\n.fa-gavel:before {\r\n  content: \"\\F0E3\"; }\r\n\r\n.fa-gem:before {\r\n  content: \"\\F3A5\"; }\r\n\r\n.fa-genderless:before {\r\n  content: \"\\F22D\"; }\r\n\r\n.fa-get-pocket:before {\r\n  content: \"\\F265\"; }\r\n\r\n.fa-gg:before {\r\n  content: \"\\F260\"; }\r\n\r\n.fa-gg-circle:before {\r\n  content: \"\\F261\"; }\r\n\r\n.fa-ghost:before {\r\n  content: \"\\F6E2\"; }\r\n\r\n.fa-gift:before {\r\n  content: \"\\F06B\"; }\r\n\r\n.fa-gifts:before {\r\n  content: \"\\F79C\"; }\r\n\r\n.fa-git:before {\r\n  content: \"\\F1D3\"; }\r\n\r\n.fa-git-alt:before {\r\n  content: \"\\F841\"; }\r\n\r\n.fa-git-square:before {\r\n  content: \"\\F1D2\"; }\r\n\r\n.fa-github:before {\r\n  content: \"\\F09B\"; }\r\n\r\n.fa-github-alt:before {\r\n  content: \"\\F113\"; }\r\n\r\n.fa-github-square:before {\r\n  content: \"\\F092\"; }\r\n\r\n.fa-gitkraken:before {\r\n  content: \"\\F3A6\"; }\r\n\r\n.fa-gitlab:before {\r\n  content: \"\\F296\"; }\r\n\r\n.fa-gitter:before {\r\n  content: \"\\F426\"; }\r\n\r\n.fa-glass-cheers:before {\r\n  content: \"\\F79F\"; }\r\n\r\n.fa-glass-martini:before {\r\n  content: \"\\F000\"; }\r\n\r\n.fa-glass-martini-alt:before {\r\n  content: \"\\F57B\"; }\r\n\r\n.fa-glass-whiskey:before {\r\n  content: \"\\F7A0\"; }\r\n\r\n.fa-glasses:before {\r\n  content: \"\\F530\"; }\r\n\r\n.fa-glide:before {\r\n  content: \"\\F2A5\"; }\r\n\r\n.fa-glide-g:before {\r\n  content: \"\\F2A6\"; }\r\n\r\n.fa-globe:before {\r\n  content: \"\\F0AC\"; }\r\n\r\n.fa-globe-africa:before {\r\n  content: \"\\F57C\"; }\r\n\r\n.fa-globe-americas:before {\r\n  content: \"\\F57D\"; }\r\n\r\n.fa-globe-asia:before {\r\n  content: \"\\F57E\"; }\r\n\r\n.fa-globe-europe:before {\r\n  content: \"\\F7A2\"; }\r\n\r\n.fa-gofore:before {\r\n  content: \"\\F3A7\"; }\r\n\r\n.fa-golf-ball:before {\r\n  content: \"\\F450\"; }\r\n\r\n.fa-goodreads:before {\r\n  content: \"\\F3A8\"; }\r\n\r\n.fa-goodreads-g:before {\r\n  content: \"\\F3A9\"; }\r\n\r\n.fa-google:before {\r\n  content: \"\\F1A0\"; }\r\n\r\n.fa-google-drive:before {\r\n  content: \"\\F3AA\"; }\r\n\r\n.fa-google-play:before {\r\n  content: \"\\F3AB\"; }\r\n\r\n.fa-google-plus:before {\r\n  content: \"\\F2B3\"; }\r\n\r\n.fa-google-plus-g:before {\r\n  content: \"\\F0D5\"; }\r\n\r\n.fa-google-plus-square:before {\r\n  content: \"\\F0D4\"; }\r\n\r\n.fa-google-wallet:before {\r\n  content: \"\\F1EE\"; }\r\n\r\n.fa-gopuram:before {\r\n  content: \"\\F664\"; }\r\n\r\n.fa-graduation-cap:before {\r\n  content: \"\\F19D\"; }\r\n\r\n.fa-gratipay:before {\r\n  content: \"\\F184\"; }\r\n\r\n.fa-grav:before {\r\n  content: \"\\F2D6\"; }\r\n\r\n.fa-greater-than:before {\r\n  content: \"\\F531\"; }\r\n\r\n.fa-greater-than-equal:before {\r\n  content: \"\\F532\"; }\r\n\r\n.fa-grimace:before {\r\n  content: \"\\F57F\"; }\r\n\r\n.fa-grin:before {\r\n  content: \"\\F580\"; }\r\n\r\n.fa-grin-alt:before {\r\n  content: \"\\F581\"; }\r\n\r\n.fa-grin-beam:before {\r\n  content: \"\\F582\"; }\r\n\r\n.fa-grin-beam-sweat:before {\r\n  content: \"\\F583\"; }\r\n\r\n.fa-grin-hearts:before {\r\n  content: \"\\F584\"; }\r\n\r\n.fa-grin-squint:before {\r\n  content: \"\\F585\"; }\r\n\r\n.fa-grin-squint-tears:before {\r\n  content: \"\\F586\"; }\r\n\r\n.fa-grin-stars:before {\r\n  content: \"\\F587\"; }\r\n\r\n.fa-grin-tears:before {\r\n  content: \"\\F588\"; }\r\n\r\n.fa-grin-tongue:before {\r\n  content: \"\\F589\"; }\r\n\r\n.fa-grin-tongue-squint:before {\r\n  content: \"\\F58A\"; }\r\n\r\n.fa-grin-tongue-wink:before {\r\n  content: \"\\F58B\"; }\r\n\r\n.fa-grin-wink:before {\r\n  content: \"\\F58C\"; }\r\n\r\n.fa-grip-horizontal:before {\r\n  content: \"\\F58D\"; }\r\n\r\n.fa-grip-lines:before {\r\n  content: \"\\F7A4\"; }\r\n\r\n.fa-grip-lines-vertical:before {\r\n  content: \"\\F7A5\"; }\r\n\r\n.fa-grip-vertical:before {\r\n  content: \"\\F58E\"; }\r\n\r\n.fa-gripfire:before {\r\n  content: \"\\F3AC\"; }\r\n\r\n.fa-grunt:before {\r\n  content: \"\\F3AD\"; }\r\n\r\n.fa-guitar:before {\r\n  content: \"\\F7A6\"; }\r\n\r\n.fa-gulp:before {\r\n  content: \"\\F3AE\"; }\r\n\r\n.fa-h-square:before {\r\n  content: \"\\F0FD\"; }\r\n\r\n.fa-hacker-news:before {\r\n  content: \"\\F1D4\"; }\r\n\r\n.fa-hacker-news-square:before {\r\n  content: \"\\F3AF\"; }\r\n\r\n.fa-hackerrank:before {\r\n  content: \"\\F5F7\"; }\r\n\r\n.fa-hamburger:before {\r\n  content: \"\\F805\"; }\r\n\r\n.fa-hammer:before {\r\n  content: \"\\F6E3\"; }\r\n\r\n.fa-hamsa:before {\r\n  content: \"\\F665\"; }\r\n\r\n.fa-hand-holding:before {\r\n  content: \"\\F4BD\"; }\r\n\r\n.fa-hand-holding-heart:before {\r\n  content: \"\\F4BE\"; }\r\n\r\n.fa-hand-holding-medical:before {\r\n  content: \"\\F95C\"; }\r\n\r\n.fa-hand-holding-usd:before {\r\n  content: \"\\F4C0\"; }\r\n\r\n.fa-hand-holding-water:before {\r\n  content: \"\\F4C1\"; }\r\n\r\n.fa-hand-lizard:before {\r\n  content: \"\\F258\"; }\r\n\r\n.fa-hand-middle-finger:before {\r\n  content: \"\\F806\"; }\r\n\r\n.fa-hand-paper:before {\r\n  content: \"\\F256\"; }\r\n\r\n.fa-hand-peace:before {\r\n  content: \"\\F25B\"; }\r\n\r\n.fa-hand-point-down:before {\r\n  content: \"\\F0A7\"; }\r\n\r\n.fa-hand-point-left:before {\r\n  content: \"\\F0A5\"; }\r\n\r\n.fa-hand-point-right:before {\r\n  content: \"\\F0A4\"; }\r\n\r\n.fa-hand-point-up:before {\r\n  content: \"\\F0A6\"; }\r\n\r\n.fa-hand-pointer:before {\r\n  content: \"\\F25A\"; }\r\n\r\n.fa-hand-rock:before {\r\n  content: \"\\F255\"; }\r\n\r\n.fa-hand-scissors:before {\r\n  content: \"\\F257\"; }\r\n\r\n.fa-hand-sparkles:before {\r\n  content: \"\\F95D\"; }\r\n\r\n.fa-hand-spock:before {\r\n  content: \"\\F259\"; }\r\n\r\n.fa-hands:before {\r\n  content: \"\\F4C2\"; }\r\n\r\n.fa-hands-helping:before {\r\n  content: \"\\F4C4\"; }\r\n\r\n.fa-hands-wash:before {\r\n  content: \"\\F95E\"; }\r\n\r\n.fa-handshake:before {\r\n  content: \"\\F2B5\"; }\r\n\r\n.fa-handshake-alt-slash:before {\r\n  content: \"\\F95F\"; }\r\n\r\n.fa-handshake-slash:before {\r\n  content: \"\\F960\"; }\r\n\r\n.fa-hanukiah:before {\r\n  content: \"\\F6E6\"; }\r\n\r\n.fa-hard-hat:before {\r\n  content: \"\\F807\"; }\r\n\r\n.fa-hashtag:before {\r\n  content: \"\\F292\"; }\r\n\r\n.fa-hat-cowboy:before {\r\n  content: \"\\F8C0\"; }\r\n\r\n.fa-hat-cowboy-side:before {\r\n  content: \"\\F8C1\"; }\r\n\r\n.fa-hat-wizard:before {\r\n  content: \"\\F6E8\"; }\r\n\r\n.fa-hdd:before {\r\n  content: \"\\F0A0\"; }\r\n\r\n.fa-head-side-cough:before {\r\n  content: \"\\F961\"; }\r\n\r\n.fa-head-side-cough-slash:before {\r\n  content: \"\\F962\"; }\r\n\r\n.fa-head-side-mask:before {\r\n  content: \"\\F963\"; }\r\n\r\n.fa-head-side-virus:before {\r\n  content: \"\\F964\"; }\r\n\r\n.fa-heading:before {\r\n  content: \"\\F1DC\"; }\r\n\r\n.fa-headphones:before {\r\n  content: \"\\F025\"; }\r\n\r\n.fa-headphones-alt:before {\r\n  content: \"\\F58F\"; }\r\n\r\n.fa-headset:before {\r\n  content: \"\\F590\"; }\r\n\r\n.fa-heart:before {\r\n  content: \"\\F004\"; }\r\n\r\n.fa-heart-broken:before {\r\n  content: \"\\F7A9\"; }\r\n\r\n.fa-heartbeat:before {\r\n  content: \"\\F21E\"; }\r\n\r\n.fa-helicopter:before {\r\n  content: \"\\F533\"; }\r\n\r\n.fa-highlighter:before {\r\n  content: \"\\F591\"; }\r\n\r\n.fa-hiking:before {\r\n  content: \"\\F6EC\"; }\r\n\r\n.fa-hippo:before {\r\n  content: \"\\F6ED\"; }\r\n\r\n.fa-hips:before {\r\n  content: \"\\F452\"; }\r\n\r\n.fa-hire-a-helper:before {\r\n  content: \"\\F3B0\"; }\r\n\r\n.fa-history:before {\r\n  content: \"\\F1DA\"; }\r\n\r\n.fa-hockey-puck:before {\r\n  content: \"\\F453\"; }\r\n\r\n.fa-holly-berry:before {\r\n  content: \"\\F7AA\"; }\r\n\r\n.fa-home:before {\r\n  content: \"\\F015\"; }\r\n\r\n.fa-hooli:before {\r\n  content: \"\\F427\"; }\r\n\r\n.fa-hornbill:before {\r\n  content: \"\\F592\"; }\r\n\r\n.fa-horse:before {\r\n  content: \"\\F6F0\"; }\r\n\r\n.fa-horse-head:before {\r\n  content: \"\\F7AB\"; }\r\n\r\n.fa-hospital:before {\r\n  content: \"\\F0F8\"; }\r\n\r\n.fa-hospital-alt:before {\r\n  content: \"\\F47D\"; }\r\n\r\n.fa-hospital-symbol:before {\r\n  content: \"\\F47E\"; }\r\n\r\n.fa-hospital-user:before {\r\n  content: \"\\F80D\"; }\r\n\r\n.fa-hot-tub:before {\r\n  content: \"\\F593\"; }\r\n\r\n.fa-hotdog:before {\r\n  content: \"\\F80F\"; }\r\n\r\n.fa-hotel:before {\r\n  content: \"\\F594\"; }\r\n\r\n.fa-hotjar:before {\r\n  content: \"\\F3B1\"; }\r\n\r\n.fa-hourglass:before {\r\n  content: \"\\F254\"; }\r\n\r\n.fa-hourglass-end:before {\r\n  content: \"\\F253\"; }\r\n\r\n.fa-hourglass-half:before {\r\n  content: \"\\F252\"; }\r\n\r\n.fa-hourglass-start:before {\r\n  content: \"\\F251\"; }\r\n\r\n.fa-house-damage:before {\r\n  content: \"\\F6F1\"; }\r\n\r\n.fa-house-user:before {\r\n  content: \"\\F965\"; }\r\n\r\n.fa-houzz:before {\r\n  content: \"\\F27C\"; }\r\n\r\n.fa-hryvnia:before {\r\n  content: \"\\F6F2\"; }\r\n\r\n.fa-html5:before {\r\n  content: \"\\F13B\"; }\r\n\r\n.fa-hubspot:before {\r\n  content: \"\\F3B2\"; }\r\n\r\n.fa-i-cursor:before {\r\n  content: \"\\F246\"; }\r\n\r\n.fa-ice-cream:before {\r\n  content: \"\\F810\"; }\r\n\r\n.fa-icicles:before {\r\n  content: \"\\F7AD\"; }\r\n\r\n.fa-icons:before {\r\n  content: \"\\F86D\"; }\r\n\r\n.fa-id-badge:before {\r\n  content: \"\\F2C1\"; }\r\n\r\n.fa-id-card:before {\r\n  content: \"\\F2C2\"; }\r\n\r\n.fa-id-card-alt:before {\r\n  content: \"\\F47F\"; }\r\n\r\n.fa-ideal:before {\r\n  content: \"\\F913\"; }\r\n\r\n.fa-igloo:before {\r\n  content: \"\\F7AE\"; }\r\n\r\n.fa-image:before {\r\n  content: \"\\F03E\"; }\r\n\r\n.fa-images:before {\r\n  content: \"\\F302\"; }\r\n\r\n.fa-imdb:before {\r\n  content: \"\\F2D8\"; }\r\n\r\n.fa-inbox:before {\r\n  content: \"\\F01C\"; }\r\n\r\n.fa-indent:before {\r\n  content: \"\\F03C\"; }\r\n\r\n.fa-industry:before {\r\n  content: \"\\F275\"; }\r\n\r\n.fa-infinity:before {\r\n  content: \"\\F534\"; }\r\n\r\n.fa-info:before {\r\n  content: \"\\F129\"; }\r\n\r\n.fa-info-circle:before {\r\n  content: \"\\F05A\"; }\r\n\r\n.fa-instagram:before {\r\n  content: \"\\F16D\"; }\r\n\r\n.fa-instagram-square:before {\r\n  content: \"\\F955\"; }\r\n\r\n.fa-intercom:before {\r\n  content: \"\\F7AF\"; }\r\n\r\n.fa-internet-explorer:before {\r\n  content: \"\\F26B\"; }\r\n\r\n.fa-invision:before {\r\n  content: \"\\F7B0\"; }\r\n\r\n.fa-ioxhost:before {\r\n  content: \"\\F208\"; }\r\n\r\n.fa-italic:before {\r\n  content: \"\\F033\"; }\r\n\r\n.fa-itch-io:before {\r\n  content: \"\\F83A\"; }\r\n\r\n.fa-itunes:before {\r\n  content: \"\\F3B4\"; }\r\n\r\n.fa-itunes-note:before {\r\n  content: \"\\F3B5\"; }\r\n\r\n.fa-java:before {\r\n  content: \"\\F4E4\"; }\r\n\r\n.fa-jedi:before {\r\n  content: \"\\F669\"; }\r\n\r\n.fa-jedi-order:before {\r\n  content: \"\\F50E\"; }\r\n\r\n.fa-jenkins:before {\r\n  content: \"\\F3B6\"; }\r\n\r\n.fa-jira:before {\r\n  content: \"\\F7B1\"; }\r\n\r\n.fa-joget:before {\r\n  content: \"\\F3B7\"; }\r\n\r\n.fa-joint:before {\r\n  content: \"\\F595\"; }\r\n\r\n.fa-joomla:before {\r\n  content: \"\\F1AA\"; }\r\n\r\n.fa-journal-whills:before {\r\n  content: \"\\F66A\"; }\r\n\r\n.fa-js:before {\r\n  content: \"\\F3B8\"; }\r\n\r\n.fa-js-square:before {\r\n  content: \"\\F3B9\"; }\r\n\r\n.fa-jsfiddle:before {\r\n  content: \"\\F1CC\"; }\r\n\r\n.fa-kaaba:before {\r\n  content: \"\\F66B\"; }\r\n\r\n.fa-kaggle:before {\r\n  content: \"\\F5FA\"; }\r\n\r\n.fa-key:before {\r\n  content: \"\\F084\"; }\r\n\r\n.fa-keybase:before {\r\n  content: \"\\F4F5\"; }\r\n\r\n.fa-keyboard:before {\r\n  content: \"\\F11C\"; }\r\n\r\n.fa-keycdn:before {\r\n  content: \"\\F3BA\"; }\r\n\r\n.fa-khanda:before {\r\n  content: \"\\F66D\"; }\r\n\r\n.fa-kickstarter:before {\r\n  content: \"\\F3BB\"; }\r\n\r\n.fa-kickstarter-k:before {\r\n  content: \"\\F3BC\"; }\r\n\r\n.fa-kiss:before {\r\n  content: \"\\F596\"; }\r\n\r\n.fa-kiss-beam:before {\r\n  content: \"\\F597\"; }\r\n\r\n.fa-kiss-wink-heart:before {\r\n  content: \"\\F598\"; }\r\n\r\n.fa-kiwi-bird:before {\r\n  content: \"\\F535\"; }\r\n\r\n.fa-korvue:before {\r\n  content: \"\\F42F\"; }\r\n\r\n.fa-landmark:before {\r\n  content: \"\\F66F\"; }\r\n\r\n.fa-language:before {\r\n  content: \"\\F1AB\"; }\r\n\r\n.fa-laptop:before {\r\n  content: \"\\F109\"; }\r\n\r\n.fa-laptop-code:before {\r\n  content: \"\\F5FC\"; }\r\n\r\n.fa-laptop-house:before {\r\n  content: \"\\F966\"; }\r\n\r\n.fa-laptop-medical:before {\r\n  content: \"\\F812\"; }\r\n\r\n.fa-laravel:before {\r\n  content: \"\\F3BD\"; }\r\n\r\n.fa-lastfm:before {\r\n  content: \"\\F202\"; }\r\n\r\n.fa-lastfm-square:before {\r\n  content: \"\\F203\"; }\r\n\r\n.fa-laugh:before {\r\n  content: \"\\F599\"; }\r\n\r\n.fa-laugh-beam:before {\r\n  content: \"\\F59A\"; }\r\n\r\n.fa-laugh-squint:before {\r\n  content: \"\\F59B\"; }\r\n\r\n.fa-laugh-wink:before {\r\n  content: \"\\F59C\"; }\r\n\r\n.fa-layer-group:before {\r\n  content: \"\\F5FD\"; }\r\n\r\n.fa-leaf:before {\r\n  content: \"\\F06C\"; }\r\n\r\n.fa-leanpub:before {\r\n  content: \"\\F212\"; }\r\n\r\n.fa-lemon:before {\r\n  content: \"\\F094\"; }\r\n\r\n.fa-less:before {\r\n  content: \"\\F41D\"; }\r\n\r\n.fa-less-than:before {\r\n  content: \"\\F536\"; }\r\n\r\n.fa-less-than-equal:before {\r\n  content: \"\\F537\"; }\r\n\r\n.fa-level-down-alt:before {\r\n  content: \"\\F3BE\"; }\r\n\r\n.fa-level-up-alt:before {\r\n  content: \"\\F3BF\"; }\r\n\r\n.fa-life-ring:before {\r\n  content: \"\\F1CD\"; }\r\n\r\n.fa-lightbulb:before {\r\n  content: \"\\F0EB\"; }\r\n\r\n.fa-line:before {\r\n  content: \"\\F3C0\"; }\r\n\r\n.fa-link:before {\r\n  content: \"\\F0C1\"; }\r\n\r\n.fa-linkedin:before {\r\n  content: \"\\F08C\"; }\r\n\r\n.fa-linkedin-in:before {\r\n  content: \"\\F0E1\"; }\r\n\r\n.fa-linode:before {\r\n  content: \"\\F2B8\"; }\r\n\r\n.fa-linux:before {\r\n  content: \"\\F17C\"; }\r\n\r\n.fa-lira-sign:before {\r\n  content: \"\\F195\"; }\r\n\r\n.fa-list:before {\r\n  content: \"\\F03A\"; }\r\n\r\n.fa-list-alt:before {\r\n  content: \"\\F022\"; }\r\n\r\n.fa-list-ol:before {\r\n  content: \"\\F0CB\"; }\r\n\r\n.fa-list-ul:before {\r\n  content: \"\\F0CA\"; }\r\n\r\n.fa-location-arrow:before {\r\n  content: \"\\F124\"; }\r\n\r\n.fa-lock:before {\r\n  content: \"\\F023\"; }\r\n\r\n.fa-lock-open:before {\r\n  content: \"\\F3C1\"; }\r\n\r\n.fa-long-arrow-alt-down:before {\r\n  content: \"\\F309\"; }\r\n\r\n.fa-long-arrow-alt-left:before {\r\n  content: \"\\F30A\"; }\r\n\r\n.fa-long-arrow-alt-right:before {\r\n  content: \"\\F30B\"; }\r\n\r\n.fa-long-arrow-alt-up:before {\r\n  content: \"\\F30C\"; }\r\n\r\n.fa-low-vision:before {\r\n  content: \"\\F2A8\"; }\r\n\r\n.fa-luggage-cart:before {\r\n  content: \"\\F59D\"; }\r\n\r\n.fa-lungs:before {\r\n  content: \"\\F604\"; }\r\n\r\n.fa-lungs-virus:before {\r\n  content: \"\\F967\"; }\r\n\r\n.fa-lyft:before {\r\n  content: \"\\F3C3\"; }\r\n\r\n.fa-magento:before {\r\n  content: \"\\F3C4\"; }\r\n\r\n.fa-magic:before {\r\n  content: \"\\F0D0\"; }\r\n\r\n.fa-magnet:before {\r\n  content: \"\\F076\"; }\r\n\r\n.fa-mail-bulk:before {\r\n  content: \"\\F674\"; }\r\n\r\n.fa-mailchimp:before {\r\n  content: \"\\F59E\"; }\r\n\r\n.fa-male:before {\r\n  content: \"\\F183\"; }\r\n\r\n.fa-mandalorian:before {\r\n  content: \"\\F50F\"; }\r\n\r\n.fa-map:before {\r\n  content: \"\\F279\"; }\r\n\r\n.fa-map-marked:before {\r\n  content: \"\\F59F\"; }\r\n\r\n.fa-map-marked-alt:before {\r\n  content: \"\\F5A0\"; }\r\n\r\n.fa-map-marker:before {\r\n  content: \"\\F041\"; }\r\n\r\n.fa-map-marker-alt:before {\r\n  content: \"\\F3C5\"; }\r\n\r\n.fa-map-pin:before {\r\n  content: \"\\F276\"; }\r\n\r\n.fa-map-signs:before {\r\n  content: \"\\F277\"; }\r\n\r\n.fa-markdown:before {\r\n  content: \"\\F60F\"; }\r\n\r\n.fa-marker:before {\r\n  content: \"\\F5A1\"; }\r\n\r\n.fa-mars:before {\r\n  content: \"\\F222\"; }\r\n\r\n.fa-mars-double:before {\r\n  content: \"\\F227\"; }\r\n\r\n.fa-mars-stroke:before {\r\n  content: \"\\F229\"; }\r\n\r\n.fa-mars-stroke-h:before {\r\n  content: \"\\F22B\"; }\r\n\r\n.fa-mars-stroke-v:before {\r\n  content: \"\\F22A\"; }\r\n\r\n.fa-mask:before {\r\n  content: \"\\F6FA\"; }\r\n\r\n.fa-mastodon:before {\r\n  content: \"\\F4F6\"; }\r\n\r\n.fa-maxcdn:before {\r\n  content: \"\\F136\"; }\r\n\r\n.fa-mdb:before {\r\n  content: \"\\F8CA\"; }\r\n\r\n.fa-medal:before {\r\n  content: \"\\F5A2\"; }\r\n\r\n.fa-medapps:before {\r\n  content: \"\\F3C6\"; }\r\n\r\n.fa-medium:before {\r\n  content: \"\\F23A\"; }\r\n\r\n.fa-medium-m:before {\r\n  content: \"\\F3C7\"; }\r\n\r\n.fa-medkit:before {\r\n  content: \"\\F0FA\"; }\r\n\r\n.fa-medrt:before {\r\n  content: \"\\F3C8\"; }\r\n\r\n.fa-meetup:before {\r\n  content: \"\\F2E0\"; }\r\n\r\n.fa-megaport:before {\r\n  content: \"\\F5A3\"; }\r\n\r\n.fa-meh:before {\r\n  content: \"\\F11A\"; }\r\n\r\n.fa-meh-blank:before {\r\n  content: \"\\F5A4\"; }\r\n\r\n.fa-meh-rolling-eyes:before {\r\n  content: \"\\F5A5\"; }\r\n\r\n.fa-memory:before {\r\n  content: \"\\F538\"; }\r\n\r\n.fa-mendeley:before {\r\n  content: \"\\F7B3\"; }\r\n\r\n.fa-menorah:before {\r\n  content: \"\\F676\"; }\r\n\r\n.fa-mercury:before {\r\n  content: \"\\F223\"; }\r\n\r\n.fa-meteor:before {\r\n  content: \"\\F753\"; }\r\n\r\n.fa-microblog:before {\r\n  content: \"\\F91A\"; }\r\n\r\n.fa-microchip:before {\r\n  content: \"\\F2DB\"; }\r\n\r\n.fa-microphone:before {\r\n  content: \"\\F130\"; }\r\n\r\n.fa-microphone-alt:before {\r\n  content: \"\\F3C9\"; }\r\n\r\n.fa-microphone-alt-slash:before {\r\n  content: \"\\F539\"; }\r\n\r\n.fa-microphone-slash:before {\r\n  content: \"\\F131\"; }\r\n\r\n.fa-microscope:before {\r\n  content: \"\\F610\"; }\r\n\r\n.fa-microsoft:before {\r\n  content: \"\\F3CA\"; }\r\n\r\n.fa-minus:before {\r\n  content: \"\\F068\"; }\r\n\r\n.fa-minus-circle:before {\r\n  content: \"\\F056\"; }\r\n\r\n.fa-minus-square:before {\r\n  content: \"\\F146\"; }\r\n\r\n.fa-mitten:before {\r\n  content: \"\\F7B5\"; }\r\n\r\n.fa-mix:before {\r\n  content: \"\\F3CB\"; }\r\n\r\n.fa-mixcloud:before {\r\n  content: \"\\F289\"; }\r\n\r\n.fa-mixer:before {\r\n  content: \"\\F956\"; }\r\n\r\n.fa-mizuni:before {\r\n  content: \"\\F3CC\"; }\r\n\r\n.fa-mobile:before {\r\n  content: \"\\F10B\"; }\r\n\r\n.fa-mobile-alt:before {\r\n  content: \"\\F3CD\"; }\r\n\r\n.fa-modx:before {\r\n  content: \"\\F285\"; }\r\n\r\n.fa-monero:before {\r\n  content: \"\\F3D0\"; }\r\n\r\n.fa-money-bill:before {\r\n  content: \"\\F0D6\"; }\r\n\r\n.fa-money-bill-alt:before {\r\n  content: \"\\F3D1\"; }\r\n\r\n.fa-money-bill-wave:before {\r\n  content: \"\\F53A\"; }\r\n\r\n.fa-money-bill-wave-alt:before {\r\n  content: \"\\F53B\"; }\r\n\r\n.fa-money-check:before {\r\n  content: \"\\F53C\"; }\r\n\r\n.fa-money-check-alt:before {\r\n  content: \"\\F53D\"; }\r\n\r\n.fa-monument:before {\r\n  content: \"\\F5A6\"; }\r\n\r\n.fa-moon:before {\r\n  content: \"\\F186\"; }\r\n\r\n.fa-mortar-pestle:before {\r\n  content: \"\\F5A7\"; }\r\n\r\n.fa-mosque:before {\r\n  content: \"\\F678\"; }\r\n\r\n.fa-motorcycle:before {\r\n  content: \"\\F21C\"; }\r\n\r\n.fa-mountain:before {\r\n  content: \"\\F6FC\"; }\r\n\r\n.fa-mouse:before {\r\n  content: \"\\F8CC\"; }\r\n\r\n.fa-mouse-pointer:before {\r\n  content: \"\\F245\"; }\r\n\r\n.fa-mug-hot:before {\r\n  content: \"\\F7B6\"; }\r\n\r\n.fa-music:before {\r\n  content: \"\\F001\"; }\r\n\r\n.fa-napster:before {\r\n  content: \"\\F3D2\"; }\r\n\r\n.fa-neos:before {\r\n  content: \"\\F612\"; }\r\n\r\n.fa-network-wired:before {\r\n  content: \"\\F6FF\"; }\r\n\r\n.fa-neuter:before {\r\n  content: \"\\F22C\"; }\r\n\r\n.fa-newspaper:before {\r\n  content: \"\\F1EA\"; }\r\n\r\n.fa-nimblr:before {\r\n  content: \"\\F5A8\"; }\r\n\r\n.fa-node:before {\r\n  content: \"\\F419\"; }\r\n\r\n.fa-node-js:before {\r\n  content: \"\\F3D3\"; }\r\n\r\n.fa-not-equal:before {\r\n  content: \"\\F53E\"; }\r\n\r\n.fa-notes-medical:before {\r\n  content: \"\\F481\"; }\r\n\r\n.fa-npm:before {\r\n  content: \"\\F3D4\"; }\r\n\r\n.fa-ns8:before {\r\n  content: \"\\F3D5\"; }\r\n\r\n.fa-nutritionix:before {\r\n  content: \"\\F3D6\"; }\r\n\r\n.fa-object-group:before {\r\n  content: \"\\F247\"; }\r\n\r\n.fa-object-ungroup:before {\r\n  content: \"\\F248\"; }\r\n\r\n.fa-odnoklassniki:before {\r\n  content: \"\\F263\"; }\r\n\r\n.fa-odnoklassniki-square:before {\r\n  content: \"\\F264\"; }\r\n\r\n.fa-oil-can:before {\r\n  content: \"\\F613\"; }\r\n\r\n.fa-old-republic:before {\r\n  content: \"\\F510\"; }\r\n\r\n.fa-om:before {\r\n  content: \"\\F679\"; }\r\n\r\n.fa-opencart:before {\r\n  content: \"\\F23D\"; }\r\n\r\n.fa-openid:before {\r\n  content: \"\\F19B\"; }\r\n\r\n.fa-opera:before {\r\n  content: \"\\F26A\"; }\r\n\r\n.fa-optin-monster:before {\r\n  content: \"\\F23C\"; }\r\n\r\n.fa-orcid:before {\r\n  content: \"\\F8D2\"; }\r\n\r\n.fa-osi:before {\r\n  content: \"\\F41A\"; }\r\n\r\n.fa-otter:before {\r\n  content: \"\\F700\"; }\r\n\r\n.fa-outdent:before {\r\n  content: \"\\F03B\"; }\r\n\r\n.fa-page4:before {\r\n  content: \"\\F3D7\"; }\r\n\r\n.fa-pagelines:before {\r\n  content: \"\\F18C\"; }\r\n\r\n.fa-pager:before {\r\n  content: \"\\F815\"; }\r\n\r\n.fa-paint-brush:before {\r\n  content: \"\\F1FC\"; }\r\n\r\n.fa-paint-roller:before {\r\n  content: \"\\F5AA\"; }\r\n\r\n.fa-palette:before {\r\n  content: \"\\F53F\"; }\r\n\r\n.fa-palfed:before {\r\n  content: \"\\F3D8\"; }\r\n\r\n.fa-pallet:before {\r\n  content: \"\\F482\"; }\r\n\r\n.fa-paper-plane:before {\r\n  content: \"\\F1D8\"; }\r\n\r\n.fa-paperclip:before {\r\n  content: \"\\F0C6\"; }\r\n\r\n.fa-parachute-box:before {\r\n  content: \"\\F4CD\"; }\r\n\r\n.fa-paragraph:before {\r\n  content: \"\\F1DD\"; }\r\n\r\n.fa-parking:before {\r\n  content: \"\\F540\"; }\r\n\r\n.fa-passport:before {\r\n  content: \"\\F5AB\"; }\r\n\r\n.fa-pastafarianism:before {\r\n  content: \"\\F67B\"; }\r\n\r\n.fa-paste:before {\r\n  content: \"\\F0EA\"; }\r\n\r\n.fa-patreon:before {\r\n  content: \"\\F3D9\"; }\r\n\r\n.fa-pause:before {\r\n  content: \"\\F04C\"; }\r\n\r\n.fa-pause-circle:before {\r\n  content: \"\\F28B\"; }\r\n\r\n.fa-paw:before {\r\n  content: \"\\F1B0\"; }\r\n\r\n.fa-paypal:before {\r\n  content: \"\\F1ED\"; }\r\n\r\n.fa-peace:before {\r\n  content: \"\\F67C\"; }\r\n\r\n.fa-pen:before {\r\n  content: \"\\F304\"; }\r\n\r\n.fa-pen-alt:before {\r\n  content: \"\\F305\"; }\r\n\r\n.fa-pen-fancy:before {\r\n  content: \"\\F5AC\"; }\r\n\r\n.fa-pen-nib:before {\r\n  content: \"\\F5AD\"; }\r\n\r\n.fa-pen-square:before {\r\n  content: \"\\F14B\"; }\r\n\r\n.fa-pencil-alt:before {\r\n  content: \"\\F303\"; }\r\n\r\n.fa-pencil-ruler:before {\r\n  content: \"\\F5AE\"; }\r\n\r\n.fa-penny-arcade:before {\r\n  content: \"\\F704\"; }\r\n\r\n.fa-people-arrows:before {\r\n  content: \"\\F968\"; }\r\n\r\n.fa-people-carry:before {\r\n  content: \"\\F4CE\"; }\r\n\r\n.fa-pepper-hot:before {\r\n  content: \"\\F816\"; }\r\n\r\n.fa-percent:before {\r\n  content: \"\\F295\"; }\r\n\r\n.fa-percentage:before {\r\n  content: \"\\F541\"; }\r\n\r\n.fa-periscope:before {\r\n  content: \"\\F3DA\"; }\r\n\r\n.fa-person-booth:before {\r\n  content: \"\\F756\"; }\r\n\r\n.fa-phabricator:before {\r\n  content: \"\\F3DB\"; }\r\n\r\n.fa-phoenix-framework:before {\r\n  content: \"\\F3DC\"; }\r\n\r\n.fa-phoenix-squadron:before {\r\n  content: \"\\F511\"; }\r\n\r\n.fa-phone:before {\r\n  content: \"\\F095\"; }\r\n\r\n.fa-phone-alt:before {\r\n  content: \"\\F879\"; }\r\n\r\n.fa-phone-slash:before {\r\n  content: \"\\F3DD\"; }\r\n\r\n.fa-phone-square:before {\r\n  content: \"\\F098\"; }\r\n\r\n.fa-phone-square-alt:before {\r\n  content: \"\\F87B\"; }\r\n\r\n.fa-phone-volume:before {\r\n  content: \"\\F2A0\"; }\r\n\r\n.fa-photo-video:before {\r\n  content: \"\\F87C\"; }\r\n\r\n.fa-php:before {\r\n  content: \"\\F457\"; }\r\n\r\n.fa-pied-piper:before {\r\n  content: \"\\F2AE\"; }\r\n\r\n.fa-pied-piper-alt:before {\r\n  content: \"\\F1A8\"; }\r\n\r\n.fa-pied-piper-hat:before {\r\n  content: \"\\F4E5\"; }\r\n\r\n.fa-pied-piper-pp:before {\r\n  content: \"\\F1A7\"; }\r\n\r\n.fa-pied-piper-square:before {\r\n  content: \"\\F91E\"; }\r\n\r\n.fa-piggy-bank:before {\r\n  content: \"\\F4D3\"; }\r\n\r\n.fa-pills:before {\r\n  content: \"\\F484\"; }\r\n\r\n.fa-pinterest:before {\r\n  content: \"\\F0D2\"; }\r\n\r\n.fa-pinterest-p:before {\r\n  content: \"\\F231\"; }\r\n\r\n.fa-pinterest-square:before {\r\n  content: \"\\F0D3\"; }\r\n\r\n.fa-pizza-slice:before {\r\n  content: \"\\F818\"; }\r\n\r\n.fa-place-of-worship:before {\r\n  content: \"\\F67F\"; }\r\n\r\n.fa-plane:before {\r\n  content: \"\\F072\"; }\r\n\r\n.fa-plane-arrival:before {\r\n  content: \"\\F5AF\"; }\r\n\r\n.fa-plane-departure:before {\r\n  content: \"\\F5B0\"; }\r\n\r\n.fa-plane-slash:before {\r\n  content: \"\\F969\"; }\r\n\r\n.fa-play:before {\r\n  content: \"\\F04B\"; }\r\n\r\n.fa-play-circle:before {\r\n  content: \"\\F144\"; }\r\n\r\n.fa-playstation:before {\r\n  content: \"\\F3DF\"; }\r\n\r\n.fa-plug:before {\r\n  content: \"\\F1E6\"; }\r\n\r\n.fa-plus:before {\r\n  content: \"\\F067\"; }\r\n\r\n.fa-plus-circle:before {\r\n  content: \"\\F055\"; }\r\n\r\n.fa-plus-square:before {\r\n  content: \"\\F0FE\"; }\r\n\r\n.fa-podcast:before {\r\n  content: \"\\F2CE\"; }\r\n\r\n.fa-poll:before {\r\n  content: \"\\F681\"; }\r\n\r\n.fa-poll-h:before {\r\n  content: \"\\F682\"; }\r\n\r\n.fa-poo:before {\r\n  content: \"\\F2FE\"; }\r\n\r\n.fa-poo-storm:before {\r\n  content: \"\\F75A\"; }\r\n\r\n.fa-poop:before {\r\n  content: \"\\F619\"; }\r\n\r\n.fa-portrait:before {\r\n  content: \"\\F3E0\"; }\r\n\r\n.fa-pound-sign:before {\r\n  content: \"\\F154\"; }\r\n\r\n.fa-power-off:before {\r\n  content: \"\\F011\"; }\r\n\r\n.fa-pray:before {\r\n  content: \"\\F683\"; }\r\n\r\n.fa-praying-hands:before {\r\n  content: \"\\F684\"; }\r\n\r\n.fa-prescription:before {\r\n  content: \"\\F5B1\"; }\r\n\r\n.fa-prescription-bottle:before {\r\n  content: \"\\F485\"; }\r\n\r\n.fa-prescription-bottle-alt:before {\r\n  content: \"\\F486\"; }\r\n\r\n.fa-print:before {\r\n  content: \"\\F02F\"; }\r\n\r\n.fa-procedures:before {\r\n  content: \"\\F487\"; }\r\n\r\n.fa-product-hunt:before {\r\n  content: \"\\F288\"; }\r\n\r\n.fa-project-diagram:before {\r\n  content: \"\\F542\"; }\r\n\r\n.fa-pump-medical:before {\r\n  content: \"\\F96A\"; }\r\n\r\n.fa-pump-soap:before {\r\n  content: \"\\F96B\"; }\r\n\r\n.fa-pushed:before {\r\n  content: \"\\F3E1\"; }\r\n\r\n.fa-puzzle-piece:before {\r\n  content: \"\\F12E\"; }\r\n\r\n.fa-python:before {\r\n  content: \"\\F3E2\"; }\r\n\r\n.fa-qq:before {\r\n  content: \"\\F1D6\"; }\r\n\r\n.fa-qrcode:before {\r\n  content: \"\\F029\"; }\r\n\r\n.fa-question:before {\r\n  content: \"\\F128\"; }\r\n\r\n.fa-question-circle:before {\r\n  content: \"\\F059\"; }\r\n\r\n.fa-quidditch:before {\r\n  content: \"\\F458\"; }\r\n\r\n.fa-quinscape:before {\r\n  content: \"\\F459\"; }\r\n\r\n.fa-quora:before {\r\n  content: \"\\F2C4\"; }\r\n\r\n.fa-quote-left:before {\r\n  content: \"\\F10D\"; }\r\n\r\n.fa-quote-right:before {\r\n  content: \"\\F10E\"; }\r\n\r\n.fa-quran:before {\r\n  content: \"\\F687\"; }\r\n\r\n.fa-r-project:before {\r\n  content: \"\\F4F7\"; }\r\n\r\n.fa-radiation:before {\r\n  content: \"\\F7B9\"; }\r\n\r\n.fa-radiation-alt:before {\r\n  content: \"\\F7BA\"; }\r\n\r\n.fa-rainbow:before {\r\n  content: \"\\F75B\"; }\r\n\r\n.fa-random:before {\r\n  content: \"\\F074\"; }\r\n\r\n.fa-raspberry-pi:before {\r\n  content: \"\\F7BB\"; }\r\n\r\n.fa-ravelry:before {\r\n  content: \"\\F2D9\"; }\r\n\r\n.fa-react:before {\r\n  content: \"\\F41B\"; }\r\n\r\n.fa-reacteurope:before {\r\n  content: \"\\F75D\"; }\r\n\r\n.fa-readme:before {\r\n  content: \"\\F4D5\"; }\r\n\r\n.fa-rebel:before {\r\n  content: \"\\F1D0\"; }\r\n\r\n.fa-receipt:before {\r\n  content: \"\\F543\"; }\r\n\r\n.fa-record-vinyl:before {\r\n  content: \"\\F8D9\"; }\r\n\r\n.fa-recycle:before {\r\n  content: \"\\F1B8\"; }\r\n\r\n.fa-red-river:before {\r\n  content: \"\\F3E3\"; }\r\n\r\n.fa-reddit:before {\r\n  content: \"\\F1A1\"; }\r\n\r\n.fa-reddit-alien:before {\r\n  content: \"\\F281\"; }\r\n\r\n.fa-reddit-square:before {\r\n  content: \"\\F1A2\"; }\r\n\r\n.fa-redhat:before {\r\n  content: \"\\F7BC\"; }\r\n\r\n.fa-redo:before {\r\n  content: \"\\F01E\"; }\r\n\r\n.fa-redo-alt:before {\r\n  content: \"\\F2F9\"; }\r\n\r\n.fa-registered:before {\r\n  content: \"\\F25D\"; }\r\n\r\n.fa-remove-format:before {\r\n  content: \"\\F87D\"; }\r\n\r\n.fa-renren:before {\r\n  content: \"\\F18B\"; }\r\n\r\n.fa-reply:before {\r\n  content: \"\\F3E5\"; }\r\n\r\n.fa-reply-all:before {\r\n  content: \"\\F122\"; }\r\n\r\n.fa-replyd:before {\r\n  content: \"\\F3E6\"; }\r\n\r\n.fa-republican:before {\r\n  content: \"\\F75E\"; }\r\n\r\n.fa-researchgate:before {\r\n  content: \"\\F4F8\"; }\r\n\r\n.fa-resolving:before {\r\n  content: \"\\F3E7\"; }\r\n\r\n.fa-restroom:before {\r\n  content: \"\\F7BD\"; }\r\n\r\n.fa-retweet:before {\r\n  content: \"\\F079\"; }\r\n\r\n.fa-rev:before {\r\n  content: \"\\F5B2\"; }\r\n\r\n.fa-ribbon:before {\r\n  content: \"\\F4D6\"; }\r\n\r\n.fa-ring:before {\r\n  content: \"\\F70B\"; }\r\n\r\n.fa-road:before {\r\n  content: \"\\F018\"; }\r\n\r\n.fa-robot:before {\r\n  content: \"\\F544\"; }\r\n\r\n.fa-rocket:before {\r\n  content: \"\\F135\"; }\r\n\r\n.fa-rocketchat:before {\r\n  content: \"\\F3E8\"; }\r\n\r\n.fa-rockrms:before {\r\n  content: \"\\F3E9\"; }\r\n\r\n.fa-route:before {\r\n  content: \"\\F4D7\"; }\r\n\r\n.fa-rss:before {\r\n  content: \"\\F09E\"; }\r\n\r\n.fa-rss-square:before {\r\n  content: \"\\F143\"; }\r\n\r\n.fa-ruble-sign:before {\r\n  content: \"\\F158\"; }\r\n\r\n.fa-ruler:before {\r\n  content: \"\\F545\"; }\r\n\r\n.fa-ruler-combined:before {\r\n  content: \"\\F546\"; }\r\n\r\n.fa-ruler-horizontal:before {\r\n  content: \"\\F547\"; }\r\n\r\n.fa-ruler-vertical:before {\r\n  content: \"\\F548\"; }\r\n\r\n.fa-running:before {\r\n  content: \"\\F70C\"; }\r\n\r\n.fa-rupee-sign:before {\r\n  content: \"\\F156\"; }\r\n\r\n.fa-sad-cry:before {\r\n  content: \"\\F5B3\"; }\r\n\r\n.fa-sad-tear:before {\r\n  content: \"\\F5B4\"; }\r\n\r\n.fa-safari:before {\r\n  content: \"\\F267\"; }\r\n\r\n.fa-salesforce:before {\r\n  content: \"\\F83B\"; }\r\n\r\n.fa-sass:before {\r\n  content: \"\\F41E\"; }\r\n\r\n.fa-satellite:before {\r\n  content: \"\\F7BF\"; }\r\n\r\n.fa-satellite-dish:before {\r\n  content: \"\\F7C0\"; }\r\n\r\n.fa-save:before {\r\n  content: \"\\F0C7\"; }\r\n\r\n.fa-schlix:before {\r\n  content: \"\\F3EA\"; }\r\n\r\n.fa-school:before {\r\n  content: \"\\F549\"; }\r\n\r\n.fa-screwdriver:before {\r\n  content: \"\\F54A\"; }\r\n\r\n.fa-scribd:before {\r\n  content: \"\\F28A\"; }\r\n\r\n.fa-scroll:before {\r\n  content: \"\\F70E\"; }\r\n\r\n.fa-sd-card:before {\r\n  content: \"\\F7C2\"; }\r\n\r\n.fa-search:before {\r\n  content: \"\\F002\"; }\r\n\r\n.fa-search-dollar:before {\r\n  content: \"\\F688\"; }\r\n\r\n.fa-search-location:before {\r\n  content: \"\\F689\"; }\r\n\r\n.fa-search-minus:before {\r\n  content: \"\\F010\"; }\r\n\r\n.fa-search-plus:before {\r\n  content: \"\\F00E\"; }\r\n\r\n.fa-searchengin:before {\r\n  content: \"\\F3EB\"; }\r\n\r\n.fa-seedling:before {\r\n  content: \"\\F4D8\"; }\r\n\r\n.fa-sellcast:before {\r\n  content: \"\\F2DA\"; }\r\n\r\n.fa-sellsy:before {\r\n  content: \"\\F213\"; }\r\n\r\n.fa-server:before {\r\n  content: \"\\F233\"; }\r\n\r\n.fa-servicestack:before {\r\n  content: \"\\F3EC\"; }\r\n\r\n.fa-shapes:before {\r\n  content: \"\\F61F\"; }\r\n\r\n.fa-share:before {\r\n  content: \"\\F064\"; }\r\n\r\n.fa-share-alt:before {\r\n  content: \"\\F1E0\"; }\r\n\r\n.fa-share-alt-square:before {\r\n  content: \"\\F1E1\"; }\r\n\r\n.fa-share-square:before {\r\n  content: \"\\F14D\"; }\r\n\r\n.fa-shekel-sign:before {\r\n  content: \"\\F20B\"; }\r\n\r\n.fa-shield-alt:before {\r\n  content: \"\\F3ED\"; }\r\n\r\n.fa-shield-virus:before {\r\n  content: \"\\F96C\"; }\r\n\r\n.fa-ship:before {\r\n  content: \"\\F21A\"; }\r\n\r\n.fa-shipping-fast:before {\r\n  content: \"\\F48B\"; }\r\n\r\n.fa-shirtsinbulk:before {\r\n  content: \"\\F214\"; }\r\n\r\n.fa-shoe-prints:before {\r\n  content: \"\\F54B\"; }\r\n\r\n.fa-shopify:before {\r\n  content: \"\\F957\"; }\r\n\r\n.fa-shopping-bag:before {\r\n  content: \"\\F290\"; }\r\n\r\n.fa-shopping-basket:before {\r\n  content: \"\\F291\"; }\r\n\r\n.fa-shopping-cart:before {\r\n  content: \"\\F07A\"; }\r\n\r\n.fa-shopware:before {\r\n  content: \"\\F5B5\"; }\r\n\r\n.fa-shower:before {\r\n  content: \"\\F2CC\"; }\r\n\r\n.fa-shuttle-van:before {\r\n  content: \"\\F5B6\"; }\r\n\r\n.fa-sign:before {\r\n  content: \"\\F4D9\"; }\r\n\r\n.fa-sign-in-alt:before {\r\n  content: \"\\F2F6\"; }\r\n\r\n.fa-sign-language:before {\r\n  content: \"\\F2A7\"; }\r\n\r\n.fa-sign-out-alt:before {\r\n  content: \"\\F2F5\"; }\r\n\r\n.fa-signal:before {\r\n  content: \"\\F012\"; }\r\n\r\n.fa-signature:before {\r\n  content: \"\\F5B7\"; }\r\n\r\n.fa-sim-card:before {\r\n  content: \"\\F7C4\"; }\r\n\r\n.fa-simplybuilt:before {\r\n  content: \"\\F215\"; }\r\n\r\n.fa-sistrix:before {\r\n  content: \"\\F3EE\"; }\r\n\r\n.fa-sitemap:before {\r\n  content: \"\\F0E8\"; }\r\n\r\n.fa-sith:before {\r\n  content: \"\\F512\"; }\r\n\r\n.fa-skating:before {\r\n  content: \"\\F7C5\"; }\r\n\r\n.fa-sketch:before {\r\n  content: \"\\F7C6\"; }\r\n\r\n.fa-skiing:before {\r\n  content: \"\\F7C9\"; }\r\n\r\n.fa-skiing-nordic:before {\r\n  content: \"\\F7CA\"; }\r\n\r\n.fa-skull:before {\r\n  content: \"\\F54C\"; }\r\n\r\n.fa-skull-crossbones:before {\r\n  content: \"\\F714\"; }\r\n\r\n.fa-skyatlas:before {\r\n  content: \"\\F216\"; }\r\n\r\n.fa-skype:before {\r\n  content: \"\\F17E\"; }\r\n\r\n.fa-slack:before {\r\n  content: \"\\F198\"; }\r\n\r\n.fa-slack-hash:before {\r\n  content: \"\\F3EF\"; }\r\n\r\n.fa-slash:before {\r\n  content: \"\\F715\"; }\r\n\r\n.fa-sleigh:before {\r\n  content: \"\\F7CC\"; }\r\n\r\n.fa-sliders-h:before {\r\n  content: \"\\F1DE\"; }\r\n\r\n.fa-slideshare:before {\r\n  content: \"\\F1E7\"; }\r\n\r\n.fa-smile:before {\r\n  content: \"\\F118\"; }\r\n\r\n.fa-smile-beam:before {\r\n  content: \"\\F5B8\"; }\r\n\r\n.fa-smile-wink:before {\r\n  content: \"\\F4DA\"; }\r\n\r\n.fa-smog:before {\r\n  content: \"\\F75F\"; }\r\n\r\n.fa-smoking:before {\r\n  content: \"\\F48D\"; }\r\n\r\n.fa-smoking-ban:before {\r\n  content: \"\\F54D\"; }\r\n\r\n.fa-sms:before {\r\n  content: \"\\F7CD\"; }\r\n\r\n.fa-snapchat:before {\r\n  content: \"\\F2AB\"; }\r\n\r\n.fa-snapchat-ghost:before {\r\n  content: \"\\F2AC\"; }\r\n\r\n.fa-snapchat-square:before {\r\n  content: \"\\F2AD\"; }\r\n\r\n.fa-snowboarding:before {\r\n  content: \"\\F7CE\"; }\r\n\r\n.fa-snowflake:before {\r\n  content: \"\\F2DC\"; }\r\n\r\n.fa-snowman:before {\r\n  content: \"\\F7D0\"; }\r\n\r\n.fa-snowplow:before {\r\n  content: \"\\F7D2\"; }\r\n\r\n.fa-soap:before {\r\n  content: \"\\F96E\"; }\r\n\r\n.fa-socks:before {\r\n  content: \"\\F696\"; }\r\n\r\n.fa-solar-panel:before {\r\n  content: \"\\F5BA\"; }\r\n\r\n.fa-sort:before {\r\n  content: \"\\F0DC\"; }\r\n\r\n.fa-sort-alpha-down:before {\r\n  content: \"\\F15D\"; }\r\n\r\n.fa-sort-alpha-down-alt:before {\r\n  content: \"\\F881\"; }\r\n\r\n.fa-sort-alpha-up:before {\r\n  content: \"\\F15E\"; }\r\n\r\n.fa-sort-alpha-up-alt:before {\r\n  content: \"\\F882\"; }\r\n\r\n.fa-sort-amount-down:before {\r\n  content: \"\\F160\"; }\r\n\r\n.fa-sort-amount-down-alt:before {\r\n  content: \"\\F884\"; }\r\n\r\n.fa-sort-amount-up:before {\r\n  content: \"\\F161\"; }\r\n\r\n.fa-sort-amount-up-alt:before {\r\n  content: \"\\F885\"; }\r\n\r\n.fa-sort-down:before {\r\n  content: \"\\F0DD\"; }\r\n\r\n.fa-sort-numeric-down:before {\r\n  content: \"\\F162\"; }\r\n\r\n.fa-sort-numeric-down-alt:before {\r\n  content: \"\\F886\"; }\r\n\r\n.fa-sort-numeric-up:before {\r\n  content: \"\\F163\"; }\r\n\r\n.fa-sort-numeric-up-alt:before {\r\n  content: \"\\F887\"; }\r\n\r\n.fa-sort-up:before {\r\n  content: \"\\F0DE\"; }\r\n\r\n.fa-soundcloud:before {\r\n  content: \"\\F1BE\"; }\r\n\r\n.fa-sourcetree:before {\r\n  content: \"\\F7D3\"; }\r\n\r\n.fa-spa:before {\r\n  content: \"\\F5BB\"; }\r\n\r\n.fa-space-shuttle:before {\r\n  content: \"\\F197\"; }\r\n\r\n.fa-speakap:before {\r\n  content: \"\\F3F3\"; }\r\n\r\n.fa-speaker-deck:before {\r\n  content: \"\\F83C\"; }\r\n\r\n.fa-spell-check:before {\r\n  content: \"\\F891\"; }\r\n\r\n.fa-spider:before {\r\n  content: \"\\F717\"; }\r\n\r\n.fa-spinner:before {\r\n  content: \"\\F110\"; }\r\n\r\n.fa-splotch:before {\r\n  content: \"\\F5BC\"; }\r\n\r\n.fa-spotify:before {\r\n  content: \"\\F1BC\"; }\r\n\r\n.fa-spray-can:before {\r\n  content: \"\\F5BD\"; }\r\n\r\n.fa-square:before {\r\n  content: \"\\F0C8\"; }\r\n\r\n.fa-square-full:before {\r\n  content: \"\\F45C\"; }\r\n\r\n.fa-square-root-alt:before {\r\n  content: \"\\F698\"; }\r\n\r\n.fa-squarespace:before {\r\n  content: \"\\F5BE\"; }\r\n\r\n.fa-stack-exchange:before {\r\n  content: \"\\F18D\"; }\r\n\r\n.fa-stack-overflow:before {\r\n  content: \"\\F16C\"; }\r\n\r\n.fa-stackpath:before {\r\n  content: \"\\F842\"; }\r\n\r\n.fa-stamp:before {\r\n  content: \"\\F5BF\"; }\r\n\r\n.fa-star:before {\r\n  content: \"\\F005\"; }\r\n\r\n.fa-star-and-crescent:before {\r\n  content: \"\\F699\"; }\r\n\r\n.fa-star-half:before {\r\n  content: \"\\F089\"; }\r\n\r\n.fa-star-half-alt:before {\r\n  content: \"\\F5C0\"; }\r\n\r\n.fa-star-of-david:before {\r\n  content: \"\\F69A\"; }\r\n\r\n.fa-star-of-life:before {\r\n  content: \"\\F621\"; }\r\n\r\n.fa-staylinked:before {\r\n  content: \"\\F3F5\"; }\r\n\r\n.fa-steam:before {\r\n  content: \"\\F1B6\"; }\r\n\r\n.fa-steam-square:before {\r\n  content: \"\\F1B7\"; }\r\n\r\n.fa-steam-symbol:before {\r\n  content: \"\\F3F6\"; }\r\n\r\n.fa-step-backward:before {\r\n  content: \"\\F048\"; }\r\n\r\n.fa-step-forward:before {\r\n  content: \"\\F051\"; }\r\n\r\n.fa-stethoscope:before {\r\n  content: \"\\F0F1\"; }\r\n\r\n.fa-sticker-mule:before {\r\n  content: \"\\F3F7\"; }\r\n\r\n.fa-sticky-note:before {\r\n  content: \"\\F249\"; }\r\n\r\n.fa-stop:before {\r\n  content: \"\\F04D\"; }\r\n\r\n.fa-stop-circle:before {\r\n  content: \"\\F28D\"; }\r\n\r\n.fa-stopwatch:before {\r\n  content: \"\\F2F2\"; }\r\n\r\n.fa-stopwatch-20:before {\r\n  content: \"\\F96F\"; }\r\n\r\n.fa-store:before {\r\n  content: \"\\F54E\"; }\r\n\r\n.fa-store-alt:before {\r\n  content: \"\\F54F\"; }\r\n\r\n.fa-store-alt-slash:before {\r\n  content: \"\\F970\"; }\r\n\r\n.fa-store-slash:before {\r\n  content: \"\\F971\"; }\r\n\r\n.fa-strava:before {\r\n  content: \"\\F428\"; }\r\n\r\n.fa-stream:before {\r\n  content: \"\\F550\"; }\r\n\r\n.fa-street-view:before {\r\n  content: \"\\F21D\"; }\r\n\r\n.fa-strikethrough:before {\r\n  content: \"\\F0CC\"; }\r\n\r\n.fa-stripe:before {\r\n  content: \"\\F429\"; }\r\n\r\n.fa-stripe-s:before {\r\n  content: \"\\F42A\"; }\r\n\r\n.fa-stroopwafel:before {\r\n  content: \"\\F551\"; }\r\n\r\n.fa-studiovinari:before {\r\n  content: \"\\F3F8\"; }\r\n\r\n.fa-stumbleupon:before {\r\n  content: \"\\F1A4\"; }\r\n\r\n.fa-stumbleupon-circle:before {\r\n  content: \"\\F1A3\"; }\r\n\r\n.fa-subscript:before {\r\n  content: \"\\F12C\"; }\r\n\r\n.fa-subway:before {\r\n  content: \"\\F239\"; }\r\n\r\n.fa-suitcase:before {\r\n  content: \"\\F0F2\"; }\r\n\r\n.fa-suitcase-rolling:before {\r\n  content: \"\\F5C1\"; }\r\n\r\n.fa-sun:before {\r\n  content: \"\\F185\"; }\r\n\r\n.fa-superpowers:before {\r\n  content: \"\\F2DD\"; }\r\n\r\n.fa-superscript:before {\r\n  content: \"\\F12B\"; }\r\n\r\n.fa-supple:before {\r\n  content: \"\\F3F9\"; }\r\n\r\n.fa-surprise:before {\r\n  content: \"\\F5C2\"; }\r\n\r\n.fa-suse:before {\r\n  content: \"\\F7D6\"; }\r\n\r\n.fa-swatchbook:before {\r\n  content: \"\\F5C3\"; }\r\n\r\n.fa-swift:before {\r\n  content: \"\\F8E1\"; }\r\n\r\n.fa-swimmer:before {\r\n  content: \"\\F5C4\"; }\r\n\r\n.fa-swimming-pool:before {\r\n  content: \"\\F5C5\"; }\r\n\r\n.fa-symfony:before {\r\n  content: \"\\F83D\"; }\r\n\r\n.fa-synagogue:before {\r\n  content: \"\\F69B\"; }\r\n\r\n.fa-sync:before {\r\n  content: \"\\F021\"; }\r\n\r\n.fa-sync-alt:before {\r\n  content: \"\\F2F1\"; }\r\n\r\n.fa-syringe:before {\r\n  content: \"\\F48E\"; }\r\n\r\n.fa-table:before {\r\n  content: \"\\F0CE\"; }\r\n\r\n.fa-table-tennis:before {\r\n  content: \"\\F45D\"; }\r\n\r\n.fa-tablet:before {\r\n  content: \"\\F10A\"; }\r\n\r\n.fa-tablet-alt:before {\r\n  content: \"\\F3FA\"; }\r\n\r\n.fa-tablets:before {\r\n  content: \"\\F490\"; }\r\n\r\n.fa-tachometer-alt:before {\r\n  content: \"\\F3FD\"; }\r\n\r\n.fa-tag:before {\r\n  content: \"\\F02B\"; }\r\n\r\n.fa-tags:before {\r\n  content: \"\\F02C\"; }\r\n\r\n.fa-tape:before {\r\n  content: \"\\F4DB\"; }\r\n\r\n.fa-tasks:before {\r\n  content: \"\\F0AE\"; }\r\n\r\n.fa-taxi:before {\r\n  content: \"\\F1BA\"; }\r\n\r\n.fa-teamspeak:before {\r\n  content: \"\\F4F9\"; }\r\n\r\n.fa-teeth:before {\r\n  content: \"\\F62E\"; }\r\n\r\n.fa-teeth-open:before {\r\n  content: \"\\F62F\"; }\r\n\r\n.fa-telegram:before {\r\n  content: \"\\F2C6\"; }\r\n\r\n.fa-telegram-plane:before {\r\n  content: \"\\F3FE\"; }\r\n\r\n.fa-temperature-high:before {\r\n  content: \"\\F769\"; }\r\n\r\n.fa-temperature-low:before {\r\n  content: \"\\F76B\"; }\r\n\r\n.fa-tencent-weibo:before {\r\n  content: \"\\F1D5\"; }\r\n\r\n.fa-tenge:before {\r\n  content: \"\\F7D7\"; }\r\n\r\n.fa-terminal:before {\r\n  content: \"\\F120\"; }\r\n\r\n.fa-text-height:before {\r\n  content: \"\\F034\"; }\r\n\r\n.fa-text-width:before {\r\n  content: \"\\F035\"; }\r\n\r\n.fa-th:before {\r\n  content: \"\\F00A\"; }\r\n\r\n.fa-th-large:before {\r\n  content: \"\\F009\"; }\r\n\r\n.fa-th-list:before {\r\n  content: \"\\F00B\"; }\r\n\r\n.fa-the-red-yeti:before {\r\n  content: \"\\F69D\"; }\r\n\r\n.fa-theater-masks:before {\r\n  content: \"\\F630\"; }\r\n\r\n.fa-themeco:before {\r\n  content: \"\\F5C6\"; }\r\n\r\n.fa-themeisle:before {\r\n  content: \"\\F2B2\"; }\r\n\r\n.fa-thermometer:before {\r\n  content: \"\\F491\"; }\r\n\r\n.fa-thermometer-empty:before {\r\n  content: \"\\F2CB\"; }\r\n\r\n.fa-thermometer-full:before {\r\n  content: \"\\F2C7\"; }\r\n\r\n.fa-thermometer-half:before {\r\n  content: \"\\F2C9\"; }\r\n\r\n.fa-thermometer-quarter:before {\r\n  content: \"\\F2CA\"; }\r\n\r\n.fa-thermometer-three-quarters:before {\r\n  content: \"\\F2C8\"; }\r\n\r\n.fa-think-peaks:before {\r\n  content: \"\\F731\"; }\r\n\r\n.fa-thumbs-down:before {\r\n  content: \"\\F165\"; }\r\n\r\n.fa-thumbs-up:before {\r\n  content: \"\\F164\"; }\r\n\r\n.fa-thumbtack:before {\r\n  content: \"\\F08D\"; }\r\n\r\n.fa-ticket-alt:before {\r\n  content: \"\\F3FF\"; }\r\n\r\n.fa-times:before {\r\n  content: \"\\F00D\"; }\r\n\r\n.fa-times-circle:before {\r\n  content: \"\\F057\"; }\r\n\r\n.fa-tint:before {\r\n  content: \"\\F043\"; }\r\n\r\n.fa-tint-slash:before {\r\n  content: \"\\F5C7\"; }\r\n\r\n.fa-tired:before {\r\n  content: \"\\F5C8\"; }\r\n\r\n.fa-toggle-off:before {\r\n  content: \"\\F204\"; }\r\n\r\n.fa-toggle-on:before {\r\n  content: \"\\F205\"; }\r\n\r\n.fa-toilet:before {\r\n  content: \"\\F7D8\"; }\r\n\r\n.fa-toilet-paper:before {\r\n  content: \"\\F71E\"; }\r\n\r\n.fa-toilet-paper-slash:before {\r\n  content: \"\\F972\"; }\r\n\r\n.fa-toolbox:before {\r\n  content: \"\\F552\"; }\r\n\r\n.fa-tools:before {\r\n  content: \"\\F7D9\"; }\r\n\r\n.fa-tooth:before {\r\n  content: \"\\F5C9\"; }\r\n\r\n.fa-torah:before {\r\n  content: \"\\F6A0\"; }\r\n\r\n.fa-torii-gate:before {\r\n  content: \"\\F6A1\"; }\r\n\r\n.fa-tractor:before {\r\n  content: \"\\F722\"; }\r\n\r\n.fa-trade-federation:before {\r\n  content: \"\\F513\"; }\r\n\r\n.fa-trademark:before {\r\n  content: \"\\F25C\"; }\r\n\r\n.fa-traffic-light:before {\r\n  content: \"\\F637\"; }\r\n\r\n.fa-trailer:before {\r\n  content: \"\\F941\"; }\r\n\r\n.fa-train:before {\r\n  content: \"\\F238\"; }\r\n\r\n.fa-tram:before {\r\n  content: \"\\F7DA\"; }\r\n\r\n.fa-transgender:before {\r\n  content: \"\\F224\"; }\r\n\r\n.fa-transgender-alt:before {\r\n  content: \"\\F225\"; }\r\n\r\n.fa-trash:before {\r\n  content: \"\\F1F8\"; }\r\n\r\n.fa-trash-alt:before {\r\n  content: \"\\F2ED\"; }\r\n\r\n.fa-trash-restore:before {\r\n  content: \"\\F829\"; }\r\n\r\n.fa-trash-restore-alt:before {\r\n  content: \"\\F82A\"; }\r\n\r\n.fa-tree:before {\r\n  content: \"\\F1BB\"; }\r\n\r\n.fa-trello:before {\r\n  content: \"\\F181\"; }\r\n\r\n.fa-tripadvisor:before {\r\n  content: \"\\F262\"; }\r\n\r\n.fa-trophy:before {\r\n  content: \"\\F091\"; }\r\n\r\n.fa-truck:before {\r\n  content: \"\\F0D1\"; }\r\n\r\n.fa-truck-loading:before {\r\n  content: \"\\F4DE\"; }\r\n\r\n.fa-truck-monster:before {\r\n  content: \"\\F63B\"; }\r\n\r\n.fa-truck-moving:before {\r\n  content: \"\\F4DF\"; }\r\n\r\n.fa-truck-pickup:before {\r\n  content: \"\\F63C\"; }\r\n\r\n.fa-tshirt:before {\r\n  content: \"\\F553\"; }\r\n\r\n.fa-tty:before {\r\n  content: \"\\F1E4\"; }\r\n\r\n.fa-tumblr:before {\r\n  content: \"\\F173\"; }\r\n\r\n.fa-tumblr-square:before {\r\n  content: \"\\F174\"; }\r\n\r\n.fa-tv:before {\r\n  content: \"\\F26C\"; }\r\n\r\n.fa-twitch:before {\r\n  content: \"\\F1E8\"; }\r\n\r\n.fa-twitter:before {\r\n  content: \"\\F099\"; }\r\n\r\n.fa-twitter-square:before {\r\n  content: \"\\F081\"; }\r\n\r\n.fa-typo3:before {\r\n  content: \"\\F42B\"; }\r\n\r\n.fa-uber:before {\r\n  content: \"\\F402\"; }\r\n\r\n.fa-ubuntu:before {\r\n  content: \"\\F7DF\"; }\r\n\r\n.fa-uikit:before {\r\n  content: \"\\F403\"; }\r\n\r\n.fa-umbraco:before {\r\n  content: \"\\F8E8\"; }\r\n\r\n.fa-umbrella:before {\r\n  content: \"\\F0E9\"; }\r\n\r\n.fa-umbrella-beach:before {\r\n  content: \"\\F5CA\"; }\r\n\r\n.fa-underline:before {\r\n  content: \"\\F0CD\"; }\r\n\r\n.fa-undo:before {\r\n  content: \"\\F0E2\"; }\r\n\r\n.fa-undo-alt:before {\r\n  content: \"\\F2EA\"; }\r\n\r\n.fa-uniregistry:before {\r\n  content: \"\\F404\"; }\r\n\r\n.fa-unity:before {\r\n  content: \"\\F949\"; }\r\n\r\n.fa-universal-access:before {\r\n  content: \"\\F29A\"; }\r\n\r\n.fa-university:before {\r\n  content: \"\\F19C\"; }\r\n\r\n.fa-unlink:before {\r\n  content: \"\\F127\"; }\r\n\r\n.fa-unlock:before {\r\n  content: \"\\F09C\"; }\r\n\r\n.fa-unlock-alt:before {\r\n  content: \"\\F13E\"; }\r\n\r\n.fa-untappd:before {\r\n  content: \"\\F405\"; }\r\n\r\n.fa-upload:before {\r\n  content: \"\\F093\"; }\r\n\r\n.fa-ups:before {\r\n  content: \"\\F7E0\"; }\r\n\r\n.fa-usb:before {\r\n  content: \"\\F287\"; }\r\n\r\n.fa-user:before {\r\n  content: \"\\F007\"; }\r\n\r\n.fa-user-alt:before {\r\n  content: \"\\F406\"; }\r\n\r\n.fa-user-alt-slash:before {\r\n  content: \"\\F4FA\"; }\r\n\r\n.fa-user-astronaut:before {\r\n  content: \"\\F4FB\"; }\r\n\r\n.fa-user-check:before {\r\n  content: \"\\F4FC\"; }\r\n\r\n.fa-user-circle:before {\r\n  content: \"\\F2BD\"; }\r\n\r\n.fa-user-clock:before {\r\n  content: \"\\F4FD\"; }\r\n\r\n.fa-user-cog:before {\r\n  content: \"\\F4FE\"; }\r\n\r\n.fa-user-edit:before {\r\n  content: \"\\F4FF\"; }\r\n\r\n.fa-user-friends:before {\r\n  content: \"\\F500\"; }\r\n\r\n.fa-user-graduate:before {\r\n  content: \"\\F501\"; }\r\n\r\n.fa-user-injured:before {\r\n  content: \"\\F728\"; }\r\n\r\n.fa-user-lock:before {\r\n  content: \"\\F502\"; }\r\n\r\n.fa-user-md:before {\r\n  content: \"\\F0F0\"; }\r\n\r\n.fa-user-minus:before {\r\n  content: \"\\F503\"; }\r\n\r\n.fa-user-ninja:before {\r\n  content: \"\\F504\"; }\r\n\r\n.fa-user-nurse:before {\r\n  content: \"\\F82F\"; }\r\n\r\n.fa-user-plus:before {\r\n  content: \"\\F234\"; }\r\n\r\n.fa-user-secret:before {\r\n  content: \"\\F21B\"; }\r\n\r\n.fa-user-shield:before {\r\n  content: \"\\F505\"; }\r\n\r\n.fa-user-slash:before {\r\n  content: \"\\F506\"; }\r\n\r\n.fa-user-tag:before {\r\n  content: \"\\F507\"; }\r\n\r\n.fa-user-tie:before {\r\n  content: \"\\F508\"; }\r\n\r\n.fa-user-times:before {\r\n  content: \"\\F235\"; }\r\n\r\n.fa-users:before {\r\n  content: \"\\F0C0\"; }\r\n\r\n.fa-users-cog:before {\r\n  content: \"\\F509\"; }\r\n\r\n.fa-usps:before {\r\n  content: \"\\F7E1\"; }\r\n\r\n.fa-ussunnah:before {\r\n  content: \"\\F407\"; }\r\n\r\n.fa-utensil-spoon:before {\r\n  content: \"\\F2E5\"; }\r\n\r\n.fa-utensils:before {\r\n  content: \"\\F2E7\"; }\r\n\r\n.fa-vaadin:before {\r\n  content: \"\\F408\"; }\r\n\r\n.fa-vector-square:before {\r\n  content: \"\\F5CB\"; }\r\n\r\n.fa-venus:before {\r\n  content: \"\\F221\"; }\r\n\r\n.fa-venus-double:before {\r\n  content: \"\\F226\"; }\r\n\r\n.fa-venus-mars:before {\r\n  content: \"\\F228\"; }\r\n\r\n.fa-viacoin:before {\r\n  content: \"\\F237\"; }\r\n\r\n.fa-viadeo:before {\r\n  content: \"\\F2A9\"; }\r\n\r\n.fa-viadeo-square:before {\r\n  content: \"\\F2AA\"; }\r\n\r\n.fa-vial:before {\r\n  content: \"\\F492\"; }\r\n\r\n.fa-vials:before {\r\n  content: \"\\F493\"; }\r\n\r\n.fa-viber:before {\r\n  content: \"\\F409\"; }\r\n\r\n.fa-video:before {\r\n  content: \"\\F03D\"; }\r\n\r\n.fa-video-slash:before {\r\n  content: \"\\F4E2\"; }\r\n\r\n.fa-vihara:before {\r\n  content: \"\\F6A7\"; }\r\n\r\n.fa-vimeo:before {\r\n  content: \"\\F40A\"; }\r\n\r\n.fa-vimeo-square:before {\r\n  content: \"\\F194\"; }\r\n\r\n.fa-vimeo-v:before {\r\n  content: \"\\F27D\"; }\r\n\r\n.fa-vine:before {\r\n  content: \"\\F1CA\"; }\r\n\r\n.fa-virus:before {\r\n  content: \"\\F974\"; }\r\n\r\n.fa-virus-slash:before {\r\n  content: \"\\F975\"; }\r\n\r\n.fa-viruses:before {\r\n  content: \"\\F976\"; }\r\n\r\n.fa-vk:before {\r\n  content: \"\\F189\"; }\r\n\r\n.fa-vnv:before {\r\n  content: \"\\F40B\"; }\r\n\r\n.fa-voicemail:before {\r\n  content: \"\\F897\"; }\r\n\r\n.fa-volleyball-ball:before {\r\n  content: \"\\F45F\"; }\r\n\r\n.fa-volume-down:before {\r\n  content: \"\\F027\"; }\r\n\r\n.fa-volume-mute:before {\r\n  content: \"\\F6A9\"; }\r\n\r\n.fa-volume-off:before {\r\n  content: \"\\F026\"; }\r\n\r\n.fa-volume-up:before {\r\n  content: \"\\F028\"; }\r\n\r\n.fa-vote-yea:before {\r\n  content: \"\\F772\"; }\r\n\r\n.fa-vr-cardboard:before {\r\n  content: \"\\F729\"; }\r\n\r\n.fa-vuejs:before {\r\n  content: \"\\F41F\"; }\r\n\r\n.fa-walking:before {\r\n  content: \"\\F554\"; }\r\n\r\n.fa-wallet:before {\r\n  content: \"\\F555\"; }\r\n\r\n.fa-warehouse:before {\r\n  content: \"\\F494\"; }\r\n\r\n.fa-water:before {\r\n  content: \"\\F773\"; }\r\n\r\n.fa-wave-square:before {\r\n  content: \"\\F83E\"; }\r\n\r\n.fa-waze:before {\r\n  content: \"\\F83F\"; }\r\n\r\n.fa-weebly:before {\r\n  content: \"\\F5CC\"; }\r\n\r\n.fa-weibo:before {\r\n  content: \"\\F18A\"; }\r\n\r\n.fa-weight:before {\r\n  content: \"\\F496\"; }\r\n\r\n.fa-weight-hanging:before {\r\n  content: \"\\F5CD\"; }\r\n\r\n.fa-weixin:before {\r\n  content: \"\\F1D7\"; }\r\n\r\n.fa-whatsapp:before {\r\n  content: \"\\F232\"; }\r\n\r\n.fa-whatsapp-square:before {\r\n  content: \"\\F40C\"; }\r\n\r\n.fa-wheelchair:before {\r\n  content: \"\\F193\"; }\r\n\r\n.fa-whmcs:before {\r\n  content: \"\\F40D\"; }\r\n\r\n.fa-wifi:before {\r\n  content: \"\\F1EB\"; }\r\n\r\n.fa-wikipedia-w:before {\r\n  content: \"\\F266\"; }\r\n\r\n.fa-wind:before {\r\n  content: \"\\F72E\"; }\r\n\r\n.fa-window-close:before {\r\n  content: \"\\F410\"; }\r\n\r\n.fa-window-maximize:before {\r\n  content: \"\\F2D0\"; }\r\n\r\n.fa-window-minimize:before {\r\n  content: \"\\F2D1\"; }\r\n\r\n.fa-window-restore:before {\r\n  content: \"\\F2D2\"; }\r\n\r\n.fa-windows:before {\r\n  content: \"\\F17A\"; }\r\n\r\n.fa-wine-bottle:before {\r\n  content: \"\\F72F\"; }\r\n\r\n.fa-wine-glass:before {\r\n  content: \"\\F4E3\"; }\r\n\r\n.fa-wine-glass-alt:before {\r\n  content: \"\\F5CE\"; }\r\n\r\n.fa-wix:before {\r\n  content: \"\\F5CF\"; }\r\n\r\n.fa-wizards-of-the-coast:before {\r\n  content: \"\\F730\"; }\r\n\r\n.fa-wolf-pack-battalion:before {\r\n  content: \"\\F514\"; }\r\n\r\n.fa-won-sign:before {\r\n  content: \"\\F159\"; }\r\n\r\n.fa-wordpress:before {\r\n  content: \"\\F19A\"; }\r\n\r\n.fa-wordpress-simple:before {\r\n  content: \"\\F411\"; }\r\n\r\n.fa-wpbeginner:before {\r\n  content: \"\\F297\"; }\r\n\r\n.fa-wpexplorer:before {\r\n  content: \"\\F2DE\"; }\r\n\r\n.fa-wpforms:before {\r\n  content: \"\\F298\"; }\r\n\r\n.fa-wpressr:before {\r\n  content: \"\\F3E4\"; }\r\n\r\n.fa-wrench:before {\r\n  content: \"\\F0AD\"; }\r\n\r\n.fa-x-ray:before {\r\n  content: \"\\F497\"; }\r\n\r\n.fa-xbox:before {\r\n  content: \"\\F412\"; }\r\n\r\n.fa-xing:before {\r\n  content: \"\\F168\"; }\r\n\r\n.fa-xing-square:before {\r\n  content: \"\\F169\"; }\r\n\r\n.fa-y-combinator:before {\r\n  content: \"\\F23B\"; }\r\n\r\n.fa-yahoo:before {\r\n  content: \"\\F19E\"; }\r\n\r\n.fa-yammer:before {\r\n  content: \"\\F840\"; }\r\n\r\n.fa-yandex:before {\r\n  content: \"\\F413\"; }\r\n\r\n.fa-yandex-international:before {\r\n  content: \"\\F414\"; }\r\n\r\n.fa-yarn:before {\r\n  content: \"\\F7E3\"; }\r\n\r\n.fa-yelp:before {\r\n  content: \"\\F1E9\"; }\r\n\r\n.fa-yen-sign:before {\r\n  content: \"\\F157\"; }\r\n\r\n.fa-yin-yang:before {\r\n  content: \"\\F6AD\"; }\r\n\r\n.fa-yoast:before {\r\n  content: \"\\F2B1\"; }\r\n\r\n.fa-youtube:before {\r\n  content: \"\\F167\"; }\r\n\r\n.fa-youtube-square:before {\r\n  content: \"\\F431\"; }\r\n\r\n.fa-zhihu:before {\r\n  content: \"\\F63F\"; }\r\n\r\n.sr-only {\r\n  border: 0;\r\n  clip: rect(0, 0, 0, 0);\r\n  height: 1px;\r\n  margin: -1px;\r\n  overflow: hidden;\r\n  padding: 0;\r\n  position: absolute;\r\n  width: 1px; }\r\n\r\n.sr-only-focusable:active, .sr-only-focusable:focus {\r\n  clip: auto;\r\n  height: auto;\r\n  margin: 0;\r\n  overflow: visible;\r\n  position: static;\r\n  width: auto; }\r\n@font-face {\r\n  font-family: 'Font Awesome 5 Brands';\r\n  font-style: normal;\r\n  font-weight: 400;\r\n  font-display: block;\r\n  src: url(" + escape(__webpack_require__(21)) + ");\r\n  src: url(" + escape(__webpack_require__(21)) + "?#iefix) format(\"embedded-opentype\"), url(" + escape(__webpack_require__(98)) + ") format(\"woff2\"), url(" + escape(__webpack_require__(99)) + ") format(\"woff\"), url(" + escape(__webpack_require__(100)) + ") format(\"truetype\"), url(" + escape(__webpack_require__(101)) + "#fontawesome) format(\"svg\"); }\r\n\r\n.fab {\r\n  font-family: 'Font Awesome 5 Brands';\r\n  font-weight: 400; }\r\n@font-face {\r\n  font-family: 'Font Awesome 5 Free';\r\n  font-style: normal;\r\n  font-weight: 400;\r\n  font-display: block;\r\n  src: url(" + escape(__webpack_require__(22)) + ");\r\n  src: url(" + escape(__webpack_require__(22)) + "?#iefix) format(\"embedded-opentype\"), url(" + escape(__webpack_require__(102)) + ") format(\"woff2\"), url(" + escape(__webpack_require__(103)) + ") format(\"woff\"), url(" + escape(__webpack_require__(104)) + ") format(\"truetype\"), url(" + escape(__webpack_require__(105)) + "#fontawesome) format(\"svg\"); }\r\n\r\n.far {\r\n  font-family: 'Font Awesome 5 Free';\r\n  font-weight: 400; }\r\n@font-face {\r\n  font-family: 'Font Awesome 5 Free';\r\n  font-style: normal;\r\n  font-weight: 900;\r\n  font-display: block;\r\n  src: url(" + escape(__webpack_require__(23)) + ");\r\n  src: url(" + escape(__webpack_require__(23)) + "?#iefix) format(\"embedded-opentype\"), url(" + escape(__webpack_require__(106)) + ") format(\"woff2\"), url(" + escape(__webpack_require__(107)) + ") format(\"woff\"), url(" + escape(__webpack_require__(108)) + ") format(\"truetype\"), url(" + escape(__webpack_require__(109)) + "#fontawesome) format(\"svg\"); }\r\n\r\n.fa,\r\n.fas {\r\n  font-family: 'Font Awesome 5 Free';\r\n  font-weight: 900; }\r\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports) {
 
 module.exports = function escape(url) {
@@ -48715,7 +48731,7 @@ module.exports = function escape(url) {
 
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports) {
 
 /*
@@ -48797,79 +48813,79 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, exports) {
 
 module.exports = "/fonts/fa-brands-400.woff2?a06da7f0950f9dd366fc9db9d56d618a";
 
 /***/ }),
-/* 98 */
+/* 99 */
 /***/ (function(module, exports) {
 
 module.exports = "/fonts/fa-brands-400.woff?ec3cfddedb8bebd2d7a3fdf511f7c1cc";
 
 /***/ }),
-/* 99 */
+/* 100 */
 /***/ (function(module, exports) {
 
 module.exports = "/fonts/fa-brands-400.ttf?13685372945d816a2b474fc082fd9aaa";
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, exports) {
 
 module.exports = "/fonts/fa-brands-400.svg?3debcaf1a98e4445d213fd0089d42f6b";
 
 /***/ }),
-/* 101 */
+/* 102 */
 /***/ (function(module, exports) {
 
 module.exports = "/fonts/fa-regular-400.woff2?c20b5b7362d8d7bb7eddf94344ace33e";
 
 /***/ }),
-/* 102 */
+/* 103 */
 /***/ (function(module, exports) {
 
 module.exports = "/fonts/fa-regular-400.woff?f89ea91ecd1ca2db7e09baa2c4b156d1";
 
 /***/ }),
-/* 103 */
+/* 104 */
 /***/ (function(module, exports) {
 
 module.exports = "/fonts/fa-regular-400.ttf?db78b9359171f24936b16d84f63af378";
 
 /***/ }),
-/* 104 */
+/* 105 */
 /***/ (function(module, exports) {
 
 module.exports = "/fonts/fa-regular-400.svg?89f9806b964f92ad282fd60947eba588";
 
 /***/ }),
-/* 105 */
+/* 106 */
 /***/ (function(module, exports) {
 
 module.exports = "/fonts/fa-solid-900.woff2?b15db15f746f29ffa02638cb455b8ec0";
 
 /***/ }),
-/* 106 */
+/* 107 */
 /***/ (function(module, exports) {
 
 module.exports = "/fonts/fa-solid-900.woff?bea989e82b07e9687c26fc58a4805021";
 
 /***/ }),
-/* 107 */
+/* 108 */
 /***/ (function(module, exports) {
 
 module.exports = "/fonts/fa-solid-900.ttf?1ab236ed440ee51810c56bd16628aef0";
 
 /***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, exports) {
 
 module.exports = "/fonts/fa-solid-900.svg?ad912fd102f4052d3273dd838e0c671d";
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -48915,7 +48931,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(110);
+var	fixUrls = __webpack_require__(111);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -49228,7 +49244,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, exports) {
 
 
@@ -49323,10 +49339,133 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 113 */,
+/* 114 */,
+/* 115 */,
+/* 116 */,
+/* 117 */,
+/* 118 */,
+/* 119 */,
+/* 120 */,
+/* 121 */,
+/* 122 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__context__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_money__ = __webpack_require__(9);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+
+
+
+
+
+
+function index() {
+    var _useUgest = Object(__WEBPACK_IMPORTED_MODULE_1__context__["b" /* useUgest */])(),
+        data = _useUgest.data,
+        setData = _useUgest.setData;
+
+    var _useState = Object(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])([]),
+        _useState2 = _slicedToArray(_useState, 2),
+        artigo = _useState2[0],
+        setArtigo = _useState2[1];
+
+    var _useState3 = Object(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])(0),
+        _useState4 = _slicedToArray(_useState3, 2),
+        total = _useState4[0],
+        setTotal = _useState4[1];
+
+    Object(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
+
+        artigo.map(function (_ref) {
+            var quantidade = _ref.quantidade,
+                art_stock_minimo = _ref.artigo.art_stock_minimo;
+
+            setTotal(total + quantidade * art_stock_minimo);
+        });
+    }, [artigo]);
+
+    Object(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
+
+        if (!data.shopping.artigo) return;
+
+        setArtigo(Object.keys(data.shopping.artigo).map(function (item) {
+            console.log(item);
+
+            return _extends({}, data.shopping.artigo[item]);
+        }));
+    }, [data]);
+
+    var ArtigoCard = function ArtigoCard() {
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            null,
+            'ola mundo'
+        );
+    };
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'shoppingConatiner' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            null,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                null,
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'h3',
+                    { style: {
+                            fontWeight: 'bold',
+                            margin: 0
+                        } },
+                    'Total ',
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'label',
+                        { style: {
+                                fontWeight: 'normal'
+                            } },
+                        Object(__WEBPACK_IMPORTED_MODULE_2__util_money__["a" /* Convert */])(total)
+                    )
+                )
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                null,
+                'test'
+            )
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            null,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'ul',
+                null,
+                artigo.map(function (item) {
+                    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'li',
+                        null,
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(ArtigoCard, item)
+                    );
+                })
+            )
+        )
+    );
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (index);
 
 /***/ })
 /******/ ]);

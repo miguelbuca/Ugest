@@ -55,7 +55,15 @@ export default function index() {
                     <button className="btn">
                         <i className="fa fa-search"/>
                     </button>
-                    <button className="btn shoppingCount">
+                    <button onClick={() => {
+                        setData({
+                            ...data,
+                            navigation: {
+                                menu: 'Lista de compras',
+                                route: 'shopping-cart'
+                            }
+                        })
+                    }} className="btn shoppingCount">
                         <i className="fa fa-shopping-basket" />
                         {
                             Object.keys(data.shopping.artigo).length > 0 && <span>{Object.keys(data.shopping.artigo).length}</span>
