@@ -20,7 +20,11 @@ export const UgestProvider = ({ children }) => {
     shopping: {
       artigo: {}
     },
-    multUso:{}
+    multUso: {},
+    loader: {
+      state: false,
+      label: null
+    }
   })
 
   useEffect(() => {

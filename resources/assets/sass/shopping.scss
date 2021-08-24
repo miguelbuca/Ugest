@@ -6,11 +6,17 @@
         flex-direction: column;
 
         &:first-child{
+            flex: 1;
             background-color: $body-bg;
             margin-bottom: 2rem;
             padding: 1.5rem;
             display: flex;
             flex-direction: row;
+
+            & .btns-final{
+                display: flex;
+                flex-direction: row;
+            }
 
             &>div{
                 display: flex;
@@ -19,6 +25,110 @@
                     flex: 1;
                 }
             }
+        }
+
+        &:last-child{
+            display: flex;
+            flex-direction: row;
+
+            &>div{
+                display: flex;
+
+                &:first-child{
+
+                    &>div{
+                        background-color: $body-bg;
+                    margin-right: 1.5rem;
+                    min-width: 300px;
+                    display: flex;
+                    flex-direction: column;
+                    padding: 1rem;
+
+                    &>div{
+                        &:first-child{
+                            margin-bottom: 1rem;
+                        }
+                        &:last-child{
+                            display: flex;
+                            flex-direction: column;
+
+                            &>div{
+                                display: flex;
+                                flex-direction: row;
+                                padding: 1rem 0;
+
+                                &>span{
+                                    display: flex;
+                                    flex: 1;
+
+                                    &:first-child{
+                                        font-weight: bold;
+                                    }
+                                    &:last-child{
+                                        justify-content: flex-end;
+                                    }
+                                }
+
+                                &:not(:last-child){
+                                    border-bottom: $ugest-border;
+                                }
+                            }
+                        }
+                    }
+                    }
+                }
+                &:last-child{
+                    flex: 1;
+                    display: flex;
+            
+                    & ul{
+                        flex: 1;
+                        list-style: none;
+                        margin: 0;
+                        padding: 0;
+                        overflow-y: auto !important;
+                    }
+                }
+            }
+        }
+    }
+
+    & .artigoCard{
+        display: flex;
+        flex-direction: column;
+        background-color: $body-bg;
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+
+        &>div{
+            display: flex;
+            align-items: center;
+
+            &:first-child{
+
+                padding: 1rem 0;
+                border-bottom: $ugest-border;
+
+                &>div{
+                    display: flex;
+
+                    &:first-child{
+                        flex: 1;
+                    }
+                    &:last-child{
+                        flex-direction: row;
+                        align-items: center;
+
+                        &>span{
+                            padding: 0 1rem;
+                        }
+                    }
+                }
+            }
+        }
+        & img{
+            max-width: 7rem;
+            margin-right: 1.5rem;
         }
     }
 }

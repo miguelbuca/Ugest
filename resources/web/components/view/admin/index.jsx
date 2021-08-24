@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 
 import Header from '../../layout/header'
 
+import Loader from '../../layout/loader'
+
 import Faturar from './faturar'
 import Painel from './painel'
 import Other from './other'
@@ -22,7 +24,7 @@ export default function index() {
     useEffect(() => {
         if(!data.navigation)return
         setRoute(data.navigation)
-        console.log(route)
+        console.log(data,route)
     }, [data])
     return (
         <div>
@@ -35,6 +37,7 @@ export default function index() {
                     </div>)
                 )
             }
+            <Loader { ...data.loader }/>
             <main className="mainContent">
                 {
                     route && <div>
